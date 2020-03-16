@@ -30,6 +30,8 @@ namespace MediaBazaar
                 btn.BackColor = SystemColors.ControlLightLight;
                 btn.Width = this.flpEmployees.Width - 30;
                 btn.Height = 60;
+
+                
                 btn.Text = "John Doe [Main Department]";
                 btn.Font = new Font("Segoe UI Black", 12);
                 btn.TextAlign = ContentAlignment.MiddleLeft;
