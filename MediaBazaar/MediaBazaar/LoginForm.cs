@@ -15,6 +15,7 @@ namespace MediaBazaar
         public LoginForm()
         {
             InitializeComponent();
+
         }
 
         private void BtnLogin_MouseHover(object sender, EventArgs e)
