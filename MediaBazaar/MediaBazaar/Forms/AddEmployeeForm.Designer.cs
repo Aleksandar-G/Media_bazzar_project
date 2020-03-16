@@ -107,7 +107,7 @@
             this.tbEmail.Size = new System.Drawing.Size(407, 33);
             this.tbEmail.TabIndex = 19;
             this.tbEmail.Text = "Email";
-            this.tbEmail.MouseEnter += new System.EventHandler(this.TbEmail_MouseEnter);
+            this.tbEmail.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TbEmail_MouseClick);
             // 
             // tbPhone
             // 
@@ -119,7 +119,7 @@
             this.tbPhone.Size = new System.Drawing.Size(407, 33);
             this.tbPhone.TabIndex = 20;
             this.tbPhone.Text = "Phone";
-            this.tbPhone.MouseEnter += new System.EventHandler(this.TbPhone_MouseEnter);
+            this.tbPhone.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TbPhone_MouseClick);
             // 
             // cbRole
             // 

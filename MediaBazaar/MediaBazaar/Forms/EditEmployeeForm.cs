@@ -70,5 +70,51 @@ namespace MediaBazaar
         {
             this.btnEdit.BackColor = ApplicationColors.Orange;
         }
+
+        private void TbName_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (tbName.Text == "Name")
+            {
+                tbName.Text = "";
+            }
+        }
+
+        private void TbEmail_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (tbEmail.Text == "Email")
+            {
+                tbEmail.Text = "";
+            }
+        }
+
+        private void TbPhone_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (tbPhone.Text == "Phone")
+            {
+                tbPhone.Text = "";
+            }
+        }
+
+        private void CbRole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbRole.SelectedItem.ToString() != "Role")
+            {
+                cbRole.Items.Remove("Role");
+            }
+
+            if (cbRole.SelectedItem.ToString() == "Worker")
+            {
+                cbDepartments.Visible = true;
+                cbDepartments.SelectedIndex = 0;
+
+                cbWorkshifts.Visible = true;
+                cbWorkshifts.SelectedIndex = 0;
+            }
+            else
+            {
+                cbDepartments.Visible = false;
+                cbWorkshifts.Visible = false;
+            }
+        }
     }
 }
