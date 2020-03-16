@@ -31,10 +31,10 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.tbEmail = new System.Windows.Forms.TextBox();
             this.tbPassword = new System.Windows.Forms.TextBox();
-            this.autoLabelEmail = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.autoLabelPassword = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnClose = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,37 +69,6 @@
             this.tbPassword.Size = new System.Drawing.Size(288, 29);
             this.tbPassword.TabIndex = 5;
             // 
-            // autoLabelEmail
-            // 
-            this.autoLabelEmail.DX = 110;
-            this.autoLabelEmail.DY = -25;
-            this.autoLabelEmail.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabelEmail.ForeColor = System.Drawing.Color.White;
-            this.autoLabelEmail.Gap = 5;
-            this.autoLabelEmail.LabeledControl = this.tbEmail;
-            this.autoLabelEmail.Location = new System.Drawing.Point(349, 246);
-            this.autoLabelEmail.Name = "autoLabelEmail";
-            this.autoLabelEmail.Position = Syncfusion.Windows.Forms.Tools.AutoLabelPosition.Custom;
-            this.autoLabelEmail.Size = new System.Drawing.Size(70, 23);
-            this.autoLabelEmail.TabIndex = 7;
-            this.autoLabelEmail.Text = "Email";
-            this.autoLabelEmail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // autoLabelPassword
-            // 
-            this.autoLabelPassword.DX = 90;
-            this.autoLabelPassword.DY = -25;
-            this.autoLabelPassword.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold);
-            this.autoLabelPassword.ForeColor = System.Drawing.Color.White;
-            this.autoLabelPassword.Gap = 5;
-            this.autoLabelPassword.LabeledControl = this.tbPassword;
-            this.autoLabelPassword.Location = new System.Drawing.Point(329, 320);
-            this.autoLabelPassword.Name = "autoLabelPassword";
-            this.autoLabelPassword.Position = Syncfusion.Windows.Forms.Tools.AutoLabelPosition.Custom;
-            this.autoLabelPassword.Size = new System.Drawing.Size(113, 23);
-            this.autoLabelPassword.TabIndex = 8;
-            this.autoLabelPassword.Text = "Password";
-            // 
             // btnClose
             // 
             this.btnClose.BackColor = System.Drawing.Color.DarkRed;
@@ -126,16 +95,38 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.ForeColor = System.Drawing.Color.Snow;
+            this.lblEmail.Location = new System.Drawing.Point(355, 243);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(59, 25);
+            this.lblEmail.TabIndex = 10;
+            this.lblEmail.Text = "Email";
+            // 
+            // lblPassword
+            // 
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassword.ForeColor = System.Drawing.Color.Snow;
+            this.lblPassword.Location = new System.Drawing.Point(339, 317);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(97, 25);
+            this.lblPassword.TabIndex = 11;
+            this.lblPassword.Text = "Password";
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(784, 467);
+            this.Controls.Add(this.lblPassword);
+            this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.autoLabelPassword);
-            this.Controls.Add(this.autoLabelEmail);
             this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.tbEmail);
             this.Controls.Add(this.btnLogin);
@@ -144,6 +135,9 @@
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LoginForm_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.LoginForm_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.LoginForm_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -156,8 +150,8 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.TextBox tbEmail;
         private System.Windows.Forms.TextBox tbPassword;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabelEmail;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabelPassword;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.Label lblPassword;
     }
 }
