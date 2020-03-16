@@ -7,31 +7,18 @@ using MySql.Data.MySqlClient;
 
 namespace MediaBazaar
 {
-    class DBconnection
+    public class DBconnection
     {
-
-        private MySqlConnection connection;
-        private string server;
-        private string database;
-        private string uid;
-        private string password;
+        public MySqlConnection connection;
+        private string server = "studmysql01.fhict.local";
+        private string database = "dbi425706";
+        private string uid = "dbi425706";
+        private string password = "12345678";
 
         //Constructor
         public DBconnection()
         {
-            Initialize();
-        }
-
-        //Initialize values
-        private void Initialize()
-        {
-            server = "studmysql01.fhict.local";
-            database = "dbi425730";
-            uid = "dbi425730";
-            password = "12345678";
-            string connectionString = "SERVER=" + server + ";" + "DATABASE=" +
-            database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
-
+            string connectionString = $"SERVER={server};DATABASE={database};UID={uid};PASSWORD={password};";
             connection = new MySqlConnection(connectionString);
         }
 
