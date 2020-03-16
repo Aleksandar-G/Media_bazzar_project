@@ -18,7 +18,15 @@ namespace MediaBazaar
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjIwNTA0QDMxMzcyZTM0MmUzMGtEQzlxQzMyb1gycERnQ1FHT3REdVBuSW5Icmovc1NwQVJGMS9IcFNta2c9");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+
+            LoginForm loginForm = new LoginForm();
+            Application.Run(loginForm);
+
+            if (loginForm.currentUser != null)
+            {
+                Application.Run(new MainForm(loginForm.currentUser));
+            }
+
         }
     }
 }

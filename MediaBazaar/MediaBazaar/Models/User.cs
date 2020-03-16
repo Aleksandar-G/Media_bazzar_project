@@ -117,6 +117,34 @@ namespace MediaBazaar.Models
             return null;
         }
 
+        public static User GetByEmail(string email)
+        {
+            DBconnection dbConnection = new DBconnection();
+            dbConnection.OpenConnection();
+            User user;
+            string query = "SELECT * FROM users WHERE email = @email";
+            using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
+            {
+                cmd.Parameters.AddWithValue("@email", email);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    int userId = Convert.ToInt32(reader["id"]);
+                    string userName = reader["name"].ToString();
+                    string userEmail = reader["email"].ToString();
+                    string userPassword = reader["password"].ToString();
+
+                    user = new User(userId, userName, userEmail, userPassword);
+
+                    dbConnection.CloseConnection();
+                    return user;
+                }
+            }
+
+            dbConnection.CloseConnection();
+            return null;
+        }
+
         public override void Update(Model newUser)
         {
             User user = (User)newUser;
@@ -157,6 +185,18 @@ namespace MediaBazaar.Models
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             return new string(Enumerable.Repeat(chars, length)
               .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        public static bool Authenticate(string email, string password)
+        {
+            User user = GetByEmail(email);
+
+            if (user == null)
+            {
+                return false;
+            }
+
+            return BCrypt.Net.BCrypt.Verify(password, user.password);
         }
     }
 }
