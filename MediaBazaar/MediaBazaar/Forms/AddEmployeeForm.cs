@@ -87,19 +87,19 @@ namespace MediaBazaar
             }
         }
 
-        private void TbEmail_MouseEnter(object sender, EventArgs e)
-        {
-            if (tbEmail.Text == "Email")
-            {
-                tbEmail.Text = "";
-            }
-        }
-
-        private void TbPhone_MouseEnter(object sender, EventArgs e)
+        private void TbPhone_MouseClick(object sender, MouseEventArgs e)
         {
             if (tbPhone.Text == "Phone")
             {
                 tbPhone.Text = "";
+            }
+        }
+
+        private void TbEmail_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (tbEmail.Text == "Email")
+            {
+                tbEmail.Text = "";
             }
         }
     }

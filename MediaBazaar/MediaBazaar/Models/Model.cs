@@ -19,7 +19,7 @@ namespace MediaBazaar.Models
         public abstract void Insert();
 
 
-        public abstract void Update<T>(T obj);
+        public abstract void Update(Model obj);
 
         public abstract void Delete();
     }

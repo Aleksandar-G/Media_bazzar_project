@@ -51,7 +51,7 @@
             this.btnLogin.TabIndex = 1;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
-            this.btnLogin.MouseHover += new System.EventHandler(this.BtnLogin_MouseHover);
+            this.btnLogin.Click += new System.EventHandler(this.BtnLogin_Click);
             // 
             // tbEmail
             // 
@@ -68,6 +68,7 @@
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(288, 29);
             this.tbPassword.TabIndex = 5;
+            this.tbPassword.UseSystemPasswordChar = true;
             // 
             // btnClose
             // 
