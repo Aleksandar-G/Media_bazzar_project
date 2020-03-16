@@ -87,25 +87,25 @@ namespace MediaBazaar.Models
 
         public static User GetById(int id)
         {
-            DBconnection dbConnection = new DBconnection();
-            dbConnection.OpenConnection();
-            User user;
-            string query = $"SELECT * FROM users WHERE id = {id}";
-            using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
-            {
-                MySqlDataReader rdr = cmd.ExecuteReader();
-                rdr.Read();
+            //DBconnection dbConnection = new DBconnection();
+            //dbConnection.OpenConnection();
+            //User user;
+            //string query = $"SELECT * FROM users WHERE id = {id}";
+            //using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
+            //{
+            //    MySqlDataReader rdr = cmd.ExecuteReader();
+            //    rdr.Read();
 
-                int userId = Convert.ToInt32(rdr["id"]);
-                string name = rdr["name"].ToString();
-                string email = rdr["email"].ToString();
-                string password = rdr["password"].ToString();
+            //    int userId = Convert.ToInt32(rdr["id"]);
+            //    string name = rdr["name"].ToString();
+            //    string email = rdr["email"].ToString();
+            //    string password = rdr["password"].ToString();
 
-                user = new User(id, name, email, password);
-            }
+            //    user = new User(id, name, email, password);
+            //}
 
-            dbConnection.CloseConnection();
-            return user;
+            //dbConnection.CloseConnection();
+            return null;
         }
 
         public override void Update<User>(User newUser)
