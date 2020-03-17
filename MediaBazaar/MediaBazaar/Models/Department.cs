@@ -65,31 +65,40 @@ namespace MediaBazaar.Models
             dbConnection.OpenConnection();
             foreach (var item in workers)
             {
-                //string query = $"UPDATE workers SET Department_Id = {id} WHERE id = {workers.id}";
-                //using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
-                //{
-                //    cmd.ExecuteNonQuery();
-                //}
+               //string query = $"UPDATE workers SET Department_Id = {id} WHERE id = {workers.id}";
+               //using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
+               //{
+               //    cmd.ExecuteNonQuery();
+               //}
             }
         }
 
         public int GetDepartmentId()
         {
             int result = 0;
-            string query = $"SELECT id FROM departments WHERE Name = {Name}";
+            string query = $"SELECT id FROM departments WHERE Name = @Name";
 
             dbConnection.OpenConnection();
-            
-                MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection);
 
-            MySqlDataReader dataReader = cmd.ExecuteReader();
-
-            //Read the data and store them in the list
-            while (dataReader.Read())
+            // MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection);
+            using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
-                result = Convert.ToInt32(dataReader["id"]);
-                
+                var nameParam = cmd.Parameters.AddWithValue("@Name", Name);
+
+                cmd.ExecuteNonQuery();
+                this.id = cmd.LastInsertedId;
+
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                //Read the data and store them in the list
+                while (dataReader.Read())
+                {
+                    result = Convert.ToInt32(dataReader["id"]);
+
+                }
             }
+
+            
 
             dbConnection.CloseConnection();
 
