@@ -13,13 +13,13 @@ namespace MediaBazaar.Models
 
         public Model()
         {
-           dbConnection  = new DBconnection();
+           dbConnection = new DBconnection();
         }
 
         public abstract void Insert();
 
 
-        public abstract void Update<T>(T obj);
+        public abstract void Update(Model obj);
 
         public abstract void Delete();
     }

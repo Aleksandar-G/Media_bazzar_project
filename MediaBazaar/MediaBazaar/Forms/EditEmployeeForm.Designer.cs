@@ -34,10 +34,10 @@
             this.cbWorkshifts = new System.Windows.Forms.ComboBox();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
-            this.cbRole = new System.Windows.Forms.ComboBox();
             this.tbPhone = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.tbEmail = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.tbName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.cbRole = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.tbPhone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbName)).BeginInit();
@@ -134,6 +134,42 @@
             this.btnRemove.MouseEnter += new System.EventHandler(this.BtnRemove_MouseEnter);
             this.btnRemove.MouseLeave += new System.EventHandler(this.BtnRemove_MouseLeave);
             // 
+            // tbPhone
+            // 
+            this.tbPhone.BeforeTouchSize = new System.Drawing.Size(407, 33);
+            this.tbPhone.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.tbPhone.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPhone.Location = new System.Drawing.Point(169, 258);
+            this.tbPhone.Name = "tbPhone";
+            this.tbPhone.Size = new System.Drawing.Size(407, 33);
+            this.tbPhone.TabIndex = 24;
+            this.tbPhone.Text = "Phone";
+            this.tbPhone.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TbPhone_MouseClick);
+            // 
+            // tbEmail
+            // 
+            this.tbEmail.BeforeTouchSize = new System.Drawing.Size(407, 33);
+            this.tbEmail.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.tbEmail.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbEmail.Location = new System.Drawing.Point(169, 201);
+            this.tbEmail.Name = "tbEmail";
+            this.tbEmail.Size = new System.Drawing.Size(407, 33);
+            this.tbEmail.TabIndex = 23;
+            this.tbEmail.Text = "Email";
+            this.tbEmail.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TbEmail_MouseClick);
+            // 
+            // tbName
+            // 
+            this.tbName.BeforeTouchSize = new System.Drawing.Size(407, 33);
+            this.tbName.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.tbName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbName.Location = new System.Drawing.Point(169, 146);
+            this.tbName.Name = "tbName";
+            this.tbName.Size = new System.Drawing.Size(407, 33);
+            this.tbName.TabIndex = 22;
+            this.tbName.Text = "Name";
+            this.tbName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TbName_MouseClick);
+            // 
             // cbRole
             // 
             this.cbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -149,39 +185,7 @@
             this.cbRole.Name = "cbRole";
             this.cbRole.Size = new System.Drawing.Size(407, 33);
             this.cbRole.TabIndex = 25;
-            // 
-            // tbPhone
-            // 
-            this.tbPhone.BeforeTouchSize = new System.Drawing.Size(407, 33);
-            this.tbPhone.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.tbPhone.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPhone.Location = new System.Drawing.Point(169, 258);
-            this.tbPhone.Name = "tbPhone";
-            this.tbPhone.Size = new System.Drawing.Size(407, 33);
-            this.tbPhone.TabIndex = 24;
-            this.tbPhone.Text = "Phone";
-            // 
-            // tbEmail
-            // 
-            this.tbEmail.BeforeTouchSize = new System.Drawing.Size(407, 33);
-            this.tbEmail.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.tbEmail.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbEmail.Location = new System.Drawing.Point(169, 201);
-            this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(407, 33);
-            this.tbEmail.TabIndex = 23;
-            this.tbEmail.Text = "Email";
-            // 
-            // tbName
-            // 
-            this.tbName.BeforeTouchSize = new System.Drawing.Size(407, 33);
-            this.tbName.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.tbName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbName.Location = new System.Drawing.Point(169, 146);
-            this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(407, 33);
-            this.tbName.TabIndex = 22;
-            this.tbName.Text = "Name";
+            this.cbRole.SelectedIndexChanged += new System.EventHandler(this.CbRole_SelectedIndexChanged);
             // 
             // EditEmployeeForm
             // 
@@ -221,9 +225,9 @@
         private System.Windows.Forms.ComboBox cbWorkshifts;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnRemove;
-        private System.Windows.Forms.ComboBox cbRole;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt tbPhone;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt tbEmail;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt tbName;
+        private System.Windows.Forms.ComboBox cbRole;
     }
 }

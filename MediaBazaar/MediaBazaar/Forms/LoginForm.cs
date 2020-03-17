@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MediaBazaar.Models;
 
 namespace MediaBazaar
 {
@@ -14,6 +15,7 @@ namespace MediaBazaar
     {
         private bool mouseDown;
         private Point lastLocation;
+        public User currentUser;
 
         public LoginForm()
         {
@@ -21,11 +23,6 @@ namespace MediaBazaar
             this.BackColor = ApplicationColors.PrimaryDark;
             this.btnClose.BackColor = ApplicationColors.Red;
             this.btnLogin.BackColor = ApplicationColors.Orange;
-        }
-
-        private void BtnLogin_MouseHover(object sender, EventArgs e)
-        {
-            
         }
 
         private void BtnClose_Click(object sender, EventArgs e)
@@ -50,6 +47,22 @@ namespace MediaBazaar
             {
                 this.Location = new Point((this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
                 this.Update();
+            }
+        }
+
+        private void BtnLogin_Click(object sender, EventArgs e)
+        {
+            string email = tbEmail.Text;
+            string password = tbPassword.Text;
+
+            if (User.Authenticate(email, password))
+            {
+                currentUser = User.GetByEmail(email);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Wrong credentials!");
             }
         }
     }

@@ -8,16 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using MediaBazaar.Models;
+
 namespace MediaBazaar
 {
     public partial class MainForm : Form
     {
         private bool mouseDown;
         private Point lastLocation;
+        public User currentUser;
 
-        public MainForm()
+        public MainForm(User user)
         {
             InitializeComponent();
+
+            this.currentUser = user;
             this.navigation.BackColor = ApplicationColors.PrimaryDark;
             this.BackColor = ApplicationColors.Orange;
         }

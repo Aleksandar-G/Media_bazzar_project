@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,36 +13,44 @@ namespace MediaBazaar.Models
         protected long id;
         protected string name;
         protected string email;
+        protected string phone;
         protected string password;
 
-        public User(string name, string email, string password): base()
+        public long Id { get { return this.id; } }
+
+        public User(string name, string email, string phone) : base()
         {
             this.name = name;
             this.email = email;
-            this.password = BCrypt.Net.BCrypt.HashPassword(password);
+            this.phone = phone;
         }
 
-        public User(int id, string name, string email, string password) : base()
+        public User(long id, string name, string email, string password, string phone) : base()
         {
             this.id = id;
             this.name = name;
             this.email = email;
             this.password = password;
+            this.phone = phone;
         }
 
         public override void Insert()
         {
+            this.password = GeneratePassword(8);
+
             dbConnection.OpenConnection();
-            string query = "INSERT INTO users(name, email, password) VALUES(@name, @email, @password)";
+            string query = "INSERT INTO users(name, email, password, phone) VALUES(@name, @email, @password, @phone)";
 
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
-                var nameParam = cmd.Parameters.AddWithValue("@name", name);
-                var emailParam = cmd.Parameters.AddWithValue("@email", email);
-                var passwordParam = cmd.Parameters.AddWithValue("@password", password);
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@password", BCrypt.Net.BCrypt.HashPassword(this.password));
+                cmd.Parameters.AddWithValue("@phone", phone);
 
                 cmd.ExecuteNonQuery();
                 this.id = cmd.LastInsertedId;
+                this.SendPassword();
             }
 
             dbConnection.CloseConnection();
@@ -68,16 +77,17 @@ namespace MediaBazaar.Models
             string query = "SELECT * FROM users";
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
-                MySqlDataReader rdr = cmd.ExecuteReader();
+                MySqlDataReader reader = cmd.ExecuteReader();
 
-                while(rdr.Read())
+                while (reader.Read())
                 {
-                    int id = Convert.ToInt32(rdr["id"]);
-                    string name = rdr["name"].ToString();
-                    string email = rdr["email"].ToString();
-                    string password = rdr["password"].ToString();
+                    long id = Convert.ToInt64(reader["id"]);
+                    string name = reader["name"].ToString();
+                    string email = reader["email"].ToString();
+                    string password = reader["password"].ToString();
+                    string phone = reader["phone"].ToString();
 
-                    users.Add(new User(id, name, email, password));
+                    users.Add(new User(id, name, email, password, phone));
                 }
             }
 
@@ -85,7 +95,7 @@ namespace MediaBazaar.Models
             return users;
         }
 
-        public static User GetById(int id)
+        public static User GetById(long id)
         {
             DBconnection dbConnection = new DBconnection();
             dbConnection.OpenConnection();
@@ -93,24 +103,108 @@ namespace MediaBazaar.Models
             string query = $"SELECT * FROM users WHERE id = {id}";
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
-                MySqlDataReader rdr = cmd.ExecuteReader();
-                rdr.Read();
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    int userId = Convert.ToInt32(reader["id"]);
+                    string name = reader["name"].ToString();
+                    string email = reader["email"].ToString();
+                    string password = reader["password"].ToString();
+                    string phone = reader["phone"].ToString();
 
-                int userId = Convert.ToInt32(rdr["id"]);
-                string name = rdr["name"].ToString();
-                string email = rdr["email"].ToString();
-                string password = rdr["password"].ToString();
+                    user = new User(id, name, email, password, phone);
 
-                user = new User(id, name, email, password);
+                    dbConnection.CloseConnection();
+                    return user;
+                }
             }
 
             dbConnection.CloseConnection();
-            return user;
+            return null;
         }
 
-        public override void Update<User>(User newUser)
+        public static User GetByEmail(string email)
         {
-            throw new NotImplementedException();
+            DBconnection dbConnection = new DBconnection();
+            dbConnection.OpenConnection();
+            User user;
+            string query = "SELECT * FROM users WHERE email = @email";
+            using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
+            {
+                cmd.Parameters.AddWithValue("@email", email);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    int userId = Convert.ToInt32(reader["id"]);
+                    string userName = reader["name"].ToString();
+                    string userEmail = reader["email"].ToString();
+                    string userPassword = reader["password"].ToString();
+                    string phone = reader["phone"].ToString();
+
+                    user = new User(userId, userName, userEmail, userPassword, phone);
+
+                    dbConnection.CloseConnection();
+                    return user;
+                }
+            }
+
+            dbConnection.CloseConnection();
+            return null;
+        }
+
+        public override void Update(Model newUser)
+        {
+            User user = (User)newUser;
+            dbConnection.OpenConnection();
+
+            string query = $"UPDATE users SET name=@name, email=@email, phone=@phone WHERE id = {user.Id}";
+            using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
+            {
+                cmd.Parameters.AddWithValue("@name", user.name);
+                cmd.Parameters.AddWithValue("@email", user.email);
+                cmd.Parameters.AddWithValue("@phone", user.phone);
+
+                cmd.ExecuteNonQuery();
+            }
+
+            dbConnection.CloseConnection();
+        }
+
+        public void SendPassword()
+        {
+            MailMessage mail = new MailMessage();
+            SmtpClient SmtpServer = new SmtpClient("smtp.mailgun.org");
+
+            mail.From = new MailAddress("admin@mediabazaar.com");
+            mail.To.Add(this.email);
+            mail.Subject = "Account created";
+            mail.Body = $"Hello, {this.name}! You have registered to our application. This is your password: {this.password}";
+
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials =
+                new System.Net.NetworkCredential("postmaster@sandbox9bc004f63231411796e06428ffa17f67.mailgun.org", "1bcb7c279e414803ab1fb01ac2a7b883-9a235412-647e0595");
+            SmtpServer.EnableSsl = true;
+            SmtpServer.Send(mail);
+
+        }
+        public static string GeneratePassword(int length)
+        {
+            Random random = new Random();
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        public static bool Authenticate(string email, string password)
+        {
+            User user = GetByEmail(email);
+
+            if (user == null)
+            {
+                return false;
+            }
+
+            return BCrypt.Net.BCrypt.Verify(password, user.password);
         }
     }
 }
