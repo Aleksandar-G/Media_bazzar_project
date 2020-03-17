@@ -10,13 +10,18 @@ using System.Windows.Forms;
 
 namespace MediaBazaar.Forms
 {
-    public partial class ProductInfo : Form
+    public partial class ProductInfoForm : Form
     {
-        public ProductInfo()
+        public ProductInfoForm()
         {
             InitializeComponent();
+            this.BackColor = ApplicationColors.PrimaryDark;
+            this.btnClose.BackColor = ApplicationColors.Red;
         }
 
-        
+        private void BtnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -136,17 +136,17 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ProductInfo.cs">
+    <Compile Include="Forms\ProductInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ProductInfo.Designer.cs">
-      <DependentUpon>ProductInfo.cs</DependentUpon>
+    <Compile Include="Forms\ProductInfoForm.Designer.cs">
+      <DependentUpon>ProductInfoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Statistics.cs">
+    <Compile Include="Forms\StatisticsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Statistics.Designer.cs">
-      <DependentUpon>Statistics.cs</DependentUpon>
+    <Compile Include="Forms\StatisticsForm.Designer.cs">
+      <DependentUpon>StatisticsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Model.cs" />
     <Compile Include="Models\Statistics.cs" />
@@ -168,11 +168,11 @@
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ProductInfo.resx">
-      <DependentUpon>ProductInfo.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ProductInfoForm.resx">
+      <DependentUpon>ProductInfoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Statistics.resx">
-      <DependentUpon>Statistics.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\StatisticsForm.resx">
+      <DependentUpon>StatisticsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
