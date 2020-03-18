@@ -19,7 +19,7 @@ namespace MediaBazaar
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //User user = new User("Martin Markov", "martin.markov28@gmail.com", "088888888");
+            //User user = new User("Ivan4o Petrov", "branisand@abv.bg", "088888889");
             //user.Insert();
 
             LoginForm loginForm = new LoginForm();

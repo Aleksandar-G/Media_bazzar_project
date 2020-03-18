@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace MediaBazaar.Models
 {
+
     public class Product : Model
     {
         private long id;
@@ -30,6 +31,39 @@ namespace MediaBazaar.Models
             this.quantity = quantity;
         }
 
+        public override void Insert()
+        {
+            dbConnection.OpenConnection();
+            string query = "INSERT INTO products(Name, Description, Price, Quantity) VALUES(@name, @description, @price, @quantity)";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
+            {
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@description", description);
+                cmd.Parameters.AddWithValue("@price", price);
+                cmd.Parameters.AddWithValue("@quantity", quantity);
+
+                cmd.ExecuteNonQuery();
+                this.id = cmd.LastInsertedId;
+            }
+        }
+        public override void Update(Model obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Delete()
+        {
+            dbConnection.OpenConnection();
+            string query = $"DELETE FROM products where id = {id}";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
+            {
+                cmd.ExecuteNonQuery();
+            }
+
+            dbConnection.CloseConnection();
+        }
 
     }
 }
