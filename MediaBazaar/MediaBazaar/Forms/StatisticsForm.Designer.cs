@@ -32,8 +32,7 @@
             this.btnStatWorkersByDepartment = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbDepartments = new System.Windows.Forms.ComboBox();
-            this.btnBestSeller = new System.Windows.Forms.Button();
-            this.btnLastWeek = new System.Windows.Forms.Button();
+            this.btnProductsByDepartment = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnClose
@@ -89,39 +88,26 @@
             this.cmbDepartments.Size = new System.Drawing.Size(260, 28);
             this.cmbDepartments.TabIndex = 18;
             // 
-            // btnBestSeller
+            // btnProductsByDepartment
             // 
-            this.btnBestSeller.BackColor = System.Drawing.Color.Maroon;
-            this.btnBestSeller.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBestSeller.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBestSeller.ForeColor = System.Drawing.Color.White;
-            this.btnBestSeller.Location = new System.Drawing.Point(12, 280);
-            this.btnBestSeller.Name = "btnBestSeller";
-            this.btnBestSeller.Size = new System.Drawing.Size(260, 47);
-            this.btnBestSeller.TabIndex = 19;
-            this.btnBestSeller.Text = "Best-seller";
-            this.btnBestSeller.UseVisualStyleBackColor = false;
-            // 
-            // btnLastWeek
-            // 
-            this.btnLastWeek.BackColor = System.Drawing.Color.Maroon;
-            this.btnLastWeek.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLastWeek.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLastWeek.ForeColor = System.Drawing.Color.White;
-            this.btnLastWeek.Location = new System.Drawing.Point(12, 333);
-            this.btnLastWeek.Name = "btnLastWeek";
-            this.btnLastWeek.Size = new System.Drawing.Size(260, 47);
-            this.btnLastWeek.TabIndex = 20;
-            this.btnLastWeek.Text = "Last week summary";
-            this.btnLastWeek.UseVisualStyleBackColor = false;
+            this.btnProductsByDepartment.BackColor = System.Drawing.Color.Maroon;
+            this.btnProductsByDepartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProductsByDepartment.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProductsByDepartment.ForeColor = System.Drawing.Color.White;
+            this.btnProductsByDepartment.Location = new System.Drawing.Point(12, 314);
+            this.btnProductsByDepartment.Name = "btnProductsByDepartment";
+            this.btnProductsByDepartment.Size = new System.Drawing.Size(260, 47);
+            this.btnProductsByDepartment.TabIndex = 19;
+            this.btnProductsByDepartment.Text = "Products by department";
+            this.btnProductsByDepartment.UseVisualStyleBackColor = false;
+            this.btnProductsByDepartment.Click += new System.EventHandler(this.BtnProductsByDepartment_Click);
             // 
             // StatisticsForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(800, 422);
-            this.Controls.Add(this.btnLastWeek);
-            this.Controls.Add(this.btnBestSeller);
+            this.Controls.Add(this.btnProductsByDepartment);
             this.Controls.Add(this.cmbDepartments);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnStatWorkersByDepartment);
@@ -140,7 +126,6 @@
         private System.Windows.Forms.Button btnStatWorkersByDepartment;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbDepartments;
-        private System.Windows.Forms.Button btnBestSeller;
-        private System.Windows.Forms.Button btnLastWeek;
+        private System.Windows.Forms.Button btnProductsByDepartment;
     }
 }

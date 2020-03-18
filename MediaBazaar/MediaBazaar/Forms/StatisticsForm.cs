@@ -16,16 +16,17 @@ namespace MediaBazaar.Forms
 {
     public partial class StatisticsForm : Form
     {
+        
         public StatisticsForm()
         {
             InitializeComponent();
             this.BackColor = ApplicationColors.PrimaryDark;
             this.btnClose.BackColor = ApplicationColors.Red;
-            this.btnBestSeller.BackColor = ApplicationColors.Orange;
+            this.btnProductsByDepartment.BackColor = ApplicationColors.Orange;
             this.cmbDepartments.BackColor = ApplicationColors.Orange;
-            this.btnLastWeek.BackColor = ApplicationColors.Orange;
             this.btnStatWorkersByDepartment.BackColor = ApplicationColors.Orange;
-
+            
+            
 
         }
 
@@ -75,6 +76,11 @@ namespace MediaBazaar.Forms
 
             this.Controls.AddRange(new Control[] { chart });
 
+
+        }
+
+        private void BtnProductsByDepartment_Click(object sender, EventArgs e)
+        {
 
         }
     }

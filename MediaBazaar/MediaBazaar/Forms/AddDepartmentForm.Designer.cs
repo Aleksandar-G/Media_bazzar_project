@@ -114,6 +114,7 @@
             this.btnAdd.TabIndex = 17;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             this.btnAdd.MouseEnter += new System.EventHandler(this.BtnAdd_MouseEnter);
             this.btnAdd.MouseLeave += new System.EventHandler(this.BtnAdd_MouseLeave);
             // 
@@ -128,7 +129,7 @@
             this.tbDepartmentName.TabIndex = 18;
             this.tbDepartmentName.Text = "Name";
             // 
-            // AddDepartment
+            // AddDepartmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -142,7 +143,7 @@
             this.Controls.Add(this.lblAddDepartment);
             this.Controls.Add(this.btnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "AddDepartment";
+            this.Name = "AddDepartmentForm";
             this.Text = "EditEmployee";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.EditEmployee_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.EditEmployee_MouseMove);
