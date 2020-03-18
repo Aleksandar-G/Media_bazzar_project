@@ -55,11 +55,6 @@ namespace MediaBazaar.Models
             dbConnection.CloseConnection();
         }
 
-        public override void Update<T>(T obj)
-        {
-            throw new NotImplementedException();
-        }
-
         public void AssignWorkersToDepartment( List<User> workers)
         {
             dbConnection.OpenConnection();
@@ -103,6 +98,11 @@ namespace MediaBazaar.Models
             dbConnection.CloseConnection();
 
             return result;
+        }
+
+        public override void Update(Model obj)
+        {
+            throw new NotImplementedException();
         }
     }
 }
