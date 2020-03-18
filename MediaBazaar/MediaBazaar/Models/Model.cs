@@ -13,7 +13,7 @@ namespace MediaBazaar.Models
 
         public Model()
         {
-           dbConnection  = new DBconnection();
+           dbConnection = new DBconnection();
         }
 
         public abstract void Insert();

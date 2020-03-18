@@ -11,24 +11,41 @@ namespace MediaBazaar.Models
     public class User : Model
     {
         protected long id;
-        protected string name;
-        protected string email;
-        protected string password;
+        private string name;
+        private string email;
+        private string phone;
+        private string password;
 
         public long Id { get { return this.id; } }
 
-        public User(string name, string email) : base()
+        protected string Name { get => name; }
+        protected string Email { get => email; }
+        protected string Phone { get => phone; }
+        protected string Password { get => password; }
+
+        public User(string name, string email, string phone) : base()
         {
             this.name = name;
             this.email = email;
+            this.phone = phone;
         }
 
-        public User(long id, string name, string email, string password) : base()
+        public User(User anotherUser) : base()
+        {
+            this.id = anotherUser.Id;
+            this.name = anotherUser.name;
+            this.email = anotherUser.email;
+            this.password = anotherUser.password;
+            this.phone = anotherUser.phone;
+        }
+
+        private User(long id, string name, string email, string password, string phone) : base()
         {
             this.id = id;
             this.name = name;
             this.email = email;
             this.password = password;
+            this.phone = phone;
         }
 
         public override void Insert()
@@ -36,13 +53,14 @@ namespace MediaBazaar.Models
             this.password = GeneratePassword(8);
 
             dbConnection.OpenConnection();
-            string query = "INSERT INTO users(name, email, password) VALUES(@name, @email, @password)";
+            string query = "INSERT INTO users(name, email, password, phone) VALUES(@name, @email, @password, @phone)";
 
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
-                var nameParam = cmd.Parameters.AddWithValue("@name", name);
-                var emailParam = cmd.Parameters.AddWithValue("@email", email);
-                var passwordParam = cmd.Parameters.AddWithValue("@password", BCrypt.Net.BCrypt.HashPassword(this.password));
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@password", BCrypt.Net.BCrypt.HashPassword(this.password));
+                cmd.Parameters.AddWithValue("@phone", phone);
 
                 cmd.ExecuteNonQuery();
                 this.id = cmd.LastInsertedId;
@@ -81,8 +99,9 @@ namespace MediaBazaar.Models
                     string name = reader["name"].ToString();
                     string email = reader["email"].ToString();
                     string password = reader["password"].ToString();
+                    string phone = reader["phone"].ToString();
 
-                    users.Add(new User(id, name, email, password));
+                    users.Add(new User(id, name, email, password, phone));
                 }
             }
 
@@ -105,8 +124,9 @@ namespace MediaBazaar.Models
                     string name = reader["name"].ToString();
                     string email = reader["email"].ToString();
                     string password = reader["password"].ToString();
+                    string phone = reader["phone"].ToString();
 
-                    user = new User(id, name, email, password);
+                    user = new User(id, name, email, password, phone);
 
                     dbConnection.CloseConnection();
                     return user;
@@ -133,8 +153,9 @@ namespace MediaBazaar.Models
                     string userName = reader["name"].ToString();
                     string userEmail = reader["email"].ToString();
                     string userPassword = reader["password"].ToString();
+                    string phone = reader["phone"].ToString();
 
-                    user = new User(userId, userName, userEmail, userPassword);
+                    user = new User(userId, userName, userEmail, userPassword, phone);
 
                     dbConnection.CloseConnection();
                     return user;
@@ -150,11 +171,12 @@ namespace MediaBazaar.Models
             User user = (User)newUser;
             dbConnection.OpenConnection();
 
-            string query = $"UPDATE users SET name=@name, email=@email WHERE id = {user.Id}";
+            string query = $"UPDATE users SET name=@name, email=@email, phone=@phone WHERE id = {user.Id}";
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
-                var nameParam = cmd.Parameters.AddWithValue("@name", user.name);
-                var emailParam = cmd.Parameters.AddWithValue("@email", user.email);
+                cmd.Parameters.AddWithValue("@name", user.name);
+                cmd.Parameters.AddWithValue("@email", user.email);
+                cmd.Parameters.AddWithValue("@phone", user.phone);
 
                 cmd.ExecuteNonQuery();
             }
@@ -162,7 +184,7 @@ namespace MediaBazaar.Models
             dbConnection.CloseConnection();
         }
 
-        public void SendPassword()
+        private void SendPassword()
         {
             MailMessage mail = new MailMessage();
             SmtpClient SmtpServer = new SmtpClient("smtp.mailgun.org");
@@ -179,7 +201,7 @@ namespace MediaBazaar.Models
             SmtpServer.Send(mail);
 
         }
-        public static string GeneratePassword(int length)
+        private static string GeneratePassword(int length)
         {
             Random random = new Random();
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
