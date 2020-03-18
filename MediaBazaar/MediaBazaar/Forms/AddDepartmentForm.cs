@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediaBazaar.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -55,6 +56,17 @@ namespace MediaBazaar
         private void BtnAdd_MouseLeave(object sender, EventArgs e)
         {
             this.btnAdd.BackColor = ApplicationColors.Red;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            string departmentName = tbDepartmentName.Text;
+
+            Department department = new Department(departmentName);
+
+            department.Insert();
+
+            //department.AssignWorkersToDepartment();
         }
     }
 }
