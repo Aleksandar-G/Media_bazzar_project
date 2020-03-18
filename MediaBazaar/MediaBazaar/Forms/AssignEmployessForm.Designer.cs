@@ -51,7 +51,7 @@
             this.btnAssign.Name = "btnAssign";
             this.btnAssign.Size = new System.Drawing.Size(159, 40);
             this.btnAssign.TabIndex = 2;
-            this.btnAssign.Text = "Assign";
+            this.btnAssign.Text = "Create";
             this.btnAssign.UseMnemonic = false;
             this.btnAssign.UseVisualStyleBackColor = true;
             this.btnAssign.Click += new System.EventHandler(this.btnAssign_Click);

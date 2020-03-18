@@ -69,7 +69,7 @@
             this.lblDepartment.AutoSize = true;
             this.lblDepartment.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDepartment.ForeColor = System.Drawing.Color.Snow;
-            this.lblDepartment.Location = new System.Drawing.Point(326, 129);
+            this.lblDepartment.Location = new System.Drawing.Point(328, 147);
             this.lblDepartment.Margin = new System.Windows.Forms.Padding(0);
             this.lblDepartment.Name = "lblDepartment";
             this.lblDepartment.Size = new System.Drawing.Size(124, 30);
@@ -82,7 +82,7 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAdd.Location = new System.Drawing.Point(298, 309);
+            this.btnAdd.Location = new System.Drawing.Point(302, 318);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(168, 65);
             this.btnAdd.TabIndex = 17;
@@ -97,7 +97,7 @@
             this.tbDepartmentName.BeforeTouchSize = new System.Drawing.Size(407, 33);
             this.tbDepartmentName.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tbDepartmentName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDepartmentName.Location = new System.Drawing.Point(180, 162);
+            this.tbDepartmentName.Location = new System.Drawing.Point(185, 203);
             this.tbDepartmentName.Name = "tbDepartmentName";
             this.tbDepartmentName.Size = new System.Drawing.Size(407, 33);
             this.tbDepartmentName.TabIndex = 18;

@@ -20,7 +20,16 @@ namespace MediaBazaar.Forms
             InitializeComponent();
             this.BackColor = ApplicationColors.PrimaryDark;
             this.btnAssign.BackColor = ApplicationColors.Red;
-            //Models.Worker.GetAllWithoutDepartment();
+            Dictionary<long, string> WorkersIdName = Models.Worker.GetAllWorkersWithoutDepartment();
+            if (WorkersIdName == null)
+            {
+                MessageBox.Show("There is no Workers without Department");
+            }
+            foreach (var item in WorkersIdName)
+            {
+                clbWorkers.Items.Add(item.Value);
+            }
+            
         }
 
         private void AssignEmployessForm_MouseDown(object sender, MouseEventArgs e)
@@ -50,29 +59,29 @@ namespace MediaBazaar.Forms
 
         private void btnAssign_Click(object sender, EventArgs e)
         {
-            foreach (User itemChecked in clbWorkers.CheckedItems)
-            {
-                //DataRowView castedItem = itemChecked as User;
-                //string Name = castedItem["CompanyName"];
-                //int? id = castedItem["ID"];
+            (System.Windows.Forms.Application.OpenForms["AddDepartmentForm"] as AddDepartmentForm).Assign(AssignWorkers());
+            this.Close();
 
-                //SELECT u.Name FROM users as u INNER JOIN workers as w ON u.Id = w.Id WHERE w.Department_id IS NULL
-            }
-
+            MessageBox.Show("Department successfully created");
         }
 
-        public List<String> Assign()
+        public List<long> AssignWorkers()
         {
-            foreach (User itemChecked in clbWorkers.CheckedItems)
-            {
-                //DataRowView castedItem = itemChecked as User;
-                //string Name = castedItem["CompanyName"];
-                //int? id = castedItem["ID"];
+            List<long> ids = new List<long>();
+           
 
-                //SELECT u.Name FROM users as u INNER JOIN workers as w ON u.Id = w.Id WHERE w.Department_id IS NULL
+            foreach (var item in clbWorkers.CheckedItems)
+            {
+                foreach (var i in Models.Worker.GetAllWorkersWithoutDepartment())
+                {
+                    if (item.ToString() == i.Value)
+                    {
+                        ids.Add(i.Key);
+                    }
+                }
             }
 
-            return null;
+            return ids;
         }
     }
 }

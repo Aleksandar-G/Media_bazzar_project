@@ -33,11 +33,6 @@ namespace MediaBazaar.Models
             this.Workers = workers;
         }
 
-        public Department(long id, string name)
-        {
-            this.id = id;
-            this.Name = name;
-        }
 
         public override void Insert()
         {
@@ -68,26 +63,10 @@ namespace MediaBazaar.Models
             dbConnection.CloseConnection();
         }
 
-<<<<<<< HEAD
+
         public override void Update(Model obj)
         {
             throw new NotImplementedException();
-        }
-
-        public void AssignWorkersToDepartment( List<User> workers)
-=======
-        public void AssignWorkersToDepartment(List<User> workers)
->>>>>>> master
-        {
-            dbConnection.OpenConnection();
-            foreach (var item in workers)
-            {
-                //string query = $"UPDATE workers SET Department_Id = {id} WHERE id = {workers.id}";
-                //using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
-                //{
-                //    cmd.ExecuteNonQuery();
-                //}
-            }
         }
 
         public long GetDepartmentId()
@@ -97,17 +76,13 @@ namespace MediaBazaar.Models
 
             dbConnection.OpenConnection();
 
-            // MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection);
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
                 var nameParam = cmd.Parameters.AddWithValue("@Name", Name);
 
-                //cmd.ExecuteNonQuery();
-                //this.id = cmd.LastInsertedId;
 
                 MySqlDataReader dataReader = cmd.ExecuteReader();
 
-                //Read the data and store them in the list
                 while (dataReader.Read())
                 {
                     result = Convert.ToInt64(dataReader["id"]);
@@ -137,7 +112,7 @@ namespace MediaBazaar.Models
                     long id = Convert.ToInt64(dataReader["id"]);
                     department = new Department(id, name);
 
-                    dbConnection.CloseConnection();
+  
                     return department;
                 }
             }
@@ -178,33 +153,24 @@ namespace MediaBazaar.Models
             return departmentNames;
         }
 
-        public override void Update(Model obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static List<Department> GetAll()
+        public static long GetTheNewestDepartmentId()
         {
             DBconnection dbConnection = new DBconnection();
             dbConnection.OpenConnection();
-            List<Department> departments = new List<Department>();
-            string query = "SELECT * FROM Departments";
+            long Id = 0;
+            string query = "SELECT Id FROM `departments` ORDER BY ID DESC LIMIT 1";
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    long id = Convert.ToInt64(reader["Id"]);
-                    string name = reader["Name"].ToString();
-
-
-                    departments.Add(new Department(id, name));
+                     Id = Convert.ToInt64(reader["id"]);
                 }
             }
 
             dbConnection.CloseConnection();
-            return departments;
+            return Id;
         }
     }
 }
