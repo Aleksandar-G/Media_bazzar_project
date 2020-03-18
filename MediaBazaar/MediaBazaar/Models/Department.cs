@@ -143,6 +143,7 @@ namespace MediaBazaar.Models
 
                 while (reader.Read())
                 {
+
                     long id = Convert.ToInt64(reader["id"]);
                     string name = reader["name"].ToString();
 
