@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediaBazaar.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Models;
 
 namespace MediaBazaar
 {
@@ -62,10 +62,11 @@ namespace MediaBazaar
         {
             string departmentName = tbDepartmentName.Text;
 
-            Models.Department department = new Models.Department(departmentName);
+            Department department = new Department(departmentName);
 
             department.Insert();
 
+<<<<<<< HEAD
             Forms.AssignEmployessForm assignEmployessForm = new Forms.AssignEmployessForm();
             assignEmployessForm.Show();
             
@@ -75,6 +76,9 @@ namespace MediaBazaar
         public void Assign(List<User> users)
         {
 
+=======
+            //department.AssignWorkersToDepartment();
+>>>>>>> master
         }
     }
 }
