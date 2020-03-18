@@ -30,9 +30,7 @@
         {
             this.btnClose = new System.Windows.Forms.Button();
             this.lblAddDepartment = new System.Windows.Forms.Label();
-            this.cbAssignEmployees = new System.Windows.Forms.ComboBox();
             this.lblDepartment = new System.Windows.Forms.Label();
-            this.lblWorkShift = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.tbDepartmentName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             ((System.ComponentModel.ISupportInitialize)(this.tbDepartmentName)).BeginInit();
@@ -45,7 +43,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(755, -1);
+            this.btnClose.Location = new System.Drawing.Point(756, 0);
             this.btnClose.Margin = new System.Windows.Forms.Padding(0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(45, 45);
@@ -66,41 +64,17 @@
             this.lblAddDepartment.TabIndex = 11;
             this.lblAddDepartment.Text = "Add Department";
             // 
-            // cbAssignEmployees
-            // 
-            this.cbAssignEmployees.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbAssignEmployees.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbAssignEmployees.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbAssignEmployees.FormattingEnabled = true;
-            this.cbAssignEmployees.ItemHeight = 25;
-            this.cbAssignEmployees.Location = new System.Drawing.Point(180, 274);
-            this.cbAssignEmployees.Name = "cbAssignEmployees";
-            this.cbAssignEmployees.Size = new System.Drawing.Size(407, 33);
-            this.cbAssignEmployees.TabIndex = 13;
-            // 
             // lblDepartment
             // 
             this.lblDepartment.AutoSize = true;
             this.lblDepartment.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDepartment.ForeColor = System.Drawing.Color.Snow;
-            this.lblDepartment.Location = new System.Drawing.Point(326, 129);
+            this.lblDepartment.Location = new System.Drawing.Point(328, 147);
             this.lblDepartment.Margin = new System.Windows.Forms.Padding(0);
             this.lblDepartment.Name = "lblDepartment";
             this.lblDepartment.Size = new System.Drawing.Size(124, 30);
             this.lblDepartment.TabIndex = 14;
             this.lblDepartment.Text = "Department";
-            // 
-            // lblWorkShift
-            // 
-            this.lblWorkShift.AutoSize = true;
-            this.lblWorkShift.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWorkShift.ForeColor = System.Drawing.Color.Snow;
-            this.lblWorkShift.Location = new System.Drawing.Point(301, 241);
-            this.lblWorkShift.Margin = new System.Windows.Forms.Padding(0);
-            this.lblWorkShift.Name = "lblWorkShift";
-            this.lblWorkShift.Size = new System.Drawing.Size(179, 30);
-            this.lblWorkShift.TabIndex = 15;
-            this.lblWorkShift.Text = "Assign Employees";
             // 
             // btnAdd
             // 
@@ -108,11 +82,11 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAdd.Location = new System.Drawing.Point(306, 368);
+            this.btnAdd.Location = new System.Drawing.Point(302, 318);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(144, 48);
+            this.btnAdd.Size = new System.Drawing.Size(168, 65);
             this.btnAdd.TabIndex = 17;
-            this.btnAdd.Text = "Add";
+            this.btnAdd.Text = "Assign Workers";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             this.btnAdd.MouseEnter += new System.EventHandler(this.BtnAdd_MouseEnter);
@@ -123,7 +97,7 @@
             this.tbDepartmentName.BeforeTouchSize = new System.Drawing.Size(407, 33);
             this.tbDepartmentName.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tbDepartmentName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDepartmentName.Location = new System.Drawing.Point(180, 162);
+            this.tbDepartmentName.Location = new System.Drawing.Point(185, 203);
             this.tbDepartmentName.Name = "tbDepartmentName";
             this.tbDepartmentName.Size = new System.Drawing.Size(407, 33);
             this.tbDepartmentName.TabIndex = 18;
@@ -137,9 +111,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tbDepartmentName);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.lblWorkShift);
             this.Controls.Add(this.lblDepartment);
-            this.Controls.Add(this.cbAssignEmployees);
             this.Controls.Add(this.lblAddDepartment);
             this.Controls.Add(this.btnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -158,9 +130,7 @@
 
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblAddDepartment;
-        private System.Windows.Forms.ComboBox cbAssignEmployees;
         private System.Windows.Forms.Label lblDepartment;
-        private System.Windows.Forms.Label lblWorkShift;
         private System.Windows.Forms.Button btnAdd;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt tbDepartmentName;
     }
