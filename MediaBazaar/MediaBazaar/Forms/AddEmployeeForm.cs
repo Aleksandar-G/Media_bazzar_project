@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediaBazaar.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,9 +19,12 @@ namespace MediaBazaar
         public AddEmployeeForm()
         {
             InitializeComponent();
+
             this.BackColor = ApplicationColors.PrimaryDark;
             this.btnAdd.BackColor = ApplicationColors.Red;
             cbRole.SelectedItem = "Role";
+
+            Department.GetNames().ForEach(x => cbDepartments.Items.Add(x));
         }
 
         private void EditEmployee_MouseDown(object sender, MouseEventArgs e)
@@ -100,6 +104,37 @@ namespace MediaBazaar
             if (tbEmail.Text == "Email")
             {
                 tbEmail.Text = "";
+            }
+        }
+
+        private void BtnAdd_Click(object sender, EventArgs e)
+        {
+            if (cbRole.SelectedItem.ToString() == "Worker")
+            {
+                string name = tbName.Text;
+                string email = tbEmail.Text;
+                string phone = tbPhone.Text;
+                Department department = Department.GetByName(cbDepartments.SelectedItem.ToString());
+                Workshift workshift = Workshift.MORNING;
+
+                switch (cbWorkshifts.SelectedItem.ToString())
+                {
+                    case "Morning":
+                        workshift = Workshift.MORNING;
+                        break;
+                    case "Afternoon":
+                        workshift = Workshift.AFTERNOON;
+                        break;
+                    case "Evening":
+                        workshift = Workshift.EVENING;
+                        break;
+                    default:
+                        workshift = Workshift.MORNING;
+                        break;
+                }
+
+                Worker worker = new Worker(name, email, phone, department.Id, workshift);
+                worker.Insert();
             }
         }
     }

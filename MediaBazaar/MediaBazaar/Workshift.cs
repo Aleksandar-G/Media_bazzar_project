@@ -8,8 +8,8 @@ namespace MediaBazaar
 {
     public enum Workshift
     {
-        Morning,
-        Afternoon,
-        Night
+        MORNING,
+        AFTERNOON,
+        EVENING
     }
 }

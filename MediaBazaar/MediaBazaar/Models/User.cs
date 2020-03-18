@@ -11,12 +11,17 @@ namespace MediaBazaar.Models
     public class User : Model
     {
         protected long id;
-        protected string name;
-        protected string email;
-        protected string phone;
-        protected string password;
+        private string name;
+        private string email;
+        private string phone;
+        private string password;
 
         public long Id { get { return this.id; } }
+
+        protected string Name { get => name; }
+        protected string Email { get => email; }
+        protected string Phone { get => phone; }
+        protected string Password { get => password; }
 
         public User(string name, string email, string phone) : base()
         {
@@ -25,7 +30,16 @@ namespace MediaBazaar.Models
             this.phone = phone;
         }
 
-        public User(long id, string name, string email, string password, string phone) : base()
+        public User(User anotherUser) : base()
+        {
+            this.id = anotherUser.Id;
+            this.name = anotherUser.name;
+            this.email = anotherUser.email;
+            this.password = anotherUser.password;
+            this.phone = anotherUser.phone;
+        }
+
+        private User(long id, string name, string email, string password, string phone) : base()
         {
             this.id = id;
             this.name = name;
@@ -170,7 +184,7 @@ namespace MediaBazaar.Models
             dbConnection.CloseConnection();
         }
 
-        public void SendPassword()
+        private void SendPassword()
         {
             MailMessage mail = new MailMessage();
             SmtpClient SmtpServer = new SmtpClient("smtp.mailgun.org");
@@ -187,7 +201,7 @@ namespace MediaBazaar.Models
             SmtpServer.Send(mail);
 
         }
-        public static string GeneratePassword(int length)
+        private static string GeneratePassword(int length)
         {
             Random random = new Random();
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
