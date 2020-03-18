@@ -65,5 +65,25 @@ namespace MediaBazaar.Models
             dbConnection.CloseConnection();
         }
 
+        public static Dictionary<string, int> GetProductsByDepartment()
+        {
+            DBconnection dbConnection = new DBconnection();
+            dbConnection.OpenConnection();
+            Dictionary<string, int> result = new Dictionary<string, int>();
+            string query = $"SELECT COUNT(*) as num ,d.Name as name FROM products as p INNER JOIN departments as d ON p.Department_id = d.Id GROUP BY d.Name;";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
+            {
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    result.Add(reader["name"].ToString(), Convert.ToInt32(reader["num"]));
+                }
+            }
+
+            dbConnection.CloseConnection();
+            return result;
+        }
+
     }
 }
