@@ -26,6 +26,12 @@ namespace MediaBazaar.Models
             this.Workers = workers;
         }
 
+        public Department(long id, string name)
+        {
+            this.id = id;
+            this.Name = name;
+        }
+
         public override void Insert()
         {
             dbConnection.OpenConnection();
@@ -55,7 +61,7 @@ namespace MediaBazaar.Models
             dbConnection.CloseConnection();
         }
 
-        public override void Update<T>(T obj)
+        public override void Update(Model obj)
         {
             throw new NotImplementedException();
         }
@@ -103,6 +109,30 @@ namespace MediaBazaar.Models
             dbConnection.CloseConnection();
 
             return result;
+        }
+
+        public static List<Department> GetAll()
+        {
+            DBconnection dbConnection = new DBconnection();
+            dbConnection.OpenConnection();
+            List<Department> departments = new List<Department>();
+            string query = "SELECT * FROM Departments";
+            using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
+            {
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    long id = Convert.ToInt64(reader["Id"]);
+                    string name = reader["Name"].ToString();
+
+
+                    departments.Add(new Department(id, name));
+                }
+            }
+
+            dbConnection.CloseConnection();
+            return departments;
         }
     }
 }

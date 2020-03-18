@@ -22,6 +22,7 @@ namespace MediaBazaar
             //User user = new User("Martin Markov", "martin.markov28@gmail.com", "088888888");
             //user.Insert();
 
+            
             LoginForm loginForm = new LoginForm();
             Application.Run(loginForm);
 

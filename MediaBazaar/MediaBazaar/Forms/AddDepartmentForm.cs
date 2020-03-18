@@ -66,7 +66,15 @@ namespace MediaBazaar
 
             department.Insert();
 
-            department.AssignWorkersToDepartment();
+            Forms.AssignEmployessForm assignEmployessForm = new Forms.AssignEmployessForm();
+            assignEmployessForm.Show();
+            
+           // department.AssignWorkersToDepartment();
+        }
+
+        public void Assign(List<User> users)
+        {
+
         }
     }
 }
