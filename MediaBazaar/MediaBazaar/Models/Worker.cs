@@ -161,6 +161,25 @@ namespace MediaBazaar.Models
             }
         }
 
+        public static Dictionary<string, int> GetWorkersByDepartment()
+        {
+            DBconnection dbConnection = new DBconnection();
+            dbConnection.OpenConnection();
+            Dictionary<string, int> result = new Dictionary<string, int>();
+            string query = $"SELECT COUNT(*) as num ,d.Name as name FROM workers INNER JOIN departments as d ON workers.department_id = d.Id GROUP BY d.Name;";
+            using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
+            {
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    result.Add(reader["name"].ToString(), Convert.ToInt32(reader["num"]));
+                }
+            }
+
+            dbConnection.CloseConnection();
+            return result;
+        }
+
         public static void AssignWorkerToDepartment(long id,long DepartmentId)
         {
             DBconnection dbConnection = new DBconnection();
@@ -172,7 +191,6 @@ namespace MediaBazaar.Models
             {
                 cmd.ExecuteNonQuery();
             }
-
             dbConnection.CloseConnection();
         }
     }

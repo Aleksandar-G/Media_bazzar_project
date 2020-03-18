@@ -111,6 +111,7 @@ namespace MediaBazaar.Models
 
         public static User GetById(long id)
         {
+
             DBconnection dbConnection = new DBconnection();
             dbConnection.OpenConnection();
             User user;
@@ -163,6 +164,7 @@ namespace MediaBazaar.Models
             }
 
             dbConnection.CloseConnection();
+
             return null;
         }
 
