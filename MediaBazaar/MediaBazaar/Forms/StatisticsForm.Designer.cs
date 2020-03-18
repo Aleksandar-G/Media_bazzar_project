@@ -31,7 +31,6 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnStatWorkersByDepartment = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.cmbDepartments = new System.Windows.Forms.ComboBox();
             this.btnProductsByDepartment = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -55,9 +54,9 @@
             // 
             this.btnStatWorkersByDepartment.BackColor = System.Drawing.Color.Maroon;
             this.btnStatWorkersByDepartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStatWorkersByDepartment.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStatWorkersByDepartment.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStatWorkersByDepartment.ForeColor = System.Drawing.Color.White;
-            this.btnStatWorkersByDepartment.Location = new System.Drawing.Point(12, 227);
+            this.btnStatWorkersByDepartment.Location = new System.Drawing.Point(12, 105);
             this.btnStatWorkersByDepartment.Name = "btnStatWorkersByDepartment";
             this.btnStatWorkersByDepartment.Size = new System.Drawing.Size(260, 47);
             this.btnStatWorkersByDepartment.TabIndex = 14;
@@ -76,25 +75,13 @@
             this.label1.TabIndex = 17;
             this.label1.Text = "Media Bazaar Statistics";
             // 
-            // cmbDepartments
-            // 
-            this.cmbDepartments.BackColor = System.Drawing.Color.Maroon;
-            this.cmbDepartments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbDepartments.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbDepartments.ForeColor = System.Drawing.Color.White;
-            this.cmbDepartments.FormattingEnabled = true;
-            this.cmbDepartments.Location = new System.Drawing.Point(12, 105);
-            this.cmbDepartments.Name = "cmbDepartments";
-            this.cmbDepartments.Size = new System.Drawing.Size(260, 28);
-            this.cmbDepartments.TabIndex = 18;
-            // 
             // btnProductsByDepartment
             // 
             this.btnProductsByDepartment.BackColor = System.Drawing.Color.Maroon;
             this.btnProductsByDepartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProductsByDepartment.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProductsByDepartment.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProductsByDepartment.ForeColor = System.Drawing.Color.White;
-            this.btnProductsByDepartment.Location = new System.Drawing.Point(12, 314);
+            this.btnProductsByDepartment.Location = new System.Drawing.Point(12, 158);
             this.btnProductsByDepartment.Name = "btnProductsByDepartment";
             this.btnProductsByDepartment.Size = new System.Drawing.Size(260, 47);
             this.btnProductsByDepartment.TabIndex = 19;
@@ -108,7 +95,6 @@
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(800, 422);
             this.Controls.Add(this.btnProductsByDepartment);
-            this.Controls.Add(this.cmbDepartments);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnStatWorkersByDepartment);
             this.Controls.Add(this.btnClose);
@@ -125,7 +111,6 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnStatWorkersByDepartment;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cmbDepartments;
         private System.Windows.Forms.Button btnProductsByDepartment;
     }
 }
