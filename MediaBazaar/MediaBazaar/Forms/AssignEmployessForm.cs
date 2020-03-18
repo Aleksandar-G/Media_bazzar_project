@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Models;
+
+using MediaBazaar.Models;
 
 namespace MediaBazaar.Forms
 {
@@ -20,7 +21,8 @@ namespace MediaBazaar.Forms
             InitializeComponent();
             this.BackColor = ApplicationColors.PrimaryDark;
             this.btnAssign.BackColor = ApplicationColors.Red;
-            Dictionary<long, string> WorkersIdName = Models.Worker.GetAllWorkersWithoutDepartment();
+
+            Dictionary<long, string> WorkersIdName = Worker.GetAllWorkersWithoutDepartment();
             if (WorkersIdName == null)
             {
                 MessageBox.Show("There is no Workers without Department");
@@ -72,7 +74,7 @@ namespace MediaBazaar.Forms
 
             foreach (var item in clbWorkers.CheckedItems)
             {
-                foreach (var i in Models.Worker.GetAllWorkersWithoutDepartment())
+                foreach (var i in Worker.GetAllWorkersWithoutDepartment())
                 {
                     if (item.ToString() == i.Value)
                     {

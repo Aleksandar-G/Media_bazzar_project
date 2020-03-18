@@ -70,10 +70,11 @@
             // btnClose
             // 
             this.btnClose.BackColor = System.Drawing.Color.DarkRed;
+            this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
             this.btnClose.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnClose.Location = new System.Drawing.Point(420, 0);
+            this.btnClose.Location = new System.Drawing.Point(424, 1);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(45, 45);
             this.btnClose.TabIndex = 4;
@@ -93,6 +94,7 @@
             this.Controls.Add(this.clbWorkers);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AssignEmployessForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AssignEmployessForm";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AssignEmployessForm_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AssignEmployessForm_MouseMove);
