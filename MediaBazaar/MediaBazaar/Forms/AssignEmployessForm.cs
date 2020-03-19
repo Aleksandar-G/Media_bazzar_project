@@ -20,6 +20,7 @@ namespace MediaBazaar.Forms
         public AssignEmployessForm()
         {
             InitializeComponent();
+            lbWorkers.SelectionMode = SelectionMode.MultiExtended;
             this.BackColor = ApplicationColors.PrimaryDark;
             this.btnAssign.BackColor = ApplicationColors.Red;
 
@@ -27,12 +28,15 @@ namespace MediaBazaar.Forms
             if (workersIdName == null)
             {
                 MessageBox.Show("There are no Workers without Department");
+                this.Close();
             }
-            foreach (var item in workersIdName)
+            else
             {
-                clbWorkers.Items.Add(item.Value);
-            }
-            
+                foreach (var item in workersIdName)
+                {
+                    lbWorkers.Items.Add(item.Value);
+                }
+            }           
         }
 
         private void AssignEmployessForm_MouseDown(object sender, MouseEventArgs e)
@@ -62,6 +66,7 @@ namespace MediaBazaar.Forms
 
         private void btnAssign_Click(object sender, EventArgs e)
         {
+
             (Application.OpenForms["AddDepartmentForm"] as AddDepartmentForm).Assign(AssignWorkers());
             this.Close();
 
@@ -71,8 +76,8 @@ namespace MediaBazaar.Forms
         public List<long> AssignWorkers()
         {
             List<long> ids = new List<long>();
-
-            foreach (var item in clbWorkers.CheckedItems)
+           
+            foreach (var item in lbWorkers.SelectedItems)
             {
                 foreach (var i in workersIdName)
                 {
