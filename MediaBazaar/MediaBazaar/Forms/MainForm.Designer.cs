@@ -30,13 +30,13 @@
         {
             this.btnClose = new System.Windows.Forms.Button();
             this.navigation = new System.Windows.Forms.Panel();
+            this.btnViewStatistics = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.flpEmployees = new System.Windows.Forms.FlowLayoutPanel();
             this.lblEmployees = new System.Windows.Forms.Label();
             this.textBoxExt1 = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.btnViewStatistics = new System.Windows.Forms.Button();
             this.navigation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBoxExt1)).BeginInit();
@@ -49,10 +49,10 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(956, 0);
+            this.btnClose.Location = new System.Drawing.Point(1432, -1);
             this.btnClose.Margin = new System.Windows.Forms.Padding(0);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(45, 45);
+            this.btnClose.Size = new System.Drawing.Size(68, 69);
             this.btnClose.TabIndex = 10;
             this.btnClose.Text = "x";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -68,11 +68,27 @@
             this.navigation.Location = new System.Drawing.Point(0, 0);
             this.navigation.Margin = new System.Windows.Forms.Padding(0);
             this.navigation.Name = "navigation";
-            this.navigation.Size = new System.Drawing.Size(250, 450);
+            this.navigation.Size = new System.Drawing.Size(375, 692);
             this.navigation.TabIndex = 0;
             this.navigation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Navigation_MouseDown);
             this.navigation.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Navigation_MouseMove);
             this.navigation.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Navigation_MouseUp);
+            // 
+            // btnViewStatistics
+            // 
+            this.btnViewStatistics.BackColor = System.Drawing.Color.White;
+            this.btnViewStatistics.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnViewStatistics.FlatAppearance.BorderSize = 0;
+            this.btnViewStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewStatistics.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.btnViewStatistics.Location = new System.Drawing.Point(0, 489);
+            this.btnViewStatistics.Margin = new System.Windows.Forms.Padding(0);
+            this.btnViewStatistics.Name = "btnViewStatistics";
+            this.btnViewStatistics.Size = new System.Drawing.Size(375, 100);
+            this.btnViewStatistics.TabIndex = 16;
+            this.btnViewStatistics.Text = "View Statistics";
+            this.btnViewStatistics.UseVisualStyleBackColor = false;
+            this.btnViewStatistics.Click += new System.EventHandler(this.BtnViewStatistics_Click);
             // 
             // button1
             // 
@@ -81,10 +97,10 @@
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.button1.Location = new System.Drawing.Point(0, 238);
+            this.button1.Location = new System.Drawing.Point(0, 366);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(250, 65);
+            this.button1.Size = new System.Drawing.Size(375, 100);
             this.button1.TabIndex = 15;
             this.button1.Text = "Add Department";
             this.button1.UseVisualStyleBackColor = false;
@@ -97,10 +113,10 @@
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.button2.Location = new System.Drawing.Point(0, 158);
+            this.button2.Location = new System.Drawing.Point(0, 243);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(250, 65);
+            this.button2.Size = new System.Drawing.Size(375, 100);
             this.button2.TabIndex = 14;
             this.button2.Text = "Add Employee";
             this.button2.UseVisualStyleBackColor = false;
@@ -109,10 +125,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::MediaBazaar.Properties.Resources.logo2;
-            this.pictureBox1.Location = new System.Drawing.Point(78, 20);
+            this.pictureBox1.Location = new System.Drawing.Point(117, 31);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox1.Size = new System.Drawing.Size(150, 154);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
@@ -121,10 +137,10 @@
             // 
             this.flpEmployees.AutoScroll = true;
             this.flpEmployees.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flpEmployees.Location = new System.Drawing.Point(290, 102);
+            this.flpEmployees.Location = new System.Drawing.Point(435, 157);
             this.flpEmployees.Margin = new System.Windows.Forms.Padding(0);
             this.flpEmployees.Name = "flpEmployees";
-            this.flpEmployees.Size = new System.Drawing.Size(655, 330);
+            this.flpEmployees.Size = new System.Drawing.Size(980, 508);
             this.flpEmployees.TabIndex = 16;
             this.flpEmployees.WrapContents = false;
             // 
@@ -133,51 +149,37 @@
             this.lblEmployees.AutoSize = true;
             this.lblEmployees.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmployees.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblEmployees.Location = new System.Drawing.Point(558, 13);
+            this.lblEmployees.Location = new System.Drawing.Point(837, 20);
             this.lblEmployees.Margin = new System.Windows.Forms.Padding(0);
             this.lblEmployees.Name = "lblEmployees";
-            this.lblEmployees.Size = new System.Drawing.Size(137, 32);
+            this.lblEmployees.Size = new System.Drawing.Size(199, 48);
             this.lblEmployees.TabIndex = 0;
             this.lblEmployees.Text = "Employees";
             // 
             // textBoxExt1
             // 
-            this.textBoxExt1.BeforeTouchSize = new System.Drawing.Size(655, 29);
+            this.textBoxExt1.BeforeTouchSize = new System.Drawing.Size(980, 39);
             this.textBoxExt1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxExt1.Location = new System.Drawing.Point(290, 59);
+            this.textBoxExt1.Location = new System.Drawing.Point(435, 91);
+            this.textBoxExt1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxExt1.Name = "textBoxExt1";
-            this.textBoxExt1.Size = new System.Drawing.Size(655, 29);
+            this.textBoxExt1.Size = new System.Drawing.Size(980, 39);
             this.textBoxExt1.TabIndex = 17;
             this.textBoxExt1.Text = "Search";
             // 
-            // btnViewStatistics
-            // 
-            this.btnViewStatistics.BackColor = System.Drawing.Color.White;
-            this.btnViewStatistics.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnViewStatistics.FlatAppearance.BorderSize = 0;
-            this.btnViewStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewStatistics.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnViewStatistics.Location = new System.Drawing.Point(0, 318);
-            this.btnViewStatistics.Margin = new System.Windows.Forms.Padding(0);
-            this.btnViewStatistics.Name = "btnViewStatistics";
-            this.btnViewStatistics.Size = new System.Drawing.Size(250, 65);
-            this.btnViewStatistics.TabIndex = 16;
-            this.btnViewStatistics.Text = "View Statistics";
-            this.btnViewStatistics.UseVisualStyleBackColor = false;
-            this.btnViewStatistics.Click += new System.EventHandler(this.BtnViewStatistics_Click);
-            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(1000, 450);
+            this.ClientSize = new System.Drawing.Size(1499, 692);
             this.Controls.Add(this.textBoxExt1);
             this.Controls.Add(this.lblEmployees);
             this.Controls.Add(this.flpEmployees);
             this.Controls.Add(this.navigation);
             this.Controls.Add(this.btnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";

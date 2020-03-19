@@ -42,7 +42,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(742, -3);
+            this.btnClose.Location = new System.Drawing.Point(731, 4);
             this.btnClose.Margin = new System.Windows.Forms.Padding(0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(60, 55);
@@ -68,11 +68,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(233, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(276, 32);
+            this.label1.Size = new System.Drawing.Size(458, 54);
             this.label1.TabIndex = 17;
             this.label1.Text = "Media Bazaar Statistics";
             // 
@@ -96,11 +96,11 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(12, 211);
+            this.button1.Location = new System.Drawing.Point(73, 271);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(260, 47);
+            this.button1.Size = new System.Drawing.Size(147, 51);
             this.button1.TabIndex = 20;
-            this.button1.Text = "All Products";
+            this.button1.Text = "View Products";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 

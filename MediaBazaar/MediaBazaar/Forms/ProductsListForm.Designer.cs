@@ -28,50 +28,77 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.cmbProducts = new System.Windows.Forms.ComboBox();
             this.btnInfo = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(54, 38);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(216, 37);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Our Products:";
             // 
             // cmbProducts
             // 
+            this.cmbProducts.BackColor = System.Drawing.Color.Purple;
+            this.cmbProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbProducts.ForeColor = System.Drawing.Color.White;
             this.cmbProducts.FormattingEnabled = true;
-            this.cmbProducts.Location = new System.Drawing.Point(34, 108);
+            this.cmbProducts.Location = new System.Drawing.Point(65, 133);
             this.cmbProducts.Name = "cmbProducts";
-            this.cmbProducts.Size = new System.Drawing.Size(260, 28);
+            this.cmbProducts.Size = new System.Drawing.Size(260, 33);
             this.cmbProducts.TabIndex = 1;
             // 
             // btnInfo
             // 
+            this.btnInfo.BackColor = System.Drawing.Color.Maroon;
+            this.btnInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInfo.ForeColor = System.Drawing.Color.White;
-            this.btnInfo.Location = new System.Drawing.Point(508, 195);
+            this.btnInfo.Location = new System.Drawing.Point(369, 133);
             this.btnInfo.Name = "btnInfo";
-            this.btnInfo.Size = new System.Drawing.Size(161, 60);
+            this.btnInfo.Size = new System.Drawing.Size(139, 44);
             this.btnInfo.TabIndex = 2;
-            this.btnInfo.Text = "Product Info";
-            this.btnInfo.UseVisualStyleBackColor = true;
+            this.btnInfo.Text = "Details";
+            this.btnInfo.UseVisualStyleBackColor = false;
             this.btnInfo.Click += new System.EventHandler(this.BtnInfo_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.Maroon;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(475, 0);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(60, 55);
+            this.btnClose.TabIndex = 16;
+            this.btnClose.Text = "x";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(129, 26);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(169, 48);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Products";
             // 
             // ProductsListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightBlue;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(534, 595);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnInfo);
             this.Controls.Add(this.cmbProducts);
-            this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ProductsListForm";
             this.Text = "ProductsListForm";
             this.Load += new System.EventHandler(this.ProductsListForm_Load);
@@ -81,9 +108,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbProducts;
         private System.Windows.Forms.Button btnInfo;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label label2;
     }
 }

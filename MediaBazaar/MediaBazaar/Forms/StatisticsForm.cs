@@ -96,7 +96,7 @@ namespace MediaBazaar.Forms
         {
             Chart createdChart = this.CreateChart(SeriesChartType.Column);
 
-            if (this.Controls.Count == 5) //CHECK FORM CONTROL NUMBER
+            if (this.Controls.Count == 6) //CHECK FORM CONTROL NUMBER
             {
                 this.Controls.RemoveAt(this.Controls.Count - 1);
             }
@@ -107,7 +107,7 @@ namespace MediaBazaar.Forms
         {
             Chart createdChart = this.CreateChart(SeriesChartType.Pie);
 
-            if (this.Controls.Count == 5) //CHECK FORM CONTROL NUMBER
+            if (this.Controls.Count == 6) //CHECK FORM CONTROL NUMBER
             {
                 this.Controls.RemoveAt(this.Controls.Count - 1);
             }
