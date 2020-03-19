@@ -127,6 +127,7 @@
             this.btnRemove.TabIndex = 17;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
             this.btnRemove.MouseEnter += new System.EventHandler(this.BtnRemove_MouseEnter);
             this.btnRemove.MouseLeave += new System.EventHandler(this.BtnRemove_MouseLeave);
             // 

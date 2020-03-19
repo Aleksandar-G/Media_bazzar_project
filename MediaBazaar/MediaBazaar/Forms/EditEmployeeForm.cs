@@ -17,8 +17,9 @@ namespace MediaBazaar
         private bool mouseDown;
         private Point lastLocation;
         private User user;
+        private User currentUser;
 
-        public EditEmployeeForm(User user)
+        public EditEmployeeForm(User user, User currentUser)
         {
             InitializeComponent();
 
@@ -27,6 +28,7 @@ namespace MediaBazaar
             this.btnRemove.BackColor = ApplicationColors.Red;
 
             this.user = user;
+            this.currentUser = currentUser;
             this.cbRole.SelectedItem = user.Role;
             this.cbRole.Enabled = false;
             this.tbName.Text = user.Name;
@@ -155,7 +157,42 @@ namespace MediaBazaar
             {
                 MessageBox.Show("Invalid input!");
             }
-            
+
+        }
+
+        private void BtnRemove_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure to delete this user?",
+                                     "Confirm",
+                                     MessageBoxButtons.YesNo);
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                switch(user.Role)
+                {
+                    case "Worker":
+                        Worker worker = new Worker(
+                            Worker.GetByUserId(user.Id).Id,
+                            Department.GetByName(cbDepartments.SelectedItem.ToString()).Id,
+                            Worker.GetWorkshiftByName(cbWorkshifts.SelectedItem.ToString()),
+                            user
+                        );
+                        worker.Delete();
+                        break;
+                    case "Administrator":
+                        Administrator admin = new Administrator(Administrator.GetByUserId(user.Id).Id, user);
+                        admin.Delete();
+                        break;
+                    case "Manager":
+                        Manager manager = new Manager(Manager.GetByUserId(user.Id).Id, user);
+                        manager.Delete();
+                        break;
+                }
+
+                var form = new MainForm(currentUser);
+                form.Show();
+                this.Close();
+            }
         }
     }
 }

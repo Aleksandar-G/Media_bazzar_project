@@ -57,7 +57,7 @@ namespace MediaBazaar
 
                 btn.Click += new EventHandler((s, ev) =>
                 {
-                    var form = new EditEmployeeForm(user);
+                    var form = new EditEmployeeForm(user, currentUser);
                     form.Show();
                 });
 
