@@ -138,13 +138,35 @@ namespace MediaBazaar.Models
 
             dbConnection.CloseConnection();
         }
-        public static Dictionary<string,int> GetWorkersByDepartment()
+
+        public static Dictionary<long,string> GetAllWorkersWithoutDepartment()
+        {
+            DBconnection dbConnection = new DBconnection();
+            dbConnection.OpenConnection();
+            //List<User> workers = new List<User>();
+            Dictionary<long, string> workers = new Dictionary<long, string>();
+            string query = "SELECT u.Name, u.Id,u.Email,u.Password,u.Phone FROM users as u INNER JOIN workers as w ON u.Id = w.user_id WHERE w.Department_id IS NULL";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
+            {
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    long id = Convert.ToInt64(reader["Id"]);
+                    string name = reader["Name"].ToString();
+                    workers.Add(id, name);    
+                }
+                dbConnection.CloseConnection();
+                return workers;
+            }
+        }
+
+        public static Dictionary<string, int> GetWorkersByDepartment()
         {
             DBconnection dbConnection = new DBconnection();
             dbConnection.OpenConnection();
             Dictionary<string, int> result = new Dictionary<string, int>();
             string query = $"SELECT COUNT(*) as num ,d.Name as name FROM workers INNER JOIN departments as d ON workers.department_id = d.Id GROUP BY d.Name;";
-
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
                 MySqlDataReader reader = cmd.ExecuteReader();
@@ -156,6 +178,20 @@ namespace MediaBazaar.Models
 
             dbConnection.CloseConnection();
             return result;
+        }
+
+        public static void AssignWorkerToDepartment(long id,long DepartmentId)
+        {
+            DBconnection dbConnection = new DBconnection();
+            dbConnection.OpenConnection();
+            
+            string query = $"UPDATE workers SET Department_id = {DepartmentId} WHERE user_id = {id}";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
+            {
+                cmd.ExecuteNonQuery();
+            }
+            dbConnection.CloseConnection();
         }
     }
 }
