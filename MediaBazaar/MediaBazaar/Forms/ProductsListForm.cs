@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MediaBazaar.Models;
 using MySql.Data.MySqlClient;
 
 namespace MediaBazaar.Forms
@@ -24,18 +25,10 @@ namespace MediaBazaar.Forms
         {
             try
             {
-                DBconnection dbConnection = new DBconnection();
-
-                string selectQuery = "SELECT * FROM products";
-                dbConnection.OpenConnection();
-                MySqlCommand command = new MySqlCommand(selectQuery, dbConnection.connection);
-                MySqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
+                foreach(string product in Product.GetAllProducts())
                 {
-                    cmbProducts.Items.Add(reader.GetString("Name"));
+                    cmbProducts.Items.Add(product);
                 }
-
-                dbConnection.CloseConnection();
             }
             catch (Exception ex)
             {

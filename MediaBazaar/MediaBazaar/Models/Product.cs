@@ -85,5 +85,25 @@ namespace MediaBazaar.Models
             return result;
         }
 
+        public static List<string> GetAllProducts()
+        {
+            List<string> listProducts = new List<string>();
+
+            DBconnection dbConnection = new DBconnection();
+
+            string selectQuery = "SELECT * FROM products";
+            dbConnection.OpenConnection();
+            MySqlCommand command = new MySqlCommand(selectQuery, dbConnection.connection);
+            MySqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                listProducts.Add(reader.GetString("Name"));
+            }
+
+            dbConnection.CloseConnection();
+
+            return listProducts;
+        }
+
     }
 }
