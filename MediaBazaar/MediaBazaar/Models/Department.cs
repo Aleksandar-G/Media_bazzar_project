@@ -10,7 +10,7 @@ namespace MediaBazaar.Models
     public class Department : Model
     {
         public long Id { get; private set; }
-        protected string Name { get; private set; }
+        public string Name { get; private set; }
         protected List<Worker> Workers { get; private set; }
 
         public Department(string name)

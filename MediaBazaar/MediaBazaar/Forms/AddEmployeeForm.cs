@@ -76,7 +76,8 @@ namespace MediaBazaar
 
                 cbWorkshifts.Visible = true;
                 cbWorkshifts.SelectedIndex = 0;
-            } else
+            }
+            else
             {
                 cbDepartments.Visible = false;
                 cbWorkshifts.Visible = false;
@@ -109,32 +110,34 @@ namespace MediaBazaar
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            if (cbRole.SelectedItem.ToString() == "Worker")
+            string name = tbName.Text;
+            string email = tbEmail.Text;
+            string phone = tbPhone.Text;
+
+            try
             {
-                string name = tbName.Text;
-                string email = tbEmail.Text;
-                string phone = tbPhone.Text;
-                Department department = Department.GetByName(cbDepartments.SelectedItem.ToString());
-                Workshift workshift = Workshift.MORNING;
-
-                switch (cbWorkshifts.SelectedItem.ToString())
+                if (cbRole.SelectedItem.ToString() == "Worker")
                 {
-                    case "Morning":
-                        workshift = Workshift.MORNING;
-                        break;
-                    case "Afternoon":
-                        workshift = Workshift.AFTERNOON;
-                        break;
-                    case "Evening":
-                        workshift = Workshift.EVENING;
-                        break;
-                    default:
-                        workshift = Workshift.MORNING;
-                        break;
-                }
+                    Department department = Department.GetByName(cbDepartments.SelectedItem.ToString());
+                    Workshift workshift = Worker.GetWorkshiftByName(cbWorkshifts.SelectedItem.ToString());
 
-                Worker worker = new Worker(name, email, phone, department.Id, workshift);
-                worker.Insert();
+                    Worker worker = new Worker(name, email, phone, department.Id, workshift);
+                    worker.Insert();
+                }
+                else if (cbRole.SelectedItem.ToString() == "Administrator")
+                {
+                    Administrator administrator = new Administrator(name, email, phone);
+                    administrator.Insert();
+                }
+                else if (cbRole.SelectedItem.ToString() == "Manager")
+                {
+                    Manager manager = new Manager(name, email, phone);
+                    manager.Insert();
+                }
+                MessageBox.Show("User added successfully!");
+            } catch(Exception)
+            {
+                MessageBox.Show("Could not add the user! Please try again.");
             }
         }
     }

@@ -78,11 +78,6 @@
             this.cbDepartments.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbDepartments.FormattingEnabled = true;
             this.cbDepartments.ItemHeight = 25;
-            this.cbDepartments.Items.AddRange(new object[] {
-            "Department 1",
-            "Department 2",
-            "Department 3",
-            "Department 4"});
             this.cbDepartments.Location = new System.Drawing.Point(169, 312);
             this.cbDepartments.Name = "cbDepartments";
             this.cbDepartments.Size = new System.Drawing.Size(407, 33);
@@ -116,6 +111,7 @@
             this.btnEdit.TabIndex = 16;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
             this.btnEdit.MouseEnter += new System.EventHandler(this.BtnEdit_MouseEnter);
             this.btnEdit.MouseLeave += new System.EventHandler(this.BtnEdit_MouseLeave);
             // 
