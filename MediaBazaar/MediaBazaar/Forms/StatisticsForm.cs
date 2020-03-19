@@ -24,6 +24,7 @@ namespace MediaBazaar.Forms
             this.btnClose.BackColor = ApplicationColors.Red;
             this.btnProductsByDepartment.BackColor = ApplicationColors.Orange;
             this.btnStatWorkersByDepartment.BackColor = ApplicationColors.Orange;
+            this.button1.BackColor = ApplicationColors.Orange;
         }
         public Chart CreateChart(SeriesChartType type)
         {
