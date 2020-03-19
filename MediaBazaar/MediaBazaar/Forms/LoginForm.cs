@@ -79,7 +79,7 @@ namespace MediaBazaar
                 User user = User.GetByEmail(email);
                 if (CheckRole(user))
                 {
-                    currentUser = user;
+                    this.currentUser = user;
                     return true;
                 }
             }
