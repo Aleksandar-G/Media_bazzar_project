@@ -46,9 +46,7 @@ namespace MediaBazaar.Forms
                 int lenght = Department.GetNames().Count;
                 Dictionary<string, int> result = new Dictionary<string, int>();
                 result = Worker.GetWorkersByDepartment();
-                result.Add(Department.GetNames()[1], 2);
-                result.Add(Department.GetNames()[2], 4);
-                result.Add(Department.GetNames()[3], 1);
+
                 foreach (var item in result)
                 {
                     series.Points.AddXY(item.Key, item.Value);
@@ -59,18 +57,13 @@ namespace MediaBazaar.Forms
                 title.Text = "Products ratio by department";
                 int lenght = Department.GetNames().Count;
                 Dictionary<string, int> result = new Dictionary<string, int>();
-                //result = Product.GetProductsByDepartment()
-                result.Add(Department.GetNames()[0], 8);
-                result.Add(Department.GetNames()[1], 9);
-                result.Add(Department.GetNames()[2], 1);
-                result.Add(Department.GetNames()[3], 3);
-                
-                
+                result = Product.GetProductsByDepartment();
                 series.IsValueShownAsLabel = true;
                 foreach (var item in result)
                 {
                     series.Points.AddXY(item.Key, item.Value);
                 }
+
             }
 
             ChartArea chartArea = new ChartArea("Workers by Dep");
