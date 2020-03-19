@@ -16,27 +16,74 @@ namespace MediaBazaar.Forms
         public ProductsListForm()
         {
             InitializeComponent();
+            this.BackColor = ApplicationColors.PrimaryDark;
+            this.btnInfo.BackColor = ApplicationColors.Red;
         }
 
         private void ProductsListForm_Load(object sender, EventArgs e)
         {
             try
             {
-                MySqlConnection connection = new MySqlConnection("SERVER=studmysql01.fhict.local;DATABASE=dbi425706;UID=dbi425706;PASSWORD=12345678");
+                DBconnection dbConnection = new DBconnection();
 
                 string selectQuery = "SELECT * FROM products";
-                connection.Open();
-                MySqlCommand command = new MySqlCommand(selectQuery, connection);
+                dbConnection.OpenConnection();
+                MySqlCommand command = new MySqlCommand(selectQuery, dbConnection.connection);
                 MySqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
                     cmbProducts.Items.Add(reader.GetString("Name"));
                 }
+
+                dbConnection.CloseConnection();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void BtnInfo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string productName = cmbProducts.SelectedItem.ToString();
+
+                string productDescription = "";
+                double productPrice = 0;
+                int productQuantity = 0;
+
+                DBconnection dbConnection = new DBconnection();
+                string selectQuery = "SELECT * FROM products;";
+
+                dbConnection.OpenConnection();
+
+                MySqlCommand command = new MySqlCommand(selectQuery, dbConnection.connection);
+                //command.Parameters.AddWithValue("@name", productName);
+
+                MySqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    if (reader.GetString("Name") == productName)
+                    {
+                        productDescription = reader.GetString("Description");
+                        productPrice = Convert.ToDouble(reader.GetString("Price"));
+                        productQuantity = Convert.ToInt32(reader.GetString("Quantity"));
+                    }
+                }
+
+                ProductInfoForm productInfoForm = new ProductInfoForm(productName, productDescription, productPrice, productQuantity);
+                productInfoForm.Show();
+
+                dbConnection.CloseConnection();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
     }
 }
