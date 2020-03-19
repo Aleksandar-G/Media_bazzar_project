@@ -15,14 +15,15 @@ namespace MediaBazaar
     {
         private bool mouseDown;
         private Point lastLocation;
+        private MainForm mainForm;
 
-        public AddEmployeeForm()
+        public AddEmployeeForm(MainForm mainForm)
         {
             InitializeComponent();
 
             this.BackColor = ApplicationColors.PrimaryDark;
             this.btnAdd.BackColor = ApplicationColors.Red;
-            cbRole.SelectedItem = "Role";
+            this.mainForm = mainForm;
 
             Department.GetNames().ForEach(x => cbDepartments.Items.Add(x));
         }
@@ -135,6 +136,8 @@ namespace MediaBazaar
                     manager.Insert();
                 }
                 MessageBox.Show("User added successfully!");
+                mainForm.LoadUsers();
+                this.Close();
             } catch(Exception)
             {
                 MessageBox.Show("Could not add the user! Please try again.");

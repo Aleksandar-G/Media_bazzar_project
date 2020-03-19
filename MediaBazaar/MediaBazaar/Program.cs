@@ -20,10 +20,6 @@ namespace MediaBazaar
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjIwNTA0QDMxMzcyZTM0MmUzMGtEQzlxQzMyb1gycERnQ1FHT3REdVBuSW5Icmovc1NwQVJGMS9IcFNta2c9");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            //User user = new User("Ivan4o Petrov", "branisand@abv.bg", "088888889");
-            //user.Insert();
-
             
             LoginForm loginForm = new LoginForm();
             Application.Run(loginForm);

@@ -17,9 +17,9 @@ namespace MediaBazaar
         private bool mouseDown;
         private Point lastLocation;
         private User user;
-        private User currentUser;
+        private MainForm mainForm;
 
-        public EditEmployeeForm(User user, User currentUser)
+        public EditEmployeeForm(User user, MainForm mainForm)
         {
             InitializeComponent();
 
@@ -28,7 +28,7 @@ namespace MediaBazaar
             this.btnRemove.BackColor = ApplicationColors.Red;
 
             this.user = user;
-            this.currentUser = currentUser;
+            this.mainForm = mainForm;
             this.cbRole.SelectedItem = user.Role;
             this.cbRole.Enabled = false;
             this.tbName.Text = user.Name;
@@ -147,11 +147,15 @@ namespace MediaBazaar
 
                     worker.Update(updatedWorker);
                     MessageBox.Show("User updated successfully");
+                    mainForm.LoadUsers();
+                    this.Close();
                     return;
                 }
 
                 user.Update(user);
                 MessageBox.Show("User updated successfully");
+                mainForm.LoadUsers();
+                this.Close();
             }
             catch (Exception)
             {
@@ -189,8 +193,7 @@ namespace MediaBazaar
                         break;
                 }
 
-                var form = new MainForm(currentUser);
-                form.Show();
+                mainForm.LoadUsers();
                 this.Close();
             }
         }

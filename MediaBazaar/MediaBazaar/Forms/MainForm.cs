@@ -26,12 +26,18 @@ namespace MediaBazaar
             this.currentUser = user;
             this.navigation.BackColor = ApplicationColors.PrimaryDark;
             this.BackColor = ApplicationColors.Orange;
-
-            users = User.GetAll();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            LoadUsers();
+        }
+
+        public void LoadUsers()
+        {
+            users = User.GetAll();
+            this.flpEmployees.Controls.Clear();
+
             users.ForEach(user =>
             {
                 var btn = new Button();
@@ -57,7 +63,7 @@ namespace MediaBazaar
 
                 btn.Click += new EventHandler((s, ev) =>
                 {
-                    var form = new EditEmployeeForm(user, currentUser);
+                    var form = new EditEmployeeForm(user, this);
                     form.Show();
                 });
 
@@ -117,7 +123,7 @@ namespace MediaBazaar
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            var form = new AddEmployeeForm();
+            var form = new AddEmployeeForm(this);
             form.Show();
         }
 
