@@ -113,5 +113,11 @@ namespace MediaBazaar.Forms
             }
             this.Controls.AddRange(new Control[] { createdChart });
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            var productsForm = new ProductsListForm();
+            productsForm.Show();
+        }
     }
 }

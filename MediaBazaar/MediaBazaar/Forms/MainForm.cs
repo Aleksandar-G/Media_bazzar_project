@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using MediaBazaar.Forms;
 using MediaBazaar.Models;
 
 namespace MediaBazaar
@@ -26,11 +26,16 @@ namespace MediaBazaar
             this.currentUser = user;
             this.navigation.BackColor = ApplicationColors.PrimaryDark;
             this.BackColor = ApplicationColors.Orange;
+            this.btnViewStatistics.Hide();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             LoadUsers();
+            if (currentUser.Role == "Manager")
+            {
+                this.btnViewStatistics.Show();
+            }
         }
 
         public void LoadUsers()
@@ -130,6 +135,12 @@ namespace MediaBazaar
         private void Button1_Click(object sender, EventArgs e)
         {
             var form = new AddDepartmentForm();
+            form.Show();
+        }
+
+        private void BtnViewStatistics_Click(object sender, EventArgs e)
+        {
+            var form = new StatisticsForm();
             form.Show();
         }
     }

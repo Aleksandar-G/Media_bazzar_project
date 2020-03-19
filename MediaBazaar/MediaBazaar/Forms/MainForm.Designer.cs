@@ -36,6 +36,7 @@
             this.flpEmployees = new System.Windows.Forms.FlowLayoutPanel();
             this.lblEmployees = new System.Windows.Forms.Label();
             this.textBoxExt1 = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.btnViewStatistics = new System.Windows.Forms.Button();
             this.navigation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBoxExt1)).BeginInit();
@@ -60,6 +61,7 @@
             // navigation
             // 
             this.navigation.BackColor = System.Drawing.SystemColors.WindowText;
+            this.navigation.Controls.Add(this.btnViewStatistics);
             this.navigation.Controls.Add(this.button1);
             this.navigation.Controls.Add(this.button2);
             this.navigation.Controls.Add(this.pictureBox1);
@@ -148,6 +150,22 @@
             this.textBoxExt1.TabIndex = 17;
             this.textBoxExt1.Text = "Search";
             // 
+            // btnViewStatistics
+            // 
+            this.btnViewStatistics.BackColor = System.Drawing.Color.White;
+            this.btnViewStatistics.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnViewStatistics.FlatAppearance.BorderSize = 0;
+            this.btnViewStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewStatistics.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.btnViewStatistics.Location = new System.Drawing.Point(0, 318);
+            this.btnViewStatistics.Margin = new System.Windows.Forms.Padding(0);
+            this.btnViewStatistics.Name = "btnViewStatistics";
+            this.btnViewStatistics.Size = new System.Drawing.Size(250, 65);
+            this.btnViewStatistics.TabIndex = 16;
+            this.btnViewStatistics.Text = "View Statistics";
+            this.btnViewStatistics.UseVisualStyleBackColor = false;
+            this.btnViewStatistics.Click += new System.EventHandler(this.BtnViewStatistics_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -185,5 +203,6 @@
         private System.Windows.Forms.FlowLayoutPanel flpEmployees;
         private System.Windows.Forms.Label lblEmployees;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt textBoxExt1;
+        private System.Windows.Forms.Button btnViewStatistics;
     }
 }
