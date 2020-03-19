@@ -76,7 +76,8 @@ namespace MediaBazaar
 
                 cbWorkshifts.Visible = true;
                 cbWorkshifts.SelectedIndex = 0;
-            } else
+            }
+            else
             {
                 cbDepartments.Visible = false;
                 cbWorkshifts.Visible = false;
@@ -109,32 +110,43 @@ namespace MediaBazaar
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
+            string name = tbName.Text;
+            string email = tbEmail.Text;
+            string phone = tbPhone.Text;
+
             if (cbRole.SelectedItem.ToString() == "Worker")
             {
-                string name = tbName.Text;
-                string email = tbEmail.Text;
-                string phone = tbPhone.Text;
                 Department department = Department.GetByName(cbDepartments.SelectedItem.ToString());
-                Workshift workshift = Workshift.MORNING;
-
-                switch (cbWorkshifts.SelectedItem.ToString())
-                {
-                    case "Morning":
-                        workshift = Workshift.MORNING;
-                        break;
-                    case "Afternoon":
-                        workshift = Workshift.AFTERNOON;
-                        break;
-                    case "Evening":
-                        workshift = Workshift.EVENING;
-                        break;
-                    default:
-                        workshift = Workshift.MORNING;
-                        break;
-                }
+                Workshift workshift = GetWorkshift(cbWorkshifts.SelectedItem.ToString());
 
                 Worker worker = new Worker(name, email, phone, department.Id, workshift);
                 worker.Insert();
+                return;
+            }
+            else if (cbRole.SelectedItem.ToString() == "Administrator")
+            {
+                Administrator administrator = new Administrator(name, email, phone);
+                administrator.Insert();
+            }
+            else if (cbRole.SelectedItem.ToString() == "Manager")
+            {
+                Manager manager = new Manager(name, email, phone);
+                manager.Insert();
+            }
+        }
+
+        public Workshift GetWorkshift(string val)
+        {
+            switch (val)
+            {
+                case "Morning":
+                    return Workshift.MORNING;
+                case "Afternoon":
+                    return Workshift.AFTERNOON;
+                case "Evening":
+                    return Workshift.EVENING;
+                default:
+                    return Workshift.MORNING;
             }
         }
     }
