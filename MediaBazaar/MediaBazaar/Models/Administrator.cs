@@ -12,7 +12,7 @@ namespace MediaBazaar.Models
         private new long id;
         private long userId;
 
-        public Administrator(string name, string email, string phone) : base(name, email, phone)
+        public Administrator(string name, string email, string phone) : base(name, email, phone, "Administrator")
         {
             this.userId = base.Id;
         }
@@ -55,6 +55,33 @@ namespace MediaBazaar.Models
             }
 
             dbConnection.CloseConnection();
+        }
+
+        public static Administrator GetByUserId(long userId)
+        {
+            DBconnection dbConnection = new DBconnection();
+            dbConnection.OpenConnection();
+            Administrator administrator;
+            string query = $"SELECT * FROM administrators WHERE user_id = @userId";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
+            {
+                cmd.Parameters.AddWithValue("@userId", userId);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    long id = Convert.ToInt64(reader["id"]);
+                    User user = User.GetById(Convert.ToInt64(reader["user_id"]));
+
+                    administrator = new Administrator(id, user);
+
+                    dbConnection.CloseConnection();
+                    return administrator;
+                }
+            }
+
+            dbConnection.CloseConnection();
+            return null;
         }
     }
 }

@@ -16,18 +16,19 @@ namespace MediaBazaar.Forms
     {
         private bool mouseDown;
         private Point lastLocation;
+        private Dictionary<long, string> workersIdName;
         public AssignEmployessForm()
         {
             InitializeComponent();
             this.BackColor = ApplicationColors.PrimaryDark;
             this.btnAssign.BackColor = ApplicationColors.Red;
 
-            Dictionary<long, string> WorkersIdName = Worker.GetAllWorkersWithoutDepartment();
-            if (WorkersIdName == null)
+            workersIdName = Worker.GetAllWorkersWithDepartments();
+            if (workersIdName == null)
             {
-                MessageBox.Show("There is no Workers without Department");
+                MessageBox.Show("There are no Workers without Department");
             }
-            foreach (var item in WorkersIdName)
+            foreach (var item in workersIdName)
             {
                 clbWorkers.Items.Add(item.Value);
             }
@@ -61,7 +62,7 @@ namespace MediaBazaar.Forms
 
         private void btnAssign_Click(object sender, EventArgs e)
         {
-            (System.Windows.Forms.Application.OpenForms["AddDepartmentForm"] as AddDepartmentForm).Assign(AssignWorkers());
+            (Application.OpenForms["AddDepartmentForm"] as AddDepartmentForm).Assign(AssignWorkers());
             this.Close();
 
             MessageBox.Show("Department successfully created");
@@ -70,11 +71,10 @@ namespace MediaBazaar.Forms
         public List<long> AssignWorkers()
         {
             List<long> ids = new List<long>();
-           
 
             foreach (var item in clbWorkers.CheckedItems)
             {
-                foreach (var i in Worker.GetAllWorkersWithoutDepartment())
+                foreach (var i in workersIdName)
                 {
                     if (item.ToString() == i.Value)
                     {

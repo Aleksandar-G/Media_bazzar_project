@@ -12,7 +12,7 @@ namespace MediaBazaar.Models
         private new long id;
         private long userId;
 
-        public Manager(string name, string email, string phone) : base(name, email, phone)
+        public Manager(string name, string email, string phone) : base(name, email, phone, "Manager")
         {
             this.userId = base.Id;
         }
@@ -56,5 +56,33 @@ namespace MediaBazaar.Models
 
             dbConnection.CloseConnection();
         }
+
+        public static Manager GetByUserId(long userId)
+        {
+            DBconnection dbConnection = new DBconnection();
+            dbConnection.OpenConnection();
+            Manager manager;
+            string query = $"SELECT * FROM managers WHERE user_id = @userId";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
+            {
+                cmd.Parameters.AddWithValue("@userId", userId);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    long id = Convert.ToInt64(reader["id"]);
+                    User user = User.GetById(Convert.ToInt64(reader["user_id"]));
+
+                    manager = new Manager(id, user);
+
+                    dbConnection.CloseConnection();
+                    return manager;
+                }
+            }
+
+            dbConnection.CloseConnection();
+            return null;
+        }
+
     }
 }

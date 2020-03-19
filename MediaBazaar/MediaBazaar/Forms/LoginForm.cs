@@ -55,15 +55,36 @@ namespace MediaBazaar
             string email = tbEmail.Text;
             string password = tbPassword.Text;
 
-            if (User.Authenticate(email, password))
+            if (CheckCredentials(email, password))
             {
-                currentUser = User.GetByEmail(email);
                 this.Close();
             }
             else
             {
                 MessageBox.Show("Wrong credentials!");
             }
+        }
+
+        private bool CheckRole(User user)
+        {
+            if (user.Role == "Administrator" || user.Role == "Manager") return true;
+
+            return false;
+        }
+
+        private bool CheckCredentials(string email, string password)
+        {
+            if (User.Authenticate(email, password))
+            {
+                User user = User.GetByEmail(email);
+                if (CheckRole(user))
+                {
+                    currentUser = user;
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

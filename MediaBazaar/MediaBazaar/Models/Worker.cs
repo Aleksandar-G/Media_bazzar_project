@@ -14,7 +14,12 @@ namespace MediaBazaar.Models
         private long departmentId;
         private Workshift workshift;
 
-        public Worker(string name, string email, string phone, long departmentId, Workshift workshift) : base(name, email, phone)
+        public long Id { get => id; }
+        public long UserId { get => userId; }
+        public long DepartmentId { get => departmentId; }
+        public Workshift GetWorkshift { get => workshift; }
+
+        public Worker(string name, string email, string phone, long departmentId, Workshift workshift) : base(name, email, phone, "Worker")
         {
             this.userId = base.id;
             this.departmentId = departmentId;
@@ -23,6 +28,7 @@ namespace MediaBazaar.Models
 
         public Worker(long id, long departmentId, Workshift workshift, User user) : base(user)
         {
+            this.id = id;
             this.userId = user.Id;
             this.departmentId = departmentId;
             this.workshift = workshift;
@@ -121,17 +127,48 @@ namespace MediaBazaar.Models
             return null;
         }
 
+        public static Worker GetByUserId(long userId)
+        {
+            DBconnection dbConnection = new DBconnection();
+            dbConnection.OpenConnection();
+            Worker worker;
+            string query = $"SELECT * FROM workers WHERE user_id = @userId";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
+            {
+                cmd.Parameters.AddWithValue("@userId", userId);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    long id = Convert.ToInt64(reader["id"]);
+                    User user = User.GetById(Convert.ToInt64(reader["user_id"]));
+                    long departmentId = Convert.ToInt64(reader["department_id"]);
+                    Workshift workshift = (Workshift)Enum.Parse(typeof(Workshift), reader["workshift"].ToString());
+
+                    worker = new Worker(id, departmentId, workshift, user);
+
+                    dbConnection.CloseConnection();
+                    return worker;
+                }
+            }
+
+            dbConnection.CloseConnection();
+            return null;
+        }
+
         public override void Update(Model newWorker)
         {
+            base.Update((User)newWorker);
             Worker worker = (Worker)newWorker;
             dbConnection.OpenConnection();
 
-            string query = @"UPDATE users SET user_id = @user_id, department_id = @department_id, workshift = @workshift WHERE id = @workerId";
+            string query = @"UPDATE workers SET user_id = @user_id, department_id = @department_id, workshift = @workshift WHERE id = @workerId";
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
                 cmd.Parameters.AddWithValue("@user_id", worker.userId);
                 cmd.Parameters.AddWithValue("@department_id", worker.departmentId);
                 cmd.Parameters.AddWithValue("@workshift", worker.workshift.ToString("G"));
+                cmd.Parameters.AddWithValue("@workerId", worker.Id);
 
                 cmd.ExecuteNonQuery();
             }
@@ -151,6 +188,33 @@ namespace MediaBazaar.Models
                 INNER JOIN workers as w 
                 ON u.Id = w.user_id 
                 WHERE w.Department_id IS NULL
+            ";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
+            {
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    long id = Convert.ToInt64(reader["Id"]);
+                    string name = reader["Name"].ToString();
+                    workers.Add(id, name);
+                }
+                dbConnection.CloseConnection();
+                return workers;
+            }
+        }
+
+        public static Dictionary<long, string> GetAllWorkersWithDepartments()
+        {
+            DBconnection dbConnection = new DBconnection();
+            dbConnection.OpenConnection();
+
+            Dictionary<long, string> workers = new Dictionary<long, string>();
+            string query =
+            @"
+                SELECT u.Name, u.Id,u.Email, u.Password, u.Phone FROM users as u
+                INNER JOIN workers as w 
+                ON u.Id = w.user_id
             ";
 
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
@@ -205,6 +269,21 @@ namespace MediaBazaar.Models
                 cmd.ExecuteNonQuery();
             }
             dbConnection.CloseConnection();
+        }
+
+        public static Workshift GetWorkshiftByName(string val)
+        {
+            switch (val)
+            {
+                case "Morning":
+                    return Workshift.MORNING;
+                case "Afternoon":
+                    return Workshift.AFTERNOON;
+                case "Evening":
+                    return Workshift.EVENING;
+                default:
+                    return Workshift.MORNING;
+            }
         }
     }
 }

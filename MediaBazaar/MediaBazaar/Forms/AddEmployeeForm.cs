@@ -114,39 +114,30 @@ namespace MediaBazaar
             string email = tbEmail.Text;
             string phone = tbPhone.Text;
 
-            if (cbRole.SelectedItem.ToString() == "Worker")
+            try
             {
-                Department department = Department.GetByName(cbDepartments.SelectedItem.ToString());
-                Workshift workshift = GetWorkshift(cbWorkshifts.SelectedItem.ToString());
+                if (cbRole.SelectedItem.ToString() == "Worker")
+                {
+                    Department department = Department.GetByName(cbDepartments.SelectedItem.ToString());
+                    Workshift workshift = Worker.GetWorkshiftByName(cbWorkshifts.SelectedItem.ToString());
 
-                Worker worker = new Worker(name, email, phone, department.Id, workshift);
-                worker.Insert();
-                return;
-            }
-            else if (cbRole.SelectedItem.ToString() == "Administrator")
+                    Worker worker = new Worker(name, email, phone, department.Id, workshift);
+                    worker.Insert();
+                }
+                else if (cbRole.SelectedItem.ToString() == "Administrator")
+                {
+                    Administrator administrator = new Administrator(name, email, phone);
+                    administrator.Insert();
+                }
+                else if (cbRole.SelectedItem.ToString() == "Manager")
+                {
+                    Manager manager = new Manager(name, email, phone);
+                    manager.Insert();
+                }
+                MessageBox.Show("User added successfully!");
+            } catch(Exception)
             {
-                Administrator administrator = new Administrator(name, email, phone);
-                administrator.Insert();
-            }
-            else if (cbRole.SelectedItem.ToString() == "Manager")
-            {
-                Manager manager = new Manager(name, email, phone);
-                manager.Insert();
-            }
-        }
-
-        public Workshift GetWorkshift(string val)
-        {
-            switch (val)
-            {
-                case "Morning":
-                    return Workshift.MORNING;
-                case "Afternoon":
-                    return Workshift.AFTERNOON;
-                case "Evening":
-                    return Workshift.EVENING;
-                default:
-                    return Workshift.MORNING;
+                MessageBox.Show("Could not add the user! Please try again.");
             }
         }
     }
