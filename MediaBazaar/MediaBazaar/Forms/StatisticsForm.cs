@@ -16,7 +16,8 @@ namespace MediaBazaar.Forms
 {
     public partial class StatisticsForm : Form
     {
-
+        private bool mouseDown;
+        private Point lastLocation;
         public StatisticsForm()
         {
             InitializeComponent();
@@ -97,7 +98,7 @@ namespace MediaBazaar.Forms
         {
             Chart createdChart = this.CreateChart(SeriesChartType.Column);
 
-            if (this.Controls.Count == 5) //CHECK FORM CONTROL NUMBER
+            if (this.Controls.Count == 6) //CHECK FORM CONTROL NUMBER
             {
                 this.Controls.RemoveAt(this.Controls.Count - 1);
             }
@@ -108,7 +109,7 @@ namespace MediaBazaar.Forms
         {
             Chart createdChart = this.CreateChart(SeriesChartType.Pie);
 
-            if (this.Controls.Count == 5) //CHECK FORM CONTROL NUMBER
+            if (this.Controls.Count == 6) //CHECK FORM CONTROL NUMBER
             {
                 this.Controls.RemoveAt(this.Controls.Count - 1);
             }
@@ -119,6 +120,26 @@ namespace MediaBazaar.Forms
         {
             var productsForm = new ProductsListForm();
             productsForm.Show();
+        }
+
+        private void StatisticsForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void StatisticsForm_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+
+        private void StatisticsForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point((this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+                this.Update();
+            }
         }
     }
 }

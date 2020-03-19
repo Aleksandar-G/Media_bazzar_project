@@ -72,7 +72,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(233, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(276, 32);
+            this.label1.Size = new System.Drawing.Size(342, 41);
             this.label1.TabIndex = 17;
             this.label1.Text = "Media Bazaar Statistics";
             // 
@@ -117,6 +117,9 @@
             this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "StatisticsForm";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.StatisticsForm_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.StatisticsForm_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.StatisticsForm_MouseUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
