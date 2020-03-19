@@ -17,6 +17,7 @@ namespace MediaBazaar
         private bool mouseDown;
         private Point lastLocation;
         public User currentUser;
+        private List<User> users;
 
         public MainForm(User user)
         {
@@ -25,19 +26,21 @@ namespace MediaBazaar
             this.currentUser = user;
             this.navigation.BackColor = ApplicationColors.PrimaryDark;
             this.BackColor = ApplicationColors.Orange;
+
+            users = User.GetAll();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < 8; i++) 
+            users.ForEach(user =>
             {
                 var btn = new Button();
                 btn.BackColor = SystemColors.ControlLightLight;
                 btn.Width = this.flpEmployees.Width - 30;
                 btn.Height = 60;
 
-                
-                btn.Text = "John Doe [Main Department]";
+
+                btn.Text = $"{user.Name} ({user.Email}) [{user.Role}]";
                 btn.Font = new Font("Segoe UI Black", 12);
                 btn.TextAlign = ContentAlignment.MiddleLeft;
 
@@ -54,12 +57,12 @@ namespace MediaBazaar
 
                 btn.Click += new EventHandler((s, ev) =>
                 {
-                    var form = new EditEmployeeForm();
+                    var form = new EditEmployeeForm(user);
                     form.Show();
                 });
 
                 this.flpEmployees.Controls.Add(btn);
-            }
+            });
         }
 
         private void BtnClose_Click(object sender, EventArgs e)
@@ -120,7 +123,7 @@ namespace MediaBazaar
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            var form = new AddEmployeeForm();
+            var form = new AddDepartmentForm();
             form.Show();
         }
     }

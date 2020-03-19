@@ -15,19 +15,22 @@ namespace MediaBazaar.Models
         private string email;
         private string phone;
         private string password;
+        private string role;
 
         public long Id { get { return this.id; } }
 
-        protected string Name { get => name; }
-        protected string Email { get => email; }
-        protected string Phone { get => phone; }
+        public string Name { get => name; set => name = value; }
+        public string Email { get => email; set => email = value; }
+        public string Phone { get => phone; set => phone = value; }
         protected string Password { get => password; }
+        public string Role { get => role; set => role = value; }
 
-        public User(string name, string email, string phone) : base()
+        public User(string name, string email, string phone, string role) : base()
         {
             this.name = name;
             this.email = email;
             this.phone = phone;
+            this.role = role;
         }
 
         public User(User anotherUser) : base()
@@ -37,15 +40,17 @@ namespace MediaBazaar.Models
             this.email = anotherUser.email;
             this.password = anotherUser.password;
             this.phone = anotherUser.phone;
+            this.role = anotherUser.role;
         }
 
-        private User(long id, string name, string email, string password, string phone) : base()
+        public User(long id, string name, string email, string password, string phone, string role) : base()
         {
             this.id = id;
             this.name = name;
             this.email = email;
             this.password = password;
             this.phone = phone;
+            this.role = role;
         }
 
         public override void Insert()
@@ -53,7 +58,7 @@ namespace MediaBazaar.Models
             this.password = GeneratePassword(8);
 
             dbConnection.OpenConnection();
-            string query = "INSERT INTO users(name, email, password, phone) VALUES(@name, @email, @password, @phone)";
+            string query = "INSERT INTO users(name, email, password, phone, role) VALUES(@name, @email, @password, @phone, @role)";
 
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
@@ -61,6 +66,7 @@ namespace MediaBazaar.Models
                 cmd.Parameters.AddWithValue("@email", email);
                 cmd.Parameters.AddWithValue("@password", BCrypt.Net.BCrypt.HashPassword(this.password));
                 cmd.Parameters.AddWithValue("@phone", phone);
+                cmd.Parameters.AddWithValue("@role", role);
 
                 cmd.ExecuteNonQuery();
                 this.id = cmd.LastInsertedId;
@@ -100,8 +106,9 @@ namespace MediaBazaar.Models
                     string email = reader["email"].ToString();
                     string password = reader["password"].ToString();
                     string phone = reader["phone"].ToString();
+                    string role = reader["role"].ToString();
 
-                    users.Add(new User(id, name, email, password, phone));
+                    users.Add(new User(id, name, email, password, phone, role));
                 }
             }
 
@@ -126,8 +133,9 @@ namespace MediaBazaar.Models
                     string email = reader["email"].ToString();
                     string password = reader["password"].ToString();
                     string phone = reader["phone"].ToString();
+                    string role = reader["role"].ToString();
 
-                    user = new User(id, name, email, password, phone);
+                    user = new User(id, name, email, password, phone, role);
 
                     dbConnection.CloseConnection();
                     return user;
@@ -155,8 +163,9 @@ namespace MediaBazaar.Models
                     string userEmail = reader["email"].ToString();
                     string userPassword = reader["password"].ToString();
                     string phone = reader["phone"].ToString();
+                    string role = reader["role"].ToString();
 
-                    user = new User(userId, userName, userEmail, userPassword, phone);
+                    user = new User(userId, userName, userEmail, userPassword, phone, role);
 
                     dbConnection.CloseConnection();
                     return user;
@@ -173,12 +182,13 @@ namespace MediaBazaar.Models
             User user = (User)newUser;
             dbConnection.OpenConnection();
 
-            string query = $"UPDATE users SET name=@name, email=@email, phone=@phone WHERE id = {user.Id}";
+            string query = $"UPDATE users SET name = @name, email = @email, phone = @phone, role = @role WHERE id = {user.Id}";
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
                 cmd.Parameters.AddWithValue("@name", user.name);
                 cmd.Parameters.AddWithValue("@email", user.email);
                 cmd.Parameters.AddWithValue("@phone", user.phone);
+                cmd.Parameters.AddWithValue("@role", user.role);
 
                 cmd.ExecuteNonQuery();
             }

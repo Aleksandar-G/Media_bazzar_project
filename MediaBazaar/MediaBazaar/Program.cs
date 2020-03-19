@@ -24,8 +24,9 @@ namespace MediaBazaar
             //User user = new User("Ivan4o Petrov", "branisand@abv.bg", "088888889");
             //user.Insert();
 
+            
             LoginForm loginForm = new LoginForm();
-            Application.Run(new ProductsListForm());
+            Application.Run(loginForm);
 
             if (loginForm.currentUser != null)
             {
