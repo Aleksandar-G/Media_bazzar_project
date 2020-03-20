@@ -30,13 +30,13 @@
         {
             this.btnClose = new System.Windows.Forms.Button();
             this.navigation = new System.Windows.Forms.Panel();
+            this.btnViewStatistics = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.flpEmployees = new System.Windows.Forms.FlowLayoutPanel();
             this.lblEmployees = new System.Windows.Forms.Label();
             this.textBoxExt1 = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.btnViewStatistics = new System.Windows.Forms.Button();
             this.navigation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBoxExt1)).BeginInit();
@@ -49,7 +49,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(956, 0);
+            this.btnClose.Location = new System.Drawing.Point(955, -1);
             this.btnClose.Margin = new System.Windows.Forms.Padding(0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(45, 45);
@@ -73,6 +73,22 @@
             this.navigation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Navigation_MouseDown);
             this.navigation.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Navigation_MouseMove);
             this.navigation.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Navigation_MouseUp);
+            // 
+            // btnViewStatistics
+            // 
+            this.btnViewStatistics.BackColor = System.Drawing.Color.White;
+            this.btnViewStatistics.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnViewStatistics.FlatAppearance.BorderSize = 0;
+            this.btnViewStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewStatistics.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.btnViewStatistics.Location = new System.Drawing.Point(0, 318);
+            this.btnViewStatistics.Margin = new System.Windows.Forms.Padding(0);
+            this.btnViewStatistics.Name = "btnViewStatistics";
+            this.btnViewStatistics.Size = new System.Drawing.Size(250, 65);
+            this.btnViewStatistics.TabIndex = 16;
+            this.btnViewStatistics.Text = "View Statistics";
+            this.btnViewStatistics.UseVisualStyleBackColor = false;
+            this.btnViewStatistics.Click += new System.EventHandler(this.BtnViewStatistics_Click);
             // 
             // button1
             // 
@@ -124,7 +140,7 @@
             this.flpEmployees.Location = new System.Drawing.Point(290, 102);
             this.flpEmployees.Margin = new System.Windows.Forms.Padding(0);
             this.flpEmployees.Name = "flpEmployees";
-            this.flpEmployees.Size = new System.Drawing.Size(655, 330);
+            this.flpEmployees.Size = new System.Drawing.Size(653, 330);
             this.flpEmployees.TabIndex = 16;
             this.flpEmployees.WrapContents = false;
             // 
@@ -149,22 +165,6 @@
             this.textBoxExt1.Size = new System.Drawing.Size(655, 29);
             this.textBoxExt1.TabIndex = 17;
             this.textBoxExt1.Text = "Search";
-            // 
-            // btnViewStatistics
-            // 
-            this.btnViewStatistics.BackColor = System.Drawing.Color.White;
-            this.btnViewStatistics.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnViewStatistics.FlatAppearance.BorderSize = 0;
-            this.btnViewStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewStatistics.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnViewStatistics.Location = new System.Drawing.Point(0, 318);
-            this.btnViewStatistics.Margin = new System.Windows.Forms.Padding(0);
-            this.btnViewStatistics.Name = "btnViewStatistics";
-            this.btnViewStatistics.Size = new System.Drawing.Size(250, 65);
-            this.btnViewStatistics.TabIndex = 16;
-            this.btnViewStatistics.Text = "View Statistics";
-            this.btnViewStatistics.UseVisualStyleBackColor = false;
-            this.btnViewStatistics.Click += new System.EventHandler(this.BtnViewStatistics_Click);
             // 
             // MainForm
             // 

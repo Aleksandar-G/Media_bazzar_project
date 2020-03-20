@@ -201,14 +201,14 @@ namespace MediaBazaar.Models
             MailMessage mail = new MailMessage();
             SmtpClient SmtpServer = new SmtpClient("smtp.mailgun.org");
 
-            mail.From = new MailAddress("admin@mediabazaar.com");
+            mail.From = new MailAddress("no-reply@mediabazaar.xyz");
             mail.To.Add(this.email);
             mail.Subject = "Account created";
             mail.Body = $"Hello, {this.name}! You have registered to our application. This is your password: {this.password}";
 
             SmtpServer.Port = 587;
             SmtpServer.Credentials =
-                new System.Net.NetworkCredential("postmaster@sandbox9bc004f63231411796e06428ffa17f67.mailgun.org", "1bcb7c279e414803ab1fb01ac2a7b883-9a235412-647e0595");
+                new System.Net.NetworkCredential("postmaster@mediabazaar.xyz", "27404e89798aa79aa8b6dff6123a92f1-9a235412-fb09f04b");
             SmtpServer.EnableSsl = true;
             SmtpServer.Send(mail);
 

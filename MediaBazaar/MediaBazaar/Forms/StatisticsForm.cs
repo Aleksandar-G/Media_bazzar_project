@@ -16,7 +16,8 @@ namespace MediaBazaar.Forms
 {
     public partial class StatisticsForm : Form
     {
-
+        private bool mouseDown;
+        private Point lastLocation;
         public StatisticsForm()
         {
             InitializeComponent();
@@ -24,6 +25,9 @@ namespace MediaBazaar.Forms
             this.btnClose.BackColor = ApplicationColors.Red;
             this.btnProductsByDepartment.BackColor = ApplicationColors.Orange;
             this.btnStatWorkersByDepartment.BackColor = ApplicationColors.Orange;
+            this.button1.BackColor = ApplicationColors.Orange;
+
+            
         }
         public Chart CreateChart(SeriesChartType type)
         {
@@ -92,22 +96,27 @@ namespace MediaBazaar.Forms
 
         }
 
-        private void BtnStatWorkersByDepartment_Click(object sender, EventArgs e)
+        private void CreateWorkersByDepartmentChart()
         {
             Chart createdChart = this.CreateChart(SeriesChartType.Column);
 
-            if (this.Controls.Count == 5) //CHECK FORM CONTROL NUMBER
+            if (this.Controls.Count == 6) //CHECK FORM CONTROL NUMBER
             {
                 this.Controls.RemoveAt(this.Controls.Count - 1);
             }
             this.Controls.AddRange(new Control[] { createdChart });
         }
 
+        private void BtnStatWorkersByDepartment_Click(object sender, EventArgs e)
+        {
+            CreateWorkersByDepartmentChart();
+        }
+
         private void BtnProductsByDepartment_Click(object sender, EventArgs e)
         {
             Chart createdChart = this.CreateChart(SeriesChartType.Pie);
 
-            if (this.Controls.Count == 5) //CHECK FORM CONTROL NUMBER
+            if (this.Controls.Count == 6) //CHECK FORM CONTROL NUMBER
             {
                 this.Controls.RemoveAt(this.Controls.Count - 1);
             }
@@ -118,6 +127,26 @@ namespace MediaBazaar.Forms
         {
             var productsForm = new ProductsListForm();
             productsForm.Show();
+        }
+
+        private void StatisticsForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void StatisticsForm_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+
+        private void StatisticsForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point((this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+                this.Update();
+            }
         }
     }
 }
