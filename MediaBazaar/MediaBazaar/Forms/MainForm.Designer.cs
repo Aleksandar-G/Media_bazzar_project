@@ -33,13 +33,14 @@
             this.btnViewStatistics = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.flpEmployees = new System.Windows.Forms.FlowLayoutPanel();
             this.lblEmployees = new System.Windows.Forms.Label();
             this.textBoxExt1 = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.btnViewStockRequests = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.navigation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBoxExt1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
@@ -61,6 +62,7 @@
             // navigation
             // 
             this.navigation.BackColor = System.Drawing.SystemColors.WindowText;
+            this.navigation.Controls.Add(this.btnViewStockRequests);
             this.navigation.Controls.Add(this.btnViewStatistics);
             this.navigation.Controls.Add(this.button1);
             this.navigation.Controls.Add(this.button2);
@@ -81,7 +83,7 @@
             this.btnViewStatistics.FlatAppearance.BorderSize = 0;
             this.btnViewStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewStatistics.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnViewStatistics.Location = new System.Drawing.Point(0, 318);
+            this.btnViewStatistics.Location = new System.Drawing.Point(0, 280);
             this.btnViewStatistics.Margin = new System.Windows.Forms.Padding(0);
             this.btnViewStatistics.Name = "btnViewStatistics";
             this.btnViewStatistics.Size = new System.Drawing.Size(250, 65);
@@ -97,7 +99,7 @@
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.button1.Location = new System.Drawing.Point(0, 238);
+            this.button1.Location = new System.Drawing.Point(0, 204);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(250, 65);
@@ -113,7 +115,7 @@
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.button2.Location = new System.Drawing.Point(0, 158);
+            this.button2.Location = new System.Drawing.Point(0, 129);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(250, 65);
@@ -121,17 +123,6 @@
             this.button2.Text = "Add Employee";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::MediaBazaar.Properties.Resources.logo2;
-            this.pictureBox1.Location = new System.Drawing.Point(78, 20);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
             // 
             // flpEmployees
             // 
@@ -158,13 +149,40 @@
             // 
             // textBoxExt1
             // 
-            this.textBoxExt1.BeforeTouchSize = new System.Drawing.Size(655, 29);
+            this.textBoxExt1.BeforeTouchSize = new System.Drawing.Size(262, 33);
             this.textBoxExt1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxExt1.Location = new System.Drawing.Point(290, 59);
             this.textBoxExt1.Name = "textBoxExt1";
             this.textBoxExt1.Size = new System.Drawing.Size(655, 29);
             this.textBoxExt1.TabIndex = 17;
             this.textBoxExt1.Text = "Search";
+            // 
+            // btnViewStockRequests
+            // 
+            this.btnViewStockRequests.BackColor = System.Drawing.Color.White;
+            this.btnViewStockRequests.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnViewStockRequests.FlatAppearance.BorderSize = 0;
+            this.btnViewStockRequests.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewStockRequests.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.btnViewStockRequests.Location = new System.Drawing.Point(0, 356);
+            this.btnViewStockRequests.Margin = new System.Windows.Forms.Padding(0);
+            this.btnViewStockRequests.Name = "btnViewStockRequests";
+            this.btnViewStockRequests.Size = new System.Drawing.Size(250, 65);
+            this.btnViewStockRequests.TabIndex = 17;
+            this.btnViewStockRequests.Text = "View Stock Requests";
+            this.btnViewStockRequests.UseVisualStyleBackColor = false;
+            this.btnViewStockRequests.Click += new System.EventHandler(this.btnViewStockRequests_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::MediaBazaar.Properties.Resources.logo2;
+            this.pictureBox1.Location = new System.Drawing.Point(78, 13);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
             // 
             // MainForm
             // 
@@ -186,8 +204,8 @@
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseUp);
             this.navigation.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBoxExt1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,5 +222,6 @@
         private System.Windows.Forms.Label lblEmployees;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt textBoxExt1;
         private System.Windows.Forms.Button btnViewStatistics;
+        private System.Windows.Forms.Button btnViewStockRequests;
     }
 }

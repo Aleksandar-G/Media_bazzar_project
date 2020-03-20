@@ -143,5 +143,11 @@ namespace MediaBazaar
             var form = new StatisticsForm();
             form.Show();
         }
+
+        private void btnViewStockRequests_Click(object sender, EventArgs e)
+        {
+            StockRequestForm form = new StockRequestForm();
+            form.Show();
+        }
     }
 }
