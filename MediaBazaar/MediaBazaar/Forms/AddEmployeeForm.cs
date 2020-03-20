@@ -24,7 +24,7 @@ namespace MediaBazaar
             this.BackColor = ApplicationColors.PrimaryDark;
             this.btnAdd.BackColor = ApplicationColors.Red;
             this.mainForm = mainForm;
-            this.cbRole.SelectedIndex = 0;
+            this.cbRole.SelectedIndex = 1;
 
             Department.GetNames().ForEach(x => cbDepartments.Items.Add(x));
         }
@@ -115,7 +115,9 @@ namespace MediaBazaar
             string name = tbName.Text;
             string email = tbEmail.Text;
             string phone = tbPhone.Text;
+
             string message = "";
+
             if (String.IsNullOrEmpty(name) || String.IsNullOrEmpty(email) || String.IsNullOrEmpty(phone))
             {
                 message += "You left empty field(s)\n";
@@ -159,25 +161,19 @@ namespace MediaBazaar
                         manager.Insert();
                     }
                     MessageBox.Show("User added successfully!");
-                    mainForm.LoadUsers();
+                    mainForm.ShowUsers(User.GetAll());
                     this.Close();
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("Could not add the user! Please try again.");
                 }
-
             }
-            else{
-
-                MessageBox.Show("User added successfully!");
-                mainForm.ShowUsers(User.GetAll());
-                this.Close();
-            } catch(Exception)
-
+            else
             {
                 MessageBox.Show(message);
             }
         }
     }
 }
+

@@ -129,15 +129,14 @@ namespace MediaBazaar
         private void BtnEdit_Click(object sender, EventArgs e)
         {
             // TODO: Add validation to the forms
-           
             try
             {
                 user.Name = tbName.Text;
                 user.Email = tbEmail.Text;
                 user.Phone = tbPhone.Text;
-                if (String.IsNullOrEmpty(user.Name) || String.IsNullOrEmpty(user.Email) || String.IsNullOrEmpty(user.Phone))
+                if (String.IsNullOrEmpty(user.Name) || String.IsNullOrEmpty(user.Email) || String.IsNullOrEmpty(user.Phone)||!user.Email.Contains("@"))
                 {
-                    MessageBox.Show("You left empty field(s)");
+                    MessageBox.Show("You left empty field(s) or \nyou have entered invalid email address");
                 }
                 else
                 {
@@ -153,7 +152,7 @@ namespace MediaBazaar
 
                         worker.Update(updatedWorker);
                         MessageBox.Show("User updated successfully");
-                        mainForm.LoadUsers();
+                        mainForm.ShowUsers(User.GetAll());
                         this.Close();
                         return;
                     }
@@ -163,12 +162,6 @@ namespace MediaBazaar
                     mainForm.ShowUsers(User.GetAll());
                     this.Close();
                 }
-
-                user.Update(user);
-                MessageBox.Show("User updated successfully");
-                mainForm.ShowUsers(User.GetAll());
-                this.Close();
-
             }
             catch (Exception)
             {
@@ -212,3 +205,4 @@ namespace MediaBazaar
         }
     }
 }
+
