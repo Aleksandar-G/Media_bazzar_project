@@ -22,7 +22,7 @@ namespace MediaBazaar
             Application.SetCompatibleTextRenderingDefault(false);
             
             LoginForm loginForm = new LoginForm();
-            Application.Run(new StatisticsForm());
+            Application.Run(loginForm);
 
             if (loginForm.currentUser != null)
             {
