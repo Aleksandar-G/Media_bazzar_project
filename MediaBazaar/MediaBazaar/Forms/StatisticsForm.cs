@@ -26,6 +26,8 @@ namespace MediaBazaar.Forms
             this.btnProductsByDepartment.BackColor = ApplicationColors.Orange;
             this.btnStatWorkersByDepartment.BackColor = ApplicationColors.Orange;
             this.button1.BackColor = ApplicationColors.Orange;
+
+            
         }
         public Chart CreateChart(SeriesChartType type)
         {
@@ -94,7 +96,7 @@ namespace MediaBazaar.Forms
 
         }
 
-        private void BtnStatWorkersByDepartment_Click(object sender, EventArgs e)
+        private void CreateWorkersByDepartmentChart()
         {
             Chart createdChart = this.CreateChart(SeriesChartType.Column);
 
@@ -103,6 +105,11 @@ namespace MediaBazaar.Forms
                 this.Controls.RemoveAt(this.Controls.Count - 1);
             }
             this.Controls.AddRange(new Control[] { createdChart });
+        }
+
+        private void BtnStatWorkersByDepartment_Click(object sender, EventArgs e)
+        {
+            CreateWorkersByDepartmentChart();
         }
 
         private void BtnProductsByDepartment_Click(object sender, EventArgs e)
