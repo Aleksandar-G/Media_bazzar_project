@@ -129,33 +129,40 @@ namespace MediaBazaar
         private void BtnEdit_Click(object sender, EventArgs e)
         {
             // TODO: Add validation to the forms
+           
             try
             {
                 user.Name = tbName.Text;
                 user.Email = tbEmail.Text;
                 user.Phone = tbPhone.Text;
-
-                if (user.Role == "Worker")
+                if (String.IsNullOrEmpty(user.Name) || String.IsNullOrEmpty(user.Email) || String.IsNullOrEmpty(user.Phone))
                 {
-                    Worker worker = Worker.GetByUserId(user.Id);
-                    Worker updatedWorker = new Worker(
-                        worker.Id,
-                        Department.GetByName(cbDepartments.SelectedItem.ToString()).Id,
-                        Worker.GetWorkshiftByName(cbWorkshifts.SelectedItem.ToString()),
-                        user
-                    );
+                    MessageBox.Show("You left empty field(s)");
+                }
+                else
+                {
+                    if (user.Role == "Worker")
+                    {
+                        Worker worker = Worker.GetByUserId(user.Id);
+                        Worker updatedWorker = new Worker(
+                            worker.Id,
+                            Department.GetByName(cbDepartments.SelectedItem.ToString()).Id,
+                            Worker.GetWorkshiftByName(cbWorkshifts.SelectedItem.ToString()),
+                            user
+                        );
 
-                    worker.Update(updatedWorker);
+                        worker.Update(updatedWorker);
+                        MessageBox.Show("User updated successfully");
+                        mainForm.LoadUsers();
+                        this.Close();
+                        return;
+                    }
+
+                    user.Update(user);
                     MessageBox.Show("User updated successfully");
                     mainForm.LoadUsers();
                     this.Close();
-                    return;
                 }
-
-                user.Update(user);
-                MessageBox.Show("User updated successfully");
-                mainForm.LoadUsers();
-                this.Close();
             }
             catch (Exception)
             {
@@ -172,7 +179,7 @@ namespace MediaBazaar
 
             if (confirmResult == DialogResult.Yes)
             {
-                switch(user.Role)
+                switch (user.Role)
                 {
                     case "Worker":
                         Worker worker = new Worker(

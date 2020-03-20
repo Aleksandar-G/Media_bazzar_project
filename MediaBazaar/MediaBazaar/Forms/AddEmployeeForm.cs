@@ -114,33 +114,61 @@ namespace MediaBazaar
             string name = tbName.Text;
             string email = tbEmail.Text;
             string phone = tbPhone.Text;
-
-            try
+            string message = "";
+            if (String.IsNullOrEmpty(name) || String.IsNullOrEmpty(email) || String.IsNullOrEmpty(phone))
             {
-                if (cbRole.SelectedItem.ToString() == "Worker")
-                {
-                    Department department = Department.GetByName(cbDepartments.SelectedItem.ToString());
-                    Workshift workshift = Worker.GetWorkshiftByName(cbWorkshifts.SelectedItem.ToString());
+                message += "You left empty field(s)\n";
+            }
 
-                    Worker worker = new Worker(name, email, phone, department.Id, workshift);
-                    worker.Insert();
-                }
-                else if (cbRole.SelectedItem.ToString() == "Administrator")
-                {
-                    Administrator administrator = new Administrator(name, email, phone);
-                    administrator.Insert();
-                }
-                else if (cbRole.SelectedItem.ToString() == "Manager")
-                {
-                    Manager manager = new Manager(name, email, phone);
-                    manager.Insert();
-                }
-                MessageBox.Show("User added successfully!");
-                mainForm.LoadUsers();
-                this.Close();
-            } catch(Exception)
+            if (!email.Contains("@"))
             {
-                MessageBox.Show("Could not add the user! Please try again.");
+                message += "Invalid email address\n";
+            }
+
+            if (name == "Name")
+            {
+                message += "Select appropriate name\n";
+            }
+
+            if (phone == "Phone")
+            {
+                message += "Select appropriate phone number";
+            }
+
+            if (message == "")
+            {
+                try
+                {
+                    if (cbRole.SelectedItem.ToString() == "Worker")
+                    {
+                        Department department = Department.GetByName(cbDepartments.SelectedItem.ToString());
+                        Workshift workshift = Worker.GetWorkshiftByName(cbWorkshifts.SelectedItem.ToString());
+
+                        Worker worker = new Worker(name, email, phone, department.Id, workshift);
+                        worker.Insert();
+                    }
+                    else if (cbRole.SelectedItem.ToString() == "Administrator")
+                    {
+                        Administrator administrator = new Administrator(name, email, phone);
+                        administrator.Insert();
+                    }
+                    else if (cbRole.SelectedItem.ToString() == "Manager")
+                    {
+                        Manager manager = new Manager(name, email, phone);
+                        manager.Insert();
+                    }
+                    MessageBox.Show("User added successfully!");
+                    mainForm.LoadUsers();
+                    this.Close();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Could not add the user! Please try again.");
+                }
+            }
+            else
+            {
+                MessageBox.Show(message);
             }
         }
     }
