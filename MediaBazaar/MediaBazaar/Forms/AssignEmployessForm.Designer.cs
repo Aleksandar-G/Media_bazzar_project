@@ -28,19 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.clbWorkers = new System.Windows.Forms.CheckedListBox();
             this.btnAssign = new System.Windows.Forms.Button();
             this.lbAssignWorkers = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
+            this.lbWorkers = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
-            // 
-            // clbWorkers
-            // 
-            this.clbWorkers.FormattingEnabled = true;
-            this.clbWorkers.Location = new System.Drawing.Point(44, 110);
-            this.clbWorkers.Name = "clbWorkers";
-            this.clbWorkers.Size = new System.Drawing.Size(364, 214);
-            this.clbWorkers.TabIndex = 1;
             // 
             // btnAssign
             // 
@@ -82,16 +74,24 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // lbWorkers
+            // 
+            this.lbWorkers.FormattingEnabled = true;
+            this.lbWorkers.Location = new System.Drawing.Point(44, 117);
+            this.lbWorkers.Name = "lbWorkers";
+            this.lbWorkers.Size = new System.Drawing.Size(377, 199);
+            this.lbWorkers.TabIndex = 5;
+            // 
             // AssignEmployessForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(466, 426);
+            this.Controls.Add(this.lbWorkers);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lbAssignWorkers);
             this.Controls.Add(this.btnAssign);
-            this.Controls.Add(this.clbWorkers);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AssignEmployessForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -107,9 +107,9 @@
         #endregion
 
         private System.Windows.Forms.ComboBox cbDepartments;
-        private System.Windows.Forms.CheckedListBox clbWorkers;
         private System.Windows.Forms.Button btnAssign;
         private System.Windows.Forms.Label lbAssignWorkers;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.ListBox lbWorkers;
     }
 }

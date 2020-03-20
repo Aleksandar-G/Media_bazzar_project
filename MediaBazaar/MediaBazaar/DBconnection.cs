@@ -15,7 +15,7 @@ namespace MediaBazaar
         private string database = "dbi425706";
         private string uid = "dbi425706";
         private string password = "12345678";
-       // private string uid = "root";
+        //private string uid = "root";
         //private string password = "";
 
         //Constructor
