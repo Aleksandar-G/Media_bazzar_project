@@ -45,10 +45,10 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(299, 9);
+            this.btnClose.Location = new System.Drawing.Point(313, -5);
             this.btnClose.Margin = new System.Windows.Forms.Padding(0);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(60, 55);
+            this.btnClose.Size = new System.Drawing.Size(56, 50);
             this.btnClose.TabIndex = 15;
             this.btnClose.Text = "x";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -59,10 +59,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(41, 15);
+            this.label1.Location = new System.Drawing.Point(30, 15);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(214, 45);
+            this.label1.Size = new System.Drawing.Size(143, 30);
             this.label1.TabIndex = 16;
             this.label1.Text = "Product Info";
             // 
@@ -96,7 +96,7 @@
             this.lblItemPrice.Location = new System.Drawing.Point(31, 394);
             this.lblItemPrice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblItemPrice.Name = "lblItemPrice";
-            this.lblItemPrice.Size = new System.Drawing.Size(124, 32);
+            this.lblItemPrice.Size = new System.Drawing.Size(83, 21);
             this.lblItemPrice.TabIndex = 19;
             this.lblItemPrice.Text = "ItemPrice";
             // 
@@ -108,7 +108,7 @@
             this.lblItemQuantity.Location = new System.Drawing.Point(198, 394);
             this.lblItemQuantity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblItemQuantity.Name = "lblItemQuantity";
-            this.lblItemQuantity.Size = new System.Drawing.Size(114, 32);
+            this.lblItemQuantity.Size = new System.Drawing.Size(77, 21);
             this.lblItemQuantity.TabIndex = 20;
             this.lblItemQuantity.Text = "Quantity";
             // 
@@ -120,7 +120,7 @@
             this.label2.Location = new System.Drawing.Point(31, 364);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 32);
+            this.label2.Size = new System.Drawing.Size(52, 21);
             this.label2.TabIndex = 21;
             this.label2.Text = "Price:";
             // 
@@ -132,13 +132,13 @@
             this.label3.Location = new System.Drawing.Point(198, 362);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(121, 32);
+            this.label3.Size = new System.Drawing.Size(81, 21);
             this.label3.TabIndex = 22;
             this.label3.Text = "Quantity:";
             // 
             // ProductInfoForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(366, 459);
@@ -155,6 +155,9 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ProductInfoForm";
             this.Text = "ProductInfo";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ProductInfoForm_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ProductInfoForm_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ProductInfoForm_MouseUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 

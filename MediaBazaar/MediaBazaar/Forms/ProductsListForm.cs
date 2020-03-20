@@ -14,6 +14,9 @@ namespace MediaBazaar.Forms
 {
     public partial class ProductsListForm : Form
     {
+        private bool mouseDown;
+        private Point lastLocation;
+
         public ProductsListForm()
         {
             InitializeComponent();
@@ -82,6 +85,26 @@ namespace MediaBazaar.Forms
         private void BtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void ProductsListForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void ProductsListForm_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+
+        private void ProductsListForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point((this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+                this.Update();
+            }
         }
     }
 }
