@@ -31,16 +31,16 @@ namespace MediaBazaar
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            LoadUsers();
+            ShowUsers(User.GetAll());
             if (currentUser.Role == "Manager")
             {
                 this.btnViewStatistics.Show();
             }
         }
 
-        public void LoadUsers()
+        public void ShowUsers(List<User> users)
         {
-            users = User.GetAll();
+            
             this.flpEmployees.Controls.Clear();
 
             users.ForEach(user =>
@@ -142,6 +142,12 @@ namespace MediaBazaar
         {
             var form = new StatisticsForm();
             form.Show();
+        }
+
+        private void TextBoxExt1_TextChanged(object sender, EventArgs e)
+        {
+            string search = tbSearch.Text;
+            ShowUsers(User.GetAll().FindAll(x => x.Name.Contains(search)));
         }
     }
 }

@@ -131,8 +131,7 @@
             this.cbRole.Items.AddRange(new object[] {
             "Worker",
             "Administrator",
-            "Manager",
-            "Role"});
+            "Manager"});
             this.cbRole.Location = new System.Drawing.Point(202, 87);
             this.cbRole.Name = "cbRole";
             this.cbRole.Size = new System.Drawing.Size(407, 33);

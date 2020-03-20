@@ -160,9 +160,15 @@ namespace MediaBazaar
 
                     user.Update(user);
                     MessageBox.Show("User updated successfully");
-                    mainForm.LoadUsers();
+                    mainForm.ShowUsers(User.GetAll());
                     this.Close();
                 }
+
+                user.Update(user);
+                MessageBox.Show("User updated successfully");
+                mainForm.ShowUsers(User.GetAll());
+                this.Close();
+
             }
             catch (Exception)
             {
@@ -200,7 +206,7 @@ namespace MediaBazaar
                         break;
                 }
 
-                mainForm.LoadUsers();
+                mainForm.ShowUsers(User.GetAll());
                 this.Close();
             }
         }
