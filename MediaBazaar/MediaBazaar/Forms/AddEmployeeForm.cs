@@ -24,6 +24,7 @@ namespace MediaBazaar
             this.BackColor = ApplicationColors.PrimaryDark;
             this.btnAdd.BackColor = ApplicationColors.Red;
             this.mainForm = mainForm;
+            this.cbRole.SelectedIndex = 0;
 
             Department.GetNames().ForEach(x => cbDepartments.Items.Add(x));
         }
@@ -136,7 +137,7 @@ namespace MediaBazaar
                     manager.Insert();
                 }
                 MessageBox.Show("User added successfully!");
-                mainForm.LoadUsers();
+                mainForm.ShowUsers(User.GetAll());
                 this.Close();
             } catch(Exception)
             {

@@ -104,6 +104,7 @@
             this.tbDepartmentName.Size = new System.Drawing.Size(391, 45);
             this.tbDepartmentName.TabIndex = 18;
             this.tbDepartmentName.Text = "Name";
+            this.tbDepartmentName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbDepartmentName_MouseClick);
             // 
             // AddDepartmentForm
             // 

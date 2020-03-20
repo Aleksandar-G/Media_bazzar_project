@@ -61,6 +61,11 @@ namespace MediaBazaar
         private void btnAdd_Click(object sender, EventArgs e)
         {
             string departmentName = tbDepartmentName.Text;
+            if (departmentName == "")
+            {
+                MessageBox.Show("Please input a name for the new department");
+                return;
+            }
 
             Department department = new Department(departmentName);
 
@@ -73,6 +78,7 @@ namespace MediaBazaar
 
         public void Assign(List<long> WorkersId)
         {
+           
             long departmentId = Department.GetTheNewestDepartmentId();
             foreach (var item in WorkersId)
             {
@@ -83,9 +89,9 @@ namespace MediaBazaar
                  
         }
 
-        private void btnAssignWorkers_Click(object sender, EventArgs e)
+        private void tbDepartmentName_MouseClick(object sender, MouseEventArgs e)
         {
-            
+            tbDepartmentName.Text = "";
         }
     }
 }
