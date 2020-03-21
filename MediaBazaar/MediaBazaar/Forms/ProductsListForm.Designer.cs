@@ -39,10 +39,10 @@
             this.cmbProducts.BackColor = System.Drawing.Color.GhostWhite;
             this.cmbProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbProducts.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbProducts.ForeColor = System.Drawing.Color.White;
+            this.cmbProducts.ForeColor = System.Drawing.Color.Black;
             this.cmbProducts.FormattingEnabled = true;
             this.cmbProducts.Location = new System.Drawing.Point(43, 86);
-            this.cmbProducts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbProducts.Margin = new System.Windows.Forms.Padding(2);
             this.cmbProducts.Name = "cmbProducts";
             this.cmbProducts.Size = new System.Drawing.Size(175, 33);
             this.cmbProducts.TabIndex = 1;
@@ -55,7 +55,7 @@
             this.btnInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInfo.ForeColor = System.Drawing.Color.White;
             this.btnInfo.Location = new System.Drawing.Point(246, 86);
-            this.btnInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnInfo.Margin = new System.Windows.Forms.Padding(2);
             this.btnInfo.Name = "btnInfo";
             this.btnInfo.Size = new System.Drawing.Size(93, 33);
             this.btnInfo.TabIndex = 2;
@@ -101,7 +101,7 @@
             this.Controls.Add(this.btnInfo);
             this.Controls.Add(this.cmbProducts);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ProductsListForm";
             this.Text = "ProductsListForm";
             this.Load += new System.EventHandler(this.ProductsListForm_Load);

@@ -10,13 +10,13 @@ namespace MediaBazaar
     public class DBconnection
     {
         public MySqlConnection connection;
-        //private string server = "studmysql01.fhict.local";
-        private string server = "localhost";
+        private string server = "studmysql01.fhict.local";
+        //private string server = "localhost";
         private string database = "dbi425706";
-        //private string uid = "dbi425706";
-        //private string password = "12345678";
-          private string uid = "root";
-          private string password = "";
+        private string uid = "dbi425706";
+        private string password = "12345678";
+          //private string uid = "root";
+          //private string password = "";
 
         //Constructor
         public DBconnection()

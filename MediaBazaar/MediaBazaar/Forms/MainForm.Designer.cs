@@ -37,10 +37,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.flpEmployees = new System.Windows.Forms.FlowLayoutPanel();
             this.lblEmployees = new System.Windows.Forms.Label();
-            this.textBoxExt1 = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.tbSearch = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.navigation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBoxExt1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbSearch)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
@@ -174,16 +174,17 @@
             this.lblEmployees.TabIndex = 0;
             this.lblEmployees.Text = "Employees";
             // 
-            // textBoxExt1
+            // tbSearch
             // 
-            this.textBoxExt1.BeforeTouchSize = new System.Drawing.Size(655, 29);
-            this.textBoxExt1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxExt1.Location = new System.Drawing.Point(290, 59);
-            this.textBoxExt1.Name = "textBoxExt1";
-            this.textBoxExt1.Size = new System.Drawing.Size(655, 29);
-            this.textBoxExt1.TabIndex = 17;
-            this.textBoxExt1.Text = "Search";
-            this.textBoxExt1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxExt1_MouseClick);
+            this.tbSearch.BeforeTouchSize = new System.Drawing.Size(407, 33);
+            this.tbSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSearch.Location = new System.Drawing.Point(290, 59);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(655, 29);
+            this.tbSearch.TabIndex = 17;
+            this.tbSearch.Text = "Search";
+            this.tbSearch.TextChanged += new System.EventHandler(this.TextBoxExt1_TextChanged);
+
             // 
             // MainForm
             // 
@@ -191,7 +192,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1000, 450);
-            this.Controls.Add(this.textBoxExt1);
+            this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.lblEmployees);
             this.Controls.Add(this.flpEmployees);
             this.Controls.Add(this.navigation);
@@ -206,7 +207,7 @@
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseUp);
             this.navigation.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBoxExt1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbSearch)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,7 +222,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.FlowLayoutPanel flpEmployees;
         private System.Windows.Forms.Label lblEmployees;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt textBoxExt1;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt tbSearch;
         private System.Windows.Forms.Button btnViewStatistics;
         private System.Windows.Forms.Button btnViewStockRequests;
     }
