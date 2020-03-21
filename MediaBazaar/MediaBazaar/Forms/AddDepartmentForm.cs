@@ -83,9 +83,9 @@ namespace MediaBazaar
                  
         }
 
-        private void btnAssignWorkers_Click(object sender, EventArgs e)
+        private void tbDepartmentName_MouseClick(object sender, MouseEventArgs e)
         {
-            
+            tbDepartmentName.Text = "";
         }
     }
 }

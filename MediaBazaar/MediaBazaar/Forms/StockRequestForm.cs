@@ -41,7 +41,7 @@ namespace MediaBazaar.Forms
                 btn.Height = 60;
 
 
-                btn.Text = $"{stockrequest.DepartmentName} ({stockrequest.AdminName})";
+                btn.Text = $"For department {stockrequest.DepartmentName} - {stockrequest.ProductsAndQuantity.Count} Products [{stockrequest.AdminName}]";
                 btn.Font = new Font("Segoe UI Black", 12);
                 btn.TextAlign = ContentAlignment.MiddleLeft;
 

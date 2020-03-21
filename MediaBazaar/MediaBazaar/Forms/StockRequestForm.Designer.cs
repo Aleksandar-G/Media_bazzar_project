@@ -30,6 +30,7 @@
         {
             this.flpStockRequests = new System.Windows.Forms.FlowLayoutPanel();
             this.btnClose = new System.Windows.Forms.Button();
+            this.lbHeader = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // flpStockRequests
@@ -59,11 +60,24 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // lbHeader
+            // 
+            this.lbHeader.AutoSize = true;
+            this.lbHeader.Font = new System.Drawing.Font("Segoe UI Black", 15F);
+            this.lbHeader.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbHeader.Location = new System.Drawing.Point(313, 16);
+            this.lbHeader.Name = "lbHeader";
+            this.lbHeader.Size = new System.Drawing.Size(162, 28);
+            this.lbHeader.TabIndex = 18;
+            this.lbHeader.Text = "Stock Requests";
+            // 
             // StockRequestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbHeader);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.flpStockRequests);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -74,6 +88,7 @@
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.StockRequestForm_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.StockRequestForm_MouseUp);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -81,5 +96,6 @@
 
         private System.Windows.Forms.FlowLayoutPanel flpStockRequests;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label lbHeader;
     }
 }

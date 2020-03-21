@@ -149,5 +149,10 @@ namespace MediaBazaar
             StockRequestForm form = new StockRequestForm();
             form.Show();
         }
+
+        private void textBoxExt1_MouseClick(object sender, MouseEventArgs e)
+        {
+            textBoxExt1.Text = "";
+        }
     }
 }

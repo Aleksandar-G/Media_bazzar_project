@@ -26,7 +26,7 @@ namespace MediaBazaar.Forms
             foreach (var item in stockRequest.ProductsAndQuantity)
             {
                 //this.lbProducts.Text += $"{item.Key} : {item.Value} \n";
-                this.lbProducts.Items.Add($"{item.Key} : {item.Value}");
+                this.lbProducts.Items.Add($"Name: {item.Key} -> Quantity: {item.Value}");
             }
         }
 

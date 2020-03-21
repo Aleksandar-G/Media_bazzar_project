@@ -32,13 +32,15 @@
             this.lbDepartment = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.lbProducts = new System.Windows.Forms.ListBox();
+            this.lbHeader = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbAdmin
             // 
             this.lbAdmin.AutoSize = true;
             this.lbAdmin.Font = new System.Drawing.Font("Segoe UI Black", 12F);
-            this.lbAdmin.Location = new System.Drawing.Point(213, 87);
+            this.lbAdmin.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbAdmin.Location = new System.Drawing.Point(158, 76);
             this.lbAdmin.Name = "lbAdmin";
             this.lbAdmin.Size = new System.Drawing.Size(56, 21);
             this.lbAdmin.TabIndex = 0;
@@ -48,7 +50,8 @@
             // 
             this.lbDepartment.AutoSize = true;
             this.lbDepartment.Font = new System.Drawing.Font("Segoe UI Black", 12F);
-            this.lbDepartment.Location = new System.Drawing.Point(475, 87);
+            this.lbDepartment.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbDepartment.Location = new System.Drawing.Point(158, 128);
             this.lbDepartment.Name = "lbDepartment";
             this.lbDepartment.Size = new System.Drawing.Size(58, 21);
             this.lbDepartment.TabIndex = 1;
@@ -61,7 +64,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(757, 0);
+            this.btnClose.Location = new System.Drawing.Point(471, -2);
             this.btnClose.Margin = new System.Windows.Forms.Padding(0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(45, 45);
@@ -72,21 +75,35 @@
             // 
             // lbProducts
             // 
+            this.lbProducts.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.lbProducts.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lbProducts.Font = new System.Drawing.Font("Segoe UI Black", 12F);
+            this.lbProducts.ForeColor = System.Drawing.SystemColors.Control;
             this.lbProducts.FormattingEnabled = true;
             this.lbProducts.ItemHeight = 21;
-            this.lbProducts.Location = new System.Drawing.Point(306, 166);
+            this.lbProducts.Location = new System.Drawing.Point(162, 180);
             this.lbProducts.Name = "lbProducts";
-            this.lbProducts.Size = new System.Drawing.Size(349, 231);
+            this.lbProducts.Size = new System.Drawing.Size(254, 252);
             this.lbProducts.TabIndex = 19;
+            // 
+            // lbHeader
+            // 
+            this.lbHeader.AutoSize = true;
+            this.lbHeader.Font = new System.Drawing.Font("Segoe UI Black", 15F);
+            this.lbHeader.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbHeader.Location = new System.Drawing.Point(157, 15);
+            this.lbHeader.Name = "lbHeader";
+            this.lbHeader.Size = new System.Drawing.Size(219, 28);
+            this.lbHeader.TabIndex = 20;
+            this.lbHeader.Text = "StockRequest Details";
             // 
             // ViewStockRequestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GrayText;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(515, 450);
+            this.Controls.Add(this.lbHeader);
             this.Controls.Add(this.lbProducts);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lbDepartment);
@@ -109,5 +126,6 @@
         private System.Windows.Forms.Label lbDepartment;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.ListBox lbProducts;
+        private System.Windows.Forms.Label lbHeader;
     }
 }
