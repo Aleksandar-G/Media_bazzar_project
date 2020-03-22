@@ -24,7 +24,7 @@ namespace MediaBazaar
             this.BackColor = ApplicationColors.PrimaryDark;
             this.btnAdd.BackColor = ApplicationColors.Red;
             this.mainForm = mainForm;
-            this.cbRole.SelectedIndex = 0;
+            this.cbRole.SelectedIndex = 1;
 
             Department.GetNames().ForEach(x => cbDepartments.Items.Add(x));
         }
@@ -116,33 +116,64 @@ namespace MediaBazaar
             string email = tbEmail.Text;
             string phone = tbPhone.Text;
 
-            try
-            {
-                if (cbRole.SelectedItem.ToString() == "Worker")
-                {
-                    Department department = Department.GetByName(cbDepartments.SelectedItem.ToString());
-                    Workshift workshift = Worker.GetWorkshiftByName(cbWorkshifts.SelectedItem.ToString());
+            string message = "";
 
-                    Worker worker = new Worker(name, email, phone, department.Id, workshift);
-                    worker.Insert();
-                }
-                else if (cbRole.SelectedItem.ToString() == "Administrator")
-                {
-                    Administrator administrator = new Administrator(name, email, phone);
-                    administrator.Insert();
-                }
-                else if (cbRole.SelectedItem.ToString() == "Manager")
-                {
-                    Manager manager = new Manager(name, email, phone);
-                    manager.Insert();
-                }
-                MessageBox.Show("User added successfully!");
-                mainForm.ShowUsers(User.GetAll());
-                this.Close();
-            } catch(Exception)
+            if (String.IsNullOrEmpty(name) || String.IsNullOrEmpty(email) || String.IsNullOrEmpty(phone))
             {
-                MessageBox.Show("Could not add the user! Please try again.");
+                message += "You left empty field(s)\n";
+            }
+
+            if (!email.Contains("@"))
+            {
+                message += "Invalid email address\n";
+            }
+
+            if (name == "Name")
+            {
+                message += "Select appropriate name\n";
+            }
+
+            if (phone == "Phone")
+            {
+                message += "Select appropriate phone number";
+            }
+
+            if (message == "")
+            {
+                try
+                {
+                    if (cbRole.SelectedItem.ToString() == "Worker")
+                    {
+                        Department department = Department.GetByName(cbDepartments.SelectedItem.ToString());
+                        Workshift workshift = Worker.GetWorkshiftByName(cbWorkshifts.SelectedItem.ToString());
+
+                        Worker worker = new Worker(name, email, phone, department.Id, workshift);
+                        worker.Insert();
+                    }
+                    else if (cbRole.SelectedItem.ToString() == "Administrator")
+                    {
+                        Administrator administrator = new Administrator(name, email, phone);
+                        administrator.Insert();
+                    }
+                    else if (cbRole.SelectedItem.ToString() == "Manager")
+                    {
+                        Manager manager = new Manager(name, email, phone);
+                        manager.Insert();
+                    }
+                    MessageBox.Show("User added successfully!");
+                    mainForm.ShowUsers(User.GetAll());
+                    this.Close();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Could not add the user! Please try again.");
+                }
+            }
+            else
+            {
+                MessageBox.Show(message);
             }
         }
     }
 }
+

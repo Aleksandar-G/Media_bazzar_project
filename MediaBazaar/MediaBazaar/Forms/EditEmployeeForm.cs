@@ -134,28 +134,34 @@ namespace MediaBazaar
                 user.Name = tbName.Text;
                 user.Email = tbEmail.Text;
                 user.Phone = tbPhone.Text;
-
-                if (user.Role == "Worker")
+                if (String.IsNullOrEmpty(user.Name) || String.IsNullOrEmpty(user.Email) || String.IsNullOrEmpty(user.Phone)||!user.Email.Contains("@"))
                 {
-                    Worker worker = Worker.GetByUserId(user.Id);
-                    Worker updatedWorker = new Worker(
-                        worker.Id,
-                        Department.GetByName(cbDepartments.SelectedItem.ToString()).Id,
-                        Worker.GetWorkshiftByName(cbWorkshifts.SelectedItem.ToString()),
-                        user
-                    );
+                    MessageBox.Show("You left empty field(s) or \nyou have entered invalid email address");
+                }
+                else
+                {
+                    if (user.Role == "Worker")
+                    {
+                        Worker worker = Worker.GetByUserId(user.Id);
+                        Worker updatedWorker = new Worker(
+                            worker.Id,
+                            Department.GetByName(cbDepartments.SelectedItem.ToString()).Id,
+                            Worker.GetWorkshiftByName(cbWorkshifts.SelectedItem.ToString()),
+                            user
+                        );
 
-                    worker.Update(updatedWorker);
+                        worker.Update(updatedWorker);
+                        MessageBox.Show("User updated successfully");
+                        mainForm.ShowUsers(User.GetAll());
+                        this.Close();
+                        return;
+                    }
+
+                    user.Update(user);
                     MessageBox.Show("User updated successfully");
                     mainForm.ShowUsers(User.GetAll());
                     this.Close();
-                    return;
                 }
-
-                user.Update(user);
-                MessageBox.Show("User updated successfully");
-                mainForm.ShowUsers(User.GetAll());
-                this.Close();
             }
             catch (Exception)
             {
@@ -172,7 +178,7 @@ namespace MediaBazaar
 
             if (confirmResult == DialogResult.Yes)
             {
-                switch(user.Role)
+                switch (user.Role)
                 {
                     case "Worker":
                         Worker worker = new Worker(
@@ -199,3 +205,4 @@ namespace MediaBazaar
         }
     }
 }
+

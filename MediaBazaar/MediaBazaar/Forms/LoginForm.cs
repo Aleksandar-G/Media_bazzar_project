@@ -54,14 +54,30 @@ namespace MediaBazaar
         {
             string email = tbEmail.Text;
             string password = tbPassword.Text;
-
-            if (CheckCredentials(email, password))
+            string message = "";
+            if (String.IsNullOrEmpty(email) || String.IsNullOrEmpty(password))
             {
-                this.Close();
+                message += "There is empty field \n";
+            }
+            
+            if(!email.Contains("@"))
+            {
+                message += "Invalid email input \n";
+            }
+            if (message == "")
+            {
+                if (CheckCredentials(email, password))
+                {
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Wrong credentials!");
+                }
             }
             else
             {
-                MessageBox.Show("Wrong credentials!");
+                MessageBox.Show(message);
             }
         }
 
