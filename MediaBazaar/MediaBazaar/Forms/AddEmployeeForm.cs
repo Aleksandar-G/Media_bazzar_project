@@ -21,12 +21,12 @@ namespace MediaBazaar
         {
             InitializeComponent();
 
+            Department.GetNames().ForEach(x => cbDepartments.Items.Add(x));
+
             this.BackColor = ApplicationColors.PrimaryDark;
             this.btnAdd.BackColor = ApplicationColors.Red;
             this.mainForm = mainForm;
-            this.cbRole.SelectedIndex = 1;
-
-            Department.GetNames().ForEach(x => cbDepartments.Items.Add(x));
+            this.cbRole.SelectedIndex = 0;
         }
 
         private void EditEmployee_MouseDown(object sender, MouseEventArgs e)
