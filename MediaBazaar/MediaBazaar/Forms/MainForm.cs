@@ -144,6 +144,13 @@ namespace MediaBazaar
             form.Show();
         }
 
+        private void btnViewStockRequests_Click(object sender, EventArgs e)
+        {
+            StockRequestForm form = new StockRequestForm();
+            form.Show();
+        }
+
+
         private void TextBoxExt1_TextChanged(object sender, EventArgs e)
         {
             string search = tbSearch.Text;

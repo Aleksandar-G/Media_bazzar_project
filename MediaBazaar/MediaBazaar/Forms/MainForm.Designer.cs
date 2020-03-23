@@ -30,6 +30,7 @@
         {
             this.btnClose = new System.Windows.Forms.Button();
             this.navigation = new System.Windows.Forms.Panel();
+            this.btnViewStockRequests = new System.Windows.Forms.Button();
             this.btnViewStatistics = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -61,6 +62,7 @@
             // navigation
             // 
             this.navigation.BackColor = System.Drawing.SystemColors.WindowText;
+            this.navigation.Controls.Add(this.btnViewStockRequests);
             this.navigation.Controls.Add(this.btnViewStatistics);
             this.navigation.Controls.Add(this.button1);
             this.navigation.Controls.Add(this.button2);
@@ -74,6 +76,22 @@
             this.navigation.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Navigation_MouseMove);
             this.navigation.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Navigation_MouseUp);
             // 
+            // btnViewStockRequests
+            // 
+            this.btnViewStockRequests.BackColor = System.Drawing.Color.White;
+            this.btnViewStockRequests.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnViewStockRequests.FlatAppearance.BorderSize = 0;
+            this.btnViewStockRequests.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewStockRequests.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.btnViewStockRequests.Location = new System.Drawing.Point(0, 356);
+            this.btnViewStockRequests.Margin = new System.Windows.Forms.Padding(0);
+            this.btnViewStockRequests.Name = "btnViewStockRequests";
+            this.btnViewStockRequests.Size = new System.Drawing.Size(250, 65);
+            this.btnViewStockRequests.TabIndex = 17;
+            this.btnViewStockRequests.Text = "View Stock Requests";
+            this.btnViewStockRequests.UseVisualStyleBackColor = false;
+            this.btnViewStockRequests.Click += new System.EventHandler(this.btnViewStockRequests_Click);
+            // 
             // btnViewStatistics
             // 
             this.btnViewStatistics.BackColor = System.Drawing.Color.White;
@@ -81,7 +99,7 @@
             this.btnViewStatistics.FlatAppearance.BorderSize = 0;
             this.btnViewStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewStatistics.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnViewStatistics.Location = new System.Drawing.Point(0, 318);
+            this.btnViewStatistics.Location = new System.Drawing.Point(0, 280);
             this.btnViewStatistics.Margin = new System.Windows.Forms.Padding(0);
             this.btnViewStatistics.Name = "btnViewStatistics";
             this.btnViewStatistics.Size = new System.Drawing.Size(250, 65);
@@ -97,7 +115,7 @@
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.button1.Location = new System.Drawing.Point(0, 238);
+            this.button1.Location = new System.Drawing.Point(0, 204);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(250, 65);
@@ -113,7 +131,7 @@
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.button2.Location = new System.Drawing.Point(0, 158);
+            this.button2.Location = new System.Drawing.Point(0, 129);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(250, 65);
@@ -125,7 +143,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::MediaBazaar.Properties.Resources.logo2;
-            this.pictureBox1.Location = new System.Drawing.Point(78, 20);
+            this.pictureBox1.Location = new System.Drawing.Point(78, 13);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 100);
@@ -166,6 +184,7 @@
             this.tbSearch.TabIndex = 17;
             this.tbSearch.Text = "Search";
             this.tbSearch.TextChanged += new System.EventHandler(this.TextBoxExt1_TextChanged);
+
             // 
             // MainForm
             // 
@@ -205,5 +224,6 @@
         private System.Windows.Forms.Label lblEmployees;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt tbSearch;
         private System.Windows.Forms.Button btnViewStatistics;
+        private System.Windows.Forms.Button btnViewStockRequests;
     }
 }
