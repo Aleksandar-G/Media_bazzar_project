@@ -12,7 +12,8 @@ class Product extends Model
     ];
 
     public function addQuantity(int $quantity) {
-        return $this->quantity += $quantity;
+        $this->quantity += $quantity;
+        $this->save();
     }
 
     public function decreaseQuantity(int $quantity) {
@@ -20,7 +21,8 @@ class Product extends Model
             throw new Exception("Not enough quantity");
         }
 
-        return $this->quantity -= $quantity;
+        $this->quantity -= $quantity;
+        $this->save();
     }
 
     public function department()
