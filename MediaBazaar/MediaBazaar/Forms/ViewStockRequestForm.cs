@@ -21,7 +21,7 @@ namespace MediaBazaar.Forms
             this.BackColor = ApplicationColors.PrimaryDark;
             lbProducts.BackColor = ApplicationColors.PrimaryDark;
             //rtbProducts.BackColor = ApplicationColors.Orange;
-            this.lbAdmin.Text ="Admin: " +stockRequest.AdminName;
+            this.lbAdmin.Text = stockRequest.AdminName;
             this.lbDepartment.Text = "Department: "+stockRequest.DepartmentName;
             foreach (var item in stockRequest.ProductsAndQuantity)
             {

@@ -22,7 +22,7 @@ namespace MediaBazaar
             InitializeComponent();
 
             Department.GetNames().ForEach(x => cbDepartments.Items.Add(x));
-
+      
             this.BackColor = ApplicationColors.PrimaryDark;
             this.btnAdd.BackColor = ApplicationColors.Red;
             this.mainForm = mainForm;
@@ -74,10 +74,10 @@ namespace MediaBazaar
             if (cbRole.SelectedItem.ToString() == "Worker")
             {
                 cbDepartments.Visible = true;
-                cbDepartments.SelectedIndex = 0;
+                //cbDepartments.SelectedIndex = 0;
 
                 cbWorkshifts.Visible = true;
-                cbWorkshifts.SelectedIndex = 0;
+                //cbWorkshifts.SelectedIndex = 0;
             }
             else
             {
@@ -164,7 +164,7 @@ namespace MediaBazaar
                     mainForm.ShowUsers(User.GetAll());
                     this.Close();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     MessageBox.Show("Could not add the user! Please try again.");
                 }
@@ -176,4 +176,3 @@ namespace MediaBazaar
         }
     }
 }
-
