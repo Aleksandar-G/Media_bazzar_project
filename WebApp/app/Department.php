@@ -14,4 +14,9 @@ class Department extends Model
     {
         return $this->hasMany('App\Worker');
     }
+
+    public function products()
+    {
+        return $this->hasMany('App\Product');
+    }
 }

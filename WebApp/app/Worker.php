@@ -19,4 +19,9 @@ class Worker extends Model
     {
         return $this->belongsTo('App\Department');
     }
+
+    public function workShifts() 
+    {
+        return $this->hasMany('App\WorkShift');
+    }
 }
