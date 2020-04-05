@@ -62,9 +62,12 @@ namespace MediaBazaar.Models
 
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
+                string password = BCrypt.Net.BCrypt.HashPassword(this.password);
+                password.Replace("$2a$", "$2y$");
+
                 cmd.Parameters.AddWithValue("@name", name);
                 cmd.Parameters.AddWithValue("@email", email);
-                cmd.Parameters.AddWithValue("@password", BCrypt.Net.BCrypt.HashPassword(this.password));
+                cmd.Parameters.AddWithValue("@password", password);
                 cmd.Parameters.AddWithValue("@phone", phone);
                 cmd.Parameters.AddWithValue("@role", role);
 
