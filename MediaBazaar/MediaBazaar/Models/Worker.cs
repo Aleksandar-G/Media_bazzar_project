@@ -285,5 +285,6 @@ namespace MediaBazaar.Models
                     return Workshift.MORNING;
             }
         }
+       
     }
 }

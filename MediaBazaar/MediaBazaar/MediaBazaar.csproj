@@ -172,6 +172,18 @@
     <Compile Include="Forms\ViewStockRequestForm.Designer.cs">
       <DependentUpon>ViewStockRequestForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\WorkerShiftsPerDayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WorkerShiftsPerDayForm.Designer.cs">
+      <DependentUpon>WorkerShiftsPerDayForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\WorkerShiftsPerMonthForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WorkerShiftsPerMonthForm.Designer.cs">
+      <DependentUpon>WorkerShiftsPerMonthForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Administrator.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Manager.cs" />
@@ -216,6 +228,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ViewStockRequestForm.resx">
       <DependentUpon>ViewStockRequestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WorkerShiftsPerDayForm.resx">
+      <DependentUpon>WorkerShiftsPerDayForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WorkerShiftsPerMonthForm.resx">
+      <DependentUpon>WorkerShiftsPerMonthForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
