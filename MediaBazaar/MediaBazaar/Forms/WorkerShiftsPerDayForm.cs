@@ -49,9 +49,9 @@ namespace MediaBazaar.Forms
             Workshift shift;
             DateTime date = dateTimePicker.Value;
 
-            if (rbMorning.Checked) shift = Workshift.MORNING;
-            else if (rbAfternoon.Checked) shift = Workshift.AFTERNOON;
-            else shift = Workshift.EVENING;
+            if (rbMorning.Checked) shift = Workshift.Morning;
+            else if (rbAfternoon.Checked) shift = Workshift.Afternoon;
+            else shift = Workshift.Evening;
 
             this.workshifts.Add(shift);
             this.dates.Add(date);
