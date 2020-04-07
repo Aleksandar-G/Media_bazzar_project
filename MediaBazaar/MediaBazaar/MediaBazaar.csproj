@@ -189,6 +189,7 @@
     <Compile Include="Models\Manager.cs" />
     <Compile Include="Models\Model.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Shift.cs" />
     <Compile Include="Models\Statistics.cs" />
     <Compile Include="Models\StockRequest.cs" />
     <Compile Include="Models\User.cs" />

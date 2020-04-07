@@ -33,12 +33,12 @@
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.lbl = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbEvening = new System.Windows.Forms.RadioButton();
+            this.rbAfternoon = new System.Windows.Forms.RadioButton();
+            this.rbMorning = new System.Windows.Forms.RadioButton();
             this.btnSetShift = new System.Windows.Forms.Button();
             this.lbSelectedShifts = new System.Windows.Forms.ListBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.rbMorning = new System.Windows.Forms.RadioButton();
-            this.rbAfternoon = new System.Windows.Forms.RadioButton();
-            this.rbEvening = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,7 +65,7 @@
             this.lblHeading.ForeColor = System.Drawing.Color.White;
             this.lblHeading.Location = new System.Drawing.Point(12, 15);
             this.lblHeading.Name = "lblHeading";
-            this.lblHeading.Size = new System.Drawing.Size(125, 38);
+            this.lblHeading.Size = new System.Drawing.Size(127, 40);
             this.lblHeading.TabIndex = 12;
             this.lblHeading.Text = "Heading";
             // 
@@ -75,7 +75,7 @@
             this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker.Location = new System.Drawing.Point(19, 112);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(187, 31);
+            this.dateTimePicker.Size = new System.Drawing.Size(187, 32);
             this.dateTimePicker.TabIndex = 14;
             this.dateTimePicker.Value = new System.DateTime(2020, 4, 2, 0, 0, 0, 0);
             // 
@@ -104,6 +104,39 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Shifts";
             // 
+            // rbEvening
+            // 
+            this.rbEvening.AutoSize = true;
+            this.rbEvening.Location = new System.Drawing.Point(19, 110);
+            this.rbEvening.Name = "rbEvening";
+            this.rbEvening.Size = new System.Drawing.Size(100, 29);
+            this.rbEvening.TabIndex = 2;
+            this.rbEvening.TabStop = true;
+            this.rbEvening.Text = "Evening";
+            this.rbEvening.UseVisualStyleBackColor = true;
+            // 
+            // rbAfternoon
+            // 
+            this.rbAfternoon.AutoSize = true;
+            this.rbAfternoon.Location = new System.Drawing.Point(19, 75);
+            this.rbAfternoon.Name = "rbAfternoon";
+            this.rbAfternoon.Size = new System.Drawing.Size(118, 29);
+            this.rbAfternoon.TabIndex = 1;
+            this.rbAfternoon.TabStop = true;
+            this.rbAfternoon.Text = "Afternoon";
+            this.rbAfternoon.UseVisualStyleBackColor = true;
+            // 
+            // rbMorning
+            // 
+            this.rbMorning.AutoSize = true;
+            this.rbMorning.Location = new System.Drawing.Point(19, 40);
+            this.rbMorning.Name = "rbMorning";
+            this.rbMorning.Size = new System.Drawing.Size(106, 29);
+            this.rbMorning.TabIndex = 0;
+            this.rbMorning.TabStop = true;
+            this.rbMorning.Text = "Morning";
+            this.rbMorning.UseVisualStyleBackColor = true;
+            // 
             // btnSetShift
             // 
             this.btnSetShift.BackColor = System.Drawing.Color.Maroon;
@@ -122,10 +155,10 @@
             // 
             this.lbSelectedShifts.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbSelectedShifts.FormattingEnabled = true;
-            this.lbSelectedShifts.ItemHeight = 23;
+            this.lbSelectedShifts.ItemHeight = 25;
             this.lbSelectedShifts.Location = new System.Drawing.Point(252, 112);
             this.lbSelectedShifts.Name = "lbSelectedShifts";
-            this.lbSelectedShifts.Size = new System.Drawing.Size(280, 234);
+            this.lbSelectedShifts.Size = new System.Drawing.Size(280, 229);
             this.lbSelectedShifts.TabIndex = 19;
             this.lbSelectedShifts.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.LbSelectedShifts_MouseDoubleClick);
             // 
@@ -141,39 +174,7 @@
             this.btnSave.TabIndex = 20;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
-            // 
-            // rbMorning
-            // 
-            this.rbMorning.AutoSize = true;
-            this.rbMorning.Location = new System.Drawing.Point(19, 40);
-            this.rbMorning.Name = "rbMorning";
-            this.rbMorning.Size = new System.Drawing.Size(106, 29);
-            this.rbMorning.TabIndex = 0;
-            this.rbMorning.TabStop = true;
-            this.rbMorning.Text = "Morning";
-            this.rbMorning.UseVisualStyleBackColor = true;
-            // 
-            // rbAfternoon
-            // 
-            this.rbAfternoon.AutoSize = true;
-            this.rbAfternoon.Location = new System.Drawing.Point(19, 75);
-            this.rbAfternoon.Name = "rbAfternoon";
-            this.rbAfternoon.Size = new System.Drawing.Size(118, 29);
-            this.rbAfternoon.TabIndex = 1;
-            this.rbAfternoon.TabStop = true;
-            this.rbAfternoon.Text = "Afternoon";
-            this.rbAfternoon.UseVisualStyleBackColor = true;
-            // 
-            // rbEvening
-            // 
-            this.rbEvening.AutoSize = true;
-            this.rbEvening.Location = new System.Drawing.Point(19, 110);
-            this.rbEvening.Name = "rbEvening";
-            this.rbEvening.Size = new System.Drawing.Size(100, 29);
-            this.rbEvening.TabIndex = 2;
-            this.rbEvening.TabStop = true;
-            this.rbEvening.Text = "Evening";
-            this.rbEvening.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // WorkerShiftsPerDayForm
             // 

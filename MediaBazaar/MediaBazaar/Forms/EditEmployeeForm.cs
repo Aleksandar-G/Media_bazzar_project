@@ -117,8 +117,8 @@ namespace MediaBazaar
                 cbDepartments.SelectedItem = Department.GetAll().Find(x => x.Id == worker.DepartmentId).Name;
 
                 cbWorkshifts.Visible = true;
-                string workshift = worker.GetWorkshift.ToString("G");
-                cbWorkshifts.SelectedItem = workshift.First() + workshift.Substring(1).ToLower();
+               // string workshift = worker.GetWorkshift.ToString("G");
+                //cbWorkshifts.SelectedItem = workshift.First() + workshift.Substring(1).ToLower();
             }
             else
             {

@@ -15,29 +15,42 @@ namespace MediaBazaar.Forms
         private bool mouseDown;
         private Point lastLocation;
         private Worker worker;
-        private List<Workshift> workshifts;
-        private List<DateTime> dates;
+        private List<Shift> shifts;
 
         public WorkerShiftsPerDayForm(Worker w)
         {
             InitializeComponent();
             this.worker = w;
-            this.workshifts = new List<Workshift>();
-            this.dates = new List<DateTime>();
-            this.rbMorning.Checked = true;
+            this.shifts = new List<Shift>();
+
+            this.rbAfternoon.Checked = true;
             this.lblHeading.Text = $"ID:{w.Id}| {w.Name}'s Shifts";
-            this.BackColor = ApplicationColors.PrimaryDark;
+            this.BackColor = ApplicationColors.Orange;
             this.btnClose.BackColor = ApplicationColors.Red;
-            this.btnSave.BackColor = ApplicationColors.Orange;
-            this.btnSetShift.BackColor = ApplicationColors.Orange;
+            this.btnSave.BackColor = ApplicationColors.PrimaryDark;
+            this.btnSetShift.BackColor = ApplicationColors.PrimaryDark;
+            this.groupBox1.BackColor = ApplicationColors.PrimaryDark;
+            this.dateTimePicker.Format = DateTimePickerFormat.Custom;
+            this.dateTimePicker.CustomFormat = "yyy-MM-dd";
         }
         private void UpdateListBox()
         {
             this.lbSelectedShifts.Items.Clear();
-            for (int i = 0; i < this.dates.Count; i++)
+            for (int i = 0; i < this.shifts.Count; i++)
             {
-                this.lbSelectedShifts.Items.Add($"{dates[i]}: {workshifts[i]}");
+                this.lbSelectedShifts.Items.Add($"{shifts[i].Date.ToString("yyyy-MM-dd")} - {shifts[i].SelectedShift}");
             }
+        }
+        public bool CheckIfExists(Shift s)
+        {
+            foreach (var item in this.shifts)
+            {
+                if (item.SelectedShift == s.SelectedShift && item.Date.ToString("yyyy-MM-dd")==s.Date.ToString("yyyy-MM-dd"))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
         private void BtnClose_Click(object sender, EventArgs e)
         {
@@ -53,18 +66,35 @@ namespace MediaBazaar.Forms
             else if (rbAfternoon.Checked) shift = Workshift.Afternoon;
             else shift = Workshift.Evening;
 
-            this.workshifts.Add(shift);
-            this.dates.Add(date);
+            Shift addedShift = new Shift(this.worker.Id, shift, date);
 
-            this.UpdateListBox();
+            if (!CheckIfExists(addedShift))
+            {
+                this.shifts.Add(addedShift);
+                this.UpdateListBox();
+            }
+            else
+            {
+                MessageBox.Show("This shift is already in the list");
+            }
         }
 
         private void LbSelectedShifts_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             int index = lbSelectedShifts.SelectedIndex;
-            workshifts.RemoveAt(index);
-            dates.RemoveAt(index);
+            shifts.RemoveAt(index);
             this.UpdateListBox();
+        }
+
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+
+            foreach (var item in this.shifts)
+            {
+                item.Insert();
+            }
+            MessageBox.Show("Shifts have been set successfully added.");
+            this.Close();
         }
     }
 }

@@ -39,14 +39,12 @@ namespace MediaBazaar.Models
             base.Insert();
 
             dbConnection.OpenConnection();
-            string query = "INSERT INTO workers(user_id, department_id, workshift) VALUES(@userId, @departmentId, @workshift)";
+            string query = "INSERT INTO workers (user_id,department_id) VALUES (@userId,@departmentId)";
 
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
                 cmd.Parameters.AddWithValue("@userId", base.Id);
                 cmd.Parameters.AddWithValue("@departmentId", this.departmentId);
-                cmd.Parameters.AddWithValue("@workshift", this.workshift.ToString("G"));
-
                 cmd.ExecuteNonQuery();
                 this.id = cmd.LastInsertedId;
             }
@@ -143,7 +141,7 @@ namespace MediaBazaar.Models
                     long id = Convert.ToInt64(reader["id"]);
                     User user = User.GetById(Convert.ToInt64(reader["user_id"]));
                     long departmentId = Convert.ToInt64(reader["department_id"]);
-                    Workshift workshift = (Workshift)Enum.Parse(typeof(Workshift), reader["workshift"].ToString());
+                    Workshift workshift = Workshift.Afternoon;/*(Workshift)Enum.Parse(typeof(Workshift), reader["workshift"].ToString());*/
 
                     worker = new Worker(id, departmentId, workshift, user);
 
