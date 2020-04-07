@@ -31,7 +31,6 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.lblEditEmployee = new System.Windows.Forms.Label();
             this.cbDepartments = new System.Windows.Forms.ComboBox();
-            this.cbWorkshifts = new System.Windows.Forms.ComboBox();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.tbPhone = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
@@ -52,10 +51,10 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(1007, -1);
+            this.btnClose.Location = new System.Drawing.Point(755, -1);
             this.btnClose.Margin = new System.Windows.Forms.Padding(0);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(60, 55);
+            this.btnClose.Size = new System.Drawing.Size(45, 45);
             this.btnClose.TabIndex = 10;
             this.btnClose.Text = "x";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -66,10 +65,10 @@
             this.lblEditEmployee.AutoSize = true;
             this.lblEditEmployee.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEditEmployee.ForeColor = System.Drawing.Color.Snow;
-            this.lblEditEmployee.Location = new System.Drawing.Point(365, 38);
+            this.lblEditEmployee.Location = new System.Drawing.Point(274, 31);
             this.lblEditEmployee.Margin = new System.Windows.Forms.Padding(0);
             this.lblEditEmployee.Name = "lblEditEmployee";
-            this.lblEditEmployee.Size = new System.Drawing.Size(246, 46);
+            this.lblEditEmployee.Size = new System.Drawing.Size(200, 37);
             this.lblEditEmployee.TabIndex = 11;
             this.lblEditEmployee.Text = "Edit Employee";
             // 
@@ -79,29 +78,11 @@
             this.cbDepartments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbDepartments.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbDepartments.FormattingEnabled = true;
-            this.cbDepartments.ItemHeight = 32;
-            this.cbDepartments.Location = new System.Drawing.Point(225, 384);
-            this.cbDepartments.Margin = new System.Windows.Forms.Padding(4);
+            this.cbDepartments.ItemHeight = 25;
+            this.cbDepartments.Location = new System.Drawing.Point(169, 312);
             this.cbDepartments.Name = "cbDepartments";
-            this.cbDepartments.Size = new System.Drawing.Size(541, 40);
+            this.cbDepartments.Size = new System.Drawing.Size(407, 33);
             this.cbDepartments.TabIndex = 12;
-            // 
-            // cbWorkshifts
-            // 
-            this.cbWorkshifts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbWorkshifts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbWorkshifts.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbWorkshifts.FormattingEnabled = true;
-            this.cbWorkshifts.ItemHeight = 32;
-            this.cbWorkshifts.Items.AddRange(new object[] {
-            "Morning",
-            "Afternoon",
-            "Evening"});
-            this.cbWorkshifts.Location = new System.Drawing.Point(225, 457);
-            this.cbWorkshifts.Margin = new System.Windows.Forms.Padding(4);
-            this.cbWorkshifts.Name = "cbWorkshifts";
-            this.cbWorkshifts.Size = new System.Drawing.Size(541, 40);
-            this.cbWorkshifts.TabIndex = 13;
             // 
             // btnEdit
             // 
@@ -109,10 +90,9 @@
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnEdit.Location = new System.Drawing.Point(225, 516);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEdit.Location = new System.Drawing.Point(169, 419);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(230, 60);
+            this.btnEdit.Size = new System.Drawing.Size(172, 49);
             this.btnEdit.TabIndex = 16;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -126,10 +106,9 @@
             this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemove.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemove.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnRemove.Location = new System.Drawing.Point(536, 516);
-            this.btnRemove.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRemove.Location = new System.Drawing.Point(402, 419);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(230, 60);
+            this.btnRemove.Size = new System.Drawing.Size(172, 49);
             this.btnRemove.TabIndex = 17;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
@@ -139,39 +118,36 @@
             // 
             // tbPhone
             // 
-            this.tbPhone.BeforeTouchSize = new System.Drawing.Size(541, 39);
+            this.tbPhone.BeforeTouchSize = new System.Drawing.Size(407, 33);
             this.tbPhone.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tbPhone.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPhone.Location = new System.Drawing.Point(225, 318);
-            this.tbPhone.Margin = new System.Windows.Forms.Padding(4);
+            this.tbPhone.Location = new System.Drawing.Point(169, 258);
             this.tbPhone.Name = "tbPhone";
-            this.tbPhone.Size = new System.Drawing.Size(541, 39);
+            this.tbPhone.Size = new System.Drawing.Size(407, 33);
             this.tbPhone.TabIndex = 24;
             this.tbPhone.Text = "Phone";
             this.tbPhone.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TbPhone_MouseClick);
             // 
             // tbEmail
             // 
-            this.tbEmail.BeforeTouchSize = new System.Drawing.Size(541, 39);
+            this.tbEmail.BeforeTouchSize = new System.Drawing.Size(407, 33);
             this.tbEmail.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tbEmail.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbEmail.Location = new System.Drawing.Point(225, 247);
-            this.tbEmail.Margin = new System.Windows.Forms.Padding(4);
+            this.tbEmail.Location = new System.Drawing.Point(169, 201);
             this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(541, 39);
+            this.tbEmail.Size = new System.Drawing.Size(407, 33);
             this.tbEmail.TabIndex = 23;
             this.tbEmail.Text = "Email";
             this.tbEmail.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TbEmail_MouseClick);
             // 
             // tbName
             // 
-            this.tbName.BeforeTouchSize = new System.Drawing.Size(541, 39);
+            this.tbName.BeforeTouchSize = new System.Drawing.Size(407, 33);
             this.tbName.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tbName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbName.Location = new System.Drawing.Point(225, 180);
-            this.tbName.Margin = new System.Windows.Forms.Padding(4);
+            this.tbName.Location = new System.Drawing.Point(169, 146);
             this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(541, 39);
+            this.tbName.Size = new System.Drawing.Size(407, 33);
             this.tbName.TabIndex = 22;
             this.tbName.Text = "Name";
             this.tbName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TbName_MouseClick);
@@ -181,15 +157,14 @@
             this.cbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbRole.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbRole.ItemHeight = 32;
+            this.cbRole.ItemHeight = 25;
             this.cbRole.Items.AddRange(new object[] {
             "Worker",
             "Administrator",
             "Manager"});
-            this.cbRole.Location = new System.Drawing.Point(225, 112);
-            this.cbRole.Margin = new System.Windows.Forms.Padding(4);
+            this.cbRole.Location = new System.Drawing.Point(169, 91);
             this.cbRole.Name = "cbRole";
-            this.cbRole.Size = new System.Drawing.Size(541, 40);
+            this.cbRole.Size = new System.Drawing.Size(407, 33);
             this.cbRole.TabIndex = 25;
             this.cbRole.SelectedIndexChanged += new System.EventHandler(this.CbRole_SelectedIndexChanged);
             // 
@@ -199,10 +174,9 @@
             this.btnEditShifts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditShifts.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditShifts.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnEditShifts.Location = new System.Drawing.Point(225, 598);
-            this.btnEditShifts.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEditShifts.Location = new System.Drawing.Point(169, 486);
             this.btnEditShifts.Name = "btnEditShifts";
-            this.btnEditShifts.Size = new System.Drawing.Size(230, 77);
+            this.btnEditShifts.Size = new System.Drawing.Size(172, 63);
             this.btnEditShifts.TabIndex = 26;
             this.btnEditShifts.Text = "Assign Shift \r\n(day)";
             this.btnEditShifts.UseVisualStyleBackColor = true;
@@ -215,10 +189,9 @@
             this.btnAssignShfitsPerMonth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAssignShfitsPerMonth.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAssignShfitsPerMonth.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAssignShfitsPerMonth.Location = new System.Drawing.Point(536, 598);
-            this.btnAssignShfitsPerMonth.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAssignShfitsPerMonth.Location = new System.Drawing.Point(402, 486);
             this.btnAssignShfitsPerMonth.Name = "btnAssignShfitsPerMonth";
-            this.btnAssignShfitsPerMonth.Size = new System.Drawing.Size(230, 77);
+            this.btnAssignShfitsPerMonth.Size = new System.Drawing.Size(172, 63);
             this.btnAssignShfitsPerMonth.TabIndex = 27;
             this.btnAssignShfitsPerMonth.Text = "Assign Shift (month)";
             this.btnAssignShfitsPerMonth.UseVisualStyleBackColor = true;
@@ -227,10 +200,10 @@
             // 
             // EditEmployeeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(1067, 692);
+            this.ClientSize = new System.Drawing.Size(800, 562);
             this.Controls.Add(this.btnAssignShfitsPerMonth);
             this.Controls.Add(this.btnEditShifts);
             this.Controls.Add(this.cbRole);
@@ -239,12 +212,10 @@
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.cbWorkshifts);
             this.Controls.Add(this.cbDepartments);
             this.Controls.Add(this.lblEditEmployee);
             this.Controls.Add(this.btnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "EditEmployeeForm";
             this.Text = "EditEmployee";
             this.Load += new System.EventHandler(this.EditEmployeeForm_Load);
@@ -264,7 +235,6 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblEditEmployee;
         private System.Windows.Forms.ComboBox cbDepartments;
-        private System.Windows.Forms.ComboBox cbWorkshifts;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnRemove;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt tbPhone;
