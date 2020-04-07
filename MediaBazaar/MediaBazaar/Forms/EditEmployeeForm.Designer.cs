@@ -31,13 +31,14 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.lblEditEmployee = new System.Windows.Forms.Label();
             this.cbDepartments = new System.Windows.Forms.ComboBox();
-            this.cbWorkshifts = new System.Windows.Forms.ComboBox();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.tbPhone = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.tbEmail = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.tbName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.cbRole = new System.Windows.Forms.ComboBox();
+            this.btnEditShifts = new System.Windows.Forms.Button();
+            this.btnAssignShfitsPerMonth = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tbPhone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbName)).BeginInit();
@@ -83,31 +84,15 @@
             this.cbDepartments.Size = new System.Drawing.Size(407, 33);
             this.cbDepartments.TabIndex = 12;
             // 
-            // cbWorkshifts
-            // 
-            this.cbWorkshifts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbWorkshifts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbWorkshifts.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbWorkshifts.FormattingEnabled = true;
-            this.cbWorkshifts.ItemHeight = 25;
-            this.cbWorkshifts.Items.AddRange(new object[] {
-            "Morning",
-            "Afternoon",
-            "Evening"});
-            this.cbWorkshifts.Location = new System.Drawing.Point(169, 371);
-            this.cbWorkshifts.Name = "cbWorkshifts";
-            this.cbWorkshifts.Size = new System.Drawing.Size(407, 33);
-            this.cbWorkshifts.TabIndex = 13;
-            // 
             // btnEdit
             // 
             this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnEdit.Location = new System.Drawing.Point(169, 439);
+            this.btnEdit.Location = new System.Drawing.Point(169, 419);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(138, 48);
+            this.btnEdit.Size = new System.Drawing.Size(172, 49);
             this.btnEdit.TabIndex = 16;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -121,9 +106,9 @@
             this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemove.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemove.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnRemove.Location = new System.Drawing.Point(438, 439);
+            this.btnRemove.Location = new System.Drawing.Point(402, 419);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(138, 48);
+            this.btnRemove.Size = new System.Drawing.Size(172, 49);
             this.btnRemove.TabIndex = 17;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
@@ -183,25 +168,57 @@
             this.cbRole.TabIndex = 25;
             this.cbRole.SelectedIndexChanged += new System.EventHandler(this.CbRole_SelectedIndexChanged);
             // 
+            // btnEditShifts
+            // 
+            this.btnEditShifts.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditShifts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditShifts.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditShifts.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnEditShifts.Location = new System.Drawing.Point(169, 486);
+            this.btnEditShifts.Name = "btnEditShifts";
+            this.btnEditShifts.Size = new System.Drawing.Size(172, 63);
+            this.btnEditShifts.TabIndex = 26;
+            this.btnEditShifts.Text = "Assign Shift \r\n(day)";
+            this.btnEditShifts.UseVisualStyleBackColor = true;
+            this.btnEditShifts.Visible = false;
+            this.btnEditShifts.Click += new System.EventHandler(this.BtnEditShifts_Click);
+            // 
+            // btnAssignShfitsPerMonth
+            // 
+            this.btnAssignShfitsPerMonth.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAssignShfitsPerMonth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAssignShfitsPerMonth.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAssignShfitsPerMonth.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAssignShfitsPerMonth.Location = new System.Drawing.Point(402, 486);
+            this.btnAssignShfitsPerMonth.Name = "btnAssignShfitsPerMonth";
+            this.btnAssignShfitsPerMonth.Size = new System.Drawing.Size(172, 63);
+            this.btnAssignShfitsPerMonth.TabIndex = 27;
+            this.btnAssignShfitsPerMonth.Text = "Assign Shift (month)";
+            this.btnAssignShfitsPerMonth.UseVisualStyleBackColor = true;
+            this.btnAssignShfitsPerMonth.Visible = false;
+            this.btnAssignShfitsPerMonth.Click += new System.EventHandler(this.BtnAssignShfitsPerMonth_Click);
+            // 
             // EditEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(800, 499);
+            this.ClientSize = new System.Drawing.Size(800, 562);
+            this.Controls.Add(this.btnAssignShfitsPerMonth);
+            this.Controls.Add(this.btnEditShifts);
             this.Controls.Add(this.cbRole);
             this.Controls.Add(this.tbPhone);
             this.Controls.Add(this.tbEmail);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.cbWorkshifts);
             this.Controls.Add(this.cbDepartments);
             this.Controls.Add(this.lblEditEmployee);
             this.Controls.Add(this.btnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "EditEmployeeForm";
             this.Text = "EditEmployee";
+            this.Load += new System.EventHandler(this.EditEmployeeForm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.EditEmployee_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.EditEmployee_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.EditEmployee_MouseUp);
@@ -218,12 +235,13 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblEditEmployee;
         private System.Windows.Forms.ComboBox cbDepartments;
-        private System.Windows.Forms.ComboBox cbWorkshifts;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnRemove;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt tbPhone;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt tbEmail;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt tbName;
         private System.Windows.Forms.ComboBox cbRole;
+        private System.Windows.Forms.Button btnEditShifts;
+        private System.Windows.Forms.Button btnAssignShfitsPerMonth;
     }
 }

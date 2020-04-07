@@ -26,7 +26,8 @@ namespace MediaBazaar
             this.BackColor = ApplicationColors.PrimaryDark;
             this.btnEdit.BackColor = ApplicationColors.Orange;
             this.btnRemove.BackColor = ApplicationColors.Red;
-
+            this.btnEditShifts.BackColor = ApplicationColors.Orange;
+            this.btnAssignShfitsPerMonth.BackColor = ApplicationColors.Orange;
             this.user = user;
             this.mainForm = mainForm;
             this.cbRole.SelectedItem = user.Role;
@@ -109,20 +110,21 @@ namespace MediaBazaar
         {
             if (cbRole.SelectedItem.ToString() == "Worker")
             {
-                Department.GetNames().ForEach(d => this.cbDepartments.Items.Add(d));
                 Worker worker = Worker.GetByUserId(user.Id);
+                Department.GetAll().ForEach(d => {
+                    if (d.Id == worker.DepartmentId) 
+                    {
+                        cbDepartments.SelectedItem = d.Name;
+                    }
+
+                    this.cbDepartments.Items.Add(d);
+                });
 
                 cbDepartments.Visible = true;
-                cbDepartments.SelectedItem = Department.GetAll().Find(x => x.Id == worker.DepartmentId).Name;
-
-                cbWorkshifts.Visible = true;
-                string workshift = worker.GetWorkshift.ToString("G");
-                cbWorkshifts.SelectedItem = workshift.First() + workshift.Substring(1).ToLower();
             }
             else
             {
                 cbDepartments.Visible = false;
-                cbWorkshifts.Visible = false;
             }
         }
 
@@ -146,9 +148,8 @@ namespace MediaBazaar
                         Worker updatedWorker = new Worker(
                             worker.Id,
                             Department.GetByName(cbDepartments.SelectedItem.ToString()).Id,
-                            Worker.GetWorkshiftByName(cbWorkshifts.SelectedItem.ToString()),
                             user
-                        );
+                        ) ;
 
                         worker.Update(updatedWorker);
                         MessageBox.Show("User updated successfully");
@@ -184,7 +185,6 @@ namespace MediaBazaar
                         Worker worker = new Worker(
                             Worker.GetByUserId(user.Id).Id,
                             Department.GetByName(cbDepartments.SelectedItem.ToString()).Id,
-                            Worker.GetWorkshiftByName(cbWorkshifts.SelectedItem.ToString()),
                             user
                         );
                         worker.Delete();
@@ -201,6 +201,29 @@ namespace MediaBazaar
 
                 mainForm.ShowUsers(User.GetAll());
                 this.Close();
+            }
+        }
+
+        private void BtnEditShifts_Click(object sender, EventArgs e)
+        {
+            Worker worker = Worker.GetByUserId(this.user.Id);
+            Forms.WorkerShiftsPerDayForm workerShiftsForm = new Forms.WorkerShiftsPerDayForm(worker);
+            workerShiftsForm.Show();
+        }
+
+        private void BtnAssignShfitsPerMonth_Click(object sender, EventArgs e)
+        {
+            Worker worker = Worker.GetByUserId(this.user.Id);
+            Forms.WorkerShiftsPerMonthForm workerShiftsForm = new Forms.WorkerShiftsPerMonthForm(worker);
+            workerShiftsForm.Show();
+        }
+
+        private void EditEmployeeForm_Load(object sender, EventArgs e)
+        {
+            if (Worker.GetByUserId(this.user.Id) != null)
+            {
+                this.btnEditShifts.Visible = true;
+                this.btnAssignShfitsPerMonth.Visible = true;
             }
         }
     }
