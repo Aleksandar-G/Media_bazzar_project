@@ -276,13 +276,13 @@ namespace MediaBazaar.Models
             switch (val)
             {
                 case "Morning":
-                    return Workshift.MORNING;
+                    return Workshift.Morning;
                 case "Afternoon":
-                    return Workshift.AFTERNOON;
+                    return Workshift.Afternoon;
                 case "Evening":
-                    return Workshift.EVENING;
+                    return Workshift.Evening;
                 default:
-                    return Workshift.MORNING;
+                    return Workshift.Morning;
             }
         }
     }
