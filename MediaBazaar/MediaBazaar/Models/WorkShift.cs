@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace MediaBazaar.Models
 {
-    public class Shift : Model
+    public class WorkShift : Model
     {
         protected long id;
         private long workerId;
-        private Workshift shift;
+        private Shift shift;
         private DateTime date;
         public long Id { get => id; }
         public long WorkerId { get => workerId; }
-        public Workshift SelectedShift { get => shift; }
+        public Shift SelectedShift { get => shift; }
         public DateTime Date { get => date; }
-        public Shift(long workerId, Workshift shift, DateTime date)
+        public WorkShift(long workerId, Shift shift, DateTime date)
         {
             this.workerId = workerId;
             this.shift = shift;

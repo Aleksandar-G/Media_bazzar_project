@@ -15,13 +15,13 @@ namespace MediaBazaar.Forms
         private bool mouseDown;
         private Point lastLocation;
         private Worker worker;
-        private List<Shift> shifts;
+        private List<WorkShift> shifts;
 
         public WorkerShiftsPerDayForm(Worker w)
         {
             InitializeComponent();
             this.worker = w;
-            this.shifts = new List<Shift>();
+            this.shifts = new List<WorkShift>();
 
             this.rbAfternoon.Checked = true;
             this.lblHeading.Text = $"ID:{w.Id}| {w.Name}'s Shifts";
@@ -41,7 +41,7 @@ namespace MediaBazaar.Forms
                 this.lbSelectedShifts.Items.Add($"{shifts[i].Date.ToString("yyyy-MM-dd")} - {shifts[i].SelectedShift}");
             }
         }
-        public bool CheckIfExists(Shift s)
+        public bool CheckIfExists(WorkShift s)
         {
             foreach (var item in this.shifts)
             {
@@ -59,14 +59,14 @@ namespace MediaBazaar.Forms
 
         private void BtnSetShift_Click(object sender, EventArgs e)
         {
-            Workshift shift;
+            Shift shift;
             DateTime date = dateTimePicker.Value;
 
-            if (rbMorning.Checked) shift = Workshift.Morning;
-            else if (rbAfternoon.Checked) shift = Workshift.Afternoon;
-            else shift = Workshift.Evening;
+            if (rbMorning.Checked) shift = Shift.Morning;
+            else if (rbAfternoon.Checked) shift = Shift.Afternoon;
+            else shift = Shift.Evening;
 
-            Shift addedShift = new Shift(this.worker.Id, shift, date);
+            WorkShift addedShift = new WorkShift(this.worker.Id, shift, date);
 
             if (!CheckIfExists(addedShift))
             {

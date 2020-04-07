@@ -15,12 +15,12 @@ namespace MediaBazaar.Forms
         private bool mouseDown;
         private Point lastLocation;
         private Worker worker;
-        private List<Shift> shifts;
+        private List<WorkShift> shifts;
         public WorkerShiftsPerMonthForm(Worker w)
         {
             InitializeComponent();
             this.worker = w;
-            this.shifts = new List<Shift>();
+            this.shifts = new List<WorkShift>();
 
             this.lblHeading.Text = $"{w.Id}| {w.Name}'s Shifts";
             this.BackColor = ApplicationColors.Orange;
@@ -30,18 +30,18 @@ namespace MediaBazaar.Forms
             dateTimePicker.Format = DateTimePickerFormat.Custom;
             dateTimePicker.CustomFormat = "MM/yyyy";
         }
-        public List<Shift> ListShifts(List<DateTime> dates)
+        public List<WorkShift> ListShifts(List<DateTime> dates)
         {
-            List<Shift> result = new List<Shift>();
-            Workshift shift;
+            List<WorkShift> result = new List<WorkShift>();
+            Shift shift;
 
-            if (rbMorning.Checked) shift = Workshift.Morning;
-            else if (rbAfternoon.Checked) shift = Workshift.Afternoon;
-            else shift = Workshift.Evening;
+            if (rbMorning.Checked) shift = Shift.Morning;
+            else if (rbAfternoon.Checked) shift = Shift.Afternoon;
+            else shift = Shift.Evening;
 
             for (int i = 0; i < dates.Count; i++)
             {
-                result.Add(new Shift(this.worker.Id, shift, dates[i]));
+                result.Add(new WorkShift(this.worker.Id, shift, dates[i]));
             }
             return result;
         }

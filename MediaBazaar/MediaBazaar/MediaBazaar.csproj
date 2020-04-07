@@ -189,14 +189,14 @@
     <Compile Include="Models\Manager.cs" />
     <Compile Include="Models\Model.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\Shift.cs" />
+    <Compile Include="Models\WorkShift.cs" />
     <Compile Include="Models\Statistics.cs" />
     <Compile Include="Models\StockRequest.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Worker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Workshift.cs" />
+    <Compile Include="Shift.cs" />
     <EmbeddedResource Include="Forms\AddEmployeeForm.resx">
       <DependentUpon>AddEmployeeForm.cs</DependentUpon>
     </EmbeddedResource>

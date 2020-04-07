@@ -81,7 +81,7 @@ namespace MediaBazaar.Models
                     long id = Convert.ToInt64(reader["id"]);
                     long userId = Convert.ToInt64(reader["user_id"]);
                     long departmentId = Convert.ToInt64(reader["department_id"]);
-                    Workshift workshift = (Workshift)Enum.Parse(typeof(Workshift), reader["workshift"].ToString());
+                    Shift workshift = (Shift)Enum.Parse(typeof(Shift), reader["workshift"].ToString());
 
                     User user = User.GetById(userId);
 
@@ -108,7 +108,7 @@ namespace MediaBazaar.Models
                 {
                     User user = User.GetById(Convert.ToInt64(reader["user_id"]));
                     long departmentId = Convert.ToInt64(reader["department_id"]);
-                    Workshift workshift = (Workshift)Enum.Parse(typeof(Workshift), reader["workshift"].ToString());
+                    Shift workshift = (Shift)Enum.Parse(typeof(Shift), reader["workshift"].ToString());
 
                     worker = new Worker(id, departmentId, user);
 
@@ -263,18 +263,18 @@ namespace MediaBazaar.Models
             dbConnection.CloseConnection();
         }
 
-        public static Workshift GetWorkshiftByName(string val)
+        public static Shift GetWorkshiftByName(string val)
         {
             switch (val)
             {
                 case "Morning":
-                    return Workshift.Morning;
+                    return Shift.Morning;
                 case "Afternoon":
-                    return Workshift.Afternoon;
+                    return Shift.Afternoon;
                 case "Evening":
-                    return Workshift.Evening;
+                    return Shift.Evening;
                 default:
-                    return Workshift.Morning;
+                    return Shift.Morning;
             }
         }
        
