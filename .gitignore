@@ -338,3 +338,17 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+WebApp/node_modules
+WebApp/public/hot
+WebApp/public/storage
+WebApp/storage/*.key
+WebApp/vendor
+WebApp/.env
+WebApp/.env.backup
+WebApp/.phpunit.result.cache
+WebApp/Homestead.json
+WebApp/Homestead.yaml
+WebApp/npm-debug.log
+WebApp/yarn-error.log
+cache
