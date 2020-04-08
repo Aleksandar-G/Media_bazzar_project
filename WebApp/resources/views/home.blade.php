@@ -26,15 +26,11 @@ use App\Http\Controllers\CalendarController;
           plugins: [  'dayGrid', 'timeGrid' ],
           defaultView: 'timeGridWeek',
           themeSystem: 'standard',
-          events: [{{CalendarController::index()}}]
-           
-          
+          events:'/workshifts', // use the `url` property
+
         });
 
-        //calendar.setOption('contentHeight', 600);
         calendar.render();
-        //console.log(calendar.refetchEvents());
-        //console.log(calendar.getEventByid(1));
       });
 
     </script>

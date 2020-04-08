@@ -25,4 +25,4 @@ Route::get('/home', function(){
     return view('home');
 });
 
-Route::get('/work_shift', 'CalendarController@index');
+Route::get('/workshifts', 'CalendarController@index');
