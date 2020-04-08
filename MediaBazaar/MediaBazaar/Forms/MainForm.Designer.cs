@@ -51,7 +51,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(1376, 0);
+            this.btnClose.Location = new System.Drawing.Point(1432, -1);
             this.btnClose.Margin = new System.Windows.Forms.Padding(0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(68, 69);
@@ -72,7 +72,7 @@
             this.navigation.Location = new System.Drawing.Point(0, 0);
             this.navigation.Margin = new System.Windows.Forms.Padding(0);
             this.navigation.Name = "navigation";
-            this.navigation.Size = new System.Drawing.Size(375, 692);
+            this.navigation.Size = new System.Drawing.Size(422, 865);
             this.navigation.TabIndex = 0;
             this.navigation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Navigation_MouseDown);
             this.navigation.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Navigation_MouseMove);
@@ -85,10 +85,10 @@
             this.btnProducts.FlatAppearance.BorderSize = 0;
             this.btnProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProducts.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnProducts.Location = new System.Drawing.Point(0, 571);
+            this.btnProducts.Location = new System.Drawing.Point(0, 566);
             this.btnProducts.Margin = new System.Windows.Forms.Padding(0);
             this.btnProducts.Name = "btnProducts";
-            this.btnProducts.Size = new System.Drawing.Size(375, 71);
+            this.btnProducts.Size = new System.Drawing.Size(422, 63);
             this.btnProducts.TabIndex = 18;
             this.btnProducts.Text = "Products";
             this.btnProducts.UseVisualStyleBackColor = false;
@@ -101,10 +101,10 @@
             this.btnViewStockRequests.FlatAppearance.BorderSize = 0;
             this.btnViewStockRequests.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewStockRequests.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnViewStockRequests.Location = new System.Drawing.Point(0, 478);
+            this.btnViewStockRequests.Location = new System.Drawing.Point(0, 482);
             this.btnViewStockRequests.Margin = new System.Windows.Forms.Padding(0);
             this.btnViewStockRequests.Name = "btnViewStockRequests";
-            this.btnViewStockRequests.Size = new System.Drawing.Size(375, 75);
+            this.btnViewStockRequests.Size = new System.Drawing.Size(422, 62);
             this.btnViewStockRequests.TabIndex = 17;
             this.btnViewStockRequests.Text = "View Stock Requests";
             this.btnViewStockRequests.UseVisualStyleBackColor = false;
@@ -117,10 +117,10 @@
             this.btnViewStatistics.FlatAppearance.BorderSize = 0;
             this.btnViewStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewStatistics.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnViewStatistics.Location = new System.Drawing.Point(0, 385);
+            this.btnViewStatistics.Location = new System.Drawing.Point(0, 407);
             this.btnViewStatistics.Margin = new System.Windows.Forms.Padding(0);
             this.btnViewStatistics.Name = "btnViewStatistics";
-            this.btnViewStatistics.Size = new System.Drawing.Size(375, 74);
+            this.btnViewStatistics.Size = new System.Drawing.Size(422, 56);
             this.btnViewStatistics.TabIndex = 16;
             this.btnViewStatistics.Text = "View Statistics";
             this.btnViewStatistics.UseVisualStyleBackColor = false;
@@ -133,10 +133,10 @@
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.button1.Location = new System.Drawing.Point(0, 293);
+            this.button1.Location = new System.Drawing.Point(0, 329);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(375, 74);
+            this.button1.Size = new System.Drawing.Size(422, 60);
             this.button1.TabIndex = 15;
             this.button1.Text = "Add Department";
             this.button1.UseVisualStyleBackColor = false;
@@ -149,10 +149,10 @@
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.button2.Location = new System.Drawing.Point(0, 198);
+            this.button2.Location = new System.Drawing.Point(0, 248);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(375, 77);
+            this.button2.Size = new System.Drawing.Size(422, 64);
             this.button2.TabIndex = 14;
             this.button2.Text = "Add Employee";
             this.button2.UseVisualStyleBackColor = false;
@@ -173,10 +173,10 @@
             // 
             this.flpEmployees.AutoScroll = true;
             this.flpEmployees.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flpEmployees.Location = new System.Drawing.Point(435, 157);
+            this.flpEmployees.Location = new System.Drawing.Point(489, 196);
             this.flpEmployees.Margin = new System.Windows.Forms.Padding(0);
             this.flpEmployees.Name = "flpEmployees";
-            this.flpEmployees.Size = new System.Drawing.Size(980, 508);
+            this.flpEmployees.Size = new System.Drawing.Size(1102, 635);
             this.flpEmployees.TabIndex = 16;
             this.flpEmployees.WrapContents = false;
             // 
@@ -209,7 +209,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(1439, 692);
+            this.ClientSize = new System.Drawing.Size(1500, 774);
             this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.lblEmployees);
             this.Controls.Add(this.flpEmployees);

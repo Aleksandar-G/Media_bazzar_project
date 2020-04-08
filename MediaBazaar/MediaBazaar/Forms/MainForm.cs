@@ -40,7 +40,7 @@ namespace MediaBazaar
 
         public void ShowUsers(List<User> users)
         {
-            
+
             this.flpEmployees.Controls.Clear();
 
             users.ForEach(user =>
@@ -161,6 +161,8 @@ namespace MediaBazaar
         {
             var productsForm = new ProductsListForm();
             productsForm.Show();
+
         }
+
     }
 }
