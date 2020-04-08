@@ -164,5 +164,10 @@ namespace MediaBazaar
 
         }
 
+        private void BtnViewWorkshifts_Click(object sender, EventArgs e)
+        {
+            ViewWorkshiftsForm workshiftsForm = new ViewWorkshiftsForm();
+            workshiftsForm.Show();
+        }
     }
 }
