@@ -40,7 +40,7 @@ namespace MediaBazaar
 
         public void ShowUsers(List<User> users)
         {
-            
+
             this.flpEmployees.Controls.Clear();
 
             users.ForEach(user =>
@@ -157,9 +157,17 @@ namespace MediaBazaar
             ShowUsers(User.GetAll().FindAll(x => x.Name.Contains(search)));
         }
 
-        private void FlpEmployees_Paint(object sender, PaintEventArgs e)
+        private void BtnProducts_Click(object sender, EventArgs e)
         {
+            var productsForm = new ProductsListForm();
+            productsForm.Show();
 
+        }
+
+        private void BtnViewWorkshifts_Click(object sender, EventArgs e)
+        {
+            ViewWorkshiftsForm workshiftsForm = new ViewWorkshiftsForm();
+            workshiftsForm.Show();
         }
     }
 }

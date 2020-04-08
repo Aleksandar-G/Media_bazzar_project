@@ -121,6 +121,12 @@
     <Compile Include="Forms\AddDepartmentForm.Designer.cs">
       <DependentUpon>AddDepartmentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AddProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddProductForm.Designer.cs">
+      <DependentUpon>AddProductForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AssignEmployessForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +181,12 @@
     <Compile Include="Forms\ViewStockRequestForm.Designer.cs">
       <DependentUpon>ViewStockRequestForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ViewWorkshiftsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ViewWorkshiftsForm.Designer.cs">
+      <DependentUpon>ViewWorkshiftsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\WorkerShiftsPerDayForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,6 +218,9 @@
     <EmbeddedResource Include="Forms\AddDepartmentForm.resx">
       <DependentUpon>AddDepartmentForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddProductForm.resx">
+      <DependentUpon>AddProductForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AssignEmployessForm.resx">
       <DependentUpon>AssignEmployessForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -232,6 +247,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ViewStockRequestForm.resx">
       <DependentUpon>ViewStockRequestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ViewWorkshiftsForm.resx">
+      <DependentUpon>ViewWorkshiftsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\WorkerShiftsPerDayForm.resx">
       <DependentUpon>WorkerShiftsPerDayForm.cs</DependentUpon>

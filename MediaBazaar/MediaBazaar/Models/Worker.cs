@@ -83,7 +83,7 @@ namespace MediaBazaar.Models
                     long id = Convert.ToInt64(reader["id"]);
                     long userId = Convert.ToInt64(reader["user_id"]);
                     long departmentId = Convert.ToInt64(reader["department_id"]);
-                    Shift workshift = (Shift)Enum.Parse(typeof(Shift), reader["workshift"].ToString());
+                    //Shift workshift = (Shift)Enum.Parse(typeof(Shift), reader["workshift"].ToString());
 
                     User user = User.GetById(userId);
 
@@ -176,7 +176,7 @@ namespace MediaBazaar.Models
             dbConnection.OpenConnection();
             //List<User> workers = new List<User>();
             Dictionary<long, string> workers = new Dictionary<long, string>();
-            string query = 
+            string query =
             @"
                 SELECT u.Name, u.Id,u.Email, u.Password, u.Phone FROM users as u
                 INNER JOIN workers as w 
@@ -230,7 +230,7 @@ namespace MediaBazaar.Models
             DBconnection dbConnection = new DBconnection();
             dbConnection.OpenConnection();
             Dictionary<string, int> result = new Dictionary<string, int>();
-            string query = 
+            string query =
             @"
                 SELECT COUNT(*) as num, d.Name as name FROM workers 
                 INNER JOIN departments as d 
@@ -240,6 +240,7 @@ namespace MediaBazaar.Models
 
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
+
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -279,6 +280,36 @@ namespace MediaBazaar.Models
                     return Shift.Morning;
             }
         }
-       
+        public static List<WorkShift> GetWorkShiftsByWorkerID(long workerId)
+        {
+            List<WorkShift> result = new List<WorkShift>();
+
+            DBconnection dbConnection = new DBconnection();
+            dbConnection.OpenConnection();
+
+            string query =
+            @"
+                SELECT * FROM work_shifts 
+                WHERE worker_id = @workerid
+                ORDER BY date ASC
+            ";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
+            {
+                cmd.Parameters.AddWithValue("@workerid",workerId);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    long id = workerId;
+                    Shift workshift = (Shift)Enum.Parse(typeof(Shift), reader["shift"].ToString());
+                    DateTime date = Convert.ToDateTime(reader["date"]);
+                    result.Add(new WorkShift(workerId, workshift,date));
+                }
+            }
+
+            dbConnection.CloseConnection();
+            return result;
+        }
+
     }
 }
