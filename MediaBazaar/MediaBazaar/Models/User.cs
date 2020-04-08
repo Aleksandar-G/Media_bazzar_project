@@ -5,6 +5,8 @@ using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Http;
+using Newtonsoft.Json.Linq;
 
 namespace MediaBazaar.Models
 {
@@ -16,6 +18,11 @@ namespace MediaBazaar.Models
         private string phone;
         private string password;
         private string role;
+        private decimal salary;
+        private DateTime birthday;
+
+        private HttpClient client = new HttpClient();
+        private const string REGISTER_URL = "http://localhost:8000/api/register";
 
         public long Id { get { return this.id; } }
 
@@ -24,13 +31,17 @@ namespace MediaBazaar.Models
         public string Phone { get => phone; set => phone = value; }
         protected string Password { get => password; }
         public string Role { get => role; set => role = value; }
+        public decimal Salary { get => salary; set => salary = value; }
+        public DateTime Birthday { get => birthday; set => birthday = value; }
 
-        public User(string name, string email, string phone, string role) : base()
+        public User(string name, string email, string phone, string role, decimal salary, DateTime birthday) : base()
         {
             this.name = name;
             this.email = email;
             this.phone = phone;
             this.role = role;
+            this.salary = salary;
+            this.birthday = birthday;
         }
 
         public User(User anotherUser) : base()
@@ -41,9 +52,11 @@ namespace MediaBazaar.Models
             this.password = anotherUser.password;
             this.phone = anotherUser.phone;
             this.role = anotherUser.role;
+            this.salary = anotherUser.salary;
+            this.birthday = anotherUser.birthday;
         }
 
-        public User(long id, string name, string email, string password, string phone, string role) : base()
+        public User(long id, string name, string email, string password, string phone, string role, decimal salary, DateTime birthday) : base()
         {
             this.id = id;
             this.name = name;
@@ -51,32 +64,32 @@ namespace MediaBazaar.Models
             this.password = password;
             this.phone = phone;
             this.role = role;
+            this.salary = salary;
+            this.birthday = birthday;
         }
 
         public override void Insert()
         {
             this.password = GeneratePassword(8);
 
-            dbConnection.OpenConnection();
-            string query = "INSERT INTO users(name, email, password, phone, role) VALUES(@name, @email, @password, @phone, @role)";
-
-            using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
+            var values = new Dictionary<string, string>
             {
-                string password = BCrypt.Net.BCrypt.HashPassword(this.password);
-                password.Replace("$2a$", "$2y$");
+                { "name", this.name },
+                { "email", this.email },
+                { "password", this.password },
+                { "phone", this.phone },
+                { "role", this.role },
+                { "salary", this.salary.ToString() },
+                { "birthday", this.birthday.ToString("yyyy-MM-dd") },
+                { "created_at", DateTime.Now.ToString("yyyy-MM-dd") },
+                { "updated_at", DateTime.Now.ToString("yyyy-MM-dd") }
+            };
 
-                cmd.Parameters.AddWithValue("@name", name);
-                cmd.Parameters.AddWithValue("@email", email);
-                cmd.Parameters.AddWithValue("@password", password);
-                cmd.Parameters.AddWithValue("@phone", phone);
-                cmd.Parameters.AddWithValue("@role", role);
-
-                cmd.ExecuteNonQuery();
-                this.id = cmd.LastInsertedId;
-                this.SendPassword();
-            }
-
-            dbConnection.CloseConnection();
+            var content = new FormUrlEncodedContent(values);
+            var response = client.PostAsync(REGISTER_URL, content).Result;
+            var responseString = response.Content.ReadAsStringAsync().Result;
+            var obj = JObject.Parse(JObject.Parse(responseString).GetValue("success").ToString());
+            this.id = Convert.ToInt64(obj.GetValue("id"));
         }
 
         public override void Delete()
@@ -110,8 +123,10 @@ namespace MediaBazaar.Models
                     string password = reader["password"].ToString();
                     string phone = reader["phone"].ToString();
                     string role = reader["role"].ToString();
+                    decimal salary = Convert.ToDecimal(reader["salary"].ToString());
+                    DateTime birthday = DateTime.Parse(reader["birthday"].ToString());
 
-                    users.Add(new User(id, name, email, password, phone, role));
+                    users.Add(new User(id, name, email, password, phone, role, salary, birthday));
                 }
             }
 
@@ -121,7 +136,6 @@ namespace MediaBazaar.Models
 
         public static User GetById(long id)
         {
-
             DBconnection dbConnection = new DBconnection();
             dbConnection.OpenConnection();
             User user;
@@ -137,8 +151,10 @@ namespace MediaBazaar.Models
                     string password = reader["password"].ToString();
                     string phone = reader["phone"].ToString();
                     string role = reader["role"].ToString();
+                    decimal salary = Convert.ToDecimal(reader["salary"].ToString());
+                    DateTime birthday = DateTime.Parse(reader["birthday"].ToString());
 
-                    user = new User(id, name, email, password, phone, role);
+                    user = new User(id, name, email, password, phone, role, salary, birthday);
 
                     dbConnection.CloseConnection();
                     return user;
@@ -167,8 +183,10 @@ namespace MediaBazaar.Models
                     string userPassword = reader["password"].ToString();
                     string phone = reader["phone"].ToString();
                     string role = reader["role"].ToString();
+                    decimal salary = Convert.ToDecimal(reader["salary"].ToString());
+                    DateTime birthday = DateTime.Parse(reader["birthday"].ToString());
 
-                    user = new User(userId, userName, userEmail, userPassword, phone, role);
+                    user = new User(userId, userName, email, userPassword, phone, role, salary, birthday);
 
                     dbConnection.CloseConnection();
                     return user;
@@ -176,7 +194,6 @@ namespace MediaBazaar.Models
             }
 
             dbConnection.CloseConnection();
-
             return null;
         }
 
@@ -185,13 +202,18 @@ namespace MediaBazaar.Models
             User user = (User)newUser;
             dbConnection.OpenConnection();
 
-            string query = $"UPDATE users SET name = @name, email = @email, phone = @phone, role = @role WHERE id = {user.Id}";
+            string query = $@"UPDATE users 
+                              SET name = @name, email = @email, phone = @phone, role = @role, salary = @salary, birthday = @birthday 
+                              WHERE id = {user.Id}";
+
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
                 cmd.Parameters.AddWithValue("@name", user.name);
                 cmd.Parameters.AddWithValue("@email", user.email);
                 cmd.Parameters.AddWithValue("@phone", user.phone);
                 cmd.Parameters.AddWithValue("@role", user.role);
+                cmd.Parameters.AddWithValue("@salary", user.Salary);
+                cmd.Parameters.AddWithValue("@birthday", user.Birthday);
 
                 cmd.ExecuteNonQuery();
             }
@@ -199,23 +221,6 @@ namespace MediaBazaar.Models
             dbConnection.CloseConnection();
         }
 
-        private void SendPassword()
-        {
-            MailMessage mail = new MailMessage();
-            SmtpClient SmtpServer = new SmtpClient("smtp.mailgun.org");
-
-            mail.From = new MailAddress("no-reply@mediabazaar.xyz");
-            mail.To.Add(this.email);
-            mail.Subject = "Account created";
-            mail.Body = $"Hello, {this.name}! You have registered to our application. This is your password: {this.password}";
-
-            SmtpServer.Port = 587;
-            SmtpServer.Credentials =
-                new System.Net.NetworkCredential("postmaster@mediabazaar.xyz", "27404e89798aa79aa8b6dff6123a92f1-9a235412-fb09f04b");
-            SmtpServer.EnableSsl = true;
-            SmtpServer.Send(mail);
-
-        }
         private static string GeneratePassword(int length)
         {
             Random random = new Random();

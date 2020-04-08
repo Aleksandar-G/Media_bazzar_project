@@ -17,7 +17,8 @@ namespace MediaBazaar.Models
         public long UserId { get => userId; }
         public long DepartmentId { get => departmentId; }
 
-        public Worker(string name, string email, string phone, long departmentId) : base(name, email, phone, "Worker")
+        public Worker(string name, string email, string phone, long departmentId, decimal salary, DateTime birthday)
+            : base(name, email, phone, "Worker", salary, birthday)
         {
             this.userId = base.id;
             this.departmentId = departmentId;
@@ -33,13 +34,14 @@ namespace MediaBazaar.Models
         public override void Insert()
         {
             base.Insert();
+            this.userId = base.Id;
 
             dbConnection.OpenConnection();
-            string query = "INSERT INTO workers (user_id, department_id) VALUES (@userId, @departmentId)";
+            string query = "INSERT INTO workers (user_id, department_id, created_at, updated_at) VALUES (@userId, @departmentId, NOW(), NOW())";
 
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
-                cmd.Parameters.AddWithValue("@userId", base.Id);
+                cmd.Parameters.AddWithValue("@userId", this.userId);
                 cmd.Parameters.AddWithValue("@departmentId", this.departmentId);
                 cmd.ExecuteNonQuery();
                 this.id = cmd.LastInsertedId;
@@ -155,7 +157,7 @@ namespace MediaBazaar.Models
             Worker worker = (Worker)newWorker;
             dbConnection.OpenConnection();
 
-            string query = @"UPDATE workers SET user_id = @user_id, department_id = @department_id, workshift = @workshift WHERE id = @workerId";
+            string query = @"UPDATE workers SET user_id = @user_id, department_id = @department_id WHERE id = @workerId";
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
                 cmd.Parameters.AddWithValue("@user_id", worker.userId);
