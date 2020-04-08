@@ -36,11 +36,12 @@
             this.lblItemQuantity = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblItemDepartment = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnClose
             // 
-            this.btnClose.BackColor = System.Drawing.Color.Maroon;
+            this.btnClose.BackColor = System.Drawing.Color.DarkRed;
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -62,7 +63,7 @@
             this.label1.Location = new System.Drawing.Point(30, 15);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 30);
+            this.label1.Size = new System.Drawing.Size(214, 45);
             this.label1.TabIndex = 16;
             this.label1.Text = "Product Info";
             // 
@@ -81,7 +82,7 @@
             // 
             this.lblDescription.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescription.ForeColor = System.Drawing.Color.White;
-            this.lblDescription.Location = new System.Drawing.Point(31, 168);
+            this.lblDescription.Location = new System.Drawing.Point(31, 210);
             this.lblDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(303, 117);
@@ -96,7 +97,7 @@
             this.lblItemPrice.Location = new System.Drawing.Point(31, 394);
             this.lblItemPrice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblItemPrice.Name = "lblItemPrice";
-            this.lblItemPrice.Size = new System.Drawing.Size(83, 21);
+            this.lblItemPrice.Size = new System.Drawing.Size(124, 32);
             this.lblItemPrice.TabIndex = 19;
             this.lblItemPrice.Text = "ItemPrice";
             // 
@@ -108,7 +109,7 @@
             this.lblItemQuantity.Location = new System.Drawing.Point(198, 394);
             this.lblItemQuantity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblItemQuantity.Name = "lblItemQuantity";
-            this.lblItemQuantity.Size = new System.Drawing.Size(77, 21);
+            this.lblItemQuantity.Size = new System.Drawing.Size(114, 32);
             this.lblItemQuantity.TabIndex = 20;
             this.lblItemQuantity.Text = "Quantity";
             // 
@@ -120,7 +121,7 @@
             this.label2.Location = new System.Drawing.Point(31, 364);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 21);
+            this.label2.Size = new System.Drawing.Size(79, 32);
             this.label2.TabIndex = 21;
             this.label2.Text = "Price:";
             // 
@@ -132,16 +133,28 @@
             this.label3.Location = new System.Drawing.Point(198, 362);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 21);
+            this.label3.Size = new System.Drawing.Size(121, 32);
             this.label3.TabIndex = 22;
             this.label3.Text = "Quantity:";
             // 
+            // lblItemDepartment
+            // 
+            this.lblItemDepartment.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblItemDepartment.ForeColor = System.Drawing.Color.White;
+            this.lblItemDepartment.Location = new System.Drawing.Point(32, 160);
+            this.lblItemDepartment.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblItemDepartment.Name = "lblItemDepartment";
+            this.lblItemDepartment.Size = new System.Drawing.Size(303, 30);
+            this.lblItemDepartment.TabIndex = 23;
+            this.lblItemDepartment.Text = "ItemDepartment";
+            // 
             // ProductInfoForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(366, 459);
+            this.Controls.Add(this.lblItemDepartment);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblItemQuantity);
@@ -172,5 +185,6 @@
         private System.Windows.Forms.Label lblItemQuantity;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblItemDepartment;
     }
 }
