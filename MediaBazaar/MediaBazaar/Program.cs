@@ -24,7 +24,6 @@ namespace MediaBazaar
             LoginForm loginForm = new LoginForm();
             //StockRequestForm stockRequestForm = new StockRequestForm();
             Application.Run(loginForm);
-
             if (loginForm.currentUser != null)
             {
                 Application.Run(new MainForm(loginForm.currentUser));

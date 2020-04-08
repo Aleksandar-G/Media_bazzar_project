@@ -1,23 +1,47 @@
-@extends('layouts.app')
+<?php
+use App\Http\Controllers\CalendarController;
+?>
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+    <link href="{{ URL::asset('fullcalendar/core/main.css') }}" rel='stylesheet' />
+    <link href="{{ URL::asset('fullcalendar/daygrid/main.css') }}" rel='stylesheet' />
+    <link href="{{ URL::asset('fullcalendar/timegrid/main.css') }}" rel='stylesheet' />
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' />
+    
 
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
+    <script src="{{ URL::asset('fullcalendar/core/main.js') }}"></script>
+    <script src="{{ URL::asset('fullcalendar/daygrid/main.js') }}"></script>
+    <script src="{{ URL::asset('fullcalendar/timegrid/main.js') }}"></script>
+
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          plugins: [  'dayGrid', 'timeGrid' ],
+          defaultView: 'timeGridWeek',
+          themeSystem: 'standard',
+          events: [{{CalendarController::index()}}]
+           
+          
+        });
+
+        //calendar.setOption('contentHeight', 600);
+        calendar.render();
+        //console.log(calendar.refetchEvents());
+        //console.log(calendar.getEventByid(1));
+      });
+
+    </script>
+  </head>
+  <body>
+
+    <div id='calendar' style = "margin:100px"></div>
+
+  </body>
+</html>
