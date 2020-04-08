@@ -13,3 +13,10 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
+
+mix.copy('node_modules/@fullcalendar/core/main.js', 'public/fullcalendar/core/main.js')
+mix.copy('node_modules/@fullcalendar/core/main.css', 'public/fullcalendar/core/main.css')
+mix.copy('node_modules/@fullcalendar/daygrid/main.js', 'public/fullcalendar/daygrid/main.js')
+mix.copy('node_modules/@fullcalendar/daygrid/main.css', 'public/fullcalendar/daygrid/main.css')
+mix.copy('node_modules/@fullcalendar/timegrid/main.js', 'public/fullcalendar/timegrid/main.js')
+mix.copy('node_modules/@fullcalendar/timegrid/main.css', 'public/fullcalendar/timegrid/main.css')

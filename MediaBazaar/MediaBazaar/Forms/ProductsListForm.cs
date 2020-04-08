@@ -21,16 +21,22 @@ namespace MediaBazaar.Forms
         {
             InitializeComponent();
             this.BackColor = ApplicationColors.PrimaryDark;
-            this.btnInfo.BackColor = ApplicationColors.Red;
         }
 
-        private void ProductsListForm_Load(object sender, EventArgs e)
+        private void CmbProducts_Click(object sender, EventArgs e)
         {
+            FillUpProducts();
+        }
+
+        private void FillUpProducts()
+        {
+            cmbProducts.Items.Clear();
+
             try
             {
-                foreach(string product in Product.GetAllProducts())
+                foreach (Product product in Product.GetAll())
                 {
-                    cmbProducts.Items.Add(product);
+                    cmbProducts.Items.Add(product.Name);
                 }
             }
             catch (Exception ex)
@@ -41,38 +47,18 @@ namespace MediaBazaar.Forms
 
         private void BtnInfo_Click(object sender, EventArgs e)
         {
+            string productName = "";
+            Product product;
+
             try
             {
-                string productName = cmbProducts.SelectedItem.ToString();
+                productName = cmbProducts.SelectedItem.ToString();
 
-                string productDescription = "";
-                double productPrice = 0;
-                int productQuantity = 0;
+                product = Product.GetByName(productName);
 
-                DBconnection dbConnection = new DBconnection();
-                string selectQuery = "SELECT * FROM products;";
-
-                dbConnection.OpenConnection();
-
-                MySqlCommand command = new MySqlCommand(selectQuery, dbConnection.connection);
-                //command.Parameters.AddWithValue("@name", productName);
-
-                MySqlDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    if (reader.GetString("Name") == productName)
-                    {
-                        productDescription = reader.GetString("Description");
-                        productPrice = Convert.ToDouble(reader.GetString("Price"));
-                        productQuantity = Convert.ToInt32(reader.GetString("Quantity"));
-                    }
-                }
-
-                ProductInfoForm productInfoForm = new ProductInfoForm(productName, productDescription, productPrice, productQuantity);
+                ProductInfoForm productInfoForm = new ProductInfoForm(product);
                 productInfoForm.Show();
 
-                dbConnection.CloseConnection();
             }
 
             catch (Exception ex)
@@ -80,6 +66,34 @@ namespace MediaBazaar.Forms
                 MessageBox.Show(ex.Message);
             }
             
+        }
+
+        private void BtnCreateProduct_Click(object sender, EventArgs e)
+        {
+            var addProductForm = new AddProductForm();
+            addProductForm.Show();
+        }
+
+        private void BtnRemove_Click(object sender, EventArgs e)
+        {
+            string productName = "";
+            Product product;
+
+            try
+            {
+                productName = cmbProducts.SelectedItem.ToString();
+
+                product = Product.GetByName(productName);
+
+                product.Delete();
+                MessageBox.Show("Product was successfully deleted!");
+                FillUpProducts();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnClose_Click(object sender, EventArgs e)

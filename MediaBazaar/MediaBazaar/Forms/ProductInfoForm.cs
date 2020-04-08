@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MediaBazaar.Models;
 
 namespace MediaBazaar.Forms
 {
@@ -15,16 +16,16 @@ namespace MediaBazaar.Forms
         private bool mouseDown;
         private Point lastLocation;
 
-        public ProductInfoForm(string name, string description, double price, int quantity)
+        public ProductInfoForm(Product product)
         {
             InitializeComponent();
             this.BackColor = ApplicationColors.PrimaryDark;
-            this.btnClose.BackColor = ApplicationColors.Red;
 
-            lblItemName.Text = name;
-            lblDescription.Text = description;
-            lblItemPrice.Text = price.ToString();
-            lblItemQuantity.Text = quantity.ToString();
+            lblItemName.Text = product.Name;
+            lblItemDepartment.Text = product.Department + " Department";
+            lblDescription.Text = product.Description + " (description)";
+            lblItemPrice.Text = product.Price.ToString();
+            lblItemQuantity.Text = product.Quantity.ToString();
         }
 
         private void BtnClose_Click(object sender, EventArgs e)
