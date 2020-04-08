@@ -1,43 +1,39 @@
-<?php
-use App\Http\Controllers\CalendarController;
-?>
-
 <!DOCTYPE html>
 <html lang='en'>
-  <head>
-    <meta charset='utf-8' />
 
-    <link href="{{ URL::asset('fullcalendar/core/main.css') }}" rel='stylesheet' />
-    <link href="{{ URL::asset('fullcalendar/daygrid/main.css') }}" rel='stylesheet' />
-    <link href="{{ URL::asset('fullcalendar/timegrid/main.css') }}" rel='stylesheet' />
-    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' />
-    
+<head>
+  <meta charset='utf-8' />
 
-    <script src="{{ URL::asset('fullcalendar/core/main.js') }}"></script>
-    <script src="{{ URL::asset('fullcalendar/daygrid/main.js') }}"></script>
-    <script src="{{ URL::asset('fullcalendar/timegrid/main.js') }}"></script>
+  <link href="{{ URL::asset('fullcalendar/core/main.css') }}" rel='stylesheet' />
+  <link href="{{ URL::asset('fullcalendar/daygrid/main.css') }}" rel='stylesheet' />
+  <link href="{{ URL::asset('fullcalendar/timegrid/main.css') }}" rel='stylesheet' />
+  <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' />
 
-    <script>
 
-      document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
+  <script src="{{ URL::asset('fullcalendar/core/main.js') }}"></script>
+  <script src="{{ URL::asset('fullcalendar/daygrid/main.js') }}"></script>
+  <script src="{{ URL::asset('fullcalendar/timegrid/main.js') }}"></script>
 
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          plugins: [  'dayGrid', 'timeGrid' ],
-          defaultView: 'timeGridWeek',
-          themeSystem: 'standard',
-          events:'/workshifts', // use the `url` property
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
 
-        });
-
-        calendar.render();
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        plugins: ['dayGrid', 'timeGrid'],
+        defaultView: 'timeGridWeek',
+        themeSystem: 'standard',
+        events: '/workshifts', // use the `url` property
       });
 
-    </script>
-  </head>
-  <body>
+      calendar.render();
+    });
+  </script>
+</head>
 
-    <div id='calendar' style = "margin:100px"></div>
+<body>
 
-  </body>
+  <div id='calendar' style="margin:100px"></div>
+
+</body>
+
 </html>
