@@ -156,5 +156,10 @@ namespace MediaBazaar
             string search = tbSearch.Text;
             ShowUsers(User.GetAll().FindAll(x => x.Name.Contains(search)));
         }
+
+        private void FlpEmployees_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

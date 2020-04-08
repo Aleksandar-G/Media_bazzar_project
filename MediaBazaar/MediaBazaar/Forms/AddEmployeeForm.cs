@@ -75,14 +75,10 @@ namespace MediaBazaar
             {
                 cbDepartments.Visible = true;
                 //cbDepartments.SelectedIndex = 0;
-
-                cbWorkshifts.Visible = true;
-                //cbWorkshifts.SelectedIndex = 0;
             }
             else
             {
                 cbDepartments.Visible = false;
-                cbWorkshifts.Visible = false;
             }
         }
 
@@ -145,9 +141,8 @@ namespace MediaBazaar
                     if (cbRole.SelectedItem.ToString() == "Worker")
                     {
                         Department department = Department.GetByName(cbDepartments.SelectedItem.ToString());
-                        Workshift workshift = Worker.GetWorkshiftByName(cbWorkshifts.SelectedItem.ToString());
 
-                        Worker worker = new Worker(name, email, phone, department.Id, workshift);
+                        Worker worker = new Worker(name, email, phone, department.Id);
                         worker.Insert();
                     }
                     else if (cbRole.SelectedItem.ToString() == "Administrator")

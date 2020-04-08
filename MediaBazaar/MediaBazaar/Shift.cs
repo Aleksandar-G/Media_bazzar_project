@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MediaBazaar
 {
-    public enum Workshift
+    public enum Shift
     {
         Morning,
         Afternoon,

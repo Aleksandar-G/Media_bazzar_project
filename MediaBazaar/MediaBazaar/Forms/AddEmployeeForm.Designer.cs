@@ -36,7 +36,6 @@
             this.tbPhone = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.cbRole = new System.Windows.Forms.ComboBox();
             this.cbDepartments = new System.Windows.Forms.ComboBox();
-            this.cbWorkshifts = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.tbName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbPhone)).BeginInit();
@@ -88,7 +87,7 @@
             // 
             // tbName
             // 
-            this.tbName.BeforeTouchSize = new System.Drawing.Size(407, 33);
+            this.tbName.BeforeTouchSize = new System.Drawing.Size(262, 33);
             this.tbName.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tbName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbName.Location = new System.Drawing.Point(202, 142);
@@ -100,7 +99,7 @@
             // 
             // tbEmail
             // 
-            this.tbEmail.BeforeTouchSize = new System.Drawing.Size(407, 33);
+            this.tbEmail.BeforeTouchSize = new System.Drawing.Size(262, 33);
             this.tbEmail.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tbEmail.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbEmail.Location = new System.Drawing.Point(202, 197);
@@ -112,7 +111,7 @@
             // 
             // tbPhone
             // 
-            this.tbPhone.BeforeTouchSize = new System.Drawing.Size(407, 33);
+            this.tbPhone.BeforeTouchSize = new System.Drawing.Size(262, 33);
             this.tbPhone.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tbPhone.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPhone.Location = new System.Drawing.Point(202, 254);
@@ -151,30 +150,12 @@
             this.cbDepartments.TabIndex = 24;
             this.cbDepartments.Visible = false;
             // 
-            // cbWorkshifts
-            // 
-            this.cbWorkshifts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbWorkshifts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbWorkshifts.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbWorkshifts.FormattingEnabled = true;
-            this.cbWorkshifts.ItemHeight = 25;
-            this.cbWorkshifts.Items.AddRange(new object[] {
-            "Morning",
-            "Afternoon",
-            "Evening"});
-            this.cbWorkshifts.Location = new System.Drawing.Point(202, 358);
-            this.cbWorkshifts.Name = "cbWorkshifts";
-            this.cbWorkshifts.Size = new System.Drawing.Size(407, 33);
-            this.cbWorkshifts.TabIndex = 25;
-            this.cbWorkshifts.Visible = false;
-            // 
             // AddEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(805, 472);
-            this.Controls.Add(this.cbWorkshifts);
             this.Controls.Add(this.cbDepartments);
             this.Controls.Add(this.cbRole);
             this.Controls.Add(this.tbPhone);
@@ -207,6 +188,5 @@
         private Syncfusion.Windows.Forms.Tools.TextBoxExt tbPhone;
         private System.Windows.Forms.ComboBox cbRole;
         private System.Windows.Forms.ComboBox cbDepartments;
-        private System.Windows.Forms.ComboBox cbWorkshifts;
     }
 }
