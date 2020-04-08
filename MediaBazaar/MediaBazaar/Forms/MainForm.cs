@@ -156,5 +156,11 @@ namespace MediaBazaar
             string search = tbSearch.Text;
             ShowUsers(User.GetAll().FindAll(x => x.Name.Contains(search)));
         }
+
+        private void BtnProducts_Click(object sender, EventArgs e)
+        {
+            var productsForm = new ProductsListForm();
+            productsForm.Show();
+        }
     }
 }
