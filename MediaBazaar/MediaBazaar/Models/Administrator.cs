@@ -12,7 +12,8 @@ namespace MediaBazaar.Models
         private new long id;
         private long userId;
 
-        public Administrator(string name, string email, string phone) : base(name, email, phone, "Administrator")
+        public Administrator(string name, string email, string phone, decimal salary, DateTime birthday) 
+            : base(name, email, phone, "Administrator", salary, birthday)
         {
             this.userId = base.Id;
         }
@@ -26,13 +27,14 @@ namespace MediaBazaar.Models
         public override void Insert()
         {
             base.Insert();
+            this.userId = base.Id;
 
             dbConnection.OpenConnection();
-            string query = "INSERT INTO administrators(user_id) VALUES(@userId)";
+            string query = "INSERT INTO administrators(user_id, created_at, updated_at) VALUES(@userId, NOW(), NOW())";
 
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
-                cmd.Parameters.AddWithValue("@userId", base.Id);
+                cmd.Parameters.AddWithValue("@userId", this.userId);
 
                 cmd.ExecuteNonQuery();
                 this.id = cmd.LastInsertedId;
