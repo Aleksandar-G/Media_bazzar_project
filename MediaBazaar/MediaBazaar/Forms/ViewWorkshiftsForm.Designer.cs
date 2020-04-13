@@ -33,10 +33,9 @@
             this.cbWorkers = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel = new System.Windows.Forms.Panel();
-            this.lbWorkshifts = new System.Windows.Forms.ListBox();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.rbMonthly = new System.Windows.Forms.RadioButton();
-            this.rbDaily = new System.Windows.Forms.RadioButton();
+            this.flpShifts = new System.Windows.Forms.FlowLayoutPanel();
+            this.checkBox = new System.Windows.Forms.CheckBox();
             this.panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,11 +70,12 @@
             // 
             this.cbWorkers.BackColor = System.Drawing.Color.Maroon;
             this.cbWorkers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbWorkers.Font = new System.Drawing.Font("Segoe UI", 10.944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbWorkers.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.cbWorkers.FormattingEnabled = true;
-            this.cbWorkers.Location = new System.Drawing.Point(19, 110);
+            this.cbWorkers.Location = new System.Drawing.Point(19, 105);
             this.cbWorkers.Name = "cbWorkers";
-            this.cbWorkers.Size = new System.Drawing.Size(219, 29);
+            this.cbWorkers.Size = new System.Drawing.Size(286, 33);
             this.cbWorkers.TabIndex = 14;
             this.cbWorkers.SelectedIndexChanged += new System.EventHandler(this.CbWorkers_SelectedIndexChanged);
             // 
@@ -84,7 +84,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.944F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(14, 82);
+            this.label1.Location = new System.Drawing.Point(14, 79);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(111, 28);
             this.label1.TabIndex = 15;
@@ -92,71 +92,56 @@
             // 
             // panel
             // 
-            this.panel.Controls.Add(this.lbWorkshifts);
+            this.panel.Controls.Add(this.checkBox);
+            this.panel.Controls.Add(this.flpShifts);
             this.panel.Controls.Add(this.dateTimePicker);
-            this.panel.Controls.Add(this.rbMonthly);
-            this.panel.Controls.Add(this.rbDaily);
-            this.panel.Location = new System.Drawing.Point(281, 82);
+            this.panel.Location = new System.Drawing.Point(320, 79);
             this.panel.Margin = new System.Windows.Forms.Padding(1);
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(349, 310);
             this.panel.TabIndex = 16;
             // 
-            // lbWorkshifts
-            // 
-            this.lbWorkshifts.BackColor = System.Drawing.Color.Maroon;
-            this.lbWorkshifts.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbWorkshifts.ForeColor = System.Drawing.Color.White;
-            this.lbWorkshifts.FormattingEnabled = true;
-            this.lbWorkshifts.ItemHeight = 25;
-            this.lbWorkshifts.Location = new System.Drawing.Point(22, 63);
-            this.lbWorkshifts.Name = "lbWorkshifts";
-            this.lbWorkshifts.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.lbWorkshifts.Size = new System.Drawing.Size(298, 229);
-            this.lbWorkshifts.TabIndex = 20;
-            // 
             // dateTimePicker
             // 
             this.dateTimePicker.CalendarForeColor = System.Drawing.Color.Black;
             this.dateTimePicker.CalendarMonthBackground = System.Drawing.Color.Blue;
+            this.dateTimePicker.Font = new System.Drawing.Font("Segoe UI", 10.944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker.Location = new System.Drawing.Point(199, 28);
+            this.dateTimePicker.Location = new System.Drawing.Point(199, 23);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(121, 29);
+            this.dateTimePicker.Size = new System.Drawing.Size(121, 33);
             this.dateTimePicker.TabIndex = 2;
             this.dateTimePicker.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
             // 
-            // rbMonthly
+            // flpShifts
             // 
-            this.rbMonthly.AutoSize = true;
-            this.rbMonthly.Font = new System.Drawing.Font("Segoe UI Semibold", 9.792F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbMonthly.Location = new System.Drawing.Point(97, 28);
-            this.rbMonthly.Name = "rbMonthly";
-            this.rbMonthly.Size = new System.Drawing.Size(96, 27);
-            this.rbMonthly.TabIndex = 1;
-            this.rbMonthly.TabStop = true;
-            this.rbMonthly.Text = "Monthly";
-            this.rbMonthly.UseVisualStyleBackColor = true;
-            this.rbMonthly.CheckedChanged += new System.EventHandler(this.RbMonthly_CheckedChanged);
+            this.flpShifts.AutoScroll = true;
+            this.flpShifts.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flpShifts.Location = new System.Drawing.Point(22, 62);
+            this.flpShifts.Margin = new System.Windows.Forms.Padding(0);
+            this.flpShifts.Name = "flpShifts";
+            this.flpShifts.Size = new System.Drawing.Size(298, 227);
+            this.flpShifts.TabIndex = 3;
+            this.flpShifts.WrapContents = false;
             // 
-            // rbDaily
+            // checkBox
             // 
-            this.rbDaily.AutoSize = true;
-            this.rbDaily.Font = new System.Drawing.Font("Segoe UI Semibold", 9.792F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbDaily.Location = new System.Drawing.Point(22, 28);
-            this.rbDaily.Name = "rbDaily";
-            this.rbDaily.Size = new System.Drawing.Size(69, 27);
-            this.rbDaily.TabIndex = 0;
-            this.rbDaily.TabStop = true;
-            this.rbDaily.Text = "Daily";
-            this.rbDaily.UseVisualStyleBackColor = true;
-            this.rbDaily.CheckedChanged += new System.EventHandler(this.RbDaily_CheckedChanged);
+            this.checkBox.AutoSize = true;
+            this.checkBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.checkBox.Font = new System.Drawing.Font("Segoe UI", 10.944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox.Location = new System.Drawing.Point(22, 28);
+            this.checkBox.Name = "checkBox";
+            this.checkBox.Size = new System.Drawing.Size(104, 29);
+            this.checkBox.TabIndex = 4;
+            this.checkBox.Text = "Monthly";
+            this.checkBox.UseVisualStyleBackColor = false;
+            this.checkBox.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
             // 
             // ViewWorkshiftsForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(704, 419);
+            this.ClientSize = new System.Drawing.Size(704, 398);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbWorkers);
@@ -184,8 +169,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
-        private System.Windows.Forms.RadioButton rbMonthly;
-        private System.Windows.Forms.RadioButton rbDaily;
-        private System.Windows.Forms.ListBox lbWorkshifts;
+        private System.Windows.Forms.CheckBox checkBox;
+        private System.Windows.Forms.FlowLayoutPanel flpShifts;
     }
 }
