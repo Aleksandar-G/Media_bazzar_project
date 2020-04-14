@@ -27,6 +27,7 @@ namespace MediaBazaar
             this.btnAdd.BackColor = ApplicationColors.Red;
             this.mainForm = mainForm;
             this.cbRole.SelectedIndex = 0;
+            this.dtbBirthday.CustomFormat = "yyy-MM-dd";
         }
 
         private void EditEmployee_MouseDown(object sender, MouseEventArgs e)
@@ -74,35 +75,11 @@ namespace MediaBazaar
             if (cbRole.SelectedItem.ToString() == "Worker")
             {
                 cbDepartments.Visible = true;
-                //cbDepartments.SelectedIndex = 0;
+                cbDepartments.SelectedIndex = 0;
             }
             else
             {
                 cbDepartments.Visible = false;
-            }
-        }
-
-        private void TbDepartmentName_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (tbName.Text == "Name")
-            {
-                tbName.Text = "";
-            }
-        }
-
-        private void TbPhone_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (tbPhone.Text == "Phone")
-            {
-                tbPhone.Text = "";
-            }
-        }
-
-        private void TbEmail_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (tbEmail.Text == "Email")
-            {
-                tbEmail.Text = "";
             }
         }
 
@@ -111,10 +88,12 @@ namespace MediaBazaar
             string name = tbName.Text;
             string email = tbEmail.Text;
             string phone = tbPhone.Text;
+            DateTime birthday = dtbBirthday.Value;
+            decimal salary = Convert.ToDecimal(tbSalary.Text);
 
             string message = "";
 
-            if (String.IsNullOrEmpty(name) || String.IsNullOrEmpty(email) || String.IsNullOrEmpty(phone))
+            if (String.IsNullOrEmpty(name) || String.IsNullOrEmpty(email) || String.IsNullOrEmpty(phone) || String.IsNullOrEmpty(tbSalary.Text))
             {
                 message += "You left empty field(s)\n";
             }
@@ -142,17 +121,17 @@ namespace MediaBazaar
                     {
                         Department department = Department.GetByName(cbDepartments.SelectedItem.ToString());
 
-                        Worker worker = new Worker(name, email, phone, department.Id);
+                        Worker worker = new Worker(name, email, phone, department.Id, salary, birthday);
                         worker.Insert();
                     }
                     else if (cbRole.SelectedItem.ToString() == "Administrator")
                     {
-                        Administrator administrator = new Administrator(name, email, phone);
+                        Administrator administrator = new Administrator(name, email, phone, salary, birthday);
                         administrator.Insert();
                     }
                     else if (cbRole.SelectedItem.ToString() == "Manager")
                     {
-                        Manager manager = new Manager(name, email, phone);
+                        Manager manager = new Manager(name, email, phone, salary, birthday);
                         manager.Insert();
                     }
                     MessageBox.Show("User added successfully!");
@@ -161,7 +140,7 @@ namespace MediaBazaar
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Could not add the user! Please try again.");
+                    MessageBox.Show($"Could not add the user! Please try again.\n{ex.Data}");
                 }
             }
             else

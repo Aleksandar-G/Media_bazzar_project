@@ -35,6 +35,11 @@ namespace MediaBazaar
             this.tbName.Text = user.Name;
             this.tbEmail.Text = user.Email;
             this.tbPhone.Text = user.Phone;
+            this.tbSalary.Text = user.Salary.ToString();
+            this.dtbBirthday.CustomFormat = "yyy-MM-dd";
+            this.dtbBirthday.Value = user.Birthday;
+
+            this.checkRole();
         }
 
         private void EditEmployee_MouseDown(object sender, MouseEventArgs e)
@@ -82,45 +87,26 @@ namespace MediaBazaar
             this.btnEdit.BackColor = ApplicationColors.Orange;
         }
 
-        private void TbName_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (tbName.Text == "Name")
-            {
-                tbName.Text = "";
-            }
-        }
-
-        private void TbEmail_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (tbEmail.Text == "Email")
-            {
-                tbEmail.Text = "";
-            }
-        }
-
-        private void TbPhone_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (tbPhone.Text == "Phone")
-            {
-                tbPhone.Text = "";
-            }
-        }
-
         private void CbRole_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbRole.SelectedItem.ToString() == "Worker")
+            this.checkRole();
+        }
+
+        private void checkRole()
+        {
+            if (user.Role == "Worker")
             {
+                cbDepartments.Visible = true;
+
                 Worker worker = Worker.GetByUserId(user.Id);
                 Department.GetAll().ForEach(d => {
-                    if (d.Id == worker.DepartmentId) 
+                    this.cbDepartments.Items.Add(d.Name);
+
+                    if (d.Id == worker.DepartmentId)
                     {
                         cbDepartments.SelectedItem = d.Name;
                     }
-
-                    this.cbDepartments.Items.Add(d);
                 });
-
-                cbDepartments.Visible = true;
             }
             else
             {
@@ -130,12 +116,14 @@ namespace MediaBazaar
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            // TODO: Add validation to the forms
             try
             {
                 user.Name = tbName.Text;
                 user.Email = tbEmail.Text;
                 user.Phone = tbPhone.Text;
+                user.Birthday = dtbBirthday.Value;
+                user.Salary = Convert.ToDecimal(tbSalary.Text);
+
                 if (String.IsNullOrEmpty(user.Name) || String.IsNullOrEmpty(user.Email) || String.IsNullOrEmpty(user.Phone)||!user.Email.Contains("@"))
                 {
                     MessageBox.Show("You left empty field(s) or \nyou have entered invalid email address");

@@ -38,24 +38,28 @@ namespace MediaBazaar.Models
             dbConnection.OpenConnection();
             List<StockRequest> stockRequests = new List<StockRequest>();
             Dictionary<string, int> productsQuantity = new Dictionary<string, int>();
-            string query = "SELECT u.Name as admin, d.Name as dName, p.Name as pName, rp.Quantity FROM stockrequested as sr INNER JOIN requestedproducts as rp ON sr.Id = rp.Requested_Id INNER JOIN products as p ON rp.Product_id = p.Id INNER JOIN departments as d ON sr.Department_id = d.Id INNER JOIN administrators as a ON sr.Admin_id = a.Id INNER JOIN users as u ON a.user_id = u.Id";
+            string query = @"SELECT u.name as admin, d.name as dName, p.name as pName, sr.quantity, sr.product_id 
+                             FROM stock_requests as sr 
+                             INNER JOIN products as p ON sr.product_id = p.id
+                             INNER JOIN departments as d ON p.department_id = d.id
+                             INNER JOIN workers as w ON sr.worker_id = w.id 
+                             INNER JOIN users as u ON w.user_id = u.id";
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
                 MySqlDataReader reader = cmd.ExecuteReader();
                 string department = "";
                 string admin = "";
+
                 while (reader.Read())
                 {
                     department = reader["dName"].ToString();
                     admin = reader["admin"].ToString();
                     string productname = reader["pName"].ToString();
-                    int productQuantity = Convert.ToInt32(reader["Quantity"].ToString());
+                    int productQuantity = Convert.ToInt32(reader["quantity"].ToString());
 
                     productsQuantity.Add(productname, productQuantity);
-
-                    
-                    //users.Add(new User(id, name, email, password, phone, role));
                 }
+
                 stockRequests.Add(new StockRequest(department, productsQuantity, admin));
                 dbConnection.CloseConnection();
                 return stockRequests;
