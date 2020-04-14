@@ -24,15 +24,15 @@ namespace MediaBazaar.Forms
             this.workers = Worker.GetAll();
             this.BackColor = ApplicationColors.PrimaryDark;
             this.cbWorkers.BackColor = ApplicationColors.Orange;
-            this.lbWorkshifts.BackColor = ApplicationColors.Orange;
+            this.checkBox.BackColor = ApplicationColors.PrimaryDark;
 
             this.workShifts = new List<WorkShift>();
 
             this.panel.Visible = false;
-            this.rbDaily.Checked = true;
+
             dateTimePicker.CustomFormat = "yyyy-MM-dd";
             dateTimePicker.Format = DateTimePickerFormat.Custom;
-           
+
         }
         public void SetComboBoxCollection()
         {
@@ -41,44 +41,9 @@ namespace MediaBazaar.Forms
                 cbWorkers.Items.Add($"{item.Name} - {item.Email}");
             }
         }
-      
-        public void UpdateListBox(List<WorkShift> w, bool daily)
-        {
-            lbWorkshifts.Items.Clear();
-            lbWorkshifts.Items.Add($"Date              Shift");
-            lbWorkshifts.Items.Add($"--------------------");
-          
-            foreach (var item in w)
-            {
-                if (daily)
-                {
-                    if (item.Date.ToString("yyyy-MM-dd") == dateTimePicker.Value.ToString("yyyy-MM-dd"))
-                    {
-                        lbWorkshifts.Items.Add($"{item.Date.ToString("yyyy-MM-dd")}  {item.SelectedShift}");
-                    }
-                }
-                else
-                {
-                    if(item.Date.Month == dateTimePicker.Value.Month)
-                    {
-                        lbWorkshifts.Items.Add($"{item.Date.ToString("yyyy-MM-dd")}  {item.SelectedShift}");
-                    }
-                }
-            }
-        }
-        public bool CheckRadioButtons()
-        {
-            if (rbDaily.Checked)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }   
-            
-        
+
+
+
         private void BtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -88,30 +53,65 @@ namespace MediaBazaar.Forms
         {
             SetComboBoxCollection();
         }
+        public void CreateShiftComponent(WorkShift shift)
+        {
+            var btn = new Button();
+            btn.FlatStyle = FlatStyle.Flat;
+            btn.BackColor = ApplicationColors.Orange;
+            btn.Width = this.flpShifts.Width - 50;
+            btn.Height = 40;
+            btn.ForeColor = Color.White;
 
+            btn.Text = $"{shift.Date.ToString("dd.MM.yyyy")} - [{shift.SelectedShift}]";
+            btn.Font = new Font("Segoe UI", 11);
+            
+            btn.TextAlign = ContentAlignment.MiddleLeft;
+
+            this.flpShifts.Controls.Add(btn);
+        }
+        public void ShowShifts(List<WorkShift> shifts, bool monthly)
+        {
+            this.flpShifts.Controls.Clear();
+            if (!monthly)
+            {
+                shifts.ForEach(shift =>
+                {
+                    if (shift.Date.ToString("yyyy-MM-dd") == dateTimePicker.Value.ToString("yyyy-MM-dd"))
+                    {
+                        this.CreateShiftComponent(shift);
+                    }
+                });
+            }
+            else
+            {
+                shifts.ForEach(shift =>
+                {
+                    if (dateTimePicker.Value.Month == shift.Date.Month && dateTimePicker.Value.Year == shift.Date.Year)
+                    {
+                        this.CreateShiftComponent(shift);
+                    }
+                });
+
+            }
+        }
         private void CbWorkers_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.panel.Visible = true;
             currentWorker = this.workers[cbWorkers.SelectedIndex];
-           
             workShifts = Worker.GetWorkShiftsByWorkerID(currentWorker.Id);
-            UpdateListBox(workShifts, CheckRadioButtons());
-
+            this.ShowShifts(workShifts, checkBox.Checked);
         }
 
         private void DateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            UpdateListBox(workShifts, CheckRadioButtons());
+            this.ShowShifts(this.workShifts, checkBox.Checked);
         }
 
-        private void RbDaily_CheckedChanged(object sender, EventArgs e)
+        private void CheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            UpdateListBox(workShifts, CheckRadioButtons());
-        }
 
-        private void RbMonthly_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateListBox(workShifts, CheckRadioButtons());
+            this.ShowShifts(this.workShifts, checkBox.Checked);
+
         }
     }
 }
