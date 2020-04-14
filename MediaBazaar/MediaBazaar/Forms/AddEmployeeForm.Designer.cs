@@ -36,12 +36,12 @@
             this.tbPhone = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.cbRole = new System.Windows.Forms.ComboBox();
             this.cbDepartments = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblRole = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblPhone = new System.Windows.Forms.Label();
+            this.lblDepartment = new System.Windows.Forms.Label();
+            this.lblBirthday = new System.Windows.Forms.Label();
             this.dtbBirthday = new System.Windows.Forms.DateTimePicker();
             this.lblSalary = new System.Windows.Forms.Label();
             this.tbSalary = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
@@ -154,77 +154,77 @@
             this.cbDepartments.TabIndex = 24;
             this.cbDepartments.Visible = false;
             // 
-            // label1
+            // lblRole
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Snow;
-            this.label1.Location = new System.Drawing.Point(197, 62);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 25);
-            this.label1.TabIndex = 25;
-            this.label1.Text = "Role";
+            this.lblRole.AutoSize = true;
+            this.lblRole.BackColor = System.Drawing.Color.Transparent;
+            this.lblRole.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRole.ForeColor = System.Drawing.Color.Snow;
+            this.lblRole.Location = new System.Drawing.Point(197, 62);
+            this.lblRole.Name = "lblRole";
+            this.lblRole.Size = new System.Drawing.Size(48, 25);
+            this.lblRole.TabIndex = 25;
+            this.lblRole.Text = "Role";
             // 
-            // label2
+            // lblName
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Snow;
-            this.label2.Location = new System.Drawing.Point(197, 135);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 25);
-            this.label2.TabIndex = 26;
-            this.label2.Text = "Name";
+            this.lblName.AutoSize = true;
+            this.lblName.BackColor = System.Drawing.Color.Transparent;
+            this.lblName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.ForeColor = System.Drawing.Color.Snow;
+            this.lblName.Location = new System.Drawing.Point(197, 135);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(62, 25);
+            this.lblName.TabIndex = 26;
+            this.lblName.Text = "Name";
             // 
-            // label3
+            // lblEmail
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Snow;
-            this.label3.Location = new System.Drawing.Point(197, 206);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 25);
-            this.label3.TabIndex = 27;
-            this.label3.Text = "Email";
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.BackColor = System.Drawing.Color.Transparent;
+            this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.ForeColor = System.Drawing.Color.Snow;
+            this.lblEmail.Location = new System.Drawing.Point(197, 206);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(58, 25);
+            this.lblEmail.TabIndex = 27;
+            this.lblEmail.Text = "Email";
             // 
-            // label4
+            // lblPhone
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Snow;
-            this.label4.Location = new System.Drawing.Point(197, 275);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 25);
-            this.label4.TabIndex = 28;
-            this.label4.Text = "Phone";
+            this.lblPhone.AutoSize = true;
+            this.lblPhone.BackColor = System.Drawing.Color.Transparent;
+            this.lblPhone.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPhone.ForeColor = System.Drawing.Color.Snow;
+            this.lblPhone.Location = new System.Drawing.Point(197, 275);
+            this.lblPhone.Name = "lblPhone";
+            this.lblPhone.Size = new System.Drawing.Size(66, 25);
+            this.lblPhone.TabIndex = 28;
+            this.lblPhone.Text = "Phone";
             // 
-            // label5
+            // lblDepartment
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Snow;
-            this.label5.Location = new System.Drawing.Point(197, 489);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(112, 25);
-            this.label5.TabIndex = 29;
-            this.label5.Text = "Department";
+            this.lblDepartment.AutoSize = true;
+            this.lblDepartment.BackColor = System.Drawing.Color.Transparent;
+            this.lblDepartment.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDepartment.ForeColor = System.Drawing.Color.Snow;
+            this.lblDepartment.Location = new System.Drawing.Point(197, 489);
+            this.lblDepartment.Name = "lblDepartment";
+            this.lblDepartment.Size = new System.Drawing.Size(112, 25);
+            this.lblDepartment.TabIndex = 29;
+            this.lblDepartment.Text = "Department";
             // 
-            // label6
+            // lblBirthday
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Snow;
-            this.label6.Location = new System.Drawing.Point(197, 348);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(82, 25);
-            this.label6.TabIndex = 30;
-            this.label6.Text = "Birthday";
+            this.lblBirthday.AutoSize = true;
+            this.lblBirthday.BackColor = System.Drawing.Color.Transparent;
+            this.lblBirthday.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBirthday.ForeColor = System.Drawing.Color.Snow;
+            this.lblBirthday.Location = new System.Drawing.Point(197, 348);
+            this.lblBirthday.Name = "lblBirthday";
+            this.lblBirthday.Size = new System.Drawing.Size(82, 25);
+            this.lblBirthday.TabIndex = 30;
+            this.lblBirthday.Text = "Birthday";
             // 
             // dtbBirthday
             // 
@@ -241,7 +241,7 @@
             // lblSalary
             // 
             this.lblSalary.AutoSize = true;
-            this.lblSalary.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblSalary.BackColor = System.Drawing.Color.Transparent;
             this.lblSalary.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSalary.ForeColor = System.Drawing.Color.Snow;
             this.lblSalary.Location = new System.Drawing.Point(197, 419);
@@ -269,12 +269,12 @@
             this.Controls.Add(this.lblSalary);
             this.Controls.Add(this.tbSalary);
             this.Controls.Add(this.dtbBirthday);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblBirthday);
+            this.Controls.Add(this.lblDepartment);
+            this.Controls.Add(this.lblPhone);
+            this.Controls.Add(this.lblEmail);
+            this.Controls.Add(this.lblName);
+            this.Controls.Add(this.lblRole);
             this.Controls.Add(this.cbDepartments);
             this.Controls.Add(this.cbRole);
             this.Controls.Add(this.tbPhone);
@@ -308,12 +308,12 @@
         private Syncfusion.Windows.Forms.Tools.TextBoxExt tbPhone;
         private System.Windows.Forms.ComboBox cbRole;
         private System.Windows.Forms.ComboBox cbDepartments;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblRole;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.Label lblPhone;
+        private System.Windows.Forms.Label lblDepartment;
+        private System.Windows.Forms.Label lblBirthday;
         private System.Windows.Forms.DateTimePicker dtbBirthday;
         private System.Windows.Forms.Label lblSalary;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt tbSalary;
