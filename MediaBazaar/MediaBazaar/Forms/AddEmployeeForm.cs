@@ -140,7 +140,8 @@ namespace MediaBazaar
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Could not add the user! Please try again.");
+                    //MessageBox.Show("Could not add the user! Please try again.");
+                    MessageBox.Show(ex.Message);
                 }
             }
             else
