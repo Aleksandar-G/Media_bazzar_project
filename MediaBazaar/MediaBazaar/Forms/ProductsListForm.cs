@@ -23,6 +23,11 @@ namespace MediaBazaar.Forms
             this.BackColor = ApplicationColors.PrimaryDark;
         }
 
+        private void ProductsListForm_Load(object sender, EventArgs e)
+        {
+            FillUpProducts();
+        }
+
         private void CmbProducts_Click(object sender, EventArgs e)
         {
             FillUpProducts();
@@ -30,13 +35,27 @@ namespace MediaBazaar.Forms
 
         private void FillUpProducts()
         {
-            cmbProducts.Items.Clear();
+            //cmbProducts.Items.Clear();
+
+            //try
+            //{
+            //    foreach (Product product in Product.GetAll())
+            //    {
+            //        cmbProducts.Items.Add(product.Name);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+
+            lbProducts.Items.Clear();
 
             try
             {
                 foreach (Product product in Product.GetAll())
                 {
-                    cmbProducts.Items.Add(product.Name);
+                    lbProducts.Items.Add(product.Name);
                 }
             }
             catch (Exception ex)
@@ -52,7 +71,8 @@ namespace MediaBazaar.Forms
 
             try
             {
-                productName = cmbProducts.SelectedItem.ToString();
+                //productName = cmbProducts.SelectedItem.ToString();
+                productName = lbProducts.SelectedItem.ToString();
 
                 product = Product.GetByName(productName);
 
@@ -81,7 +101,8 @@ namespace MediaBazaar.Forms
 
             try
             {
-                productName = cmbProducts.SelectedItem.ToString();
+                //productName = cmbProducts.SelectedItem.ToString();
+                productName = lbProducts.SelectedItem.ToString();
 
                 product = Product.GetByName(productName);
 
@@ -119,6 +140,11 @@ namespace MediaBazaar.Forms
                 this.Location = new Point((this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
                 this.Update();
             }
+        }
+
+        private void LbProducts_DoubleClick(object sender, EventArgs e)
+        {
+            FillUpProducts();
         }
     }
 }
