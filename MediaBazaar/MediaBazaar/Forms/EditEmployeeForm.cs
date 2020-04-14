@@ -97,6 +97,7 @@ namespace MediaBazaar
             if (user.Role == "Worker")
             {
                 cbDepartments.Visible = true;
+                lblDepartment.Visible = true;
 
                 Worker worker = Worker.GetByUserId(user.Id);
                 Department.GetAll().ForEach(d => {
@@ -111,6 +112,7 @@ namespace MediaBazaar
             else
             {
                 cbDepartments.Visible = false;
+                lblDepartment.Visible = false;
             }
         }
 

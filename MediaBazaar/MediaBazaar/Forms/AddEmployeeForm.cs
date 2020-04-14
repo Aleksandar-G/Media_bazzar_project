@@ -67,18 +67,14 @@ namespace MediaBazaar
 
         private void CbRole_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbRole.SelectedItem.ToString() != "Role")
-            {
-                cbRole.Items.Remove("Role");
-            }
-
             if (cbRole.SelectedItem.ToString() == "Worker")
             {
                 cbDepartments.Visible = true;
-                cbDepartments.SelectedIndex = 0;
+                lblDepartment.Visible = true;
             }
             else
             {
+                lblDepartment.Visible = false;
                 cbDepartments.Visible = false;
             }
         }
@@ -140,7 +136,7 @@ namespace MediaBazaar
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Could not add the user! Please try again.");
+                    MessageBox.Show("Could not add the user! e ");
                 }
             }
             else
