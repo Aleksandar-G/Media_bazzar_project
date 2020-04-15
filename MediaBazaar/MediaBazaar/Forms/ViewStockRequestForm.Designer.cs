@@ -69,9 +69,9 @@
             this.lbProducts.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.lbProducts.FormattingEnabled = true;
             this.lbProducts.ItemHeight = 21;
-            this.lbProducts.Location = new System.Drawing.Point(96, 144);
+            this.lbProducts.Location = new System.Drawing.Point(95, 180);
             this.lbProducts.Name = "lbProducts";
-            this.lbProducts.Size = new System.Drawing.Size(254, 252);
+            this.lbProducts.Size = new System.Drawing.Size(321, 252);
             this.lbProducts.TabIndex = 19;
             // 
             // lbHeader

@@ -24,13 +24,13 @@ namespace MediaBazaar.Forms
 
         private void StockRequestForm_Load(object sender, EventArgs e)
         {
-            LoadStockRequests();  
+            LoadStockRequests();
         }
         public void LoadStockRequests()
         {
             //users = Models.User.GetAll();
-             stockRequests = StockRequest.GetAll();
-              
+            stockRequests = StockRequest.GetAll();
+
             this.flpStockRequests.Controls.Clear();
 
             stockRequests.ForEach(stockrequest =>
@@ -41,7 +41,7 @@ namespace MediaBazaar.Forms
                 btn.Height = 60;
 
 
-                btn.Text = $"Department: {stockrequest.DepartmentName} for {stockrequest.ProductsAndQuantity.Count} Products";
+                btn.Text = $"Product name: {stockrequest.RequestedProduct} -> {stockrequest.RequestedQuantity} pieces ";
                 btn.Font = new Font("Segoe UI Black", 12);
                 btn.TextAlign = ContentAlignment.MiddleLeft;
 
@@ -56,11 +56,6 @@ namespace MediaBazaar.Forms
                     btn.BackColor = SystemColors.ControlLightLight;
                 });
 
-                btn.Click += new EventHandler((s, ev) =>
-                {
-                    var form = new ViewStockRequestForm(stockrequest);
-                    form.Show();
-                });
 
                 this.flpStockRequests.Controls.Add(btn);
             });
