@@ -13,7 +13,7 @@ namespace MediaBazaar.Models
         private long userId;
         private long departmentId;
 
-        public long Id { get => id; }
+        public new long Id { get => id; }
         public long UserId { get => userId; }
         public long DepartmentId { get => departmentId; }
 
