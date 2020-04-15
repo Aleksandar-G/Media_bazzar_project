@@ -95,7 +95,7 @@ namespace MediaBazaar.Models
         public override void Delete()
         {
             dbConnection.OpenConnection();
-            string query = $"DELETE FROM users where id = {id}";
+            string query = $"UPDATE users SET fired_at=NOW(), updated_at=NOW() where id = {id}";
 
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
@@ -110,7 +110,7 @@ namespace MediaBazaar.Models
             DBconnection dbConnection = new DBconnection();
             dbConnection.OpenConnection();
             List<User> users = new List<User>();
-            string query = "SELECT * FROM users";
+            string query = "SELECT * FROM users WHERE fired_at IS NULL";
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
                 MySqlDataReader reader = cmd.ExecuteReader();
@@ -139,7 +139,7 @@ namespace MediaBazaar.Models
             DBconnection dbConnection = new DBconnection();
             dbConnection.OpenConnection();
             User user;
-            string query = $"SELECT * FROM users WHERE id = {id}";
+            string query = $"SELECT * FROM users WHERE id = {id} AND fired_at IS NULL LIMIT 1";
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
                 MySqlDataReader reader = cmd.ExecuteReader();
@@ -170,7 +170,7 @@ namespace MediaBazaar.Models
             DBconnection dbConnection = new DBconnection();
             dbConnection.OpenConnection();
             User user;
-            string query = "SELECT * FROM users WHERE email = @email";
+            string query = "SELECT * FROM users WHERE email = @email AND fired_at IS NULL LIMIT 1";
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
                 cmd.Parameters.AddWithValue("@email", email);
@@ -204,7 +204,7 @@ namespace MediaBazaar.Models
 
             string query = $@"UPDATE users 
                               SET name = @name, email = @email, phone = @phone, role = @role, salary = @salary, birthday = @birthday 
-                              WHERE id = {user.Id}";
+                              WHERE id = {user.Id} AND fired_at IS NULL";
 
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
