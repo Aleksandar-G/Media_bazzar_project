@@ -22,6 +22,11 @@
         plugins: ['dayGrid', 'timeGrid'],
         defaultView: 'timeGridWeek',
         themeSystem: 'standard',
+        businessHours: {
+          daysOfWeek: [ 1, 2, 3, 4,5 ],
+          startTime: '8:00',
+          endTime: '20:00', 
+          },
         events: '/workshifts', // use the `url` property
       });
 
