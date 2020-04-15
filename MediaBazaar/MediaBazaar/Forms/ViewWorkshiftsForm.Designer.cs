@@ -33,9 +33,9 @@
             this.cbWorkers = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel = new System.Windows.Forms.Panel();
+            this.checkBox = new System.Windows.Forms.CheckBox();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.flpShifts = new System.Windows.Forms.FlowLayoutPanel();
-            this.checkBox = new System.Windows.Forms.CheckBox();
             this.panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +46,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(644, -1);
+            this.btnClose.Location = new System.Drawing.Point(707, -6);
             this.btnClose.Margin = new System.Windows.Forms.Padding(0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(60, 55);
@@ -70,12 +70,11 @@
             // 
             this.cbWorkers.BackColor = System.Drawing.Color.Maroon;
             this.cbWorkers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbWorkers.Font = new System.Drawing.Font("Segoe UI", 10.944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbWorkers.Font = new System.Drawing.Font("Segoe UI Emoji", 12.096F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbWorkers.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.cbWorkers.FormattingEnabled = true;
             this.cbWorkers.Location = new System.Drawing.Point(19, 105);
             this.cbWorkers.Name = "cbWorkers";
-            this.cbWorkers.Size = new System.Drawing.Size(286, 33);
+            this.cbWorkers.Size = new System.Drawing.Size(286, 36);
             this.cbWorkers.TabIndex = 14;
             this.cbWorkers.SelectedIndexChanged += new System.EventHandler(this.CbWorkers_SelectedIndexChanged);
             // 
@@ -93,23 +92,36 @@
             // panel
             // 
             this.panel.Controls.Add(this.checkBox);
-            this.panel.Controls.Add(this.flpShifts);
             this.panel.Controls.Add(this.dateTimePicker);
-            this.panel.Location = new System.Drawing.Point(320, 79);
+            this.panel.Location = new System.Drawing.Point(319, 79);
             this.panel.Margin = new System.Windows.Forms.Padding(1);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(349, 310);
+            this.panel.Size = new System.Drawing.Size(379, 71);
             this.panel.TabIndex = 16;
+            // 
+            // checkBox
+            // 
+            this.checkBox.AutoSize = true;
+            this.checkBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBox.Font = new System.Drawing.Font("Segoe UI", 12.096F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox.Location = new System.Drawing.Point(18, 26);
+            this.checkBox.Name = "checkBox";
+            this.checkBox.Size = new System.Drawing.Size(109, 34);
+            this.checkBox.TabIndex = 4;
+            this.checkBox.Text = "Monthly";
+            this.checkBox.UseVisualStyleBackColor = false;
+            this.checkBox.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
             // 
             // dateTimePicker
             // 
             this.dateTimePicker.CalendarForeColor = System.Drawing.Color.Black;
             this.dateTimePicker.CalendarMonthBackground = System.Drawing.Color.Blue;
-            this.dateTimePicker.Font = new System.Drawing.Font("Segoe UI", 10.944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker.Font = new System.Drawing.Font("Segoe UI", 12.096F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker.Location = new System.Drawing.Point(199, 23);
+            this.dateTimePicker.Location = new System.Drawing.Point(154, 24);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(121, 33);
+            this.dateTimePicker.Size = new System.Drawing.Size(162, 35);
             this.dateTimePicker.TabIndex = 2;
             this.dateTimePicker.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
             // 
@@ -117,32 +129,20 @@
             // 
             this.flpShifts.AutoScroll = true;
             this.flpShifts.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flpShifts.Location = new System.Drawing.Point(22, 62);
+            this.flpShifts.Location = new System.Drawing.Point(19, 166);
             this.flpShifts.Margin = new System.Windows.Forms.Padding(0);
             this.flpShifts.Name = "flpShifts";
-            this.flpShifts.Size = new System.Drawing.Size(298, 227);
+            this.flpShifts.Size = new System.Drawing.Size(661, 345);
             this.flpShifts.TabIndex = 3;
             this.flpShifts.WrapContents = false;
-            // 
-            // checkBox
-            // 
-            this.checkBox.AutoSize = true;
-            this.checkBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.checkBox.Font = new System.Drawing.Font("Segoe UI", 10.944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox.Location = new System.Drawing.Point(22, 28);
-            this.checkBox.Name = "checkBox";
-            this.checkBox.Size = new System.Drawing.Size(104, 29);
-            this.checkBox.TabIndex = 4;
-            this.checkBox.Text = "Monthly";
-            this.checkBox.UseVisualStyleBackColor = false;
-            this.checkBox.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
             // 
             // ViewWorkshiftsForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(704, 398);
+            this.ClientSize = new System.Drawing.Size(768, 631);
             this.Controls.Add(this.panel);
+            this.Controls.Add(this.flpShifts);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbWorkers);
             this.Controls.Add(this.lblHeading);

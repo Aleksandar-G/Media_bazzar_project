@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MediaBazaar.Models;
 
+
 namespace MediaBazaar.Forms
 {
     public partial class ViewWorkshiftsForm : Form
@@ -23,15 +24,18 @@ namespace MediaBazaar.Forms
             InitializeComponent();
             this.workers = Worker.GetAll();
             this.BackColor = ApplicationColors.PrimaryDark;
-            this.cbWorkers.BackColor = ApplicationColors.Orange;
+            this.cbWorkers.BackColor = Color.White;
+            this.cbWorkers.ForeColor = ApplicationColors.PrimaryDark;
             this.checkBox.BackColor = ApplicationColors.PrimaryDark;
 
             this.workShifts = new List<WorkShift>();
 
             this.panel.Visible = false;
-
+            
+            
             dateTimePicker.CustomFormat = "yyyy-MM-dd";
             dateTimePicker.Format = DateTimePickerFormat.Custom;
+           
 
         }
         public void SetComboBoxCollection()
@@ -62,8 +66,11 @@ namespace MediaBazaar.Forms
             btn.Height = 40;
             btn.ForeColor = Color.White;
 
-            btn.Text = $"{shift.Date.ToString("dd.MM.yyyy")} - [{shift.SelectedShift}]";
-            btn.Font = new Font("Segoe UI", 11);
+            string dateInfo = $"{shift.Date.ToString("dd.MM.yyyy")} ({shift.Date.DayOfWeek})";
+            string shiftInfo = $" Shift: [{shift.SelectedShift}]";
+            btn.Text = $"{dateInfo} {shiftInfo}";
+
+            btn.Font = new Font("Segoe UI", 13);
             
             btn.TextAlign = ContentAlignment.MiddleLeft;
 
@@ -111,7 +118,10 @@ namespace MediaBazaar.Forms
         {
 
             this.ShowShifts(this.workShifts, checkBox.Checked);
+            
 
         }
+
+       
     }
 }
