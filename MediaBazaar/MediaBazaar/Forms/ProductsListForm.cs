@@ -81,9 +81,9 @@ namespace MediaBazaar.Forms
 
             }
 
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Please, select a product first!");
             }
             
         }
@@ -111,9 +111,9 @@ namespace MediaBazaar.Forms
                 FillUpProducts();
             }
 
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Please, select a product first!");
             }
         }
 
