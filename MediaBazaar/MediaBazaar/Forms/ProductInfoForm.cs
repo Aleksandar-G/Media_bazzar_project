@@ -21,10 +21,16 @@ namespace MediaBazaar.Forms
             InitializeComponent();
             this.BackColor = ApplicationColors.PrimaryDark;
 
+            lblProductTag.BackColor = ApplicationColors.LightOrange;
+            lblDepartmentTag.BackColor = ApplicationColors.LightOrange;
+            lblDescriptionTag.BackColor = ApplicationColors.LightOrange; 
+            lblPriceTag.BackColor = ApplicationColors.LightOrange; 
+            lblQuantityTag.BackColor = ApplicationColors.LightOrange;
+
             lblItemName.Text = product.Name;
-            lblItemDepartment.Text = product.Department + " Department";
-            lblDescription.Text = product.Description + " (description)";
-            lblItemPrice.Text = product.Price.ToString();
+            lblItemDepartment.Text = product.Department;
+            lblDescription.Text = product.Description;
+            lblItemPrice.Text = "$" + product.Price.ToString();
             lblItemQuantity.Text = product.Quantity.ToString();
         }
 

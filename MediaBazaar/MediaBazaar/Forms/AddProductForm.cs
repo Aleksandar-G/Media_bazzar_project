@@ -50,6 +50,7 @@ namespace MediaBazaar.Forms
                 tbProductDescription.Text = "";
                 tbProductPrice.Text = "";
                 cmbDepartments.SelectedIndex = -1;
+       
 
             }
             catch(Exception ex)
@@ -81,6 +82,8 @@ namespace MediaBazaar.Forms
                 this.Location = new Point((this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
                 this.Update();
             }
+
+            
         }
     }
 }
