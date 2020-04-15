@@ -20,13 +20,10 @@ namespace MediaBazaar.Forms
             InitializeComponent();
             this.BackColor = ApplicationColors.PrimaryDark;
             lbProducts.BackColor = ApplicationColors.PrimaryDark;
-            //rtbProducts.BackColor = ApplicationColors.Orange;
-            this.lbAdmin.Text = stockRequest.AdminName;
-            this.lbDepartment.Text = "Department: "+stockRequest.DepartmentName;
+            this.lbDepartment.Text = "Department: " + stockRequest.DepartmentName;
             foreach (var item in stockRequest.ProductsAndQuantity)
             {
-                //this.lbProducts.Text += $"{item.Key} : {item.Value} \n";
-                this.lbProducts.Items.Add($"Name: {item.Key} -> Quantity: {item.Value}");
+                this.lbProducts.Items.Add($"{item.Key} -> {item.Value}");
             }
         }
 

@@ -24,13 +24,13 @@ namespace MediaBazaar.Forms
 
         private void StockRequestForm_Load(object sender, EventArgs e)
         {
-            LoadStockRequests();  
+            LoadStockRequests();
         }
         public void LoadStockRequests()
         {
             //users = Models.User.GetAll();
-             stockRequests = StockRequest.GetAll();
-              
+            stockRequests = StockRequest.GetAll();
+
             this.flpStockRequests.Controls.Clear();
 
             stockRequests.ForEach(stockrequest =>
@@ -40,8 +40,7 @@ namespace MediaBazaar.Forms
                 btn.Width = this.flpStockRequests.Width - 30;
                 btn.Height = 60;
 
-
-                btn.Text = $"For department {stockrequest.DepartmentName} - {stockrequest.ProductsAndQuantity.Count} Products [{stockrequest.AdminName}]";
+                btn.Text = $"Product name: {stockrequest.RequestedProduct} -> {stockrequest.RequestedQuantity} pieces [{stockrequest.DepartmentName}]";
                 btn.Font = new Font("Segoe UI Black", 12);
                 btn.TextAlign = ContentAlignment.MiddleLeft;
 
@@ -56,14 +55,21 @@ namespace MediaBazaar.Forms
                     btn.BackColor = SystemColors.ControlLightLight;
                 });
 
-                btn.Click += new EventHandler((s, ev) =>
-                {
-                    var form = new ViewStockRequestForm(stockrequest);
-                    form.Show();
-                });
 
                 this.flpStockRequests.Controls.Add(btn);
             });
+
+            if (stockRequests.Count == 0)
+            {
+                var btn = new Button();
+                btn.BackColor = SystemColors.ControlLightLight;
+                btn.Width = this.flpStockRequests.Width - 30;
+                btn.Height = 60;
+                btn.Text = $"No stock requests";
+                btn.Font = new Font("Segoe UI Black", 12);
+                btn.TextAlign = ContentAlignment.MiddleCenter;
+                this.flpStockRequests.Controls.Add(btn);
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)

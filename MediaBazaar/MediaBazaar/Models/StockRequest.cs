@@ -11,13 +11,18 @@ namespace MediaBazaar.Models
     {
         public string DepartmentName { get; private set; }
         public Dictionary<string, int> ProductsAndQuantity { get; private set; }
-        public string AdminName { get; private set; }
-        public StockRequest(string departmentName, Dictionary<string, int> productAndQuantity, string admin)
+        public string WorkerName { get; private set; }
+        public int Worker { get; set; }
+        public string RequestedProduct { get; set; }
+        public int RequestedQuantity { get; set; }
+        public StockRequest(string departmentName, string Reqproduct, int ReqQuantity, string worker)
         {
             ProductsAndQuantity = new Dictionary<string, int>();
             this.DepartmentName = departmentName;
-            this.ProductsAndQuantity = productAndQuantity;
-            this.AdminName = admin;
+
+            this.RequestedProduct = Reqproduct;
+            this.RequestedQuantity = ReqQuantity;
+            this.WorkerName = worker;
         }
         public override void Delete()
         {
@@ -37,8 +42,7 @@ namespace MediaBazaar.Models
             DBconnection dbConnection = new DBconnection();
             dbConnection.OpenConnection();
             List<StockRequest> stockRequests = new List<StockRequest>();
-            Dictionary<string, int> productsQuantity = new Dictionary<string, int>();
-            string query = @"SELECT u.name as admin, d.name as dName, p.name as pName, sr.quantity, sr.product_id 
+            string query = @"SELECT u.name as worker, d.name as dName, p.name as pName, sr.quantity, sr.product_id 
                              FROM stock_requests as sr 
                              INNER JOIN products as p ON sr.product_id = p.id
                              INNER JOIN departments as d ON p.department_id = d.id
@@ -48,19 +52,19 @@ namespace MediaBazaar.Models
             {
                 MySqlDataReader reader = cmd.ExecuteReader();
                 string department = "";
-                string admin = "";
+                string worker = "";
+                string productname = "";
+                int productQuantity = 0;
 
                 while (reader.Read())
                 {
                     department = reader["dName"].ToString();
-                    admin = reader["admin"].ToString();
-                    string productname = reader["pName"].ToString();
-                    int productQuantity = Convert.ToInt32(reader["quantity"].ToString());
-
-                    productsQuantity.Add(productname, productQuantity);
+                    worker = reader["worker"].ToString();
+                    productname = reader["pName"].ToString();
+                    productQuantity = Convert.ToInt32(reader["quantity"].ToString());
+                    stockRequests.Add(new StockRequest(department, productname, productQuantity, worker));
                 }
-
-                stockRequests.Add(new StockRequest(department, productsQuantity, admin));
+  
                 dbConnection.CloseConnection();
                 return stockRequests;
             }
