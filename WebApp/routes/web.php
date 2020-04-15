@@ -20,9 +20,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Route::get('/home', 'CalendarController@index');
 Route::get('/home', function(){
     return view('home');
-});
+})->middleware('auth');
 
 Route::get('/workshifts', 'CalendarController@index');
+
+Route::resource('products', 'ProductsController')->only([
+    'index', 'show', 'update',
+])->middleware('auth');
