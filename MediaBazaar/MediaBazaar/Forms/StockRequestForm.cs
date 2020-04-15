@@ -40,7 +40,6 @@ namespace MediaBazaar.Forms
                 btn.Width = this.flpStockRequests.Width - 30;
                 btn.Height = 60;
 
-
                 btn.Text = $"Product name: {stockrequest.RequestedProduct} -> {stockrequest.RequestedQuantity} pieces [{stockrequest.DepartmentName}]";
                 btn.Font = new Font("Segoe UI Black", 12);
                 btn.TextAlign = ContentAlignment.MiddleLeft;
@@ -59,6 +58,18 @@ namespace MediaBazaar.Forms
 
                 this.flpStockRequests.Controls.Add(btn);
             });
+
+            if (stockRequests.Count == 0)
+            {
+                var btn = new Button();
+                btn.BackColor = SystemColors.ControlLightLight;
+                btn.Width = this.flpStockRequests.Width - 30;
+                btn.Height = 60;
+                btn.Text = $"No stock requests";
+                btn.Font = new Font("Segoe UI Black", 12);
+                btn.TextAlign = ContentAlignment.MiddleCenter;
+                this.flpStockRequests.Controls.Add(btn);
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)

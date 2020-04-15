@@ -62,9 +62,9 @@ namespace MediaBazaar.Models
                     worker = reader["worker"].ToString();
                     productname = reader["pName"].ToString();
                     productQuantity = Convert.ToInt32(reader["quantity"].ToString());
+                    stockRequests.Add(new StockRequest(department, productname, productQuantity, worker));
                 }
-
-                stockRequests.Add(new StockRequest(department, productname, productQuantity, worker));
+  
                 dbConnection.CloseConnection();
                 return stockRequests;
             }
