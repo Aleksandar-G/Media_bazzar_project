@@ -42,9 +42,11 @@
             this.lblPhone = new System.Windows.Forms.Label();
             this.lblDepartment = new System.Windows.Forms.Label();
             this.lblBirthday = new System.Windows.Forms.Label();
-            this.dtbBirthday = new System.Windows.Forms.DateTimePicker();
+            this.dpBirthday = new System.Windows.Forms.DateTimePicker();
             this.lblSalary = new System.Windows.Forms.Label();
             this.tbSalary = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.dpStartDate = new System.Windows.Forms.DateTimePicker();
+            this.lblStartDate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tbName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbPhone)).BeginInit();
@@ -85,7 +87,7 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAdd.Location = new System.Drawing.Point(320, 560);
+            this.btnAdd.Location = new System.Drawing.Point(316, 643);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(144, 48);
             this.btnAdd.TabIndex = 17;
@@ -148,7 +150,7 @@
             this.cbDepartments.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbDepartments.FormattingEnabled = true;
             this.cbDepartments.ItemHeight = 25;
-            this.cbDepartments.Location = new System.Drawing.Point(202, 517);
+            this.cbDepartments.Location = new System.Drawing.Point(202, 595);
             this.cbDepartments.Name = "cbDepartments";
             this.cbDepartments.Size = new System.Drawing.Size(407, 33);
             this.cbDepartments.TabIndex = 24;
@@ -208,7 +210,7 @@
             this.lblDepartment.BackColor = System.Drawing.Color.Transparent;
             this.lblDepartment.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDepartment.ForeColor = System.Drawing.Color.Snow;
-            this.lblDepartment.Location = new System.Drawing.Point(197, 489);
+            this.lblDepartment.Location = new System.Drawing.Point(197, 567);
             this.lblDepartment.Name = "lblDepartment";
             this.lblDepartment.Size = new System.Drawing.Size(112, 25);
             this.lblDepartment.TabIndex = 29;
@@ -226,17 +228,17 @@
             this.lblBirthday.TabIndex = 30;
             this.lblBirthday.Text = "Birthday";
             // 
-            // dtbBirthday
+            // dpBirthday
             // 
-            this.dtbBirthday.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtbBirthday.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtbBirthday.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtbBirthday.Location = new System.Drawing.Point(202, 375);
-            this.dtbBirthday.Margin = new System.Windows.Forms.Padding(2);
-            this.dtbBirthday.Name = "dtbBirthday";
-            this.dtbBirthday.Size = new System.Drawing.Size(407, 33);
-            this.dtbBirthday.TabIndex = 31;
-            this.dtbBirthday.Value = new System.DateTime(2020, 4, 2, 0, 0, 0, 0);
+            this.dpBirthday.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dpBirthday.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dpBirthday.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dpBirthday.Location = new System.Drawing.Point(202, 375);
+            this.dpBirthday.Margin = new System.Windows.Forms.Padding(2);
+            this.dpBirthday.Name = "dpBirthday";
+            this.dpBirthday.Size = new System.Drawing.Size(407, 33);
+            this.dpBirthday.TabIndex = 31;
+            this.dpBirthday.Value = new System.DateTime(2020, 4, 2, 0, 0, 0, 0);
             // 
             // lblSalary
             // 
@@ -260,15 +262,41 @@
             this.tbSalary.Size = new System.Drawing.Size(407, 33);
             this.tbSalary.TabIndex = 32;
             // 
+            // dpStartDate
+            // 
+            this.dpStartDate.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dpStartDate.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dpStartDate.Location = new System.Drawing.Point(202, 519);
+            this.dpStartDate.Margin = new System.Windows.Forms.Padding(2);
+            this.dpStartDate.Name = "dpStartDate";
+            this.dpStartDate.Size = new System.Drawing.Size(407, 33);
+            this.dpStartDate.TabIndex = 35;
+            this.dpStartDate.Value = new System.DateTime(2020, 4, 2, 0, 0, 0, 0);
+            // 
+            // lblStartDate
+            // 
+            this.lblStartDate.AutoSize = true;
+            this.lblStartDate.BackColor = System.Drawing.Color.Transparent;
+            this.lblStartDate.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStartDate.ForeColor = System.Drawing.Color.Snow;
+            this.lblStartDate.Location = new System.Drawing.Point(197, 492);
+            this.lblStartDate.Name = "lblStartDate";
+            this.lblStartDate.Size = new System.Drawing.Size(94, 25);
+            this.lblStartDate.TabIndex = 34;
+            this.lblStartDate.Text = "Start Date";
+            // 
             // AddEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(805, 620);
+            this.ClientSize = new System.Drawing.Size(805, 703);
+            this.Controls.Add(this.dpStartDate);
+            this.Controls.Add(this.lblStartDate);
             this.Controls.Add(this.lblSalary);
             this.Controls.Add(this.tbSalary);
-            this.Controls.Add(this.dtbBirthday);
+            this.Controls.Add(this.dpBirthday);
             this.Controls.Add(this.lblBirthday);
             this.Controls.Add(this.lblDepartment);
             this.Controls.Add(this.lblPhone);
@@ -314,8 +342,10 @@
         private System.Windows.Forms.Label lblPhone;
         private System.Windows.Forms.Label lblDepartment;
         private System.Windows.Forms.Label lblBirthday;
-        private System.Windows.Forms.DateTimePicker dtbBirthday;
+        private System.Windows.Forms.DateTimePicker dpBirthday;
         private System.Windows.Forms.Label lblSalary;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt tbSalary;
+        private System.Windows.Forms.DateTimePicker dpStartDate;
+        private System.Windows.Forms.Label lblStartDate;
     }
 }

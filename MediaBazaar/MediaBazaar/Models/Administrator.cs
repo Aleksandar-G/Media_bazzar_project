@@ -12,8 +12,8 @@ namespace MediaBazaar.Models
         private new long id;
         private long userId;
 
-        public Administrator(string name, string email, string phone, decimal salary, DateTime birthday) 
-            : base(name, email, phone, "Administrator", salary, birthday)
+        public Administrator(string name, string email, string phone, decimal salary, DateTime birthday, DateTime startDate, DateTime endDate) 
+            : base(name, email, phone, "Administrator", salary, birthday, startDate, endDate)
         {
             this.userId = base.Id;
         }
@@ -43,8 +43,9 @@ namespace MediaBazaar.Models
             dbConnection.CloseConnection();
         }
 
-        public override void Delete()
+        public void Delete(DateTime endDate)
         {
+            base.EndDate = endDate;
             base.Delete();
 
             dbConnection.OpenConnection();
