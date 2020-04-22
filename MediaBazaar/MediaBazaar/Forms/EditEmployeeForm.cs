@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using MediaBazaar.Forms;
 using MediaBazaar.Models;
 
 namespace MediaBazaar
@@ -161,39 +161,6 @@ namespace MediaBazaar
 
         }
 
-        private void BtnRemove_Click(object sender, EventArgs e)
-        {
-            var confirmResult = MessageBox.Show("Are you sure to delete this user?",
-                                     "Confirm",
-                                     MessageBoxButtons.YesNo);
-
-            if (confirmResult == DialogResult.Yes)
-            {
-                switch (user.Role)
-                {
-                    case "Worker":
-                        Worker worker = new Worker(
-                            Worker.GetByUserId(user.Id).Id,
-                            Department.GetByName(cbDepartments.SelectedItem.ToString()).Id,
-                            user
-                        );
-                        worker.Delete();
-                        break;
-                    case "Administrator":
-                        Administrator admin = new Administrator(Administrator.GetByUserId(user.Id).Id, user);
-                        admin.Delete();
-                        break;
-                    case "Manager":
-                        Manager manager = new Manager(Manager.GetByUserId(user.Id).Id, user);
-                        manager.Delete();
-                        break;
-                }
-
-                mainForm.ShowUsers(User.GetAll());
-                this.Close();
-            }
-        }
-
         private void BtnEditShifts_Click(object sender, EventArgs e)
         {
             Worker worker = Worker.GetByUserId(this.user.Id);
@@ -215,6 +182,13 @@ namespace MediaBazaar
                 this.btnEditShifts.Visible = true;
                 this.btnAssignShfitsPerMonth.Visible = true;
             }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            var form = new RemoveEmployeeForm(user, mainForm);
+            form.Show();
+            this.Close();
         }
     }
 }

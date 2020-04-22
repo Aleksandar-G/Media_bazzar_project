@@ -17,8 +17,8 @@ namespace MediaBazaar.Models
         public long UserId { get => userId; }
         public long DepartmentId { get => departmentId; }
 
-        public Worker(string name, string email, string phone, long departmentId, decimal salary, DateTime birthday)
-            : base(name, email, phone, "Worker", salary, birthday)
+        public Worker(string name, string email, string phone, long departmentId, decimal salary, DateTime birthday, DateTime startDate, DateTime endDate)
+            : base(name, email, phone, "Worker", salary, birthday, startDate, endDate)
         {
             this.userId = base.id;
             this.departmentId = departmentId;
@@ -50,8 +50,9 @@ namespace MediaBazaar.Models
             dbConnection.CloseConnection();
         }
 
-        public override void Delete()
+        public void Delete(DateTime endDate)
         {
+            base.EndDate = endDate;
             base.Delete();
 
             dbConnection.OpenConnection();

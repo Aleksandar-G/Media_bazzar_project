@@ -20,6 +20,8 @@ namespace MediaBazaar.Models
         private string role;
         private decimal salary;
         private DateTime birthday;
+        private DateTime startDate;
+        private DateTime endDate;
 
         private HttpClient client = new HttpClient();
         private const string REGISTER_URL = "http://localhost:8000/api/register";
@@ -33,8 +35,17 @@ namespace MediaBazaar.Models
         public string Role { get => role; set => role = value; }
         public decimal Salary { get => salary; set => salary = value; }
         public DateTime Birthday { get => birthday; set => birthday = value; }
+        public DateTime StartDate { get => startDate; set => startDate = value; }
+        public DateTime EndDate { get => endDate; set => endDate = value; }
 
-        public User(string name, string email, string phone, string role, decimal salary, DateTime birthday) : base()
+        public User(string name,
+                    string email,
+                    string phone,
+                    string role,
+                    decimal salary,
+                    DateTime birthday,
+                    DateTime startDate,
+                    DateTime endDate) : base()
         {
             this.name = name;
             this.email = email;
@@ -42,6 +53,8 @@ namespace MediaBazaar.Models
             this.role = role;
             this.salary = salary;
             this.birthday = birthday;
+            this.startDate = startDate;
+            this.endDate = endDate;
         }
 
         public User(User anotherUser) : base()
@@ -54,9 +67,20 @@ namespace MediaBazaar.Models
             this.role = anotherUser.role;
             this.salary = anotherUser.salary;
             this.birthday = anotherUser.birthday;
+            this.startDate = anotherUser.startDate;
+            this.endDate = anotherUser.endDate;
         }
 
-        public User(long id, string name, string email, string password, string phone, string role, decimal salary, DateTime birthday) : base()
+        public User(long id,
+                    string name,
+                    string email,
+                    string password,
+                    string phone,
+                    string role,
+                    decimal salary,
+                    DateTime birthday,
+                    DateTime startDate,
+                    DateTime endDate) : base()
         {
             this.id = id;
             this.name = name;
@@ -66,6 +90,8 @@ namespace MediaBazaar.Models
             this.role = role;
             this.salary = salary;
             this.birthday = birthday;
+            this.startDate = startDate;
+            this.endDate = endDate;
         }
 
         public override void Insert()
@@ -81,6 +107,7 @@ namespace MediaBazaar.Models
                 { "role", this.role },
                 { "salary", this.salary.ToString() },
                 { "birthday", this.birthday.ToString("yyyy-MM-dd") },
+                { "start_date", this.startDate.ToString("yyyy-MM-dd") },
                 { "created_at", DateTime.Now.ToString("yyyy-MM-dd") },
                 { "updated_at", DateTime.Now.ToString("yyyy-MM-dd") }
             };
@@ -95,7 +122,7 @@ namespace MediaBazaar.Models
         public override void Delete()
         {
             dbConnection.OpenConnection();
-            string query = $"UPDATE users SET fired_at=NOW(), updated_at=NOW() where id = {id}";
+            string query = $"UPDATE users SET end_date='{endDate.ToString("yyyy-MM-dd")}', updated_at=NOW() where id = {id}";
 
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
@@ -110,7 +137,7 @@ namespace MediaBazaar.Models
             DBconnection dbConnection = new DBconnection();
             dbConnection.OpenConnection();
             List<User> users = new List<User>();
-            string query = "SELECT * FROM users WHERE fired_at IS NULL";
+            string query = "SELECT * FROM users WHERE end_date IS NULL";
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
                 MySqlDataReader reader = cmd.ExecuteReader();
@@ -125,8 +152,10 @@ namespace MediaBazaar.Models
                     string role = reader["role"].ToString();
                     decimal salary = Convert.ToDecimal(reader["salary"].ToString());
                     DateTime birthday = DateTime.Parse(reader["birthday"].ToString());
+                    DateTime startDate = DateTime.Parse(reader["start_date"].ToString());
+                    DateTime.TryParse(reader["end_date"].ToString(), out DateTime endDate);
 
-                    users.Add(new User(id, name, email, password, phone, role, salary, birthday));
+                    users.Add(new User(id, name, email, password, phone, role, salary, birthday, startDate, endDate));
                 }
             }
 
@@ -139,7 +168,7 @@ namespace MediaBazaar.Models
             DBconnection dbConnection = new DBconnection();
             dbConnection.OpenConnection();
             User user;
-            string query = $"SELECT * FROM users WHERE id = {id} AND fired_at IS NULL LIMIT 1";
+            string query = $"SELECT * FROM users WHERE id = {id} AND end_date IS NULL LIMIT 1";
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
                 MySqlDataReader reader = cmd.ExecuteReader();
@@ -153,8 +182,10 @@ namespace MediaBazaar.Models
                     string role = reader["role"].ToString();
                     decimal salary = Convert.ToDecimal(reader["salary"].ToString());
                     DateTime birthday = DateTime.Parse(reader["birthday"].ToString());
+                    DateTime startDate = DateTime.Parse(reader["start_date"].ToString());
+                    DateTime.TryParse(reader["end_date"].ToString(), out DateTime endDate);
 
-                    user = new User(id, name, email, password, phone, role, salary, birthday);
+                    user = new User(id, name, email, password, phone, role, salary, birthday, startDate, endDate);
 
                     dbConnection.CloseConnection();
                     return user;
@@ -170,7 +201,7 @@ namespace MediaBazaar.Models
             DBconnection dbConnection = new DBconnection();
             dbConnection.OpenConnection();
             User user;
-            string query = "SELECT * FROM users WHERE email = @email AND fired_at IS NULL LIMIT 1";
+            string query = "SELECT * FROM users WHERE email = @email AND end_date IS NULL LIMIT 1";
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
                 cmd.Parameters.AddWithValue("@email", email);
@@ -185,8 +216,11 @@ namespace MediaBazaar.Models
                     string role = reader["role"].ToString();
                     decimal salary = Convert.ToDecimal(reader["salary"].ToString());
                     DateTime birthday = DateTime.Parse(reader["birthday"].ToString());
+                    DateTime.TryParse(reader["start_date"].ToString(), out DateTime startDate);
+                    DateTime.TryParse(reader["end_date"].ToString(), out DateTime endDate);
 
-                    user = new User(userId, userName, email, userPassword, phone, role, salary, birthday);
+
+                    user = new User(userId, userName, email, userPassword, phone, role, salary, birthday, startDate, endDate);
 
                     dbConnection.CloseConnection();
                     return user;
@@ -204,7 +238,7 @@ namespace MediaBazaar.Models
 
             string query = $@"UPDATE users 
                               SET name = @name, email = @email, phone = @phone, role = @role, salary = @salary, birthday = @birthday 
-                              WHERE id = {user.Id} AND fired_at IS NULL";
+                              WHERE id = {user.Id} AND end_date IS NULL";
 
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {

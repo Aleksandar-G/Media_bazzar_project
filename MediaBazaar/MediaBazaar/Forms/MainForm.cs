@@ -17,7 +17,6 @@ namespace MediaBazaar
         private bool mouseDown;
         private Point lastLocation;
         public User currentUser;
-        private List<User> users;
 
         public MainForm(User user)
         {

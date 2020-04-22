@@ -27,7 +27,10 @@ namespace MediaBazaar
             this.btnAdd.BackColor = ApplicationColors.Red;
             this.mainForm = mainForm;
             this.cbRole.SelectedIndex = 0;
-            this.dtbBirthday.CustomFormat = "yyy-MM-dd";
+            this.dpBirthday.CustomFormat = "yyy-MM-dd";
+            this.dpStartDate.CustomFormat = "yyy-MM-dd";
+            this.dpBirthday.Value = DateTime.Now;
+            this.dpStartDate.Value = DateTime.Now;
         }
 
         private void EditEmployee_MouseDown(object sender, MouseEventArgs e)
@@ -84,8 +87,9 @@ namespace MediaBazaar
             string name = tbName.Text;
             string email = tbEmail.Text;
             string phone = tbPhone.Text;
-            DateTime birthday = dtbBirthday.Value;
+            DateTime birthday = dpBirthday.Value;
             decimal salary = Convert.ToDecimal(tbSalary.Text);
+            DateTime startDate = dpStartDate.Value;
 
             string message = "";
 
@@ -117,17 +121,17 @@ namespace MediaBazaar
                     {
                         Department department = Department.GetByName(cbDepartments.SelectedItem.ToString());
 
-                        Worker worker = new Worker(name, email, phone, department.Id, salary, birthday);
+                        Worker worker = new Worker(name, email, phone, department.Id, salary, birthday, startDate, new DateTime());
                         worker.Insert();
                     }
                     else if (cbRole.SelectedItem.ToString() == "Administrator")
                     {
-                        Administrator administrator = new Administrator(name, email, phone, salary, birthday);
+                        Administrator administrator = new Administrator(name, email, phone, salary, birthday, startDate, new DateTime());
                         administrator.Insert();
                     }
                     else if (cbRole.SelectedItem.ToString() == "Manager")
                     {
-                        Manager manager = new Manager(name, email, phone, salary, birthday);
+                        Manager manager = new Manager(name, email, phone, salary, birthday, startDate, new DateTime());
                         manager.Insert();
                     }
                     MessageBox.Show("User added successfully!");

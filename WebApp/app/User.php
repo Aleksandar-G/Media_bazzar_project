@@ -15,7 +15,7 @@ class User extends Authenticatable implements CanResetPassword
     use SoftDeletes;
     use HasApiTokens;
 
-    protected const DELETED_AT = 'fired_at';
+    protected const DELETED_AT = 'end_date';
 
     /**
      * The attributes that are mass assignable.
@@ -23,7 +23,7 @@ class User extends Authenticatable implements CanResetPassword
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'phone', 'salary', 'birthday', 'role'
+        'name', 'email', 'password', 'phone', 'salary', 'birthday', 'role', 'start_date'
     ];
 
     /**

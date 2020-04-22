@@ -88,7 +88,7 @@
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnEdit.Location = new System.Drawing.Point(171, 541);
+            this.btnEdit.Location = new System.Drawing.Point(173, 540);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(172, 49);
             this.btnEdit.TabIndex = 16;
@@ -104,13 +104,13 @@
             this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemove.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemove.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnRemove.Location = new System.Drawing.Point(404, 541);
+            this.btnRemove.Location = new System.Drawing.Point(406, 540);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(172, 49);
             this.btnRemove.TabIndex = 17;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
-            this.btnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             this.btnRemove.MouseEnter += new System.EventHandler(this.BtnRemove_MouseEnter);
             this.btnRemove.MouseLeave += new System.EventHandler(this.BtnRemove_MouseLeave);
             // 
@@ -120,7 +120,7 @@
             this.btnEditShifts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditShifts.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditShifts.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnEditShifts.Location = new System.Drawing.Point(171, 608);
+            this.btnEditShifts.Location = new System.Drawing.Point(173, 607);
             this.btnEditShifts.Name = "btnEditShifts";
             this.btnEditShifts.Size = new System.Drawing.Size(172, 63);
             this.btnEditShifts.TabIndex = 26;
@@ -135,7 +135,7 @@
             this.btnAssignShfitsPerMonth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAssignShfitsPerMonth.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAssignShfitsPerMonth.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAssignShfitsPerMonth.Location = new System.Drawing.Point(404, 608);
+            this.btnAssignShfitsPerMonth.Location = new System.Drawing.Point(406, 607);
             this.btnAssignShfitsPerMonth.Name = "btnAssignShfitsPerMonth";
             this.btnAssignShfitsPerMonth.Size = new System.Drawing.Size(172, 63);
             this.btnAssignShfitsPerMonth.TabIndex = 27;
