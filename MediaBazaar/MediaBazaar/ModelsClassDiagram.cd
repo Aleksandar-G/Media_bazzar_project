@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="MediaBazaar.Models.Administrator">
+    <Position X="29" Y="23.75" Width="8" />
+    <TypeIdentifier>
+      <HashCode>AEAAAEAAAAAAAAAACAAAAAAAAAEAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\Administrator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaBazaar.Models.Department">
+    <Position X="17.75" Y="4.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAEAAAAAAAAAAAAAAAAQAAAFAAAAACgAgAAAAAAg=</HashCode>
+      <FileName>Models\Department.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaBazaar.Models.Manager">
+    <Position X="31.25" Y="17.25" Width="7.75" />
+    <TypeIdentifier>
+      <HashCode>AEAAAEAAAAAAAAAACAAAAAAAAAEAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\Manager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaBazaar.Models.Model">
+    <Position X="24" Y="10" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>IAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaBazaar.Models.Product">
+    <Position X="10" Y="10" Width="6" />
+    <TypeIdentifier>
+      <HashCode>AAQDAEAAAQAgAAAAIAAAAAQQEAEEAACCAgAAgAAAAgg=</HashCode>
+      <FileName>Models\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaBazaar.Models.StockRequest">
+    <Position X="31.75" Y="9.25" Width="5.75" />
+    <TypeIdentifier>
+      <HashCode>AAQgAFAAAACAAAAAAAAAAAAAAAEQAAAAAwAAAAAAAAA=</HashCode>
+      <FileName>Models\StockRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaBazaar.Models.User">
+    <Position X="20.5" Y="13" Width="9.5" />
+    <TypeIdentifier>
+      <HashCode>QAQCAWAAACAgIAAgECAAAB4gAAGMAAAiAgAAJkAAAoA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaBazaar.Models.Worker">
+    <Position X="10" Y="16" Width="8.75" />
+    <TypeIdentifier>
+      <HashCode>AEQCAEAAAIAEgAAECKEAAAgAAAEAAAAAAgAAAAAgAoA=</HashCode>
+      <FileName>Models\Worker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaBazaar.Models.WorkShift">
+    <Position X="26.25" Y="4.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAEAACAIAAAAAAAABAAAAAAEAAAABAAAAAwAAAgA=</HashCode>
+      <FileName>Models\WorkShift.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaBazaar.Models.Supervisor">
+    <Position X="13.25" Y="23.5" Width="9" />
+    <TypeIdentifier>
+      <HashCode>AEQAAEAAAAAAgAAACIAAAAgAAAEAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Models\Supervisor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaBazaar.DBconnection">
+    <Position X="32.5" Y="4" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEABAAAABABAAAQAAAAAAAAAAAgAAAAI=</HashCode>
+      <FileName>DBconnection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="MediaBazaar.Shift">
+    <Position X="7.25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAACAAAAAABAAAAAAA=</HashCode>
+      <FileName>Shift.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

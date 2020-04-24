@@ -281,6 +281,7 @@ namespace MediaBazaar.Models
                     return Shift.Morning;
             }
         }
+
         public static List<WorkShift> GetWorkShiftsByWorkerID(long workerId)
         {
             List<WorkShift> result = new List<WorkShift>();

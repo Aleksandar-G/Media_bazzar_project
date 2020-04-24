@@ -19,4 +19,10 @@ class Department extends Model
     {
         return $this->hasMany('App\Product');
     }
+
+    public function supervisor()
+    {
+        return $this->hasOne('App\Supervisor');
+    }
+
 }

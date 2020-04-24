@@ -46,9 +46,10 @@
             this.label1.AutoSize = true;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(81, 163);
+            this.label1.Location = new System.Drawing.Point(54, 106);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(186, 29);
+            this.label1.Size = new System.Drawing.Size(127, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Product Name:";
             // 
@@ -58,9 +59,10 @@
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(441, 163);
+            this.label2.Location = new System.Drawing.Point(294, 106);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(250, 29);
+            this.label2.Size = new System.Drawing.Size(172, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Product Description:";
             // 
@@ -69,35 +71,39 @@
             this.label3.AutoSize = true;
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(142, 257);
+            this.label3.Location = new System.Drawing.Point(95, 167);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 29);
+            this.label3.Size = new System.Drawing.Size(54, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "Price:";
             // 
             // tbProductName
             // 
             this.tbProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbProductName.Location = new System.Drawing.Point(66, 195);
+            this.tbProductName.Location = new System.Drawing.Point(44, 127);
+            this.tbProductName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbProductName.Name = "tbProductName";
-            this.tbProductName.Size = new System.Drawing.Size(228, 30);
+            this.tbProductName.Size = new System.Drawing.Size(153, 23);
             this.tbProductName.TabIndex = 3;
             // 
             // tbProductDescription
             // 
             this.tbProductDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbProductDescription.Location = new System.Drawing.Point(352, 195);
+            this.tbProductDescription.Location = new System.Drawing.Point(235, 127);
+            this.tbProductDescription.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbProductDescription.Multiline = true;
             this.tbProductDescription.Name = "tbProductDescription";
-            this.tbProductDescription.Size = new System.Drawing.Size(416, 214);
+            this.tbProductDescription.Size = new System.Drawing.Size(279, 145);
             this.tbProductDescription.TabIndex = 4;
             // 
             // tbProductPrice
             // 
             this.tbProductPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbProductPrice.Location = new System.Drawing.Point(66, 289);
+            this.tbProductPrice.Location = new System.Drawing.Point(44, 188);
+            this.tbProductPrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbProductPrice.Name = "tbProductPrice";
-            this.tbProductPrice.Size = new System.Drawing.Size(228, 30);
+            this.tbProductPrice.Size = new System.Drawing.Size(153, 23);
             this.tbProductPrice.TabIndex = 5;
             // 
             // label4
@@ -105,9 +111,10 @@
             this.label4.AutoSize = true;
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(103, 349);
+            this.label4.Location = new System.Drawing.Point(69, 227);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(155, 29);
+            this.label4.Size = new System.Drawing.Size(109, 20);
             this.label4.TabIndex = 6;
             this.label4.Text = "Department:";
             // 
@@ -117,9 +124,10 @@
             this.cmbDepartments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbDepartments.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDepartments.FormattingEnabled = true;
-            this.cmbDepartments.Location = new System.Drawing.Point(66, 381);
+            this.cmbDepartments.Location = new System.Drawing.Point(44, 248);
+            this.cmbDepartments.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbDepartments.Name = "cmbDepartments";
-            this.cmbDepartments.Size = new System.Drawing.Size(228, 33);
+            this.cmbDepartments.Size = new System.Drawing.Size(153, 24);
             this.cmbDepartments.TabIndex = 7;
             // 
             // btnClose
@@ -129,10 +137,10 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(725, 0);
+            this.btnClose.Location = new System.Drawing.Point(502, -2);
             this.btnClose.Margin = new System.Windows.Forms.Padding(0);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(56, 50);
+            this.btnClose.Size = new System.Drawing.Size(37, 32);
             this.btnClose.TabIndex = 16;
             this.btnClose.Text = "x";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -143,10 +151,9 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(278, 29);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(185, 19);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(214, 45);
+            this.label5.Size = new System.Drawing.Size(145, 30);
             this.label5.TabIndex = 17;
             this.label5.Text = "Add Product";
             // 
@@ -157,10 +164,10 @@
             this.btnAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddProduct.ForeColor = System.Drawing.Color.White;
-            this.btnAddProduct.Location = new System.Drawing.Point(467, 448);
-            this.btnAddProduct.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddProduct.Location = new System.Drawing.Point(311, 291);
+            this.btnAddProduct.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnAddProduct.Name = "btnAddProduct";
-            this.btnAddProduct.Size = new System.Drawing.Size(198, 60);
+            this.btnAddProduct.Size = new System.Drawing.Size(132, 39);
             this.btnAddProduct.TabIndex = 19;
             this.btnAddProduct.Text = "Add Product";
             this.btnAddProduct.UseVisualStyleBackColor = false;
@@ -168,10 +175,10 @@
             // 
             // AddProductForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(780, 554);
+            this.ClientSize = new System.Drawing.Size(537, 360);
             this.Controls.Add(this.btnAddProduct);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnClose);
@@ -185,6 +192,7 @@
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "AddProductForm";
             this.Text = "AddProductForm";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AddProductForm_MouseDown);

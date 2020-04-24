@@ -17,6 +17,7 @@ namespace MediaBazaar
         private bool mouseDown;
         private Point lastLocation;
         public User currentUser;
+        private List<User> users;
 
         public MainForm(User user)
         {
@@ -30,16 +31,27 @@ namespace MediaBazaar
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            ShowUsers(User.GetAll());
             if (currentUser.Role == "Manager")
             {
-                this.btnViewStatistics.Show();
+                users = User.GetAll();
+                this.btnViewStatistics.Show();;
             }
+
+            else if (currentUser.Role == "Supervisor")
+            {
+                this.btnViewStockRequests.Hide();
+                this.btnAddEmployee.Hide();
+                this.btnAddDepartment.Hide();
+
+                Supervisor supervisor = Supervisor.GetByUserId(currentUser.Id);
+                users = new List<User>(Worker.GetAll().FindAll(w => w.DepartmentId == supervisor.DepartmentId));
+            }
+
+            ShowUsers(users);
         }
 
         public void ShowUsers(List<User> users)
         {
-
             this.flpEmployees.Controls.Clear();
 
             users.ForEach(user =>
@@ -139,7 +151,7 @@ namespace MediaBazaar
 
         private void BtnViewStatistics_Click(object sender, EventArgs e)
         {
-            var form = new StatisticsForm();
+            var form = new StatisticsForm(currentUser);
             form.Show();
         }
 
@@ -153,19 +165,19 @@ namespace MediaBazaar
         private void TextBoxExt1_TextChanged(object sender, EventArgs e)
         {
             string search = tbSearch.Text;
-            ShowUsers(User.GetAll().FindAll(x => x.Name.Contains(search)));
+            ShowUsers(users.FindAll(x => x.Name.Contains(search)));
         }
 
         private void BtnProducts_Click(object sender, EventArgs e)
         {
-            var productsForm = new ProductsListForm();
+            var productsForm = new ProductsListForm(currentUser);
             productsForm.Show();
 
         }
 
         private void BtnViewWorkshifts_Click(object sender, EventArgs e)
         {
-            ViewWorkshiftsForm workshiftsForm = new ViewWorkshiftsForm();
+            ViewWorkshiftsForm workshiftsForm = new ViewWorkshiftsForm(currentUser);
             workshiftsForm.Show();
         }
     }

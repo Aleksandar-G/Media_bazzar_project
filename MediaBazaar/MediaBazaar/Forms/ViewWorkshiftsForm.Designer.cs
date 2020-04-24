@@ -46,7 +46,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(707, -6);
+            this.btnClose.Location = new System.Drawing.Point(709, -2);
             this.btnClose.Margin = new System.Windows.Forms.Padding(0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(60, 55);
@@ -62,7 +62,7 @@
             this.lblHeading.ForeColor = System.Drawing.Color.White;
             this.lblHeading.Location = new System.Drawing.Point(12, 9);
             this.lblHeading.Name = "lblHeading";
-            this.lblHeading.Size = new System.Drawing.Size(226, 40);
+            this.lblHeading.Size = new System.Drawing.Size(171, 30);
             this.lblHeading.TabIndex = 13;
             this.lblHeading.Text = "View workshifts";
             // 
@@ -74,7 +74,7 @@
             this.cbWorkers.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.cbWorkers.Location = new System.Drawing.Point(19, 105);
             this.cbWorkers.Name = "cbWorkers";
-            this.cbWorkers.Size = new System.Drawing.Size(286, 36);
+            this.cbWorkers.Size = new System.Drawing.Size(286, 29);
             this.cbWorkers.TabIndex = 14;
             this.cbWorkers.SelectedIndexChanged += new System.EventHandler(this.CbWorkers_SelectedIndexChanged);
             // 
@@ -85,7 +85,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(14, 79);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 28);
+            this.label1.Size = new System.Drawing.Size(82, 20);
             this.label1.TabIndex = 15;
             this.label1.Text = "Select user";
             // 
@@ -107,7 +107,7 @@
             this.checkBox.Font = new System.Drawing.Font("Segoe UI", 12.096F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox.Location = new System.Drawing.Point(18, 26);
             this.checkBox.Name = "checkBox";
-            this.checkBox.Size = new System.Drawing.Size(109, 34);
+            this.checkBox.Size = new System.Drawing.Size(89, 27);
             this.checkBox.TabIndex = 4;
             this.checkBox.Text = "Monthly";
             this.checkBox.UseVisualStyleBackColor = false;
@@ -121,7 +121,7 @@
             this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker.Location = new System.Drawing.Point(154, 24);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(162, 35);
+            this.dateTimePicker.Size = new System.Drawing.Size(162, 29);
             this.dateTimePicker.TabIndex = 2;
             this.dateTimePicker.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
             // 
@@ -132,7 +132,7 @@
             this.flpShifts.Location = new System.Drawing.Point(19, 166);
             this.flpShifts.Margin = new System.Windows.Forms.Padding(0);
             this.flpShifts.Name = "flpShifts";
-            this.flpShifts.Size = new System.Drawing.Size(661, 345);
+            this.flpShifts.Size = new System.Drawing.Size(679, 431);
             this.flpShifts.TabIndex = 3;
             this.flpShifts.WrapContents = false;
             // 
