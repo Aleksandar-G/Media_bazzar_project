@@ -84,7 +84,7 @@ namespace MediaBazaar
 
         private bool CheckRole(User user)
         {
-            if (user.Role == "Administrator" || user.Role == "Manager") return true;
+            if (user.Role == "Administrator" || user.Role == "Manager" || user.Role == "Supervisor") return true;
 
             return false;
         }

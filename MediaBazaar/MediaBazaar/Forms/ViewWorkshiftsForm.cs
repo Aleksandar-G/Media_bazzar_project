@@ -19,24 +19,30 @@ namespace MediaBazaar.Forms
         private List<Worker> workers;
         private Worker currentWorker;
         private List<WorkShift> workShifts;
-        public ViewWorkshiftsForm()
+        private User currentUser;
+
+        public ViewWorkshiftsForm(User currentUser)
         {
             InitializeComponent();
-            this.workers = Worker.GetAll();
+
             this.BackColor = ApplicationColors.PrimaryDark;
             this.cbWorkers.BackColor = Color.White;
             this.cbWorkers.ForeColor = ApplicationColors.PrimaryDark;
             this.checkBox.BackColor = ApplicationColors.PrimaryDark;
-
-            this.workShifts = new List<WorkShift>();
-
             this.panel.Visible = false;
-            
             
             dateTimePicker.CustomFormat = "yyyy-MM-dd";
             dateTimePicker.Format = DateTimePickerFormat.Custom;
-           
 
+            this.workShifts = new List<WorkShift>();
+            this.currentUser = currentUser;
+
+            this.workers = Worker.GetAll();
+            if (currentUser.Role == "Supervisor")
+            {
+                long supervisorDepartment = Supervisor.GetByUserId(currentUser.Id).DepartmentId;
+                this.workers = this.workers.FindAll(w => w.DepartmentId == supervisorDepartment);
+            }
         }
         public void SetComboBoxCollection()
         {

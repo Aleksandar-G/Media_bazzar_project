@@ -16,11 +16,13 @@ namespace MediaBazaar.Forms
     {
         private bool mouseDown;
         private Point lastLocation;
+        private User currentUser;
 
-        public ProductsListForm()
+        public ProductsListForm(User currentUser)
         {
             InitializeComponent();
             this.BackColor = ApplicationColors.PrimaryDark;
+            this.currentUser = currentUser;
         }
 
         private void ProductsListForm_Load(object sender, EventArgs e)
@@ -35,25 +37,20 @@ namespace MediaBazaar.Forms
 
         private void FillUpProducts()
         {
-            //cmbProducts.Items.Clear();
-
-            //try
-            //{
-            //    foreach (Product product in Product.GetAll())
-            //    {
-            //        cmbProducts.Items.Add(product.Name);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
-
             lbProducts.Items.Clear();
 
             try
             {
-                foreach (Product product in Product.GetAll())
+                List<Product> products = Product.GetAll();
+
+                if (currentUser.Role == "Supervisor")
+                {
+                    long departmentId = Supervisor.GetByUserId(currentUser.Id).DepartmentId;
+                    Department department = Department.GetById(departmentId);
+                    products = products.FindAll(p => p.Department == department.Name);
+                }
+
+                foreach (Product product in products)
                 {
                     lbProducts.Items.Add(product.Name);
                 }
@@ -71,7 +68,6 @@ namespace MediaBazaar.Forms
 
             try
             {
-                //productName = cmbProducts.SelectedItem.ToString();
                 productName = lbProducts.SelectedItem.ToString();
 
                 product = Product.GetByName(productName);
@@ -90,7 +86,7 @@ namespace MediaBazaar.Forms
 
         private void BtnCreateProduct_Click(object sender, EventArgs e)
         {
-            var addProductForm = new AddProductForm();
+            var addProductForm = new AddProductForm(currentUser);
             addProductForm.Show();
         }
 
@@ -101,7 +97,6 @@ namespace MediaBazaar.Forms
 
             try
             {
-                //productName = cmbProducts.SelectedItem.ToString();
                 productName = lbProducts.SelectedItem.ToString();
 
                 product = Product.GetByName(productName);

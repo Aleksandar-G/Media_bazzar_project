@@ -16,10 +16,25 @@ namespace MediaBazaar.Forms
         private bool mouseDown;
         private Point lastLocation;
 
-        public AddProductForm()
+        public AddProductForm(User user)
         {
             InitializeComponent();
             this.BackColor = ApplicationColors.PrimaryDark;
+            
+            if (user.Role == "Supervisor")
+            {
+                Supervisor supervisor = Supervisor.GetByUserId(user.Id);
+                Department supervisorDepartment = Department.GetById(supervisor.DepartmentId);
+
+                if (supervisorDepartment != null)
+                {
+                    cmbDepartments.Items.Add(supervisorDepartment.Name);
+                    cmbDepartments.SelectedIndex = 0;
+                }
+                
+                cmbDepartments.Enabled = false;
+                return;
+            }
 
             foreach(Department department in Department.GetAll())
             {
@@ -82,8 +97,6 @@ namespace MediaBazaar.Forms
                 this.Location = new Point((this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
                 this.Update();
             }
-
-            
         }
     }
 }

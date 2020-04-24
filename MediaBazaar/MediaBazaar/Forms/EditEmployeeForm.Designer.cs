@@ -264,6 +264,7 @@
             // tbEmail
             // 
             this.tbEmail.BeforeTouchSize = new System.Drawing.Size(407, 33);
+            this.tbEmail.Enabled = false;
             this.tbEmail.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tbEmail.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbEmail.Location = new System.Drawing.Point(171, 200);
@@ -296,11 +297,13 @@
             // cbRole
             // 
             this.cbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbRole.Enabled = false;
             this.cbRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbRole.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbRole.ItemHeight = 25;
             this.cbRole.Items.AddRange(new object[] {
             "Worker",
+            "Supervisor",
             "Administrator",
             "Manager"});
             this.cbRole.Location = new System.Drawing.Point(169, 65);
@@ -313,7 +316,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(800, 673);
+            this.ClientSize = new System.Drawing.Size(800, 689);
             this.Controls.Add(this.lblRole);
             this.Controls.Add(this.cbRole);
             this.Controls.Add(this.lblSalary);

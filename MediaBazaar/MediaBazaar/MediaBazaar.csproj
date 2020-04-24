@@ -210,8 +210,8 @@
     <Compile Include="Models\Manager.cs" />
     <Compile Include="Models\Model.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Supervisor.cs" />
     <Compile Include="Models\WorkShift.cs" />
-    <Compile Include="Models\Statistics.cs" />
     <Compile Include="Models\StockRequest.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Worker.cs" />
@@ -271,6 +271,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ModelsClassDiagram.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -18,7 +18,9 @@ namespace MediaBazaar.Forms
     {
         private bool mouseDown;
         private Point lastLocation;
-        public StatisticsForm()
+        private User currentUser;
+
+        public StatisticsForm(User currentUser)
         {
             InitializeComponent();
             this.BackColor = ApplicationColors.PrimaryDark;
@@ -26,7 +28,7 @@ namespace MediaBazaar.Forms
             this.btnProductsByDepartment.BackColor = ApplicationColors.Orange;
             this.btnStatWorkersByDepartment.BackColor = ApplicationColors.Orange;
 
-            
+            this.currentUser = currentUser;
         }
         public Chart CreateChart(SeriesChartType type)
         {
@@ -124,7 +126,7 @@ namespace MediaBazaar.Forms
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            var productsForm = new ProductsListForm();
+            var productsForm = new ProductsListForm(currentUser);
             productsForm.Show();
         }
 
