@@ -25,7 +25,7 @@ Route::get('/home', function(){
 })->middleware('auth');
 
 Route::get('/workshifts', 'CalendarController@index');
-
+Route::get('/logout','UserController@logout');
 Route::resource('products', 'ProductsController')->only([
     'index', 'show', 'update',
 ])->middleware('auth');

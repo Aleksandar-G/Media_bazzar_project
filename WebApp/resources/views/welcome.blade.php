@@ -13,7 +13,7 @@
                 </div>
                 @if (Route::has('login'))
                 @auth
-                        <a class="btn btn-orange btn-lg " href="{{ url('/home') }}">Home</a>
+                        <a class="w-100 btn btn-orange btn-lg " href="{{ url('/home') }}">Home</a>
                     @else
                     <a class=" w-100 btn btn-orange btn-lg " href="{{ route('login') }}">Login</a>
                 @endauth

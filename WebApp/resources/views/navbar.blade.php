@@ -10,9 +10,10 @@
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="#home" class="active">Home</a>
-  <a href="#news">Stock Requests</a>
-  <a href="#contact">My QR Code</a>
+  <a href="/home" class="active">Home</a>
+  <a href="/products">Products</a>
+  <a href="/myprofile">My QR Code</a>
+  <a id="logout" href='/logout'>Logout</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
   </a>

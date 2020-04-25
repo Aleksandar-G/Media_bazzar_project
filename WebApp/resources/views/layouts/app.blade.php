@@ -1,3 +1,7 @@
+@php
+use Illuminate\Support\Facades\Auth;
+@endphp
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -30,8 +34,9 @@
     @yield('head')
 </head>
 <body>
-    
-    @yield('content')
-    
+    @if(Auth::check())
+        @include('navbar')
+    @endif
+    @yield('content') 
 </body>
 </html>

@@ -33,6 +33,6 @@
 @endsection
 
 @section('content')
-@include('navbar')
+
 <div id='calendar' style="margin:100px"></div>
 @endsection
