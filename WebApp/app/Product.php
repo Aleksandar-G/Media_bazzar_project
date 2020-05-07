@@ -29,11 +29,18 @@ class Product extends Model
         $this->save();
 
         if ($this->quantity < self::MIN_QUANTITY_AMOUNT) {
-            StockRequest::create([
-                'worker_id' => Worker::firstWhere('user_id', Auth::id())->id,
-                'product_id' => $this->id,
-                'quantity' => self::MIN_QUANTITY_AMOUNT
-            ]);
+            try
+            {
+                StockRequest::where('product_id', $this->id)->firstOrFail();
+            }catch(Exception $ex)
+            {
+                StockRequest::create([
+                    'worker_id' => Worker::firstWhere('user_id', Auth::id())->id,
+                    'product_id' => $this->id,
+                    'quantity' => self::MIN_QUANTITY_AMOUNT
+                ]);
+            }
+            
         }
     }
 
