@@ -23,6 +23,13 @@ $factory->define(User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        'phone' => '0881234567',
+        'salary' => $faker->numberBetween(1000,10000),
+        'role' => $faker->randomElement(['Manager', 'Administrator', 'Worker', 'Supervisor']),
+        'birthday' => '1990-11-11',
         'remember_token' => Str::random(10),
+        'updated_at' => '2020-05-11 17:59:45',
+        'created_at' => '2020-05-11 17:59:45',
+        'start_date' => '2020-07-01'
     ];
 });
