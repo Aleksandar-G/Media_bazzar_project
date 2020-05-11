@@ -12,5 +12,4 @@ npm-debug.log
 yarn-error.log
 
 /public/fullcalendar
-/public/js
-/public/css
+

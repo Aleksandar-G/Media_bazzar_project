@@ -13,6 +13,7 @@
   <a href="/home" class="active">Home</a>
   <a href="/products">Products</a>
   <a href="/myprofile">My QR Code</a>
+  <a href="/workshift_view">Workshift View</a>
   
   <a id="logout" href="{{ route('logout') }}"
   onclick="event.preventDefault();

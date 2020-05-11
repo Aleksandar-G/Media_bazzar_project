@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#header {
+    text-align: center;
+}
+
+#selectEmployee {
+    margin-left: 40%;
+    width: 15%;
+    padding: 15px;
+    border: none;
+    background: #f1f1f1;
+}
+
+#selectEmployee:focus {
+    background-color: #ddd;
+    outline: none;
+}
