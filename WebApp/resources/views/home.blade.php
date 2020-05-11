@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang='en'>
-
-<head>
-  <meta charset='utf-8' />
-
-  <link href="{{ URL::asset('fullcalendar/core/main.css') }}" rel='stylesheet' />
+@extends('layouts/app')
+@section('head')
+<link href="{{ URL::asset('fullcalendar/core/main.css') }}" rel='stylesheet' />
   <link href="{{ URL::asset('fullcalendar/daygrid/main.css') }}" rel='stylesheet' />
   <link href="{{ URL::asset('fullcalendar/timegrid/main.css') }}" rel='stylesheet' />
   <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' />
@@ -33,12 +29,10 @@
       calendar.render();
     });
   </script>
-</head>
+   
+@endsection
 
-<body>
+@section('content')
 
-  <div id='calendar' style="margin:100px"></div>
-
-</body>
-
-</html>
+<div id='calendar' style="margin:100px"></div>
+@endsection
