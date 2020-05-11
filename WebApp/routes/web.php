@@ -26,6 +26,8 @@ Route::get('/home', function(){
 
 Route::get('/workshifts', 'CalendarController@index');
 
+//Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
 Route::resource('products', 'ProductsController')->only([
     'index', 'show', 'update',
 ])->middleware('auth');
