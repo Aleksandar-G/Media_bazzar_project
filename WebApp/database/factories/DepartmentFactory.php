@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Department::class, function (Faker $faker) {
     return [
         'name' => $faker->word,
-        'created_at' => $faker->dateTime($max = 'now', $timezone = null),
-        'updated_at' =>  $faker->dateTime($max = 'now', $timezone = null),
+        'created_at' => now(),
+        'updated_at' =>  now(),
     ];
 });

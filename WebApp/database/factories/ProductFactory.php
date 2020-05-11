@@ -15,7 +15,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'price' => $faker->numberBetween(50,5000),
         'quantity' => 10,
         'department_id' => $department->id,
-        'created_at' => $faker->dateTime($max = 'now', $timezone = null),
-        'updated_at' =>  $faker->dateTime($max = 'now', $timezone = null),
+        'created_at' => now(),
+        'updated_at' =>  now(),
     ];
 });
