@@ -1,4 +1,5 @@
 @extends('workshift_view')
+@extends('layouts/app')
 @section('body')
 <h1 id="header">Please select an employee</h1>
 <select id="selectEmployee" onchange="LoadEmployees()">

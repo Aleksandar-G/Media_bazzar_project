@@ -31,7 +31,7 @@
           startTime: '8:00',
           endTime: '20:00',
         },
-        events: '/workshifts/{{$id}}', // use the `url` property
+        events: '/api/workshifts/{{$id}}', // use the `url` property
       });
 
       calendar.render();

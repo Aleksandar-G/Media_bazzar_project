@@ -13,12 +13,12 @@ use App\Worker;
 
 class WorkshiftViewController extends Controller
 {
-  public static function index()
+  public static function GetEmployees($role)
   {
-    //loads the employees from the model for the dropdown in the view
     $loggedin = Auth::user();
-    $role = $loggedin->role;
+    //$role = $loggedin->role;
     $employees = array();
+
     if ($role == "Supervisor") {
       $user = Supervisor::where('user_id', ($loggedin->id))->first();
 
@@ -31,21 +31,35 @@ class WorkshiftViewController extends Controller
           $NameIdWorker = null;
         }
       }
-    } 
-    else if ($role == "Manager" || $role == "Administrator") {
-      foreach (Worker::get() as $worker) {
-        $emp = User::where('id', $worker->user_id)->first();
-        $NameIdWorker = array();
-        array_push($NameIdWorker, $emp->name, $emp->id);
-        array_push($employees, $NameIdWorker);
-        $NameIdWorker = null;
+      return $employees;
+    } else if ($role == "Manager" || $role == "Administrator") {
+      foreach(Worker::get() as $w){
+      
+      $NameIdWorker = array();
+      $u = User::find($w->user_id);
+      array_push($NameIdWorker, $u->name, $u->id);
+      array_push($employees, $NameIdWorker);
+      $NameIdWorker = null;
       }
-    } 
-    else {
+      return $employees;
+    }
+    
+  }
+
+  public static function index()
+  {
+    //loads the employees from the model for the dropdown in the view
+    $loggedin = Auth::user();
+    $role = $loggedin->role;
+    $employees = array();
+    $employees = WorkshiftViewController::GetEmployees($role);
+
+    if ($role == "Supervisor" || $role == "Manager" || $role == "Administrator") {
+      //var_dump($employees);
+      return view('workshift', ['eployees' => $employees, "id" => Worker::all()->first()->id]);
+    } else {
       return view('workshift_view', ['id' => Auth::user()->id]);
     }
-
-    return view('workshift', ['eployees' => $employees, "id" => Worker::all()->first()->id]);
   }
 
   public static function show($id)
@@ -54,28 +68,9 @@ class WorkshiftViewController extends Controller
     $loggedin = Auth::user();
     $role = $loggedin->role;
     $employees = array();
-    if ($role == "Supervisor") {
-      $user = Supervisor::where('user_id', ($loggedin->id))->first();
 
-      foreach (Worker::get() as $worker) {
-        if ($user->department_id == $worker->department_id) {
-          $emp = User::where('id', $worker->user_id)->first();
-          $NameIdWorker = array();
-          array_push($NameIdWorker, $emp->name, $emp->id);
-          array_push($employees, $NameIdWorker);
-          $NameIdWorker = null;
-        }
-      }
-    } 
-     else if ($role == "Manager" || $role == "Administrator") {
-      foreach (Worker::get() as $worker) {
-        $emp = User::where('id', $worker->user_id)->first();
-        $NameIdWorker = array();
-        array_push($NameIdWorker, $emp->name, $emp->id);
-        array_push($employees, $NameIdWorker);
-        $NameIdWorker = null;
-      }
-    }
+    $employees = WorkshiftViewController::GetEmployees($role);
+
     return view('workshift', ['eployees' => $employees, 'id' => $id]);
   }
 
