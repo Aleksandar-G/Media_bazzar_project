@@ -1,6 +1,6 @@
 @extends('workshift_view')
 @section('body')
-<h1>Please select an employee</h1>
+<h1 id="header">Please select an employee</h1>
 <select id="selectEmployee" onchange="LoadEmployees()">
 
     @foreach((array)$eployees as $emp)

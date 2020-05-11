@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Workshifts Of Employees</title>
-
+  <link href="/css/workshiftView.css" rel='stylesheet'>
   <meta charset='utf-8' />
 
   <link href="{{ URL::asset('fullcalendar/core/main.css') }}" rel='stylesheet' />
