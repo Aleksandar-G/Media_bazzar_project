@@ -15,7 +15,7 @@ class WorkshiftViewController extends Controller
 {
   public static function index()
   {
-    //loads the employees from the model for the combox in the view
+    //loads the employees from the model for the dropdown in the view
     $loggedin = Auth::user();
     $role = $loggedin->role;
     $employees = array();
@@ -25,55 +25,32 @@ class WorkshiftViewController extends Controller
       foreach (Worker::get() as $worker) {
         if ($user->department_id == $worker->department_id) {
           $emp = User::where('id', $worker->user_id)->first();
-
-          array_push($employees, $emp->name);
+          $NameIdWorker = array();
+          array_push($NameIdWorker, $emp->name, $emp->id);
+          array_push($employees, $NameIdWorker);
+          $NameIdWorker = null;
         }
       }
-      $emp = $emp->name;
-    }
-
-    if ($role == "Manager" || $role == "Administrator") {
+    } 
+    else if ($role == "Manager" || $role == "Administrator") {
       foreach (Worker::get() as $worker) {
         $emp = User::where('id', $worker->user_id)->first();
-        array_push($employees, $emp->name);
+        $NameIdWorker = array();
+        array_push($NameIdWorker, $emp->name, $emp->id);
+        array_push($employees, $NameIdWorker);
+        $NameIdWorker = null;
       }
+    } 
+    else {
+      return view('workshift_view', ['id' => Auth::user()->id]);
     }
 
-    return view('workshift_view', ['eployees' => $employees]);
+    return view('workshift', ['eployees' => $employees, "id" => Worker::all()->first()->id]);
   }
 
-  public static function show($name)
+  public static function show($id)
   {
-    /*$workerId = 0;
-    foreach (User::all() as $u) {
-      if ($u->name == $name) {
-        $workerId = $u->id;
-        break;
-      }
-    }
-    $worker = Worker::where('user_id', $workerId)->first();
-
-    $result = Workshift::where('worker_id', $worker->id)->get();
-
-    $arr = array();
-
-    foreach ($result as $value) {
-      $row = array();
-      $row['title'] = "work";
-      $originalDate = $value->date;
-      if ($value->shift == "Morning") {
-        $row['start'] = $originalDate . "T" . "08:00:00";
-        $row['end'] = $originalDate . "T" . "12:00:00";
-      } else if ($value->shift == "Afternoon") {
-        $row['start'] = $originalDate . "T" . "12:00";
-        $row['end'] = $originalDate . "T" . "16:00";
-      } else {
-        $row['start'] = $originalDate . "T" . "16:00";
-        $row['end'] = $originalDate . "T" . "20:00";
-      }
-      array_push($arr, $row);
-    }*/
-    //again load the employees from the model for the combox and send the wildcard to the view as well
+    //again load the employees from the model for the dropdown and send the wildcard to the view as well
     $loggedin = Auth::user();
     $role = $loggedin->role;
     $employees = array();
@@ -83,35 +60,30 @@ class WorkshiftViewController extends Controller
       foreach (Worker::get() as $worker) {
         if ($user->department_id == $worker->department_id) {
           $emp = User::where('id', $worker->user_id)->first();
-
-          array_push($employees, $emp->name);
+          $NameIdWorker = array();
+          array_push($NameIdWorker, $emp->name, $emp->id);
+          array_push($employees, $NameIdWorker);
+          $NameIdWorker = null;
         }
       }
-      $emp = $emp->name;
-    }
-
-    if ($role == "Manager" || $role == "Administrator") {
+    } 
+     else if ($role == "Manager" || $role == "Administrator") {
       foreach (Worker::get() as $worker) {
         $emp = User::where('id', $worker->user_id)->first();
-        array_push($employees, $emp->name);
+        $NameIdWorker = array();
+        array_push($NameIdWorker, $emp->name, $emp->id);
+        array_push($employees, $NameIdWorker);
+        $NameIdWorker = null;
       }
     }
-
-    return view('workshift', ['eployees' => $employees, 'name' => $name]);
+    return view('workshift', ['eployees' => $employees, 'id' => $id]);
   }
 
-  public static function getEvents($name)
+  public static function getEvents($id)
   {
     //Gets the workshifts from the models for the calendar
-    $workerId = 0;
-    foreach (User::all() as $u) {
-      if ($u->name == $name) {
-        $workerId = $u->id;
-        break;
-      }
-    }
-    $worker = Worker::where('user_id', $workerId)->first();
 
+    $worker = Worker::firstWhere('user_id', $id);
     $result = Workshift::where('worker_id', $worker->id)->get();
 
 

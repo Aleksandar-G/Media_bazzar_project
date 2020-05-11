@@ -20,9 +20,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', function () {
+/*Route::get('/home', function () {
     return view('home');
-})->middleware('auth');
+})->middleware('auth');*/
 
 Route::get('/workshifts', 'CalendarController@index');
 
@@ -30,8 +30,8 @@ Route::resource('products', 'ProductsController')->only([
     'index', 'show', 'update',
 ])->middleware('auth');
 
-Route::get('/workshift_view', 'WorkshiftViewController@index');
+Route::get('/workshift_view', 'WorkshiftViewController@index')->middleware('auth');
 
-Route::get('/workshift_view/{name}', 'WorkshiftViewController@show');
+Route::get('/workshift_view/{id}', 'WorkshiftViewController@show')->middleware('auth');
 
-Route::get('/workshifts/{name}', 'WorkshiftViewController@getEvents');
+Route::get('/workshifts/{id}', 'WorkshiftViewController@getEvents')->middleware('auth');

@@ -1,40 +1,29 @@
 @extends('workshift_view')
-@section('head')
-<meta charset='utf-8' />
+@section('body')
+<h1>Please select an employee</h1>
+<select id="selectEmployee" onchange="LoadEmployees()">
 
-<link href="{{ URL::asset('fullcalendar/core/main.css') }}" rel='stylesheet' />
-<link href="{{ URL::asset('fullcalendar/daygrid/main.css') }}" rel='stylesheet' />
-<link href="{{ URL::asset('fullcalendar/timegrid/main.css') }}" rel='stylesheet' />
-<link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' />
+    @foreach((array)$eployees as $emp)
 
+    <option value={{$emp[1]}}>{{$emp[0]}}</option>
 
-<script src="{{ URL::asset('fullcalendar/core/main.js') }}"></script>
-<script src="{{ URL::asset('fullcalendar/daygrid/main.js') }}"></script>
-<script src="{{ URL::asset('fullcalendar/timegrid/main.js') }}"></script>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
-
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      plugins: ['dayGrid', 'timeGrid'],
-      defaultView: 'timeGridWeek',
-      themeSystem: 'standard',
-      businessHours: {
-        daysOfWeek: [1, 2, 3, 4, 5],
-        startTime: '8:00',
-        endTime: '20:00',
-      },
-      events: '/workshifts/{{$name}}', // use the `url` property
-    });
-
-    calendar.render();
-  });
-</script>
+    @endforeach
+</select>
 @endsection
 
-@section('calendar')
+@section('scripts')
+<script>
+    document.getElementById("selectEmployee").selectedIndex = -1;
 
-<div id='calendar' style="margin:100px"></div>
+    function LoadEmployees() {
 
-@endSection
+        let x = document.getElementById("selectEmployee").value;
+
+        window.location.replace("/workshift_view/" + x);
+    }
+
+    function Load() {
+
+    }
+</script>
+@endsection
