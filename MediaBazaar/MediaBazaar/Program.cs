@@ -22,8 +22,7 @@ namespace MediaBazaar
             
             LoginForm loginForm = new LoginForm();
             Application.Run(loginForm);
-           // Supervisor supervisor = new Supervisor("sas", "man@sas.com", "08888888",1, 12000, new DateTime(2020,1,1), new DateTime(2020, 1, 1), new DateTime());
-            //supervisor.Insert();
+           
             if (loginForm.currentUser != null)
             {
                 Application.Run(new MainForm(loginForm.currentUser));
