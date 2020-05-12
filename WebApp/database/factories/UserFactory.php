@@ -27,8 +27,7 @@ $factory->define(User::class, function (Faker $faker) {
         'salary' => $faker->numberBetween(1000,10000),
         'role' => $faker->randomElement(['Manager', 'Administrator', 'Worker', 'Supervisor']),
         'birthday' =>  $faker->dateTime($max = 'now', $timezone = null),
-        // 'remember_token' => Str::random(10),
-        // 'updated_at' =>  $faker->dateTime($max = 'now', $timezone = null),
+        'updated_at' =>  now(),
         'created_at' =>  now(),
         'start_date' =>  $faker->dateTime($min = 'now', $timezone = null),
     ];

@@ -16,6 +16,6 @@ $factory->define(Product::class, function (Faker $faker) {
         'quantity' => 10,
         'department_id' => $department->id,
         'created_at' => now(),
-        //'updated_at' =>  now(),
+        'updated_at' =>  now()
     ];
 });

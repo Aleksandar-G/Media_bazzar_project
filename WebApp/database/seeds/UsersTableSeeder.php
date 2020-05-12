@@ -32,14 +32,17 @@ class UsersTableSeeder extends Seeder
             }
             else if($user->role == "Supervisor")
             {
-                $department = Department::orderByRaw("RAND()")->first();
+                $department = Department::whereNull('supervisor_id')->first();
 
-                DB::table('supervisors')->insert([
+                $supervisorId = DB::table('supervisors')->insertGetId([
                     'user_id' => $user->id,
                     'department_id' => $department->id,
                     'created_at' => $user->created_at,
                     'updated_at' => $user->updated_at
                 ]);
+
+                $department->supervisor_id = $supervisorId;
+                $department->save();
             }
             else
             {
