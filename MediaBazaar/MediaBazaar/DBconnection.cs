@@ -18,7 +18,7 @@ namespace MediaBazaar
         private string server = "localhost";
         private string database = "laravel";
         private string uid = "root";
-        private string password = ";
+        private string password = "";
 
         //Constructor
         public DBconnection()
