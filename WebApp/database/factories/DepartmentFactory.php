@@ -9,6 +9,6 @@ $factory->define(Department::class, function (Faker $faker) {
     return [
         'name' => $faker->word,
         'created_at' => now(),
-        'updated_at' =>  now(),
+        //'updated_at' =>  now(),
     ];
 });

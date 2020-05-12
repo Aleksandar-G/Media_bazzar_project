@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 50)->create()->each(function ($user) {
+        factory(App\User::class, 25)->create()->each(function ($user) {
             if($user->role == "Manager")
             {
                 DB::table('managers')->insert([
