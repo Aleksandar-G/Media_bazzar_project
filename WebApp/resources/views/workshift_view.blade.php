@@ -31,6 +31,7 @@
           startTime: '8:00',
           endTime: '20:00',
         },
+        aspectRatio: 2.2,
         events: '/api/workshifts/{{$id}}', // use the `url` property
       });
 
@@ -40,7 +41,7 @@
 
 </head>
 
-<body>
+<body id="index">
   @yield('body')
   <div id='calendar' style="margin:100px"></div>
   @yield('scripts')

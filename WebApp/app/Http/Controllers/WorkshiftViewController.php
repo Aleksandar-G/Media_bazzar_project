@@ -33,17 +33,16 @@ class WorkshiftViewController extends Controller
       }
       return $employees;
     } else if ($role == "Manager" || $role == "Administrator") {
-      foreach(Worker::get() as $w){
-      
-      $NameIdWorker = array();
-      $u = User::find($w->user_id);
-      array_push($NameIdWorker, $u->name, $u->id);
-      array_push($employees, $NameIdWorker);
-      $NameIdWorker = null;
+      foreach (Worker::get() as $w) {
+
+        $NameIdWorker = array();
+        $u = User::find($w->user_id);
+        array_push($NameIdWorker, $u->name, $u->id);
+        array_push($employees, $NameIdWorker);
+        $NameIdWorker = null;
       }
       return $employees;
     }
-    
   }
 
   public static function index()
