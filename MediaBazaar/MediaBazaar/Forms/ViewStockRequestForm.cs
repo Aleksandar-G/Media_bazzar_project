@@ -67,7 +67,9 @@ namespace MediaBazaar.Forms
 
         private void BtnFulfillRequest_Click(object sender, EventArgs e)
         {
+            currentstockRequest.Product.IncreaseQuantity(currentstockRequest.Quantity);
             currentstockRequest.CompleteStockRequest();
+
             MessageBox.Show("This stock request was successfully fulfilled!");
 
             this.Close();

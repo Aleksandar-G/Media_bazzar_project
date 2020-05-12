@@ -183,7 +183,21 @@ namespace MediaBazaar.Models
                 dbConnection.CloseConnection();
                 return null;
             }
+        }
+        public void IncreaseQuantity(int quantity)
+        {
+            DBconnection dbConnection = new DBconnection();
+            dbConnection.OpenConnection();
 
+            string query = "UPDATE products SET quantity = quantity + @quantity WHERE id = @id";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
+            {
+                cmd.Parameters.AddWithValue("@quantity", quantity);
+                cmd.Parameters.AddWithValue("@id", this.Id);
+
+                cmd.ExecuteNonQuery();
+            }
         }
     }
 }
