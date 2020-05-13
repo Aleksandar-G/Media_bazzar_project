@@ -15,3 +15,6 @@
 
 ## Feature List
 [Google Docs](https://docs.google.com/document/d/1AW0s8_P9SxuKHLXp1tz0z7fiYYjAWRtSAFIscoRZL_4/edit?usp=sharing)
+
+## Presation Week 12
+[Google Docs](https://docs.google.com/presentation/d/1fVDAgc8sKhWhwrKZ7k2AST4e6EifAJh-V-Ape_IVIO8)
