@@ -33,7 +33,7 @@ use Illuminate\Support\Facades\Auth;
     
     @yield('head')
 </head>
-<body>
+<body class="dark-bg">
     @if(Auth::check())
         @include('navbar')
     @endif

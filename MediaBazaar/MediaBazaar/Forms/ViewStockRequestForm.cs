@@ -31,7 +31,7 @@ namespace MediaBazaar.Forms
 
             this.lblItemName.Text = stockRequest.Product.Name;
             this.lblItemQuantity.Text = stockRequest.Quantity.ToString();
-            this.lblWorker.Text = stockRequest.Worker.Name;
+            this.lblWorker.Text = stockRequest.User.Name;
 
         }
 
