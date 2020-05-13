@@ -8,7 +8,7 @@
 <div class="container-full dark-bg">
     <div class="box-width row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="lighter-bg card">
                 <div class="card-header">{{ __('Reset Password') }}</div>
                    
                 <div class="card-body">
@@ -55,7 +55,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-orange">
                                     {{ __('Reset Password') }}
                                 </button>
                             </div>
