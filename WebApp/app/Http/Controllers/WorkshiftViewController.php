@@ -36,7 +36,7 @@ class WorkshiftViewController extends Controller
       foreach (Worker::get() as $w) {
 
         $NameIdWorker = array();
-        $u = User::find($w->user_id);
+        $u = User::where('id', $w->user_id)->first();
         array_push($NameIdWorker, $u->name, $u->id);
         array_push($employees, $NameIdWorker);
         $NameIdWorker = null;

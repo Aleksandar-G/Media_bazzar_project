@@ -8,8 +8,8 @@ body {
 }
 
 #selectEmployee {
-    margin-left: 40%;
-    width: 15%;
+    margin-left: 43%;
+    width: 14%;
     padding: 15px;
     border: none;
     background: #f1f1f1;
@@ -18,4 +18,9 @@ body {
 #selectEmployee:focus {
     background-color: #ddd;
     outline: none;
+}
+
+#calendar {
+    background-color: #f1f1f1;
+    color: black
 }
