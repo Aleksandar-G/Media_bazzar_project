@@ -9,10 +9,20 @@ use App\Supervisor;
 use App\User;
 use App\WorkShift;
 use App\Worker;
-
+use Illuminate\Support\Facades\Redirect;
 
 class WorkshiftViewController extends Controller
 {
+  private static function FilterEmployees($wrk)
+  {
+    $NameIdWorker = null;
+    $emp = User::where('id', $wrk->user_id)->first();
+    $NameIdWorker = array();
+    array_push($NameIdWorker, $emp->name, $emp->id);
+
+    return $NameIdWorker;
+  }
+
   public static function GetEmployees($role)
   {
     $loggedin = Auth::user();
@@ -24,22 +34,15 @@ class WorkshiftViewController extends Controller
 
       foreach (Worker::get() as $worker) {
         if ($user->department_id == $worker->department_id) {
-          $emp = User::where('id', $worker->user_id)->first();
-          $NameIdWorker = array();
-          array_push($NameIdWorker, $emp->name, $emp->id);
-          array_push($employees, $NameIdWorker);
-          $NameIdWorker = null;
+
+          $employees = WorkshiftViewController::FilterEmployees($worker);
         }
       }
       return $employees;
     } else if ($role == "Manager" || $role == "Administrator") {
       foreach (Worker::get() as $w) {
 
-        $NameIdWorker = array();
-        $u = User::where('id', $w->user_id)->first();
-        array_push($NameIdWorker, $u->name, $u->id);
-        array_push($employees, $NameIdWorker);
-        $NameIdWorker = null;
+        array_push($employees, WorkshiftViewController::FilterEmployees($w));
       }
       return $employees;
     }
@@ -54,7 +57,7 @@ class WorkshiftViewController extends Controller
     $employees = WorkshiftViewController::GetEmployees($role);
 
     if ($role == "Supervisor" || $role == "Manager" || $role == "Administrator") {
-      //var_dump($employees);
+
       return view('workshift', ['eployees' => $employees, "id" => Worker::all()->first()->id]);
     } else {
       return view('workshift_view', ['id' => Auth::user()->id]);
@@ -66,6 +69,9 @@ class WorkshiftViewController extends Controller
     //again load the employees from the model for the dropdown and send the wildcard to the view as well
     $loggedin = Auth::user();
     $role = $loggedin->role;
+    if ($role == "Worker") {
+      return redirect("/workshift_view");
+    }
     $employees = array();
 
     $employees = WorkshiftViewController::GetEmployees($role);
@@ -79,7 +85,6 @@ class WorkshiftViewController extends Controller
 
     $worker = Worker::firstWhere('user_id', $id);
     $result = Workshift::where('worker_id', $worker->id)->get();
-
 
     $arr = array();
 
