@@ -12,7 +12,7 @@
 <div class="topnav" id="myTopnav">
   <a href="/home" class="active">Home</a>
   <a href="/products">Products</a>
-  <a href="/myprofile">My QR Code</a>
+  <!-- <a href="/myprofile">My QR Code</a> -->
   
   <a id="logout" href="{{ route('logout') }}"
   onclick="event.preventDefault();

@@ -1,12 +1,16 @@
 @extends('layouts.app')
-
+@section('head')
+<link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+@endsection
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
+<div class="container-full dark-bg">
+    <div class="box-width row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Reset Password') }}</div>
-
+                   
                 <div class="card-body">
                     <form method="POST" action="{{ route('password.update') }}">
                         @csrf

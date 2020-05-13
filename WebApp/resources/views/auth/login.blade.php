@@ -10,7 +10,7 @@
         <div  class=" mt-3 col-md-8">
             <div class="lighter-bg card">
                 <div class="card-header">{{ __('Login') }}</div>
-
+                   
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
