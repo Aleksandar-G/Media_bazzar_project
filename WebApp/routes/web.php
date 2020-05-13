@@ -20,13 +20,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-/*Route::get('/home', function () {
-    return view('home');
-})->middleware('auth');*/
-
 Route::get('/workshifts', 'CalendarController@index');
-
-//Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::resource('products', 'ProductsController')->only([
     'index', 'show', 'update',
