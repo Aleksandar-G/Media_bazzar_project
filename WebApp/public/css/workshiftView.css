@@ -21,6 +21,13 @@ body {
 }
 
 #calendar {
+    margin: 50px 100px;
+    padding: 20px;
     background-color: #f1f1f1;
     color: black
+}
+
+.fc-time-grid-event.fc-event.fc-start.fc-end:hover {
+    color: white !important;
+    opacity: 0.9;
 }
