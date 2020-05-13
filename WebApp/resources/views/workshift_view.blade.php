@@ -38,7 +38,8 @@
         eventTextColor: "#ffffff",
         minTime: '7:00',
         maxTime: "21:00",
-        height: 765
+        height: 765,
+        nowIndicator: true
       });
 
       calendar.render();

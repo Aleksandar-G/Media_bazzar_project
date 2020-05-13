@@ -47,7 +47,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(281, -3);
+            this.btnClose.Location = new System.Drawing.Point(443, -3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(50, 50);
@@ -63,7 +63,7 @@
             this.lblHeading.ForeColor = System.Drawing.Color.White;
             this.lblHeading.Location = new System.Drawing.Point(12, 17);
             this.lblHeading.Name = "lblHeading";
-            this.lblHeading.Size = new System.Drawing.Size(127, 40);
+            this.lblHeading.Size = new System.Drawing.Size(97, 30);
             this.lblHeading.TabIndex = 13;
             this.lblHeading.Text = "Heading";
             // 
@@ -100,7 +100,7 @@
             this.rbEvening.AutoSize = true;
             this.rbEvening.Location = new System.Drawing.Point(19, 110);
             this.rbEvening.Name = "rbEvening";
-            this.rbEvening.Size = new System.Drawing.Size(100, 29);
+            this.rbEvening.Size = new System.Drawing.Size(79, 24);
             this.rbEvening.TabIndex = 2;
             this.rbEvening.TabStop = true;
             this.rbEvening.Text = "Evening";
@@ -111,7 +111,7 @@
             this.rbAfternoon.AutoSize = true;
             this.rbAfternoon.Location = new System.Drawing.Point(19, 75);
             this.rbAfternoon.Name = "rbAfternoon";
-            this.rbAfternoon.Size = new System.Drawing.Size(118, 29);
+            this.rbAfternoon.Size = new System.Drawing.Size(94, 24);
             this.rbAfternoon.TabIndex = 1;
             this.rbAfternoon.TabStop = true;
             this.rbAfternoon.Text = "Afternoon";
@@ -122,7 +122,7 @@
             this.rbMorning.AutoSize = true;
             this.rbMorning.Location = new System.Drawing.Point(19, 40);
             this.rbMorning.Name = "rbMorning";
-            this.rbMorning.Size = new System.Drawing.Size(106, 29);
+            this.rbMorning.Size = new System.Drawing.Size(83, 24);
             this.rbMorning.TabIndex = 0;
             this.rbMorning.TabStop = true;
             this.rbMorning.Text = "Morning";
@@ -135,7 +135,7 @@
             this.lbl.ForeColor = System.Drawing.Color.White;
             this.lbl.Location = new System.Drawing.Point(14, 92);
             this.lbl.Name = "lbl";
-            this.lbl.Size = new System.Drawing.Size(217, 25);
+            this.lbl.Size = new System.Drawing.Size(170, 20);
             this.lbl.TabIndex = 20;
             this.lbl.Text = "Assign shift (per month):\r\n";
             // 
@@ -144,7 +144,7 @@
             this.dateTimePicker.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker.Location = new System.Drawing.Point(19, 120);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(212, 32);
+            this.dateTimePicker.Size = new System.Drawing.Size(212, 27);
             this.dateTimePicker.TabIndex = 19;
             this.dateTimePicker.Value = new System.DateTime(2020, 4, 2, 0, 0, 0, 0);
             // 
@@ -152,7 +152,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(330, 470);
+            this.ClientSize = new System.Drawing.Size(491, 470);
             this.Controls.Add(this.btnSetShift);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lbl);

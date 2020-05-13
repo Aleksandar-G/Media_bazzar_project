@@ -141,7 +141,7 @@
             this.btnFulfillRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFulfillRequest.ForeColor = System.Drawing.Color.White;
             this.btnFulfillRequest.Location = new System.Drawing.Point(95, 363);
-            this.btnFulfillRequest.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnFulfillRequest.Margin = new System.Windows.Forms.Padding(1);
             this.btnFulfillRequest.Name = "btnFulfillRequest";
             this.btnFulfillRequest.Size = new System.Drawing.Size(228, 47);
             this.btnFulfillRequest.TabIndex = 39;
