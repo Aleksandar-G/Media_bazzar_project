@@ -33,7 +33,7 @@ class WorkshiftViewController extends Controller
 
       foreach (Worker::get() as $worker) {
         if ($user->department_id == $worker->department_id) {
-          $employees = WorkshiftViewController::FilterEmployees($worker);
+          array_push($employees, WorkshiftViewController::FilterEmployees($worker));
         }
       }
     } else if ($role == "Manager" || $role == "Administrator") {

@@ -210,6 +210,7 @@ namespace MediaBazaar.Models
                 SELECT u.Name, u.Id,u.Email, u.Password, u.Phone FROM users as u
                 INNER JOIN workers as w 
                 ON u.Id = w.user_id
+                WHERE u.end_date IS NULL
             ";
 
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))

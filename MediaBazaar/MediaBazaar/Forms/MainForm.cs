@@ -31,7 +31,7 @@ namespace MediaBazaar
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            if (currentUser.Role == "Manager")
+            if (currentUser.Role == "Manager" || currentUser.Role == "Administrator")
             {
                 users = User.GetAll();
                 this.btnViewStatistics.Show();;
@@ -53,6 +53,10 @@ namespace MediaBazaar
         public void ShowUsers(List<User> users)
         {
             this.flpEmployees.Controls.Clear();
+
+            if (users == null) {
+                return;
+            }
 
             users.ForEach(user =>
             {

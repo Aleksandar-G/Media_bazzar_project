@@ -47,7 +47,7 @@ namespace MediaBazaar.Forms
             string productName = "";
             string productDescription = "";
             double productPrice = 0;
-            int productQuantity = 0;
+            int productQuantity = 1;
             string productDepartment ="";
 
             try
