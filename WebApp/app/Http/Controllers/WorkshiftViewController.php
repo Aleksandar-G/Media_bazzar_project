@@ -55,7 +55,7 @@ class WorkshiftViewController extends Controller
 
     if ($role == "Supervisor" || $role == "Manager" || $role == "Administrator") {
       //var_dump($employees);
-      return view('workshift', ['eployees' => $employees, "id" => Worker::all()->first()->id]);
+      return view('workshift', ['employees' => $employees, "id" => Worker::all()->first()->id]);
     } else {
       return view('workshift_view', ['id' => Auth::user()->id]);
     }
@@ -70,7 +70,7 @@ class WorkshiftViewController extends Controller
 
     $employees = WorkshiftViewController::GetEmployees($role);
 
-    return view('workshift', ['eployees' => $employees, 'id' => $id]);
+    return view('workshift', ['employees' => $employees, 'id' => $id]);
   }
 
   public static function getEvents($id)
@@ -79,7 +79,6 @@ class WorkshiftViewController extends Controller
 
     $worker = Worker::firstWhere('user_id', $id);
     $result = Workshift::where('worker_id', $worker->id)->get();
-
 
     $arr = array();
 
