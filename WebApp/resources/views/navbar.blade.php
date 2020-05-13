@@ -13,27 +13,31 @@
   <div class="topnav" id="myTopnav">
     <a href="/workshift_view" class="active">Workshift View</a>
     <a href="/products">Products</a>
-    <a href="/myprofile">My QR Code</a>
+    <!-- <a href="/myprofile">My QR Code</a> -->
 
-    <a id="logout" href="{{ route('logout') }}" onclick="event.preventDefault();
-  document.getElementById('logout-form').submit();">Logout</a>
+    <a id="logout" href="{{ route('logout') }}" onclick="logout()">Logout</a>
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
       @csrf
     </form>
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <a href="javascript:void(0);" class="icon" onclick="openNavbar()">
       <i class="fa fa-bars"></i>
     </a>
   </div>
 
 
   <script>
-    function myFunction() {
+    function openNavbar() {
       var x = document.getElementById("myTopnav");
       if (x.className === "topnav") {
         x.className += " responsive";
       } else {
         x.className = "topnav";
       }
+    }
+
+    function logout() {
+      event.preventDefault();
+      document.getElementById('logout-form').submit();
     }
   </script>
 

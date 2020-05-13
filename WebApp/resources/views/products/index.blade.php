@@ -6,15 +6,15 @@
         {{ Session::get('flash_message') }}
     </div>
 @endif
-<div class="container">
-  <table class="table table-hover">
-    <thead class="thead-dark">
+<div class="container-products dark-bg">
+  <table class="table text-white">
+    <thead class="light-p-bg table-header">
       <tr class="d-flex">
-        <th scope="col" class="col-1">ID</th>
-        <th scope="col" class="col-4">Product Name</th>
-        <th scope="col" class="col-3">Department</th>
-        <th scope="col" class="col-2">Quantity</th>
-        <th scope="col" class="col-2"></th>
+        <th scope="col" class="col-1 no-border">ID</th>
+        <th scope="col" class="col-4 no-border">Product Name</th>
+        <th scope="col" class="col-3 no-border">Department</th>
+        <th scope="col" class="col-2 no-border">Quantity</th>
+        <th scope="col" class="col-2 no-border"></th>
       </tr>
     </thead>
     <tbody>
@@ -26,7 +26,7 @@
               <td class="col-2">{{ $product->quantity }}</td>
               <td class="col-2">
                 <button 
-                  class="btn btn-success btn-block"
+                  class="btn btn-orange btn-block"
                   data-toggle="modal"
                   data-target="#buyProductModal-{{{$product->id}}}"
                   {{ $product->quantity > 0 ? '' : 'disabled' }}
@@ -58,7 +58,7 @@
                       <span class="plus bg-dark">+</span>
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-primary">Decrease</button>
+                    <button type="submit" class="btn btn-orange">Decrease</button>
                   </form>
                 </div>
               </div>
