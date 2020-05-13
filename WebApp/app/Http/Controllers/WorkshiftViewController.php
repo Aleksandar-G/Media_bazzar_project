@@ -76,7 +76,7 @@ class WorkshiftViewController extends Controller
 
     $employees = WorkshiftViewController::GetEmployees($role);
 
-    return view('workshift', ['eployees' => $employees, 'id' => $id]);
+    return view('workshift', ['employees' => $employees, 'id' => $id]);
   }
 
   public static function getEvents($id)

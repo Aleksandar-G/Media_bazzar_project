@@ -35,6 +35,10 @@
         aspectRatio: 2.2,
         events: '/api/workshifts/{{$id}}', // use the `url` property
         eventColor: "#2d132c",
+        eventTextColor: "#ffffff",
+        minTime: '7:00',
+        maxTime: "21:00",
+        height: 765
       });
 
       calendar.render();
@@ -45,11 +49,10 @@
 
 <body id="index">
   @section('content')
-  @yield('body')
-  <div id='calendar' style="margin:100px"></div>
-  @yield('scripts')
+    @yield('body')
+    <div id="calendar"></div>
+    @yield('scripts')
   @endsection
-
 </body>
 
 </html>
