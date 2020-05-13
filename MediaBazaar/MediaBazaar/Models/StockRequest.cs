@@ -13,15 +13,15 @@ namespace MediaBazaar.Models
         public int Quantity { get; private set; }
         public int Completed { get; private set; }
         public Product Product { get; private set; }
-        public Worker Worker { get; private set; }
+        public User User { get; private set; }
 
-        public StockRequest(int id, int quantity, int completed, int productId, int workerId)
+        public StockRequest(int id, int quantity, int completed, int productId, int userId)
         {
             this.Id = id;
             this.Quantity = quantity;
             this.Completed = completed;
             this.Product = Product.GetById(productId);
-            this.Worker = Worker.GetById(workerId);
+            this.User = User.GetById(userId);
         }
         public override void Delete()
         {
@@ -41,7 +41,7 @@ namespace MediaBazaar.Models
             DBconnection dbConnection = new DBconnection();
             dbConnection.OpenConnection();
             List<StockRequest> stockRequests = new List<StockRequest>();
-            string query = "SELECT id, quantity, completed, product_id, worker_id FROM stock_requests;";
+            string query = "SELECT id, quantity, completed, product_id, user_id FROM stock_requests;";
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
                 MySqlDataReader reader = cmd.ExecuteReader();
@@ -52,8 +52,8 @@ namespace MediaBazaar.Models
                     int quantity = Convert.ToInt32(reader["quantity"]);
                     int completed = Convert.ToInt32(reader["completed"]);
                     int product_id = Convert.ToInt32(reader["product_id"]);
-                    int worker_id = Convert.ToInt32(reader["worker_id"]);
-                    stockRequests.Add(new StockRequest(id, quantity, completed, product_id, worker_id));
+                    int user_id = Convert.ToInt32(reader["user_id"]);
+                    stockRequests.Add(new StockRequest(id, quantity, completed, product_id, user_id));
                 }
 
                 dbConnection.CloseConnection();
@@ -83,7 +83,7 @@ namespace MediaBazaar.Models
             DBconnection dbConnection = new DBconnection();
             dbConnection.OpenConnection();
             List<StockRequest> stockRequests = new List<StockRequest>();
-            string query = "SELECT id, quantity, completed, product_id, worker_id FROM stock_requests;";
+            string query = "SELECT id, quantity, completed, product_id, user_id FROM stock_requests;";
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
                 MySqlDataReader reader = cmd.ExecuteReader();
@@ -94,11 +94,11 @@ namespace MediaBazaar.Models
                     int quantity = Convert.ToInt32(reader["quantity"]);
                     int completed = Convert.ToInt32(reader["completed"]);
                     int product_id = Convert.ToInt32(reader["product_id"]);
-                    int worker_id = Convert.ToInt32(reader["worker_id"]);
+                    int user_id = Convert.ToInt32(reader["user_id"]);
 
                     if(completed == 0)
                     {
-                        stockRequests.Add(new StockRequest(id, quantity, completed, product_id, worker_id));
+                        stockRequests.Add(new StockRequest(id, quantity, completed, product_id, user_id));
                     }
                 }
 
@@ -109,7 +109,7 @@ namespace MediaBazaar.Models
 
         public string GetInfo()
         {
-            return $"Request id: {this.Id}, for product {this.Product.Name} - Quantity: {this.Quantity}; sent by worker: {this.Worker.Name}"; 
+            return $"Request id: {this.Id}, for product {this.Product.Name} - Quantity: {this.Quantity}; sent by worker: {this.User.Name}"; 
         }
     }
 }

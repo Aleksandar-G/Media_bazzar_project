@@ -46,10 +46,10 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(592, -11);
+            this.btnClose.Location = new System.Drawing.Point(395, -7);
             this.btnClose.Margin = new System.Windows.Forms.Padding(0);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(68, 69);
+            this.btnClose.Size = new System.Drawing.Size(45, 45);
             this.btnClose.TabIndex = 18;
             this.btnClose.Text = "x";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -60,10 +60,9 @@
             this.lbHeader.AutoSize = true;
             this.lbHeader.Font = new System.Drawing.Font("Segoe UI Black", 15F);
             this.lbHeader.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.lbHeader.Location = new System.Drawing.Point(136, 29);
-            this.lbHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbHeader.Location = new System.Drawing.Point(91, 19);
             this.lbHeader.Name = "lbHeader";
-            this.lbHeader.Size = new System.Drawing.Size(329, 41);
+            this.lbHeader.Size = new System.Drawing.Size(219, 28);
             this.lbHeader.TabIndex = 20;
             this.lbHeader.Text = "StockRequest Details";
             // 
@@ -72,9 +71,10 @@
             this.lblQuantityTag.AutoSize = true;
             this.lblQuantityTag.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblQuantityTag.ForeColor = System.Drawing.Color.White;
-            this.lblQuantityTag.Location = new System.Drawing.Point(140, 258);
+            this.lblQuantityTag.Location = new System.Drawing.Point(93, 168);
+            this.lblQuantityTag.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblQuantityTag.Name = "lblQuantityTag";
-            this.lblQuantityTag.Size = new System.Drawing.Size(280, 38);
+            this.lblQuantityTag.Size = new System.Drawing.Size(190, 25);
             this.lblQuantityTag.TabIndex = 37;
             this.lblQuantityTag.Text = "Requested quantity:";
             // 
@@ -84,9 +84,10 @@
             this.lblProductTag.BackColor = System.Drawing.Color.LightSteelBlue;
             this.lblProductTag.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProductTag.ForeColor = System.Drawing.Color.White;
-            this.lblProductTag.Location = new System.Drawing.Point(136, 130);
+            this.lblProductTag.Location = new System.Drawing.Point(91, 84);
+            this.lblProductTag.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblProductTag.Name = "lblProductTag";
-            this.lblProductTag.Size = new System.Drawing.Size(255, 38);
+            this.lblProductTag.Size = new System.Drawing.Size(175, 25);
             this.lblProductTag.TabIndex = 36;
             this.lblProductTag.Text = "Requested roduct:";
             // 
@@ -94,10 +95,9 @@
             // 
             this.lblItemQuantity.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblItemQuantity.ForeColor = System.Drawing.Color.White;
-            this.lblItemQuantity.Location = new System.Drawing.Point(141, 310);
-            this.lblItemQuantity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblItemQuantity.Location = new System.Drawing.Point(94, 201);
             this.lblItemQuantity.Name = "lblItemQuantity";
-            this.lblItemQuantity.Size = new System.Drawing.Size(275, 32);
+            this.lblItemQuantity.Size = new System.Drawing.Size(183, 21);
             this.lblItemQuantity.TabIndex = 35;
             this.lblItemQuantity.Text = "Requested quantity";
             // 
@@ -106,22 +106,20 @@
             this.lblWorkerTag.AutoSize = true;
             this.lblWorkerTag.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWorkerTag.ForeColor = System.Drawing.Color.White;
-            this.lblWorkerTag.Location = new System.Drawing.Point(140, 389);
-            this.lblWorkerTag.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblWorkerTag.Location = new System.Drawing.Point(93, 253);
             this.lblWorkerTag.Name = "lblWorkerTag";
-            this.lblWorkerTag.Size = new System.Drawing.Size(302, 38);
+            this.lblWorkerTag.Size = new System.Drawing.Size(137, 25);
             this.lblWorkerTag.TabIndex = 34;
-            this.lblWorkerTag.Text = "Requested by worker:";
+            this.lblWorkerTag.Text = "Requested by:";
             // 
             // lblWorker
             // 
             this.lblWorker.AutoSize = true;
             this.lblWorker.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWorker.ForeColor = System.Drawing.Color.White;
-            this.lblWorker.Location = new System.Drawing.Point(141, 441);
-            this.lblWorker.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblWorker.Location = new System.Drawing.Point(94, 287);
             this.lblWorker.Name = "lblWorker";
-            this.lblWorker.Size = new System.Drawing.Size(239, 32);
+            this.lblWorker.Size = new System.Drawing.Size(157, 21);
             this.lblWorker.TabIndex = 32;
             this.lblWorker.Text = "Requested by worker";
             // 
@@ -129,10 +127,9 @@
             // 
             this.lblItemName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblItemName.ForeColor = System.Drawing.Color.White;
-            this.lblItemName.Location = new System.Drawing.Point(137, 181);
-            this.lblItemName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblItemName.Location = new System.Drawing.Point(91, 118);
             this.lblItemName.Name = "lblItemName";
-            this.lblItemName.Size = new System.Drawing.Size(259, 34);
+            this.lblItemName.Size = new System.Drawing.Size(173, 22);
             this.lblItemName.TabIndex = 29;
             this.lblItemName.Text = "Requested product";
             // 
@@ -143,10 +140,10 @@
             this.btnFulfillRequest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFulfillRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFulfillRequest.ForeColor = System.Drawing.Color.White;
-            this.btnFulfillRequest.Location = new System.Drawing.Point(143, 559);
-            this.btnFulfillRequest.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFulfillRequest.Location = new System.Drawing.Point(95, 363);
+            this.btnFulfillRequest.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnFulfillRequest.Name = "btnFulfillRequest";
-            this.btnFulfillRequest.Size = new System.Drawing.Size(342, 73);
+            this.btnFulfillRequest.Size = new System.Drawing.Size(228, 47);
             this.btnFulfillRequest.TabIndex = 39;
             this.btnFulfillRequest.Text = "Fulfill Stock Request";
             this.btnFulfillRequest.UseVisualStyleBackColor = false;
@@ -154,10 +151,10 @@
             // 
             // ViewStockRequestForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GrayText;
-            this.ClientSize = new System.Drawing.Size(657, 755);
+            this.ClientSize = new System.Drawing.Size(438, 491);
             this.Controls.Add(this.btnFulfillRequest);
             this.Controls.Add(this.lblQuantityTag);
             this.Controls.Add(this.lblProductTag);
@@ -168,10 +165,8 @@
             this.Controls.Add(this.lbHeader);
             this.Controls.Add(this.btnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ViewStockRequestForm";
             this.Text = "ViewStockRequestForm";
-            this.Load += new System.EventHandler(this.ViewStockRequestForm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ViewStockRequestForm_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ViewStockRequestForm_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ViewStockRequestForm_MouseUp);

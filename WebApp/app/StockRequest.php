@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class StockRequest extends Model
 {
     protected $fillable = [
-        'worker_id', 'product_id', 'quantity'
+        'user_id', 'product_id', 'quantity'
     ];
 
     public function complete()
@@ -16,9 +16,9 @@ class StockRequest extends Model
        $this->save();
     }
 
-    public function worker() 
+    public function user() 
     {
-        return $this->belongsTo('App\Worker');
+        return $this->belongsTo('App\User');
     }
 
     public function product()

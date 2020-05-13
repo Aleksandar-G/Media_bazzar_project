@@ -26,7 +26,6 @@ class WorkshiftViewController extends Controller
   public static function GetEmployees($role)
   {
     $loggedin = Auth::user();
-    //$role = $loggedin->role;
     $employees = array();
 
     if ($role == "Supervisor") {
@@ -34,18 +33,16 @@ class WorkshiftViewController extends Controller
 
       foreach (Worker::get() as $worker) {
         if ($user->department_id == $worker->department_id) {
-
           $employees = WorkshiftViewController::FilterEmployees($worker);
         }
       }
-      return $employees;
     } else if ($role == "Manager" || $role == "Administrator") {
       foreach (Worker::get() as $w) {
-
         array_push($employees, WorkshiftViewController::FilterEmployees($w));
       }
-      return $employees;
     }
+
+    return $employees;
   }
 
   public static function index()
@@ -53,15 +50,13 @@ class WorkshiftViewController extends Controller
     //loads the employees from the model for the dropdown in the view
     $loggedin = Auth::user();
     $role = $loggedin->role;
-    $employees = array();
     $employees = WorkshiftViewController::GetEmployees($role);
 
     if ($role == "Supervisor" || $role == "Manager" || $role == "Administrator") {
-
-      return view('workshift', ['eployees' => $employees, "id" => Worker::all()->first()->id]);
-    } else {
-      return view('workshift_view', ['id' => Auth::user()->id]);
+      return view('workshift', ['employees' => $employees, "id" => Worker::all()->first()->id]);
     }
+
+    return view('workshift_view', ['id' => Auth::user()->id]);
   }
 
   public static function show($id)
@@ -72,7 +67,6 @@ class WorkshiftViewController extends Controller
     if ($role == "Worker") {
       return redirect("/workshift_view");
     }
-    $employees = array();
 
     $employees = WorkshiftViewController::GetEmployees($role);
 
