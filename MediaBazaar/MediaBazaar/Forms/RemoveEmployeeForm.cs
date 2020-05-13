@@ -79,6 +79,10 @@ namespace MediaBazaar.Forms
                         Worker worker = Worker.GetByUserId(user.Id);
                         worker.Delete(dpEndDate.Value);
                         break;
+                    case "Supervisor":
+                        Supervisor supervisor = Supervisor.GetByUserId(user.Id);
+                        supervisor.Delete(dpEndDate.Value);
+                        break;
                     case "Administrator":
                         Administrator admin = Administrator.GetByUserId(user.Id);
                         admin.Delete(dpEndDate.Value);

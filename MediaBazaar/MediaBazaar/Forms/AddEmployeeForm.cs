@@ -70,7 +70,7 @@ namespace MediaBazaar
 
         private void CbRole_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbRole.SelectedItem.ToString() == "Worker")
+            if (cbRole.SelectedItem.ToString() == "Worker" || cbRole.SelectedItem.ToString() == "Supervisor")
             {
                 cbDepartments.Visible = true;
                 lblDepartment.Visible = true;
@@ -134,6 +134,14 @@ namespace MediaBazaar
                         Manager manager = new Manager(name, email, phone, salary, birthday, startDate, new DateTime());
                         manager.Insert();
                     }
+                    else if (cbRole.SelectedItem.ToString() == "Supervisor")
+                    {
+                        Department department = Department.GetByName(cbDepartments.SelectedItem.ToString());
+
+                        Supervisor supervisor = new Supervisor(name, email, phone, department.Id, salary, birthday, startDate, new DateTime());
+                        supervisor.Insert();
+                    }
+
                     MessageBox.Show("User added successfully!");
                     mainForm.ShowUsers(User.GetAll());
                     this.Close();

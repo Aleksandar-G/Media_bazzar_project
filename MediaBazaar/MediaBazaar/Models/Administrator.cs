@@ -49,7 +49,7 @@ namespace MediaBazaar.Models
             base.Delete();
 
             dbConnection.OpenConnection();
-            string query = $"DELETE FROM workers where id = @id";
+            string query = $"DELETE FROM administrators where id = @id";
 
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {

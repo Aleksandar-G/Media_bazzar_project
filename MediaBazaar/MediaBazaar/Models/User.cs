@@ -237,15 +237,14 @@ namespace MediaBazaar.Models
             dbConnection.OpenConnection();
 
             string query = $@"UPDATE users 
-                              SET name = @name, email = @email, phone = @phone, role = @role, salary = @salary, birthday = @birthday 
-                              WHERE id = {user.Id} AND end_date IS NULL";
+                              SET name = @name, phone = @phone, salary = @salary, birthday = @birthday 
+                              WHERE email = @email AND end_date IS NULL";
 
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
                 cmd.Parameters.AddWithValue("@name", user.name);
                 cmd.Parameters.AddWithValue("@email", user.email);
                 cmd.Parameters.AddWithValue("@phone", user.phone);
-                cmd.Parameters.AddWithValue("@role", user.role);
                 cmd.Parameters.AddWithValue("@salary", user.Salary);
                 cmd.Parameters.AddWithValue("@birthday", user.Birthday);
 

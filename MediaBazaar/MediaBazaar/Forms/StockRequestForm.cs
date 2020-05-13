@@ -26,6 +26,7 @@ namespace MediaBazaar.Forms
         {
             LoadStockRequests();
         }
+
         public void LoadStockRequests()
         {
             //users = Models.User.GetAll();
@@ -35,31 +36,43 @@ namespace MediaBazaar.Forms
 
             stockRequests.ForEach(stockrequest =>
             {
-                var btn = new Button();
-                btn.BackColor = SystemColors.ControlLightLight;
-                btn.Width = this.flpStockRequests.Width - 30;
-                btn.Height = 60;
-
-                btn.Text = $"Product name: {stockrequest.RequestedProduct} -> {stockrequest.RequestedQuantity} pieces [{stockrequest.DepartmentName}]";
-                btn.Font = new Font("Segoe UI Black", 12);
-                btn.TextAlign = ContentAlignment.MiddleLeft;
-
-                btn.MouseEnter += new EventHandler((s, ev) =>
+                if (stockrequest.Completed == 0)
                 {
-                    btn.BackColor = SystemColors.ControlLight;
-                    btn.Cursor = Cursors.Hand;
-                });
-
-                btn.MouseLeave += new EventHandler((s, ev) =>
-                {
+                    var btn = new Button();
                     btn.BackColor = SystemColors.ControlLightLight;
-                });
+                    btn.Width = this.flpStockRequests.Width - 30;
+                    btn.Height = 60;
+
+                    btn.Text = $"Stock Request ({stockrequest.Id}) : Product: {stockrequest.Product.Name} -> {stockrequest.Quantity} pieces";
+                    btn.Font = new Font("Segoe UI Black", 12);
+                    btn.TextAlign = ContentAlignment.MiddleLeft;
+
+                    btn.MouseEnter += new EventHandler((s, ev) =>
+                    {
+                        btn.BackColor = SystemColors.ControlLight;
+                        btn.Cursor = Cursors.Hand;
+                    });
+
+                    btn.MouseLeave += new EventHandler((s, ev) =>
+                    {
+                        btn.BackColor = SystemColors.ControlLightLight;
+                    });
+
+                    //Open a ViewStockRequestForm for this stockrequest when clicking on it
+                    btn.Click += new EventHandler((s, ev) =>
+                    {
+                        ViewStockRequestForm form = new ViewStockRequestForm(stockrequest);
+                        form.Show();
+
+                        this.Close();
+                    });
 
 
-                this.flpStockRequests.Controls.Add(btn);
+                    this.flpStockRequests.Controls.Add(btn);
+                }
             });
 
-            if (stockRequests.Count == 0)
+            if (StockRequest.GetAllPendingRequests().Count == 0)
             {
                 var btn = new Button();
                 btn.BackColor = SystemColors.ControlLightLight;

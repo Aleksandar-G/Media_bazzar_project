@@ -155,5 +155,49 @@ namespace MediaBazaar.Models
             }
 
         }
+
+        public static Product GetById(int productId)
+        {
+            DBconnection dbConnection = new DBconnection();
+            dbConnection.OpenConnection();
+            Product product;
+            string query = "SELECT products.id AS p_id, products.name AS p_name, description, price, quantity, departments.name AS d_name FROM products INNER JOIN departments ON products.department_id = departments.id WHERE products.id = @id";
+            using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
+            {
+                cmd.Parameters.AddWithValue("@id", productId);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    long id = Convert.ToInt64(reader["p_id"]);
+                    string name = reader["p_name"].ToString();
+                    string description = reader["description"].ToString();
+                    double price = Convert.ToDouble(reader["price"]);
+                    int quantity = Convert.ToInt32(reader["quantity"]);
+                    string department = reader["d_name"].ToString();
+
+                    product = new Product(id, name, description, price, quantity, department);
+
+                    dbConnection.CloseConnection();
+                    return product;
+                }
+                dbConnection.CloseConnection();
+                return null;
+            }
+        }
+        public void IncreaseQuantity(int quantity)
+        {
+            DBconnection dbConnection = new DBconnection();
+            dbConnection.OpenConnection();
+
+            string query = "UPDATE products SET quantity = quantity + @quantity WHERE id = @id";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
+            {
+                cmd.Parameters.AddWithValue("@quantity", quantity);
+                cmd.Parameters.AddWithValue("@id", this.Id);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

@@ -94,26 +94,27 @@ namespace MediaBazaar
 
         private void checkRole()
         {
-            if (user.Role == "Worker")
+            if (user.Role == "Worker" || user.Role == "Supervisor")
             {
                 cbDepartments.Visible = true;
                 lblDepartment.Visible = true;
 
-                Worker worker = Worker.GetByUserId(user.Id);
+                long departmentId = user.Role == "Worker" ? Worker.GetByUserId(user.Id).DepartmentId : Supervisor.GetByUserId(user.Id).DepartmentId;
+
                 Department.GetAll().ForEach(d => {
                     this.cbDepartments.Items.Add(d.Name);
 
-                    if (d.Id == worker.DepartmentId)
+                    if (d.Id == departmentId)
                     {
                         cbDepartments.SelectedItem = d.Name;
                     }
                 });
+
+                return;
             }
-            else
-            {
-                cbDepartments.Visible = false;
-                lblDepartment.Visible = false;
-            }
+
+            cbDepartments.Visible = false;
+            lblDepartment.Visible = false;
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
@@ -135,13 +136,23 @@ namespace MediaBazaar
                     if (user.Role == "Worker")
                     {
                         Worker worker = Worker.GetByUserId(user.Id);
-                        Worker updatedWorker = new Worker(
-                            worker.Id,
-                            Department.GetByName(cbDepartments.SelectedItem.ToString()).Id,
-                            user
-                        ) ;
+                        Worker updatedWorker = new Worker(worker.Id,
+                                                          Department.GetByName(cbDepartments.SelectedItem.ToString()).Id,
+                                                          user);
 
                         worker.Update(updatedWorker);
+                        MessageBox.Show("User updated successfully");
+                        mainForm.ShowUsers(User.GetAll());
+                        this.Close();
+                        return;
+                    }
+                    else if (user.Role == "Supervisor")
+                    {
+                        Supervisor supervisor = Supervisor.GetByUserId(user.Id);
+                        Supervisor updatedSupervisor = new Supervisor(supervisor.Id,
+                                                                      Department.GetByName(cbDepartments.SelectedItem.ToString()).Id,
+                                                                      user);
+                        supervisor.Update(updatedSupervisor);
                         MessageBox.Show("User updated successfully");
                         mainForm.ShowUsers(User.GetAll());
                         this.Close();
@@ -154,9 +165,9 @@ namespace MediaBazaar
                     this.Close();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Invalid input!");
+                MessageBox.Show($"Invalid input! {ex.Message}");
             }
 
         }

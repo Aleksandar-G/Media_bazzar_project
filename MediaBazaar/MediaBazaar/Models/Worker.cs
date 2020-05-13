@@ -111,7 +111,7 @@ namespace MediaBazaar.Models
                 {
                     User user = User.GetById(Convert.ToInt64(reader["user_id"]));
                     long departmentId = Convert.ToInt64(reader["department_id"]);
-                    Shift workshift = (Shift)Enum.Parse(typeof(Shift), reader["workshift"].ToString());
+                    //Shift workshift = (Shift)Enum.Parse(typeof(Shift), reader["workshift"].ToString());
 
                     worker = new Worker(id, departmentId, user);
 
@@ -281,6 +281,7 @@ namespace MediaBazaar.Models
                     return Shift.Morning;
             }
         }
+
         public static List<WorkShift> GetWorkShiftsByWorkerID(long workerId)
         {
             List<WorkShift> result = new List<WorkShift>();

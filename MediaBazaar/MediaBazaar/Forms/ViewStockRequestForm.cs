@@ -15,20 +15,23 @@ namespace MediaBazaar.Forms
     {
         private bool mouseDown;
         private Point lastLocation;
+        private StockRequest currentstockRequest;
+
         public ViewStockRequestForm(StockRequest stockRequest)
         {
+            this.currentstockRequest = stockRequest;
+
             InitializeComponent();
             this.BackColor = ApplicationColors.PrimaryDark;
-            lbProducts.BackColor = ApplicationColors.PrimaryDark;
-            this.lbDepartment.Text = "Department: " + stockRequest.DepartmentName;
-            foreach (var item in stockRequest.ProductsAndQuantity)
-            {
-                this.lbProducts.Items.Add($"{item.Key} -> {item.Value}");
-            }
-        }
+            this.btnFulfillRequest.BackColor = ApplicationColors.Red;
 
-        private void ViewStockRequestForm_Load(object sender, EventArgs e)
-        {
+            lblProductTag.BackColor = ApplicationColors.LightOrange;
+            lblQuantityTag.BackColor = ApplicationColors.LightOrange;
+            lblWorkerTag.BackColor = ApplicationColors.LightOrange;
+
+            this.lblItemName.Text = stockRequest.Product.Name;
+            this.lblItemQuantity.Text = stockRequest.Quantity.ToString();
+            this.lblWorker.Text = stockRequest.Worker.Name;
 
         }
 
@@ -55,6 +58,16 @@ namespace MediaBazaar.Forms
         {
             mouseDown = true;
             lastLocation = e.Location;
+        }
+
+        private void BtnFulfillRequest_Click(object sender, EventArgs e)
+        {
+            currentstockRequest.Product.IncreaseQuantity(currentstockRequest.Quantity);
+            currentstockRequest.CompleteStockRequest();
+
+            MessageBox.Show("This stock request was successfully fulfilled!");
+
+            this.Close();
         }
     }
 }

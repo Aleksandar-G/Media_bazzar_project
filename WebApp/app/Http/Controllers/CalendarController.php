@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use App\WorkShift;
 use App\Worker;
 
-
 class CalendarController extends Controller
 {
     public static function index()
