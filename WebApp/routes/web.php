@@ -29,3 +29,5 @@ Route::resource('products', 'ProductsController')->only([
 Route::get('/workshift_view', 'WorkshiftViewController@index')->middleware('auth');
 
 Route::get('/workshift_view/{id}', 'WorkshiftViewController@show')->middleware('auth');
+
+Route::get('/StockRequest', 'StockRequestContoller@index')->middleware('auth');

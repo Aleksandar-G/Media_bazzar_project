@@ -10,7 +10,7 @@
   <table class="table text-white">
     <thead class="light-p-bg table-header">
       <tr class="d-flex">
-        <th scope="col" class="col-1 no-border">ID</th>
+        <th scope="col" class="col-1 no-border"></th>
         <th scope="col" class="col-4 no-border">Product Name</th>
         <th scope="col" class="col-3 no-border">Department</th>
         <th scope="col" class="col-2 no-border">Quantity</th>
@@ -20,7 +20,7 @@
     <tbody>
       @foreach ($products as $product)
           <tr class="d-flex">
-              <th scope="row" class="col-1">{{ $product->id }}</th>
+              <th scope="row" id="{{ $product->id }}" class="col-1"></th>
               <td class="col-4">{{ $product->name }}</td>
               <td class="col-3">{{ $product->department->name }}</td>
               <td class="col-2">{{ $product->quantity }}</td>
@@ -66,9 +66,26 @@
           </div>
 
           <script type="text/javascript">
+          if(quantity != undefined)
+          {
             let quantity = {{$product->quantity}};
+          }
+          else{
+            quantity = {{$product->quantity}};
+          }
+
             $(document).ready(function () {
                 $("#product-{{$product->id}}-quantity").prop('readonly', true);
+               if( $("#product-{{$product->id}}-quantity").val() <= 5)
+               {
+                $('#{{ $product->id }}').prepend('<i class="fa fa-exclamation-triangle fa-lg"></i>');  
+                console.log("asdasd");
+               }
+               else
+               {
+                $("#product-{{$product->id}}").next().css("background-color", "blue");
+                console.log("asdasdaaaa");
+               }
                 $(document).on('click', '.plus', function () {
                     $("#product-{{$product->id}}-quantity").val(parseInt($("#product-{{$product->id}}-quantity").val()) + 1);
                     if ($("#product-{{$product->id}}-quantity").val() >= quantity) {
