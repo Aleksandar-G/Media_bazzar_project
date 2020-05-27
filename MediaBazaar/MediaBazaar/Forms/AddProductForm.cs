@@ -44,29 +44,27 @@ namespace MediaBazaar.Forms
 
         private void BtnAddProduct_Click(object sender, EventArgs e)
         {
-            string productName = "";
-            string productDescription = "";
-            double productPrice = 0;
-            int productQuantity = 1;
-            string productDepartment ="";
+            string name = tbProductName.Text;
+            string description = tbProductDescription.Text;
+            double buyingPrice = Convert.ToDouble(tbProductBuyingPrice.Text);
+            double sellingPrice = Convert.ToDouble(tbSellingPrice.Text);
+            int quantity = 0;
+            int minQuantity = Convert.ToInt32(tbMinQuantity.Text);
+            string department = cmbDepartments.SelectedItem.ToString();
 
             try
             {
-                productName = tbProductName.Text;
-                productDescription = tbProductDescription.Text;
-                productPrice = Convert.ToDouble(tbProductPrice.Text);
-                productDepartment = cmbDepartments.SelectedItem.ToString();
-
-                Product product = new Product(productName, productDescription, productPrice, productQuantity, productDepartment);
+                Product product = new Product(name, description, buyingPrice, sellingPrice, quantity, minQuantity, department);
                 product.Insert();
 
                 MessageBox.Show("Product was created successfully!");
+
                 tbProductName.Text = "";
                 tbProductDescription.Text = "";
-                tbProductPrice.Text = "";
+                tbProductBuyingPrice.Text = "";
+                tbMinQuantity.Text = "";
+                tbSellingPrice.Text = "";
                 cmbDepartments.SelectedIndex = -1;
-       
-
             }
             catch(Exception ex)
             {
