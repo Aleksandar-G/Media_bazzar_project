@@ -13,6 +13,7 @@
   <div class="topnav" id="myTopnav">
     <a href="/workshift_view" class="active">Workshift View</a>
     <a href="/products">Products</a>
+    <a href="/list_orders">Orders</a>
     <!-- <a href="/myprofile">My QR Code</a> -->
 
     <a id="logout" href="{{ route('logout') }}" onclick="logout()">Logout</a>
