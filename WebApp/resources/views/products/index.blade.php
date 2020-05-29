@@ -66,13 +66,8 @@
           </div>
 
           <script type="text/javascript">
-          if(quantity != undefined)
-          {
-            let quantity = {{$product->quantity}};
-          }
-          else{
-            quantity = {{$product->quantity}};
-          }
+          
+            let quantity = {{$product->quantity}};         
 
             $(document).ready(function () {
                 $("#product-{{$product->id}}-quantity").prop('readonly', true);
