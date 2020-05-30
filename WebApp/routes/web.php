@@ -22,14 +22,12 @@ Auth::routes();
 
 Route::get('/workshifts', 'CalendarController@index');
 
-Route::resource('products', 'ProductsController')->only([
-    'index', 'show', 'update',
-])->middleware('auth');
-
 Route::get('/workshift_view', 'WorkshiftViewController@index')->middleware('auth');
 
 Route::get('/workshift_view/{id}', 'WorkshiftViewController@show')->middleware('auth');
 
-Route::get('/list_orders',  function () {
-    return view('listOrders');
-});
+Route::resource('products', 'ProductsController')->only([
+    'index', 'show', 'update',
+])->middleware('auth');
+
+Route::resource('orders', 'OrdersController')->middleware('auth');

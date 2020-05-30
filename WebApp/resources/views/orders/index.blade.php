@@ -23,10 +23,25 @@
         <table class="table text-white">
           <thead class="light-p-bg table-header">
             <tr class="d-flex">
-              <th scope="col" class="col-1 no-border">ID</th>
-              <th scope="col" class="col-4 no-border">Order</th>
+                <th scope="col" class="col-1 no-border">ID</th>
+                <th scope="col" class="col-3 no-border">Created by</th>
+                <th scope="col" class="col-2 no-border">Total price</th>
+                <th scope="col" class="col-4 no-border">Time of Order</th>
+                <th scope="col" class="col-2 no-border"></th>
             </tr>
           </thead>
+          <tbody>
+
+            @foreach ($orders as $order)
+                <tr class="d-flex">
+                    <th scope="row" class="col-1">{{ $order->id }}</th>
+                    <td class="col-3">{{ $order->user->name }}</td>
+                    <td class="col-2">{{ $order->total_price }}</td>
+                    <td class="col-4">{{ $order->created_at }}</td>
+                    <td class="col-2"><a href='/orders/{{$order->id}}' class="btn btn-orange btn-block">Details</a></td>
+                </tr>
+            @endforeach
+          </tbody>
         </table>
     </div>
     
