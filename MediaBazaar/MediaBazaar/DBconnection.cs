@@ -10,17 +10,11 @@ namespace MediaBazaar
     public class DBconnection
     {
         public MySqlConnection connection;
-        //private string server = "studmysql01.fhict.local";
-        //private string database = "dbi425706";
-        //private string uid = "dbi425706";
-        //private string password = "12345678";
+        private string server = Environment.GetEnvironmentVariable("DB_HOST");
+        private string database = Environment.GetEnvironmentVariable("DB_DATABASE");
+        private string uid = Environment.GetEnvironmentVariable("DB_USERNAME");
+        private string password = Environment.GetEnvironmentVariable("DB_PASSWORD");
 
-        private string server = "localhost";
-        private string database = "laravel";
-        private string uid = "root";
-        private string password = "";
-
-        //Constructor
         public DBconnection()
         {
             string connectionString = $"SERVER={server};DATABASE={database};UID={uid};PASSWORD={password};";

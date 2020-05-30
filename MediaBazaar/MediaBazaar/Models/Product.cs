@@ -12,47 +12,61 @@ namespace MediaBazaar.Models
         private long id;
         private string name;
         private string description;
-        private double price;
+        private double buyingPrice;
+        private double sellingPrice;
         private int quantity;
+        private int minQuantity;
         private string department;
 
         public long Id { get { return this.id; } }
         public string Name { get { return this.name; } }
         public string Description { get { return this.description; } }
-        public double Price { get { return this.price; } }
+        public double BuyingPrice { get { return this.buyingPrice; } }
+        public double SellingPrice { get { return this.sellingPrice; } }
         public int Quantity { get { return this.quantity; } }
+        public int MinQuantity { get { return this.minQuantity; } }
         public string Department { get { return this.department; } }
 
-        public Product(string name, string description, double price, int quantity, string department) : base()
+        public Product(string name, string description, double buyingPrice, double sellingPrice, int quantity, int minQuantity, string department) : base()
         {
             this.name = name;
             this.description = description;
-            this.price = price;
+            this.buyingPrice = buyingPrice;
+            this.sellingPrice = sellingPrice;
             this.quantity = quantity;
+            this.minQuantity = minQuantity;
             this.department = department;
         }
 
-        public Product(long id, string name, string description, double price, int quantity, string department) : base()
+        public Product(long id, string name, string description, double buyingPrice, double sellingPrice, int quantity, int minQuantity, string department) : base()
         {
             this.id = id;
             this.name = name;
             this.description = description;
-            this.price = price;
+            this.buyingPrice = buyingPrice;
+            this.sellingPrice = sellingPrice;
             this.quantity = quantity;
+            this.minQuantity = minQuantity;
             this.department = department;
         }
 
         public override void Insert()
         {
             dbConnection.OpenConnection();
-            string query = "INSERT INTO products(name, description, price, quantity, department_id) VALUES(@name, @description, @price, @quantity, (SELECT id FROM departments WHERE name = @department))";
+            string query =
+            @"
+                INSERT INTO products(name, description, buying_price, selling_price, quantity, min_quantity, department_id, created_at, updated_at) 
+                VALUES(@name, @description, @buying_price, @selling_price, @quantity, @min_quantity, (SELECT id FROM departments WHERE name = @department), NOW(), NOW())
+            ";
 
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
                 cmd.Parameters.AddWithValue("@name", name);
                 cmd.Parameters.AddWithValue("@description", description);
-                cmd.Parameters.AddWithValue("@price", price);
+                cmd.Parameters.AddWithValue("@buying_price", buyingPrice);
+                cmd.Parameters.AddWithValue("@selling_price", sellingPrice);
                 cmd.Parameters.AddWithValue("@quantity", quantity);
+                cmd.Parameters.AddWithValue("@min_quantity", minQuantity);
                 cmd.Parameters.AddWithValue("@department", department);
 
                 cmd.ExecuteNonQuery();
@@ -83,7 +97,14 @@ namespace MediaBazaar.Models
             DBconnection dbConnection = new DBconnection();
             dbConnection.OpenConnection();
             Dictionary<string, int> result = new Dictionary<string, int>();
-            string query = $"SELECT COUNT(*) as num ,d.Name as name FROM products as p INNER JOIN departments as d ON p.Department_id = d.Id GROUP BY d.Name;";
+            string query = 
+            @"
+                SELECT COUNT(*) as num, d.Name as name 
+                FROM products as p
+                INNER JOIN departments as d 
+                ON p.Department_id = d.Id
+                GROUP BY d.Name;
+            ";
 
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
@@ -103,7 +124,13 @@ namespace MediaBazaar.Models
             DBconnection dbConnection = new DBconnection();
             dbConnection.OpenConnection();
             List<Product> products = new List<Product>();
-            string query = "SELECT products.id AS p_id, products.name AS p_name, description, price, quantity, departments.name AS d_name FROM products INNER JOIN departments ON products.department_id = departments.id";
+            string query = 
+            @"
+                SELECT products.id AS p_id, products.name AS p_name, description, buying_price, selling_price, quantity, min_quantity, departments.name AS d_name
+                FROM products
+                INNER JOIN departments
+                ON products.department_id = departments.id
+            ";
 
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
@@ -114,11 +141,13 @@ namespace MediaBazaar.Models
                     long id = Convert.ToInt64(reader["p_id"]);
                     string name = reader["p_name"].ToString();
                     string description = reader["description"].ToString();
-                    double price = Convert.ToDouble(reader["price"]);
+                    double buyingPrice = Convert.ToDouble(reader["buying_price"]);
+                    double sellingPrice = Convert.ToDouble(reader["selling_price"]);
                     int quantity = Convert.ToInt32(reader["quantity"]);
+                    int minQuantity = Convert.ToInt32(reader["min_quantity"]);
                     string department = reader["d_name"].ToString();
 
-                    products.Add(new Product(id, name, description, price, quantity, department));
+                    products.Add(new Product(id, name, description, buyingPrice, sellingPrice, quantity, minQuantity, department));
                 }
             }
 
@@ -131,7 +160,14 @@ namespace MediaBazaar.Models
             DBconnection dbConnection = new DBconnection();
             dbConnection.OpenConnection();
             Product product;
-            string query = "SELECT products.id AS p_id, products.name AS p_name, description, price, quantity, departments.name AS d_name FROM products INNER JOIN departments ON products.department_id = departments.id WHERE products.name = @name";
+            string query = 
+            @"
+                SELECT products.id AS p_id, products.name AS p_name, description, buying_price, selling_price, quantity, min_quantity, departments.name AS d_name 
+                FROM products 
+                INNER JOIN departments 
+                ON products.department_id = departments.id 
+                WHERE products.name = @name
+            ";
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
                 cmd.Parameters.AddWithValue("@name", productName);
@@ -141,11 +177,13 @@ namespace MediaBazaar.Models
                     long id = Convert.ToInt64(reader["p_id"]);
                     string name = reader["p_name"].ToString();
                     string description = reader["description"].ToString();
-                    double price = Convert.ToDouble(reader["price"]);
+                    double buyingPrice = Convert.ToDouble(reader["buying_price"]);
+                    double sellingPrice = Convert.ToDouble(reader["selling_price"]);
                     int quantity = Convert.ToInt32(reader["quantity"]);
+                    int minQuantity = Convert.ToInt32(reader["min_quantity"]);
                     string department = reader["d_name"].ToString();
 
-                    product = new Product(id, name, description, price, quantity, department);
+                    product = new Product(id, name, description, buyingPrice, sellingPrice, quantity, minQuantity, department);
 
                     dbConnection.CloseConnection();
                     return product;
@@ -161,7 +199,14 @@ namespace MediaBazaar.Models
             DBconnection dbConnection = new DBconnection();
             dbConnection.OpenConnection();
             Product product;
-            string query = "SELECT products.id AS p_id, products.name AS p_name, description, price, quantity, departments.name AS d_name FROM products INNER JOIN departments ON products.department_id = departments.id WHERE products.id = @id";
+            string query = 
+            @"
+                SELECT products.id AS p_id, products.name AS p_name, description, buying_price, selling_price, quantity, min_quantity, departments.name AS d_name 
+                FROM products 
+                INNER JOIN departments 
+                ON products.department_id = departments.id 
+                WHERE products.id = @id
+            ";
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
                 cmd.Parameters.AddWithValue("@id", productId);
@@ -171,11 +216,13 @@ namespace MediaBazaar.Models
                     long id = Convert.ToInt64(reader["p_id"]);
                     string name = reader["p_name"].ToString();
                     string description = reader["description"].ToString();
-                    double price = Convert.ToDouble(reader["price"]);
+                    double buyingPrice = Convert.ToDouble(reader["buying_price"]);
+                    double sellingPrice = Convert.ToDouble(reader["selling_price"]);
                     int quantity = Convert.ToInt32(reader["quantity"]);
+                    int minQuantity = Convert.ToInt32(reader["min_quantity"]);
                     string department = reader["d_name"].ToString();
 
-                    product = new Product(id, name, description, price, quantity, department);
+                    product = new Product(id, name, description, buyingPrice, sellingPrice, quantity, minQuantity, department);
 
                     dbConnection.CloseConnection();
                     return product;
@@ -189,7 +236,7 @@ namespace MediaBazaar.Models
             DBconnection dbConnection = new DBconnection();
             dbConnection.OpenConnection();
 
-            string query = "UPDATE products SET quantity = quantity + @quantity WHERE id = @id";
+            string query = "UPDATE products, updated_at SET quantity = quantity + @quantity, updated_at = NOW() WHERE id = @id";
 
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {
