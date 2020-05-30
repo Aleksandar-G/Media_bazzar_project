@@ -300,10 +300,28 @@ hr.summary-hr {
     text-align: left;
     margin-left: 0;
     width: 84%;
-    
+
 }
 .summary-h{
     color: $orange;
     font-size:24px;
     letter-spacing: 0.04cm;
+}
+//List of orders style
+.container-orders{
+    height: 100% !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    padding-top: 2%;
+    padding-right: 12%;
+    padding-left:12% ;
+}
+
+.date {
+    border-radius: 5px !important;
+
+}
+.month.focused.active {
+    background-color: $lighter-purple !important;
+    background-image: none !important;
 }

@@ -9,46 +9,52 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    private const MIN_QUANTITY_AMOUNT = 5;
     protected $fillable = [
-       'name', 'description', 'price', 'department_id'
+        'name',
+        'description',
+        'buying_price',
+        'selling_price',
+        'department_id',
+        'min_quantity'
     ];
 
-    public function addQuantity(int $quantity) {
+    public function addQuantity(int $quantity)
+    {
         $this->quantity += $quantity;
         $this->save();
     }
 
-    public function decreaseQuantity(int $quantity) {
-        if($this->quantity < $quantity) {
+    public function decreaseQuantity(int $quantity)
+    {
+        if ($this->quantity < $quantity) {
             throw new Exception("Not enough quantity");
         }
 
-        error_log($quantity);
         $this->quantity -= $quantity;
         $this->save();
 
-        if ($this->quantity < self::MIN_QUANTITY_AMOUNT) {
-            try 
-            {
+        if ($this->quantity < $this->min_quantity) {
+            try {
                 StockRequest::where('product_id', $this->id)
                     ->where('completed', 0)
                     ->firstOrFail();
-            }
-            catch(Exception $ex)
-            {
+            } catch (Exception $ex) {
                 StockRequest::create([
                     'user_id' => User::firstWhere('id', Auth::id())->id,
                     'product_id' => $this->id,
-                    'quantity' => self::MIN_QUANTITY_AMOUNT
+                    'quantity' => $this->min_quantity
                 ]);
             }
-            
         }
     }
 
     public function department()
     {
         return $this->belongsTo('App\Department');
+    }
+
+    public function orders()
+    {
+        return $this->belongsToMany('App\Order', 'order_details')->withPivot('quantity');
     }
 }
