@@ -13,7 +13,7 @@
                         <th scope="col" class="col-3 no-border">Name</th>
                         <th scope="col" class="col-2 no-border">Price</th>
                         <th scope="col" class="col-2 no-border">Quantity</th>
-                        <th scope="col" class="col-2 no-border">Total</th>
+                        <th scope="col" class="col-3 no-border">Total</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -23,7 +23,7 @@
                             <th class="col-3">{{$product->name}}</th>
                             <th class="col-2">${{$product->selling_price}}</th>
                             <th class="col-2">{{$product->pivot->quantity}}</th>
-                            <th class="col-2">${{$product->selling_price * $product->pivot->quantity}}</th>
+                            <th class="col-3">${{$product->selling_price * $product->pivot->quantity}}</th>
                         </tr>
                     @endforeach
                   </tbody>
