@@ -33,12 +33,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tbProductName = new System.Windows.Forms.TextBox();
             this.tbProductDescription = new System.Windows.Forms.TextBox();
-            this.tbProductPrice = new System.Windows.Forms.TextBox();
+            this.tbProductBuyingPrice = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbDepartments = new System.Windows.Forms.ComboBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.btnAddProduct = new System.Windows.Forms.Button();
+            this.tbSellingPrice = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tbMinQuantity = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -71,18 +75,18 @@
             this.label3.AutoSize = true;
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(95, 167);
+            this.label3.Location = new System.Drawing.Point(231, 227);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 20);
+            this.label3.Size = new System.Drawing.Size(113, 20);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Price:";
+            this.label3.Text = "Buying Price:";
             // 
             // tbProductName
             // 
             this.tbProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbProductName.Location = new System.Drawing.Point(44, 127);
-            this.tbProductName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbProductName.Margin = new System.Windows.Forms.Padding(2);
             this.tbProductName.Name = "tbProductName";
             this.tbProductName.Size = new System.Drawing.Size(153, 23);
             this.tbProductName.TabIndex = 3;
@@ -91,20 +95,20 @@
             // 
             this.tbProductDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbProductDescription.Location = new System.Drawing.Point(235, 127);
-            this.tbProductDescription.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbProductDescription.Margin = new System.Windows.Forms.Padding(2);
             this.tbProductDescription.Multiline = true;
             this.tbProductDescription.Name = "tbProductDescription";
-            this.tbProductDescription.Size = new System.Drawing.Size(279, 145);
+            this.tbProductDescription.Size = new System.Drawing.Size(279, 86);
             this.tbProductDescription.TabIndex = 4;
             // 
-            // tbProductPrice
+            // tbProductBuyingPrice
             // 
-            this.tbProductPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbProductPrice.Location = new System.Drawing.Point(44, 188);
-            this.tbProductPrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tbProductPrice.Name = "tbProductPrice";
-            this.tbProductPrice.Size = new System.Drawing.Size(153, 23);
-            this.tbProductPrice.TabIndex = 5;
+            this.tbProductBuyingPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbProductBuyingPrice.Location = new System.Drawing.Point(234, 248);
+            this.tbProductBuyingPrice.Margin = new System.Windows.Forms.Padding(2);
+            this.tbProductBuyingPrice.Name = "tbProductBuyingPrice";
+            this.tbProductBuyingPrice.Size = new System.Drawing.Size(124, 23);
+            this.tbProductBuyingPrice.TabIndex = 5;
             // 
             // label4
             // 
@@ -125,7 +129,7 @@
             this.cmbDepartments.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDepartments.FormattingEnabled = true;
             this.cmbDepartments.Location = new System.Drawing.Point(44, 248);
-            this.cmbDepartments.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbDepartments.Margin = new System.Windows.Forms.Padding(2);
             this.cmbDepartments.Name = "cmbDepartments";
             this.cmbDepartments.Size = new System.Drawing.Size(153, 24);
             this.cmbDepartments.TabIndex = 7;
@@ -164,14 +168,56 @@
             this.btnAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddProduct.ForeColor = System.Drawing.Color.White;
-            this.btnAddProduct.Location = new System.Drawing.Point(311, 291);
-            this.btnAddProduct.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnAddProduct.Location = new System.Drawing.Point(190, 311);
+            this.btnAddProduct.Margin = new System.Windows.Forms.Padding(1);
             this.btnAddProduct.Name = "btnAddProduct";
-            this.btnAddProduct.Size = new System.Drawing.Size(132, 39);
+            this.btnAddProduct.Size = new System.Drawing.Size(154, 39);
             this.btnAddProduct.TabIndex = 19;
             this.btnAddProduct.Text = "Add Product";
             this.btnAddProduct.UseVisualStyleBackColor = false;
             this.btnAddProduct.Click += new System.EventHandler(this.BtnAddProduct_Click);
+            // 
+            // tbSellingPrice
+            // 
+            this.tbSellingPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSellingPrice.Location = new System.Drawing.Point(390, 248);
+            this.tbSellingPrice.Margin = new System.Windows.Forms.Padding(2);
+            this.tbSellingPrice.Name = "tbSellingPrice";
+            this.tbSellingPrice.Size = new System.Drawing.Size(124, 23);
+            this.tbSellingPrice.TabIndex = 21;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(387, 227);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(113, 20);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Selling Price:";
+            // 
+            // tbMinQuantity
+            // 
+            this.tbMinQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbMinQuantity.Location = new System.Drawing.Point(44, 191);
+            this.tbMinQuantity.Margin = new System.Windows.Forms.Padding(2);
+            this.tbMinQuantity.Name = "tbMinQuantity";
+            this.tbMinQuantity.Size = new System.Drawing.Size(153, 23);
+            this.tbMinQuantity.TabIndex = 23;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(41, 169);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(156, 20);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "Minimum Quantity:";
             // 
             // AddProductForm
             // 
@@ -179,12 +225,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(537, 360);
+            this.Controls.Add(this.tbMinQuantity);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.tbSellingPrice);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnAddProduct);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.cmbDepartments);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.tbProductPrice);
+            this.Controls.Add(this.tbProductBuyingPrice);
             this.Controls.Add(this.tbProductDescription);
             this.Controls.Add(this.tbProductName);
             this.Controls.Add(this.label3);
@@ -192,7 +242,7 @@
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AddProductForm";
             this.Text = "AddProductForm";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AddProductForm_MouseDown);
@@ -210,11 +260,15 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbProductName;
         private System.Windows.Forms.TextBox tbProductDescription;
-        private System.Windows.Forms.TextBox tbProductPrice;
+        private System.Windows.Forms.TextBox tbProductBuyingPrice;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbDepartments;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnAddProduct;
+        private System.Windows.Forms.TextBox tbSellingPrice;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox tbMinQuantity;
+        private System.Windows.Forms.Label label7;
     }
 }

@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MediaBazaar.Forms;
@@ -16,7 +19,7 @@ namespace MediaBazaar
         [STAThread]
         static void Main()
         {
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjIwNTA0QDMxMzcyZTM0MmUzMGtEQzlxQzMyb1gycERnQ1FHT3REdVBuSW5Icmovc1NwQVJGMS9IcFNta2c9");
+            DotNetEnv.Env.Load("../../../../WebApp/.env");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             
