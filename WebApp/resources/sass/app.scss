@@ -267,3 +267,12 @@ a:hover{
     padding-right: 12%;
     padding-left:12% ;
 }
+
+.date {
+    border-radius: 5px !important;
+
+}
+.month.focused.active {
+    background-color: $lighter-purple !important;
+    background-image: none !important;
+}
