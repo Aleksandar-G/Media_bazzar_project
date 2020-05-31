@@ -24,4 +24,9 @@ class Worker extends Model
     {
         return $this->hasMany('App\WorkShift');
     }
+
+    public function preferences() 
+    {
+        return $this->hasMany('App\WorkerPreference');
+    }
 }
