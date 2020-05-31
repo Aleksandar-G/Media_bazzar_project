@@ -70,31 +70,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class='d-flex'>
-                        <th scope='row' class='col-1'>
-                            <input type='checkbox' name='record'>
-                        </th>
-                        <td class='col-8 productname'>tv</td>
-                        <td class='col-3'>10</td>
-
-                        <input type="hidden" name="productId[]" value="1"></input>
-                        <input type="hidden" name="quantity[]" value="10"></input>
-                    </tr>
-                    <tr class='d-flex'>
-                        <th scope='row' class='col-1'>
-                            <input type='checkbox' name='record'>
-                        </th>
-                        <td class='col-8 productname'>smart tv</td>
-                        <td class='col-3'>10</td>
-
-                        <input type="hidden" name="productId[]" value="3"></input>
-                        <input type="hidden" name="quantity[]" value="10"></input>
-                    </tr>
+                    
                 </tbody>
             </table>
         </div>
+        <div class="bottomMenu">
         <button type="button" class="delete-row btn btn-danger">Delete Row</button>
-        <input type="submit" class="create btn btn-primary">Create Stock Request</input>
+        <input type="submit" class="create btn btn-primary"></input>
+        </div>
     </form>
 
 
