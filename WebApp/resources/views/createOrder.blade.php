@@ -9,7 +9,7 @@
     <h2 class="text-center text-white mb-4">Place Order Here</h2>
     <div class="container-fluid">
 
-        <div class="row">
+        <div class="row ml-3">
             <div class="col-5 m-0 p-0">
                 <input type="text" class="input-field" id="searchfield" name="quantity" placeholder="Type product name">
             </div>
@@ -19,7 +19,7 @@
             </div>
         </div>
         <br>
-        <div class="row mt-1">
+        <div class="row mt-1 ml-3">
             <table class="col-5 table text-white m-0 p-0">
                 <thead class="light-p-bg table-header">
                     <tr class="d-flex">
@@ -43,8 +43,7 @@
             let result;
             let products = [];
 
-            let fillTable = (k, v) => {
-
+            let fillTable = (v) => {
                 $("tbody").append(
                     `<tr product-id="${v.id}" class="d-flex">
                         <th scope="col" class="col-6 no-border">${v.name}</th>
@@ -56,7 +55,7 @@
                             </div>
                         </th>
                         <th scope="col" class="col-2 no-border">
-                            <button id="${v.id}" product-name="${v.name}" product-price="${v.price}" class="add btn btn-orange">Add</button>
+                            <button id="${v.id}" product-name="${v.name}" product-price="${v.selling_price}" class="add btn btn-orange">Add</button>
                         </th>
                     </tr>`
                 )
@@ -72,7 +71,7 @@
                                 <h4>Quantity</h4>
                             </div>
                             <div class="col-1">
-                                
+
                             </div>
                             <div class="col-3">
                                 <h4>Price</h4>
@@ -80,15 +79,15 @@
                             <div class="col-2">
                             </div>
                         </div>`);
-                $.each(arr, (k, v) => {
+                arr.forEach( item => {
                     $("#cart").append(`
                         <div class="row mb-1 mt-1 p-0">
-                            <div class="col-4">${v.name}</div>
-                            <div class="col-2">${v.quantity}</div>
+                            <div class="col-4">${item.name}</div>
+                            <div class="col-2">${item.quantity}</div>
                             <div class="col-1"><h5>x</h5></div>
-                            <div class="col-3">${v.price}</div>
+                            <div class="col-3">${item.price}</div>
                             <div class="col-2">
-                                <button product-id="${v.id}" class="remove btn btn-sm btn-orange">Remove</button>
+                                <button product-id="${item.id}" class="remove btn btn-sm btn-orange">Remove</button>
                             </div>
                             <hr class="rowhr">
                         </div>
@@ -107,11 +106,12 @@
 
             $("tbody").html("<h2>Loading...</h2>")
             fillCart(products, 0)
-            $.get('/showProducts', function (data) {
+            $.get('/products/show', function (data) {
                 $("tbody").html("")
                 result = JSON.parse(data)
-                //console.log(result);
-                $.each(result, fillTable);
+                console.log(result);
+                //$.each(result, fillTable);
+                result.forEach(fillTable);
             })
 
             $("#searchfield").keyup(function (e) {
@@ -124,7 +124,7 @@
                 if (filtered.length == 0) {
                     $("tbody").append("<h3>No such item</h3>");
                 }
-                $.each(filtered, fillTable);
+                filtered.forEach(fillTable);
 
             })
 
@@ -184,7 +184,18 @@
                     event.preventDefault();
                     alert("Empty order");
                 } else {
-                    console.log(products);
+                    //console.log(products);
+                    let order = {
+                        total_price:total_price.toFixed(2).toString(),
+                        products:products,
+                        _token: "{{ csrf_token() }}"
+                    }
+                    console.log(order);
+                    console.log()
+                    $.post('/orders',order)
+                    .done(function(data){
+                        console.log(data)
+                    })
                 }
             })
         });

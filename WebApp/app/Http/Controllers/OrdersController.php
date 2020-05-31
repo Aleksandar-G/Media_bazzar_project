@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Order;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Response;
 
 class OrdersController extends Controller
 {
@@ -25,7 +27,7 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        //
+        return view('createOrder');
     }
 
     /**
@@ -36,9 +38,17 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $total_price = $request['total_price'];
+        $order = new Order();
+        $order->total_price = $request['total_price'];
+        $order->user_id = Auth::user()->id;
+        $order->save();
+        foreach ($request['products'] as $product) {
+            $order->products()->attach(['product_id' => $product['id']], ['quantity' => $product['quantity']]);
+        }
+        return new Response("done");
 
+    }
     /**
      * Display the specified resource.
      *
