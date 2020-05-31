@@ -23,10 +23,15 @@ Auth::routes();
 
 Route::get('/workshifts', 'CalendarController@index');
 
+Route::get('/workshift_view', 'WorkshiftViewController@index')->middleware('auth');
+
+Route::get('/workshift_view/{id}', 'WorkshiftViewController@show')->middleware('auth');
+
 Route::resource('products', 'ProductsController')->only([
     'index', 'show', 'update',
 ])->middleware('auth');
 
+<<<<<<< HEAD
 Route::get('/workshift_view', 'WorkshiftViewController@index')->middleware('auth');
 
 Route::get('/workshift_view/{id}', 'WorkshiftViewController@show')->middleware('auth');
@@ -34,3 +39,6 @@ Route::get('/workshift_view/{id}', 'WorkshiftViewController@show')->middleware('
 Route::get('/StockRequest', 'StockRequestContoller@index')->middleware('auth');
 
 Route::post('/stockRequest','StockRequestContoller@store')->middleware('auth');
+=======
+Route::resource('orders', 'OrdersController')->middleware('auth');
+>>>>>>> master

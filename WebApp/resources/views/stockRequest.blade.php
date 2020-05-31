@@ -29,8 +29,6 @@
                 if (quantity <= 0) {
                     alert("Please input a valid quantity");
                 }
-                //var email = $("#email").val();
-                //var markup = "<tr class='d-flex'><td><input type='checkbox' name='record'></td><td>" + name + "</td><td>" + email + "</td></tr>";
                 let markup = "<tr class='d-flex'><th scope='row' class='col-1'><input type='checkbox' name='record'></th><td class='col-8 productname'>" + name + "</td><td class='col-3'>" + quantity + "</td> <input type='hidden' name='productId[]'  value=" + productid + "></input><input type='hidden' name='quantity[]'  value=" + quantity + "></input> </tr>";
                 $("table tbody").append(markup);
             });
@@ -70,13 +68,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+
                 </tbody>
             </table>
         </div>
         <div class="bottomMenu">
-        <button type="button" class="delete-row btn btn-danger">Delete Row</button>
-        <input type="submit" class="create btn btn-primary"></input>
+            <button type="button" class="delete-row btn btn-danger">Delete Row</button>
+            <input type="submit" class="create btn btn-primary"></input>
         </div>
     </form>
 
