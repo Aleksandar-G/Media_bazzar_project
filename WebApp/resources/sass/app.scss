@@ -1,17 +1,12 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-
 html,
 body {
     height: 100% !important;
-
-
 }
 
 .table>tHead>tr>th {
@@ -39,7 +34,6 @@ body {
         min-width: 35px;
         text-align: center;
     }
-
     .plus {
         cursor: pointer;
         display: inline-block;
@@ -51,7 +45,6 @@ body {
         text-align: center;
         border-radius: 50%;
     }
-
     .minus {
         cursor: pointer;
         display: inline-block;
@@ -64,37 +57,30 @@ body {
         border-radius: 50%;
         background-clip: padding-box;
     }
-
     .minus:hover {
         background-color: $light-orange !important;
     }
-
     .plus:hover {
         background-color: $light-orange !important;
     }
-
     /*Prevent text selection*/
     span {
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
     }
-
     input {
         border: 0;
         width: 2%;
     }
-
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
     }
-
     input:disabled {
         background-color: white;
     }
-
 }
 
 //index page container style
@@ -137,15 +123,11 @@ a:hover {
 
 .content {
     text-align: center;
-
 }
 
 .m-b-md {
     margin-bottom: 20px;
 }
-
-//end Index page container style
-
 
 //Login Page style
 .container-full {
@@ -178,12 +160,8 @@ a:hover {
 }
 
 //end Login Page style
-
 //Home style
-
-
 //end Home style
-
 // Navbar style
 #logout {
     float: right;
@@ -220,11 +198,9 @@ a:hover {
 }
 
 @media screen and (max-width: 600px) {
-
     .topnav a:not(:first-child) {
         display: none;
     }
-
     .topnav a.icon {
         float: right;
         display: block;
@@ -232,17 +208,14 @@ a:hover {
 }
 
 @media screen and (max-width: 600px) {
-
     .topnav.responsive {
         position: relative;
     }
-
     .topnav.responsive .icon {
         position: absolute;
         right: 0;
         top: 0;
     }
-
     .topnav.responsive a {
         float: none;
         display: block;
@@ -251,8 +224,6 @@ a:hover {
 }
 
 //   End of navbar style
-
-
 //Products style
 .container-products {
     height: 100% !important;
@@ -261,7 +232,6 @@ a:hover {
     padding-top: 2%;
     padding-right: 12%;
     padding-left: 12%;
-
 }
 
 .table-header {
@@ -308,20 +278,44 @@ hr.summary-hr {
     letter-spacing: 0.04cm;
 }
 //List of orders style
-.container-orders{
+.container-orders {
     height: 100% !important;
     margin-left: 0px !important;
     margin-right: 0px !important;
     padding-top: 2%;
     padding-right: 12%;
-    padding-left:12% ;
+    padding-left: 12%;
 }
 
 .date {
     border-radius: 5px !important;
-
 }
+
 .month.focused.active {
     background-color: $lighter-purple !important;
     background-image: none !important;
+}
+
+//StockRequest Styles
+.addMenu {
+    margin-top: 4% !important;
+    width: 100% !important;
+    padding: 0px !important;
+    text-align: center;
+}
+
+// StockRequest Styles
+#selectProduct {
+    width: 14%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+#quantity {
+    padding: 7px;
+}
+
+.bottomMenu {
+    border: none;
+    text-align: center;
 }
