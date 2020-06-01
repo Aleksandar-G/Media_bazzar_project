@@ -14,6 +14,7 @@
     <a href="/workshift_view" class="active">Workshift View</a>
     <a href="/products">Products</a>
     <a href="/StockRequest">Stock Request</a>
+    <a href="/orders/create">Create Order</a>
     <a href="/orders">Orders</a>
     <!-- <a href="/myprofile">My QR Code</a> -->
 

@@ -129,7 +129,6 @@ a:hover {
     margin-bottom: 20px;
 }
 
-//end Index page container style
 //Login Page style
 .container-full {
     height: 100% !important;
@@ -246,6 +245,38 @@ a:hover {
     border: 0px !important;
 }
 
+.input-field {
+    height: 100%;
+    border: 2px solid $orange;
+    border-radius: 7px;
+    width: 100%;
+}
+
+.list-box {
+    border: 1px solid $orange;
+    border-radius: 5px;
+
+}
+
+hr.rowhr {
+    border-top: 1px solid $light-orange;
+    width: 84%;
+    margin-left: 0;
+    text-align: left
+}
+
+hr.summary-hr {
+    border-top: 2px dashed $light-orange;
+    text-align: left;
+    margin-left: 0;
+    width: 84%;
+
+}
+.summary-h{
+    color: $orange;
+    font-size:24px;
+    letter-spacing: 0.04cm;
+}
 //List of orders style
 .container-orders {
     height: 100% !important;
