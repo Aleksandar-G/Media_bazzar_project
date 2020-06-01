@@ -34,13 +34,18 @@
             if (quantity <= 0) {
                 alert("Please input a valid quantity");
             }
-            let markup = `<tr class='d-flex'>
-                <th scope='row' class='col-1'>
-                <input type='checkbox' name='record'>
-                </th><td class='col-8 productname'> ${name} </td>
-                <td class='col-3'> ${quantity} </td>
-                 <input type='hidden' name='productId[]'  value= '${productid}' >
-                 </input><input type='hidden' name='quantity[]'  value= '${quantity}'></input> </tr>`;
+            let markup = `
+                <tr class='d-flex'>
+                    <th scope='row' class='col-1'>
+                        <input type='checkbox' name='record'>
+                    </th>
+                    <td class='col-9 productname'> ${name} </td>
+                    <td class='col-2'> ${quantity} </td>
+                    <input type='hidden' name='productId[]'  value= '${productid}' />
+                    <input type='hidden' name='quantity[]'  value= '${quantity}' />
+                </tr>
+            `;
+
             $("table tbody").append(markup);
 
             document.getElementById("quantity").value = 0;
@@ -71,24 +76,17 @@
 </div>
 <form action="/StockRequest" method="POST">
     @csrf
-    <div class="container-StockRequest dark-bg">
+    <div class="container dark-bg">
         <table class="table text-white">
             <thead class="light-p-bg table-header">
                 <tr class="d-flex">
                     <th scope="col" class="col-1 no-border"></th>
-                    <th scope="col" class="col-8 no-border">Product Name</th>
-                    <th scope="col" class="col-4 no-border">Quantity</th>
+                    <th scope="col" class="col-9 no-border">Product Name</th>
+                    <th scope="col" class="col-2 no-border">Quantity</th>
                 </tr>
             </thead>
             <tbody>
                 <tr class='d-flex'>
-                    <th scope='row' class='col-1'>
-                        <input type='checkbox' name='record'>
-                    </th>
-                    <td class='col-8 productname'> tv </td>
-                    <td class='col-3'> 10 </td>
-                    <input type='hidden' name='productId[]' value='1'>
-                    </input><input type='hidden' name='quantity[]' value='10'></input>
                 </tr>
             </tbody>
         </table>
