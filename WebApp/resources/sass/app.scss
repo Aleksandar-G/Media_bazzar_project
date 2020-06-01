@@ -291,12 +291,12 @@ hr.summary-hr {
     border-radius: 5px !important;
 }
 
-.month.focused.active {
+.month.focused.active,
+td.active {
     background-color: $lighter-purple !important;
     background-image: none !important;
 }
 
-//StockRequest Styles
 .addMenu {
     margin-top: 4% !important;
     width: 100% !important;
@@ -318,4 +318,12 @@ hr.summary-hr {
 .bottomMenu {
     border: none;
     text-align: center;
+}
+
+.datepicker > div.datepicker-days > table > tbody > tr:hover {
+    background-color: $light-orange;
+}
+
+.preferences-page {
+    height: 90vh;
 }

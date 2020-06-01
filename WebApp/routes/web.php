@@ -34,3 +34,5 @@ Route::resource('products', 'ProductsController')->only([
 Route::resource('StockRequest','StockRequestController')->only(['index','store'])->middleware('auth');
 
 Route::resource('orders', 'OrdersController')->middleware('auth');
+
+Route::resource('preferences', 'WorkerPreferenceController')->middleware(['auth', 'isWorker']);

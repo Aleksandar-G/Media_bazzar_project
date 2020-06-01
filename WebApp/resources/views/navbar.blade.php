@@ -16,6 +16,11 @@
     <a href="/StockRequest">Stock Request</a>
     <a href="/orders/create">Create Order</a>
     <a href="/orders">Orders</a>
+
+    @if (Auth::user()->role == 'Worker')
+    <a href="/preferences">Preferences</a>
+    @endif
+
     <!-- <a href="/myprofile">My QR Code</a> -->
 
     <a id="logout" href="{{ route('logout') }}" onclick="logout()">Logout</a>
