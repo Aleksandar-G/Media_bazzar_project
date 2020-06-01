@@ -15,9 +15,11 @@ class OrdersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $orders = Order::all();
+
+        //print_r($request->query('date'));
+        $orders = Order::where('created_at', 'LIKE', '%'.$request->query('date').'%')->get(); 
         return view('orders.index', ['orders' => $orders]);
     }
 

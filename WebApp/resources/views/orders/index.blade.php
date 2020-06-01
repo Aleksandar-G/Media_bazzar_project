@@ -3,14 +3,15 @@
 @section('head')
     <title>Laravel Bootstrap Datepicker</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>      
+    
 @endsection
   
 @section('content')
     <div class="container" align="center">
         <h1 class="text-white">Select Month</h1>
         <div class="input-group date col-4">
-            <input class="date text-center form-control input-md" type="text">
+            <input autocomplete="off" id="datepicker" class="date text-center form-control input-md" type="text">
             <div class="input-group-addon"></div>
         </div>
     </div>
@@ -27,15 +28,15 @@
             </tr>
           </thead>
           <tbody>
-
             @foreach ($orders as $order)
-                <tr class="d-flex">
-                    <th scope="row" class="col-1">{{ $order->id }}</th>
-                    <td class="col-3">{{ $order->user->name }}</td>
-                    <td class="col-2">{{ $order->total_price }}</td>
-                    <td class="col-4">{{ $order->created_at }}</td>
-                    <td class="col-2"><a href='/orders/{{$order->id}}' class="btn btn-orange btn-block">Details</a></td>
-                </tr>
+                    <!-- if($order->created_at->format('m-Y') == '05-2020') -->
+                    <tr class="d-flex">
+                        <th scope="row" class="col-1">{{ $order->id }}</th>
+                        <td class="col-3">{{ $order->user->name }}</td>
+                        <td class="col-2">{{ $order->total_price }}</td>
+                        <td class="col-4">{{ $order->created_at }}</td>
+                        <td class="col-2"><a href='/orders/{{$order->id}}' class="btn btn-orange btn-block">Details</a></td>
+                    </tr>
             @endforeach
           </tbody>
         </table>
@@ -45,7 +46,10 @@
         $('.date').datepicker({  
             minViewMode: "months",
             format: 'mm-yyyy',
-            container: '.input-group.date'
-         });  
-    </script>      
+            container: '.input-group.date',
+         })
+         $('#datepicker').on('changeDate', function(e) {    
+            window.location.replace(`/orders?date=${e.format('yyyy-mm')}`);
+            })
+    </script> 
 @endsection
