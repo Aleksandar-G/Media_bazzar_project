@@ -40,8 +40,8 @@
     </div>
     <script>
         $(document).ready(function () {
-            let result;
-            let products = [];
+            let result
+            let products = []
 
             let fillTable = (v) => {
                 $("tbody").append(
@@ -50,12 +50,12 @@
                         <th scope="col" class="col-4 no-border">
                             <div class="qty">
                                 <span class="minus bg-dark">-</span>
-                                <input id=${v.id} quantity="${v.quantity}" type="number" class="count" name="quantity" value="1" min="0" max="5">
+                                <input id=${v.id} quantity="${v.quantity}" type="number" class="count" name="quantity" value="${v.quantity <= 0 ? 0 : 1}">
                                 <span class="plus bg-dark">+</span>
                             </div>
                         </th>
                         <th scope="col" class="col-2 no-border">
-                            <button id="${v.id}" product-name="${v.name}" product-price="${v.selling_price}" class="add btn btn-orange">Add</button>
+                            <button id="${v.id}" ${v.quantity <= 0 ? 'disabled' : ''} product-name="${v.name}" product-price="${v.selling_price}" class="add btn btn-orange">Add</button>
                         </th>
                     </tr>`
                 )
@@ -78,7 +78,7 @@
                             </div>
                             <div class="col-2">
                             </div>
-                        </div>`);
+                        </div>`)
                 arr.forEach( item => {
                     $("#cart").append(`
                         <div class="row mb-1 mt-1 p-0">
@@ -109,48 +109,45 @@
             $.get('/products/show', function (data) {
                 $("tbody").html("")
                 result = JSON.parse(data)
-                console.log(result);
-                //$.each(result, fillTable);
-                result.forEach(fillTable);
+                result.forEach(fillTable)
             })
 
             $("#searchfield").keyup(function (e) {
-                $("tbody").html("<h2>Loading...</h2>");
+                $("tbody").html("<h2>Loading...</h2>")
                 let input = e.target.value
                 let filtered = result.filter(word => word.name.toLowerCase().includes(input
-                    .toLowerCase()));
-                console.log(filtered);
-                $("tbody").html("");
+                    .toLowerCase()))
+                console.log(filtered)
+                $("tbody").html("")
                 if (filtered.length == 0) {
-                    $("tbody").append("<h3>No such item</h3>");
+                    $("tbody").append("<h3>No such item</h3>")
                 }
-                filtered.forEach(fillTable);
+                filtered.forEach(fillTable)
 
             })
 
-            let id, input_element;
+            let id, input_element
             $(document).on('click', '.plus', function () {
-                id = $(this).closest('tr').attr('product-id');
+                id = $(this).closest('tr').attr('product-id')
                 input_element = $(`input#${id}`)
                 if (parseInt(input_element.val()) >= parseInt(input_element.attr("quantity"))) {
-
-                    input_element.val(parseInt(input_element.attr("quantity")));
+                    input_element.val(parseInt(input_element.attr("quantity")))
                 } else {
-                    input_element.val(parseInt(input_element.val()) + 1);
+                    input_element.val(parseInt(input_element.val()) + 1)
                 }
-            });
+            })
             $(document).on('click', '.minus', function () {
-                id = $(this).closest('tr').attr('product-id');
+                id = $(this).closest('tr').attr('product-id')
                 input_element = $(`input#${id}`)
 
                 if (parseInt(input_element.val()) <= 0) {
-                    input_element.val(0);
+                    input_element.val(0)
                 } else {
-                    input_element.val(parseInt(input_element.val()) - 1);
+                    input_element.val(parseInt(input_element.val()) - 1)
                 }
-            });
+            })
 
-            let total_price = 0;
+            let total_price = 0
 
             $(document).on('click', 'button.add', function () {
                 let id = $(this).attr('id')
@@ -168,37 +165,35 @@
                 temp.length === 0 ? products.push(product) : products[products.indexOf(temp[0])].quantity += product.quantity
                 total_price = products.reduce((acc, value) => (acc + (value.price * value.quantity)), 0)
 
-                fillCart(products, total_price);
+                fillCart(products, total_price)
             })
 
             $(document).on('click', 'button.remove', function () {
-                let searchedID = $(this).attr('product-id');
+                let searchedID = $(this).attr('product-id')
                 let deleted_index = products.findIndex(item => item.id === parseInt(searchedID))
 
-                products.splice(deleted_index, 1);
+                products.splice(deleted_index, 1)
                 total_price = products.reduce((acc, value) => (acc + (value.price * value.quantity)), 0)
-                fillCart(products, total_price);
+                fillCart(products, total_price)
             })
             $(document).on('click', 'button#checkout', function () {
                 if (products.length === 0) {
-                    event.preventDefault();
-                    alert("Empty order");
+                    event.preventDefault()
+                    alert("Empty order")
                 } else {
-                    //console.log(products);
                     let order = {
                         total_price:total_price.toFixed(2).toString(),
                         products:products,
                         _token: "{{ csrf_token() }}"
                     }
-                    console.log(order);
-                    console.log()
+
                     $.post('/orders',order)
                     .done(function(data){
-                        console.log(data)
+                        window.location.replace(`/orders/${data.id}`)
                     })
                 }
             })
-        });
+        })
 
     </script>
 </div>
