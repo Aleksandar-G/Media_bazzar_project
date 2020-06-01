@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Order;
 use App\Product;
+use App\StockRequest;
+use App\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Response;
+use Illuminate\Http\Request;
+use App\Exceptions;
+use Exception;
+use Illuminate\Support\Facades\Session;
 
-class OrdersController extends Controller
+class StockRequestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +20,9 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $orders = Order::all();
-        return view('orders.index', ['orders' => $orders]);
+        $products = Product::all();
+
+        return view('stockRequest', ['products' => $products]);
     }
 
     /**
@@ -28,7 +32,7 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        return view('createOrder');
+        //
     }
 
     /**
@@ -39,17 +43,36 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        $order = new Order();
-        $order->total_price = $request['total_price'];
-        $order->user_id = Auth::user()->id;
-        $order->save();
 
-        foreach ($request['products'] as $product) {
-            Product::find($product['id'])->decreaseQuantity(intval($product['quantity']));
-            $order->products()->attach(['product_id' => $product['id']], ['quantity' => $product['quantity']]);
+        $productIds = request('productId');
+        $productQuantity = request('quantity');
+
+        for ($i = 0; $i < count($productIds); $i++) {
+            try {
+                $sr = StockRequest::where('product_id', $productIds[$i])
+                    ->where('completed', 0)
+                    ->firstOrFail();
+
+                if ($sr->quantity < $productQuantity[$i]) {
+
+                    StockRequest::where('id', $sr->id)
+                        ->update(['quantity' => $productQuantity[$i]]);
+                } else {
+                    $productName = Product::find($productIds[$i])->name;
+                    Session::flash('flash_message', "There is a stock request for $productName already");
+                }
+            } catch (Exception $ex) {
+
+                StockRequest::create([
+                    'user_id' => User::firstWhere('id', Auth::id())->id,
+                    'product_id' => $productIds[$i],
+                    'quantity' => $productQuantity[$i]
+                ]);
+            }
         }
 
-        return Response($order);
+        // return redirect("/Stoc")
+        return redirect()->back();
     }
 
     /**
@@ -60,8 +83,7 @@ class OrdersController extends Controller
      */
     public function show($id)
     {
-        $order = Order::find($id);
-        return view('orders.show')->with('order', $order);
+        //
     }
 
     /**
