@@ -30,4 +30,10 @@ Route::resource('products', 'ProductsController')->only([
     'index', 'show', 'update',
 ])->middleware('auth');
 
+Route::get('/workshift_view', 'WorkshiftViewController@index')->middleware('auth');
+
+Route::get('/workshift_view/{id}', 'WorkshiftViewController@show')->middleware('auth');
+//Route::get('/createOrder','OrderController@index')->middleware('auth');
+//Route::get('/showProducts','ProductsController@show')->middleware('auth');
 Route::resource('orders', 'OrdersController')->middleware('auth');
+
