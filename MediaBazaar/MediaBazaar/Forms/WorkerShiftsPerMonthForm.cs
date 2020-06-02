@@ -14,26 +14,27 @@ namespace MediaBazaar.Forms
     {
         private bool mouseDown;
         private Point lastLocation;
-        private Worker worker;
         private List<WorkShift> shifts;
-        public WorkerShiftsPerMonthForm(Worker w)
+        public WorkerShiftsPerMonthForm()
         {
             InitializeComponent();
-            this.worker = w;
             this.shifts = new List<WorkShift>();
 
-            this.lblHeading.Text = $"{w.Id}| {w.Name}'s Shifts";
             this.BackColor = ApplicationColors.Orange;
             this.btnClose.BackColor = ApplicationColors.Red;
             this.btnSetShift.BackColor = ApplicationColors.PrimaryDark;
             this.rbMorning.Checked = true;
             dateTimePicker.Format = DateTimePickerFormat.Custom;
+            dateTimePicker.MinDate = DateTime.Now;
+            dateTimePicker.Value = DateTime.Now;
             dateTimePicker.CustomFormat = "MM/yyyy";
         }
         public List<WorkShift> ListShifts(List<DateTime> dates)
         {
             List<WorkShift> result = new List<WorkShift>();
             Shift shift;
+            decimal wage = Convert.ToDecimal(tbWage.Text);
+            int workersNeeded = Convert.ToInt32(tbWorkersNeeded.Text);
 
             if (rbMorning.Checked) shift = Shift.Morning;
             else if (rbAfternoon.Checked) shift = Shift.Afternoon;
@@ -41,7 +42,7 @@ namespace MediaBazaar.Forms
 
             for (int i = 0; i < dates.Count; i++)
             {
-                result.Add(new WorkShift(this.worker.Id, shift, dates[i]));
+                result.Add(new WorkShift(shift, dates[i], wage, workersNeeded));
             }
             return result;
         }

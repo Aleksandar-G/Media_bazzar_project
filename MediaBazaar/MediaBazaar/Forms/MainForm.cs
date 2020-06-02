@@ -184,5 +184,17 @@ namespace MediaBazaar
             ViewWorkshiftsForm workshiftsForm = new ViewWorkshiftsForm(currentUser);
             workshiftsForm.Show();
         }
+
+        private void btnAddShiftsPerDay_Click(object sender, EventArgs e)
+        {
+            WorkerShiftsPerDayForm form = new WorkerShiftsPerDayForm();
+            form.Show();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            WorkerShiftsPerMonthForm form = new WorkerShiftsPerMonthForm();
+            form.Show();
+        }
     }
 }

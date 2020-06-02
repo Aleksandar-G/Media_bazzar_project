@@ -73,7 +73,7 @@ namespace MediaBazaar.Forms
             btn.ForeColor = Color.White;
 
             string dateInfo = $"{shift.Date.ToString("dd.MM.yyyy")} ({shift.Date.DayOfWeek})";
-            string shiftInfo = $" Shift: [{shift.SelectedShift}]";
+            string shiftInfo = $" Shift: {shift.SelectedShift} [{shift.WorkersNeeded} workers needed] - ${shift.Wage} wage";
             btn.Text = $"{dateInfo} {shiftInfo}";
 
             btn.Font = new Font("Segoe UI", 13);

@@ -35,8 +35,12 @@
             this.rbEvening = new System.Windows.Forms.RadioButton();
             this.rbAfternoon = new System.Windows.Forms.RadioButton();
             this.rbMorning = new System.Windows.Forms.RadioButton();
-            this.lbl = new System.Windows.Forms.Label();
+            this.lblMonth = new System.Windows.Forms.Label();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.tbWage = new System.Windows.Forms.TextBox();
+            this.lblWage = new System.Windows.Forms.Label();
+            this.tbWorkersNeeded = new System.Windows.Forms.TextBox();
+            this.lblWorkersNeeded = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +51,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(443, -3);
+            this.btnClose.Location = new System.Drawing.Point(261, -3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(50, 50);
@@ -63,9 +67,9 @@
             this.lblHeading.ForeColor = System.Drawing.Color.White;
             this.lblHeading.Location = new System.Drawing.Point(12, 17);
             this.lblHeading.Name = "lblHeading";
-            this.lblHeading.Size = new System.Drawing.Size(97, 30);
+            this.lblHeading.Size = new System.Drawing.Size(220, 30);
             this.lblHeading.TabIndex = 13;
-            this.lblHeading.Text = "Heading";
+            this.lblHeading.Text = "Add shifts for month";
             // 
             // btnSetShift
             // 
@@ -73,11 +77,11 @@
             this.btnSetShift.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSetShift.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSetShift.ForeColor = System.Drawing.Color.White;
-            this.btnSetShift.Location = new System.Drawing.Point(19, 372);
+            this.btnSetShift.Location = new System.Drawing.Point(17, 424);
             this.btnSetShift.Name = "btnSetShift";
-            this.btnSetShift.Size = new System.Drawing.Size(212, 47);
+            this.btnSetShift.Size = new System.Drawing.Size(264, 47);
             this.btnSetShift.TabIndex = 22;
-            this.btnSetShift.Text = "Set shift";
+            this.btnSetShift.Text = "Add shifts";
             this.btnSetShift.UseVisualStyleBackColor = false;
             this.btnSetShift.Click += new System.EventHandler(this.BtnSetShift_Click);
             // 
@@ -88,9 +92,9 @@
             this.groupBox1.Controls.Add(this.rbMorning);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(19, 191);
+            this.groupBox1.Location = new System.Drawing.Point(20, 255);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(212, 162);
+            this.groupBox1.Size = new System.Drawing.Size(261, 145);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Shifts";
@@ -128,34 +132,76 @@
             this.rbMorning.Text = "Morning";
             this.rbMorning.UseVisualStyleBackColor = true;
             // 
-            // lbl
+            // lblMonth
             // 
-            this.lbl.AutoSize = true;
-            this.lbl.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl.ForeColor = System.Drawing.Color.White;
-            this.lbl.Location = new System.Drawing.Point(14, 92);
-            this.lbl.Name = "lbl";
-            this.lbl.Size = new System.Drawing.Size(170, 20);
-            this.lbl.TabIndex = 20;
-            this.lbl.Text = "Assign shift (per month):\r\n";
+            this.lblMonth.AutoSize = true;
+            this.lblMonth.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMonth.ForeColor = System.Drawing.Color.White;
+            this.lblMonth.Location = new System.Drawing.Point(13, 68);
+            this.lblMonth.Name = "lblMonth";
+            this.lblMonth.Size = new System.Drawing.Size(99, 20);
+            this.lblMonth.TabIndex = 20;
+            this.lblMonth.Text = "Select Month:";
             // 
             // dateTimePicker
             // 
             this.dateTimePicker.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker.Location = new System.Drawing.Point(19, 120);
+            this.dateTimePicker.Location = new System.Drawing.Point(18, 96);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(212, 27);
+            this.dateTimePicker.Size = new System.Drawing.Size(263, 27);
             this.dateTimePicker.TabIndex = 19;
             this.dateTimePicker.Value = new System.DateTime(2020, 4, 2, 0, 0, 0, 0);
+            // 
+            // tbWage
+            // 
+            this.tbWage.Location = new System.Drawing.Point(17, 209);
+            this.tbWage.Name = "tbWage";
+            this.tbWage.Size = new System.Drawing.Size(264, 26);
+            this.tbWage.TabIndex = 28;
+            // 
+            // lblWage
+            // 
+            this.lblWage.AutoSize = true;
+            this.lblWage.BackColor = System.Drawing.Color.Transparent;
+            this.lblWage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWage.ForeColor = System.Drawing.Color.Snow;
+            this.lblWage.Location = new System.Drawing.Point(13, 185);
+            this.lblWage.Name = "lblWage";
+            this.lblWage.Size = new System.Drawing.Size(52, 21);
+            this.lblWage.TabIndex = 27;
+            this.lblWage.Text = "Wage:";
+            // 
+            // tbWorkersNeeded
+            // 
+            this.tbWorkersNeeded.Location = new System.Drawing.Point(17, 155);
+            this.tbWorkersNeeded.Name = "tbWorkersNeeded";
+            this.tbWorkersNeeded.Size = new System.Drawing.Size(264, 26);
+            this.tbWorkersNeeded.TabIndex = 26;
+            // 
+            // lblWorkersNeeded
+            // 
+            this.lblWorkersNeeded.AutoSize = true;
+            this.lblWorkersNeeded.BackColor = System.Drawing.Color.Transparent;
+            this.lblWorkersNeeded.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWorkersNeeded.ForeColor = System.Drawing.Color.Snow;
+            this.lblWorkersNeeded.Location = new System.Drawing.Point(13, 131);
+            this.lblWorkersNeeded.Name = "lblWorkersNeeded";
+            this.lblWorkersNeeded.Size = new System.Drawing.Size(129, 21);
+            this.lblWorkersNeeded.TabIndex = 25;
+            this.lblWorkersNeeded.Text = "Workers Needed:";
             // 
             // WorkerShiftsPerMonthForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(491, 470);
+            this.ClientSize = new System.Drawing.Size(311, 483);
+            this.Controls.Add(this.tbWage);
+            this.Controls.Add(this.lblWage);
+            this.Controls.Add(this.tbWorkersNeeded);
+            this.Controls.Add(this.lblWorkersNeeded);
             this.Controls.Add(this.btnSetShift);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.lbl);
+            this.Controls.Add(this.lblMonth);
             this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.lblHeading);
             this.Controls.Add(this.btnClose);
@@ -180,7 +226,11 @@
         private System.Windows.Forms.RadioButton rbEvening;
         private System.Windows.Forms.RadioButton rbAfternoon;
         private System.Windows.Forms.RadioButton rbMorning;
-        private System.Windows.Forms.Label lbl;
+        private System.Windows.Forms.Label lblMonth;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
+        private System.Windows.Forms.TextBox tbWage;
+        private System.Windows.Forms.Label lblWage;
+        private System.Windows.Forms.TextBox tbWorkersNeeded;
+        private System.Windows.Forms.Label lblWorkersNeeded;
     }
 }

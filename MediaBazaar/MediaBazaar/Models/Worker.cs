@@ -292,9 +292,12 @@ namespace MediaBazaar.Models
 
             string query =
             @"
-                SELECT * FROM work_shifts 
-                WHERE worker_id = @workerid
-                ORDER BY date ASC
+                SELECT wws.work_shift_id, wws.worker_id, ws.date as date, ws.shift as shift, ws.wage as wage, ws.workers_needed as workers_needed
+                FROM workers_work_shifts wws
+                INNER JOIN work_shifts ws
+                ON ws.id = wws.work_shift_id
+                WHERE wws.worker_id = @workerid
+                ORDER BY ws.date ASC
             ";
 
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
@@ -306,7 +309,10 @@ namespace MediaBazaar.Models
                     long id = workerId;
                     Shift workshift = (Shift)Enum.Parse(typeof(Shift), reader["shift"].ToString());
                     DateTime date = Convert.ToDateTime(reader["date"]);
-                    result.Add(new WorkShift(workerId, workshift,date));
+                    decimal wage = Convert.ToDecimal(reader["wage"]);
+                    int workersNeeded = Convert.ToInt32(reader["workers_needed"]);
+
+                    result.Add(new WorkShift(workshift, date, wage, workersNeeded));
                 }
             }
 
