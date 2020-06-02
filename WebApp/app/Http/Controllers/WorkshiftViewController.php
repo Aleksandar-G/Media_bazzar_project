@@ -77,14 +77,21 @@ class WorkshiftViewController extends Controller
   {
     //Gets the workshifts from the models for the calendar
 
-    $worker = Worker::firstWhere('user_id', $id);
-    $result = Workshift::where('worker_id', $worker->id)->get();
+    $result = Worker::firstWhere('user_id', $id)->workShifts()->get()->all();
 
     $arr = array();
 
     foreach ($result as $value) {
       $row = array();
-      $row['title'] = "work";
+      $otherWorkers = $value->workers
+        ->reject(function ($worker) use (&$id) {
+          return $worker->user_id !== $id;
+        })->map(function ($worker) {
+          return $worker->user->name;
+        });
+
+      $row['title'] = "Shift for $$value->wage with $otherWorkers";
+
       $originalDate = $value->date;
       if ($value->shift == "Morning") {
         $row['start'] = $originalDate . "T" . "08:00:00";
@@ -98,6 +105,7 @@ class WorkshiftViewController extends Controller
       }
       array_push($arr, $row);
     }
-    echo (json_encode($arr));
+
+    return (json_encode($arr));
   }
 }

@@ -22,7 +22,7 @@ class Worker extends Model
 
     public function workShifts() 
     {
-        return $this->hasMany('App\WorkShift');
+        return $this->belongsToMany('App\WorkShift', 'workers_work_shifts');
     }
 
     public function preferences() 
