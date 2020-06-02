@@ -33,13 +33,16 @@
           endTime: '20:00',
         },
         aspectRatio: 2.2,
-        events: '/api/workshifts/{{$id}}', // use the `url` property
+        events: '/api/workshifts/{{$id}}',
         eventColor: "#2d132c",
         eventTextColor: "#ffffff",
         minTime: '7:00',
         maxTime: "21:00",
         height: 765,
-        nowIndicator: true
+        nowIndicator: true,
+        eventClick(info) {
+          console.log(info)
+        }
       });
 
       calendar.render();

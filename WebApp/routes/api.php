@@ -20,4 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('register', 'API\UserController@register');
 
-Route::get('/workshifts/{id}', 'WorkshiftViewController@getEvents');
+Route::get('/workshifts/{id}', 'WorkshiftController@getEvents');

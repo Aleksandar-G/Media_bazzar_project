@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\StockRequestContoller;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,11 +20,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/workshifts', 'CalendarController@index');
-
-Route::get('/workshift_view', 'WorkshiftViewController@index')->middleware('auth');
-
-Route::get('/workshift_view/{id}', 'WorkshiftViewController@show')->middleware('auth');
+Route::resource('/workshifts', 'WorkshiftController')->only(['index','show'])->middleware('auth');
 
 Route::resource('products', 'ProductsController')->only([
     'index', 'show', 'update',
