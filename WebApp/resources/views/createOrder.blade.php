@@ -151,6 +151,7 @@
 
             $(document).on('click', 'button.add', function () {
                 let id = $(this).attr('id')
+
                 let product = {
                     id: parseInt(id),
                     quantity: parseInt($(`input#${id}`).val()),
@@ -162,10 +163,26 @@
                 let temp = products.filter((item) => {
                     return item.id === product.id
                 })
+
+                let isValid = true;
+                let addedQuantity = parseInt($(`input#${id}`).val());
+                let maxQuantity = parseInt($(`input#${id}`).attr('quantity'));
+
+                if(temp[0] && temp[0].quantity+addedQuantity>maxQuantity){
+                    alert(`Available quantity of this product is ${$(`input#${id}`).attr('quantity')}`);
+                    event.preventDefault();
+                    isValid = false;
+                    //console.log(temp[0].quantity+parseInt($(`input#${id}`).val()))
+                }
+                if(isValid){
                 temp.length === 0 ? products.push(product) : products[products.indexOf(temp[0])].quantity += product.quantity
+                //console.log(temp[0].quantity+parseInt($(`input#${id}`).val()));
+
                 total_price = products.reduce((acc, value) => (acc + (value.price * value.quantity)), 0)
 
                 fillCart(products, total_price)
+                }
+
             })
 
             $(document).on('click', 'button.remove', function () {
