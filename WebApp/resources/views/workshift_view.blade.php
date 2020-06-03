@@ -32,6 +32,7 @@
           startTime: '8:00',
           endTime: '20:00',
         },
+        firstDay: 1,
         aspectRatio: 2.2,
         events: '/api/workshifts/{{$id}}',
         eventColor: "#2d132c",
@@ -41,7 +42,34 @@
         height: 765,
         nowIndicator: true,
         eventClick(info) {
-          console.log(info)
+          let clickable = !"{{ $workers ?? false }}"
+          
+          if (clickable) {
+            bootbox.confirm({
+              message: '<h3 class="text-dark">Do you want to assign yourself to this shift?</h3>',
+              callback: function(result) {
+                if (result) {
+                  $.post('/workshifts', {
+                    workshift_id: info.event.extendedProps.workshift_id,
+                    _token: "{{ csrf_token() }}"
+                  }).then(() => {
+                    window.location.reload()
+                  })
+                }
+              },
+              centerVertical: true,
+              buttons: {
+                cancel: {
+                  label: 'No',
+                  className: 'btn-danger'
+                },
+                confirm: {
+                  label: 'Yes',
+                  className: 'btn-success'
+                }
+              }
+            })
+          }
         }
       });
 
@@ -53,9 +81,9 @@
 
 <body id="index">
   @section('content')
-    @yield('body')
-    <div id="calendar"></div>
-    @yield('scripts')
+  @yield('body')
+  <div id="calendar"></div>
+  @yield('scripts')
   @endsection
 </body>
 

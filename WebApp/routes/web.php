@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::resource('/workshifts', 'WorkshiftController')->only(['index','show'])->middleware('auth');
+Route::resource('/workshifts', 'WorkshiftController')->only(['index', 'show', 'store'])->middleware('auth');
 
 Route::resource('products', 'ProductsController')->only([
     'index', 'show', 'update',

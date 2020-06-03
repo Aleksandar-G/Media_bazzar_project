@@ -6,5 +6,6 @@
     "/fullcalendar/daygrid/main.js": "/fullcalendar/daygrid/main.js",
     "/fullcalendar/daygrid/main.css": "/fullcalendar/daygrid/main.css",
     "/fullcalendar/timegrid/main.js": "/fullcalendar/timegrid/main.js",
-    "/fullcalendar/timegrid/main.css": "/fullcalendar/timegrid/main.css"
+    "/fullcalendar/timegrid/main.css": "/fullcalendar/timegrid/main.css",
+    "/fullcalendar/interaction/main.js": "/fullcalendar/interaction/main.js"
 }
