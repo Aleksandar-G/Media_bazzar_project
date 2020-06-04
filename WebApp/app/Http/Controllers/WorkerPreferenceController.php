@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Worker;
 use Facade\FlareClient\Http\Response;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -53,6 +54,14 @@ class WorkerPreferenceController extends Controller
      */
     public function store(Request $request)
     {
+        if (intval($request->input('shifts_per_week')) > 15) {
+            Session::flash('flash_message', 'Maximum number of shifts is 15.');
+            return;
+        } else if (intval($request->input('shifts_per_week')) < 1) {
+            Session::flash('flash_message', 'Minimum number of shifts is 1.');
+            return;
+        }
+
         $worker = Worker::where('user_id', Auth::user()->id)->first();
         $worker->preferences()->updateOrCreate(
             ['start_date' => $request->input('start_date'), 'end_date' => $request->input('end_date')],

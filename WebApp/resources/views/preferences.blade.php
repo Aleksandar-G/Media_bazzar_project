@@ -7,13 +7,22 @@
 @endsection
 
 @section('content')
+
+@if(Session::has('flash_message'))
+<div class="alert alert-danger">
+    {{ Session::get('flash_message') }}
+</div>
+@endif
+
 <div class="preferences-page d-flex align-items-center">
     <div class="container dark-bg">
         <h1 class="text-center text-white">My Work Preferences</h1>
         <br>
         <div class="row justify-content-md-center">
             <div class="col-6 form-group">
-                <label for="weeklyDatePicker" class="text-white d-block text-center"><h3>Select week:</h3></label>
+                <label for="weeklyDatePicker" class="text-white d-block text-center">
+                    <h3>Select week:</h3>
+                </label>
                 <div class="input-group">
                     <input autocomplete="off" type='text' id='weeklyDatePicker' placeholder="Select Week" class="form-control text-center input-field" />
                 </div>
@@ -21,12 +30,14 @@
         </div>
 
         <br>
-        
+
         <div class="row justify-content-md-center">
             <div class="col-6 form-group">
-                <label for="shifts" class="text-white d-block text-center"><h3>Preferred number of shifts for that week:</h3></label>
+                <label for="shifts" class="text-white d-block text-center">
+                    <h3>Preferred number of shifts for that week:</h3>
+                </label>
                 <div class="input-group">
-                    <input id="shifts" class="form-control text-center input-field" type="number" placeholder="Shifts per week" value="{{ $shifts ?? '' }}">
+                    <input id="shifts" class="form-control text-center input-field" type="number" min="1" max="15" placeholder="Shifts per week" value="{{ $shifts ?? '' }}">
                 </div>
             </div>
         </div>
@@ -43,6 +54,10 @@
     </div>
 </div>
 <script>
+    $(".alert").fadeTo(3000, 500).slideUp(500, function() {
+        $(".alert").slideUp(500);
+    });
+
     let queryParams = new URLSearchParams(window.location.search)
     let startDate = queryParams.get('startDate')
     let endDate = queryParams.get('endDate')
