@@ -23,15 +23,6 @@ use Illuminate\Support\Facades\Auth;
     
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    
-    @yield('head')
-</head>
-<body class="dark-bg">
-    @if(Auth::check())
-        @include('navbar')
-    @endif
-    @yield('content') 
-
     <!-- Scripts -->
     <script
         src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -41,5 +32,13 @@ use Illuminate\Support\Facades\Auth;
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
+    
+    @yield('head')
+</head>
+<body class="dark-bg">
+    @if(Auth::check())
+        @include('navbar')
+    @endif
+    @yield('content') 
 </body>
 </html>

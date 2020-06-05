@@ -20,4 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('register', 'API\UserController@register');
 
+Route::get('/workshifts/automatic-assign', 'WorkshiftController@assignAvailable');
 Route::get('/workshifts/{id}', 'WorkshiftController@getEvents');

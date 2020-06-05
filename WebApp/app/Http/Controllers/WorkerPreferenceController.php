@@ -57,7 +57,9 @@ class WorkerPreferenceController extends Controller
         if (intval($request->input('shifts_per_week')) > 15) {
             Session::flash('flash_message', 'Maximum number of shifts is 15.');
             return;
-        } else if (intval($request->input('shifts_per_week')) < 1) {
+        } 
+        
+        if (intval($request->input('shifts_per_week')) < 1) {
             Session::flash('flash_message', 'Minimum number of shifts is 1.');
             return;
         }
