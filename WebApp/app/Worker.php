@@ -29,4 +29,9 @@ class Worker extends Model
     {
         return $this->hasMany('App\WorkerPreference');
     }
+
+    public function leaves() 
+    {
+        return $this->hasMany('App\Leave');
+    }
 }

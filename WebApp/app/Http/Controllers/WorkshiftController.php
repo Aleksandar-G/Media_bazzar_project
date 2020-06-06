@@ -23,7 +23,10 @@ class WorkshiftController extends Controller
       return view('workshift', ['workers' => $workers, "id" => $workers->first()->id]);
     }
 
-    return view('workshift_view', ['id' => Auth::user()->id]);
+    return view('workshift_view', [
+      'id' => Auth::user()->id,
+      'worker_id' => Worker::firstWhere('user_id',  Auth::user()->id)->id
+    ]);
   }
 
   public static function show($id)

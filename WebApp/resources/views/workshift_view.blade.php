@@ -18,19 +18,26 @@
   <script src="{{ URL::asset('fullcalendar/core/main.js') }}"></script>
   <script src="{{ URL::asset('fullcalendar/daygrid/main.js') }}"></script>
   <script src="{{ URL::asset('fullcalendar/timegrid/main.js') }}"></script>
+  <script src="{{ URL::asset('fullcalendar/interaction/main.js') }}"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var calendarEl = document.getElementById('calendar');
 
       var calendar = new FullCalendar.Calendar(calendarEl, {
-        plugins: ['dayGrid', 'timeGrid'],
+        plugins: ['interaction', 'dayGrid', 'timeGrid'],
         defaultView: 'timeGridWeek',
         themeSystem: 'standard',
         businessHours: {
           daysOfWeek: [1, 2, 3, 4, 5],
           startTime: '8:00',
           endTime: '20:00',
+        },
+        selectable: true,
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth, timeGridWeek'
         },
         firstDay: 1,
         aspectRatio: 2.2,
@@ -41,9 +48,35 @@
         maxTime: "21:00",
         height: 765,
         nowIndicator: true,
+        selectAllow: function(info) {
+          return moment().diff(moment(info.start)) <= 0
+        },
+        select: function(info) {
+          let startDate = moment(info.startStr).format('YYYY-MM-DD')
+          let endDate = moment(info.endStr).format('YYYY-MM-DD')
+
+          bootbox.prompt({
+            size: "large",
+            title: `<h3 class="text-dark">Add description for your leave request for ${startDate} - ${endDate}</h3>`,
+            inputType: 'textarea',
+            callback: function(result) {
+              if (result) {
+                $.post('/api/leaves', {
+                  from: startDate,
+                  to: endDate,
+                  description: result,
+                  worker_id: "{{$worker_id}}",
+                  _token: "{{ csrf_token() }}"
+                }).then(() => {
+                  window.location.reload()
+                })
+              }
+            }
+          });
+        },
         eventClick(info) {
           let clickable = !"{{ $workers ?? false }}"
-          
+
           if (clickable) {
             bootbox.confirm({
               message: '<h3 class="text-dark">Do you want to assign yourself to this shift?</h3>',

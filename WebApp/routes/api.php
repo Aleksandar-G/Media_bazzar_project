@@ -18,7 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('register', 'API\UserController@register');
+Route::post('/register', 'API\UserController@register');
 
 Route::get('/workshifts/automatic-assign', 'WorkshiftController@assignAvailable');
 Route::get('/workshifts/{id}', 'WorkshiftController@getEvents');
+
+Route::post('/leaves', 'LeaveController@store');
