@@ -77,7 +77,7 @@
         eventClick(info) {
           let clickable = !"{{ $workers ?? false }}"
 
-          if (clickable) {
+          if (clickable && info.event.extendedProps.clickable) {
             bootbox.confirm({
               message: '<h3 class="text-dark">Do you want to assign yourself to this shift?</h3>',
               callback: function(result) {

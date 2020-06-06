@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Leave;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -51,8 +52,9 @@ class WorkshiftController extends Controller
 
   public static function getEvents($id)
   {
-    $userWorkShifts = Worker::firstWhere('user_id', $id)
-      ->workShifts()
+    $worker = Worker::firstWhere('user_id', $id);
+
+    $userWorkShifts = $worker->workShifts()
       ->withCount('workers as workers_assigned')
       ->get();
 
@@ -76,6 +78,20 @@ class WorkshiftController extends Controller
       $event = static::transformToEvent($workShift);
       $event['classNames'] = ['available-shift'];
       $event['workshift_id'] = $workShift->id;
+      $event['clickable'] = true;
+      array_push($events, $event);
+    }
+
+    $leaves = $worker->leaves;
+
+    foreach ($leaves as $leave) {
+      $event = [
+        'start' => $leave->from,
+        'end' => $leave->to,
+        'allDay' => true,
+        'title' => 'Off',
+        'backgroundColor' => '#939393'
+      ];
       array_push($events, $event);
     }
 
