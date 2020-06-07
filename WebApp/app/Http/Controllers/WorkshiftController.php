@@ -66,12 +66,11 @@ class WorkshiftController extends Controller
     }
 
     $availableWorkshifts = WorkShift::withCount('workers as workers_assigned')
-      ->whereHas('workers', function ($q) {
-        $q->havingRaw('workers_assigned < workers_needed');
-      })->where('date', '>=',  Carbon::today())
+      ->where('date', '>=',  Carbon::today())
       ->get()
       ->reject(function ($workShift) use (&$userWorkShifts) {
-        return $userWorkShifts->contains($workShift);
+        return ($workShift->workers_assigned >= $workShift->workers_needed ||
+          $userWorkShifts->contains($workShift));
       });
 
     foreach ($availableWorkshifts as $workShift) {
@@ -82,7 +81,7 @@ class WorkshiftController extends Controller
       array_push($events, $event);
     }
 
-    $leaves = $worker->leaves;
+    $leaves = $worker->leaves->where('approved', true);
 
     foreach ($leaves as $leave) {
       $event = [
@@ -149,7 +148,7 @@ class WorkshiftController extends Controller
 
     $availableWorkshifts = static::getAvailableWorkShiftsBetween($nextMonday, $nextSunday);
     $workers = static::getWorkersInfo($nextMonday, $nextSunday);
-
+;
     foreach ($availableWorkshifts as $workShift) {
       $workersNeedSort = false;
 
@@ -207,8 +206,8 @@ class WorkshiftController extends Controller
 
   private static function getWorkersInfo($startDate, $endDate)
   {
-    $preferencesFilter = function ($q) use (&$startDate, &$endDate) {
-      $q->where([
+    $preferencesFilter = function ($query) use (&$startDate, &$endDate) {
+      $query->where([
         ['start_date', '>=',  $startDate],
         ['end_date', '<=', $endDate],
         ['shifts_per_week', '>', 'worksifts_count']
@@ -226,13 +225,22 @@ class WorkshiftController extends Controller
       return $worker->preferences->first()->shifts_per_week - $worker->worksifts_count;
     };
 
-    $workersWithPreferences = Worker::withCount('workshifts')
+    $leavesFilter = function ($query) use (&$startDate, &$endDate) {
+      $query
+        ->whereBetween('from', [$startDate, $endDate])
+        ->whereBetween('to', [$startDate, $endDate])
+        ->where('approved', true);
+    };
+    
+    $workersWithPreferences = Worker::whereDoesntHave('leaves', $leavesFilter)
+      ->withCount(['workshifts' => $workShiftsFilter])
       ->whereHas('preferences', $preferencesFilter)
       ->with(['preferences' => $preferencesFilter])
       ->get()
       ->sortByDesc($sortingCallback);
 
-    $workersWithoutPreferences = Worker::withCount(['workshifts' => $workShiftsFilter])
+    $workersWithoutPreferences = Worker::whereDoesntHave('leaves', $leavesFilter)
+      ->withCount(['workshifts' => $workShiftsFilter])
       ->whereDoesntHave('preferences')
       ->orderBy('workshifts_count')
       ->get();

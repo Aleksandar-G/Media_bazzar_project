@@ -55,6 +55,10 @@
           let startDate = moment(info.startStr).format('YYYY-MM-DD')
           let endDate = moment(info.endStr).format('YYYY-MM-DD')
 
+          if (startDate != endDate) {
+            endDate = moment(endDate).add(1, 'days').format('YYYY-MM-DD')
+          }
+
           bootbox.prompt({
             size: "large",
             title: `<h3 class="text-dark">Add description for your leave request for ${startDate} - ${endDate}</h3>`,
