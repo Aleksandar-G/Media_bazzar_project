@@ -13,7 +13,7 @@
         </div>
         @if (Route::has('login'))
         @auth
-        <a class="w-100 btn btn-orange btn-lg " href="{{ url('/workshift_view') }}">Workshifts</a>
+        <a class="w-100 btn btn-orange btn-lg " href="{{ url('/workshifts') }}">Workshifts</a>
         @else
         <a class=" w-100 btn btn-orange btn-lg " href="{{ route('login') }}">Login</a>
         @endauth

@@ -21,7 +21,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/workshift_view';
+    public const HOME = '/workshifts';
 
     /**
      * Define your route model bindings, pattern filters, etc.

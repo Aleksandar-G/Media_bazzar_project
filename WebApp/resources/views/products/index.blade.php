@@ -61,11 +61,7 @@
       </div>
 
       <script type="text/javascript">
-        let quantity = {
-          {
-            $product - > quantity
-          }
-        };
+        let quantity = {{$product->quantity}};
 
         $(document).ready(function() {
           $("#product-{{$product->id}}-quantity").prop('readonly', true);

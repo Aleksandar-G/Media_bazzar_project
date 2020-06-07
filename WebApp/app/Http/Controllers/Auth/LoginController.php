@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = "/workshift_view";
+    protected $redirectTo = "/workshifts";
 
     /**
      * Create a new controller instance.

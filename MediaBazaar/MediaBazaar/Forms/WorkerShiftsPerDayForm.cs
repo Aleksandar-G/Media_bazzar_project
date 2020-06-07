@@ -14,24 +14,22 @@ namespace MediaBazaar.Forms
     {
         private bool mouseDown;
         private Point lastLocation;
-        private Worker worker;
         private List<WorkShift> shifts;
 
-        public WorkerShiftsPerDayForm(Worker w)
+        public WorkerShiftsPerDayForm()
         {
             InitializeComponent();
-            this.worker = w;
             this.shifts = new List<WorkShift>();
 
             this.rbAfternoon.Checked = true;
-            this.lblHeading.Text = $"ID:{w.Id}| {w.Name}'s Shifts";
             this.BackColor = ApplicationColors.Orange;
             this.btnClose.BackColor = ApplicationColors.Red;
             this.btnSave.BackColor = ApplicationColors.PrimaryDark;
-            this.btnSetShift.BackColor = ApplicationColors.PrimaryDark;
-            this.groupBox1.BackColor = ApplicationColors.PrimaryDark;
+            this.btnAddShift.BackColor = ApplicationColors.PrimaryDark;
             this.dateTimePicker.Format = DateTimePickerFormat.Custom;
             this.dateTimePicker.CustomFormat = "yyy-MM-dd";
+            dateTimePicker.MinDate = DateTime.Now;
+            dateTimePicker.Value = DateTime.Now;
         }
         private void UpdateListBox()
         {
@@ -45,11 +43,12 @@ namespace MediaBazaar.Forms
         {
             foreach (var item in this.shifts)
             {
-                if (item.SelectedShift == s.SelectedShift && item.Date.ToString("yyyy-MM-dd")==s.Date.ToString("yyyy-MM-dd"))
+                if (item.SelectedShift == s.SelectedShift && item.Date.ToString("yyyy-MM-dd") == s.Date.ToString("yyyy-MM-dd"))
                 {
                     return true;
                 }
             }
+
             return false;
         }
         private void BtnClose_Click(object sender, EventArgs e)
@@ -61,12 +60,14 @@ namespace MediaBazaar.Forms
         {
             Shift shift;
             DateTime date = dateTimePicker.Value;
+            decimal wage = Convert.ToDecimal(tbWage.Text);
+            int workersNeeded = Convert.ToInt32(tbWorkersNeeded.Text);
 
             if (rbMorning.Checked) shift = Shift.Morning;
             else if (rbAfternoon.Checked) shift = Shift.Afternoon;
             else shift = Shift.Evening;
 
-            WorkShift addedShift = new WorkShift(this.worker.Id, shift, date);
+            WorkShift addedShift = new WorkShift(shift, date, wage, workersNeeded);
 
             if (!CheckIfExists(addedShift))
             {
@@ -88,11 +89,11 @@ namespace MediaBazaar.Forms
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-
             foreach (var item in this.shifts)
             {
                 item.Insert();
             }
+
             MessageBox.Show("Shifts have been set successfully added.");
             this.Close();
         }

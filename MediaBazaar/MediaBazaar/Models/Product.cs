@@ -162,7 +162,7 @@ namespace MediaBazaar.Models
             Product product;
             string query = 
             @"
-                SELECT products.id AS p_id, products.name AS p_name, description, buying_price, selling_price, quantity, min_quantity, departments.name AS d_name 
+                SELECT products.id AS p_id, products.name AS p_name, description, buying_price, selling_price, quantity, min_quantity, departments.name AS d_name
                 FROM products 
                 INNER JOIN departments 
                 ON products.department_id = departments.id 
@@ -236,7 +236,7 @@ namespace MediaBazaar.Models
             DBconnection dbConnection = new DBconnection();
             dbConnection.OpenConnection();
 
-            string query = "UPDATE products, updated_at SET quantity = quantity + @quantity, updated_at = NOW() WHERE id = @id";
+            string query = "UPDATE products SET quantity = quantity + @quantity, updated_at = NOW() WHERE id = @id";
 
             using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
             {

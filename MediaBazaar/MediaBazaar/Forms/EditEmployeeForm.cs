@@ -172,19 +172,19 @@ namespace MediaBazaar
 
         }
 
-        private void BtnEditShifts_Click(object sender, EventArgs e)
-        {
-            Worker worker = Worker.GetByUserId(this.user.Id);
-            Forms.WorkerShiftsPerDayForm workerShiftsForm = new Forms.WorkerShiftsPerDayForm(worker);
-            workerShiftsForm.Show();
-        }
+        //private void BtnEditShifts_Click(object sender, EventArgs e)
+        //{
+        //    Worker worker = Worker.GetByUserId(this.user.Id);
+        //    WorkerShiftsPerDayForm workerShiftsForm = new WorkerShiftsPerDayForm();
+        //    workerShiftsForm.Show();
+        //}
 
-        private void BtnAssignShfitsPerMonth_Click(object sender, EventArgs e)
-        {
-            Worker worker = Worker.GetByUserId(this.user.Id);
-            Forms.WorkerShiftsPerMonthForm workerShiftsForm = new Forms.WorkerShiftsPerMonthForm(worker);
-            workerShiftsForm.Show();
-        }
+        //private void BtnAssignShfitsPerMonth_Click(object sender, EventArgs e)
+        //{
+        //    Worker worker = Worker.GetByUserId(this.user.Id);
+        //    WorkerShiftsPerMonthForm workerShiftsForm = new WorkerShiftsPerMonthForm();
+        //    workerShiftsForm.Show();
+        //}
 
         private void EditEmployeeForm_Load(object sender, EventArgs e)
         {

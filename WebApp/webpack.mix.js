@@ -20,3 +20,4 @@ mix.copy('node_modules/@fullcalendar/daygrid/main.js', 'public/fullcalendar/dayg
 mix.copy('node_modules/@fullcalendar/daygrid/main.css', 'public/fullcalendar/daygrid/main.css')
 mix.copy('node_modules/@fullcalendar/timegrid/main.js', 'public/fullcalendar/timegrid/main.js')
 mix.copy('node_modules/@fullcalendar/timegrid/main.css', 'public/fullcalendar/timegrid/main.css')
+mix.copy('node_modules/@fullcalendar/interaction/main.js', 'public/fullcalendar/interaction/main.js')

@@ -1,24 +1,21 @@
 @extends('workshift_view')
 @section('body')
 <h1 id="header">Please select an employee</h1>
-<select id="selectEmployee" onchange="LoadEmployees()">
+<select id="selectEmployee" onchange="LoadWorkshifts()">
 
-    @foreach((array)$employees as $emp)
-
-    <option value={{$emp[1]}}>{{$emp[0]}}</option>
-
+    @foreach($workers as $worker)
+        <option value="{{$worker['id']}}">{{$worker['name']}}</option>
     @endforeach
 </select>
 @endsection
 
 @section('scripts')
 <script>
-    document.getElementById("selectEmployee").selectedIndex = -1;
+    document.getElementById("selectEmployee").value = {{ $id }};
 
-    function LoadEmployees() {
+    function LoadWorkshifts() {
         let x = document.getElementById("selectEmployee").value;
-
-        window.location.replace("/workshift_view/" + x);
+        window.location.replace("/workshifts/" + x);
     }
 </script>
 @endsection

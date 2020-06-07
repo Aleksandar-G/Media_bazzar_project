@@ -184,5 +184,31 @@ namespace MediaBazaar
             ViewWorkshiftsForm workshiftsForm = new ViewWorkshiftsForm(currentUser);
             workshiftsForm.Show();
         }
+
+        private void btnAddShiftsPerDay_Click(object sender, EventArgs e)
+        {
+            WorkerShiftsPerDayForm form = new WorkerShiftsPerDayForm();
+            form.Show();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            WorkerShiftsPerMonthForm form = new WorkerShiftsPerMonthForm();
+            form.Show();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                WorkShift.AssignShifts();
+            } catch (Exception)
+            {
+                MessageBox.Show("Something happened. Please check your connection and try again.");
+                return;
+            }
+
+            MessageBox.Show("Available shifts for the upcoming week were successfully assigned to the available users");
+        }
     }
 }
