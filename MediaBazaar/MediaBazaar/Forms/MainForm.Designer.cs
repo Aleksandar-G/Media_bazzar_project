@@ -30,6 +30,8 @@
         {
             this.btnClose = new System.Windows.Forms.Button();
             this.navigation = new System.Windows.Forms.Panel();
+            this.btnAddWorkShiftsPerMonth = new System.Windows.Forms.Button();
+            this.btnAddShiftsPerDay = new System.Windows.Forms.Button();
             this.btnProducts = new System.Windows.Forms.Button();
             this.btnViewStockRequests = new System.Windows.Forms.Button();
             this.btnViewStatistics = new System.Windows.Forms.Button();
@@ -41,8 +43,7 @@
             this.lblEmployees = new System.Windows.Forms.Label();
             this.tbSearch = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnAddShiftsPerDay = new System.Windows.Forms.Button();
-            this.btnAddWorkShiftsPerMonth = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.navigation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbSearch)).BeginInit();
@@ -67,6 +68,7 @@
             // navigation
             // 
             this.navigation.BackColor = System.Drawing.SystemColors.WindowText;
+            this.navigation.Controls.Add(this.button1);
             this.navigation.Controls.Add(this.btnAddWorkShiftsPerMonth);
             this.navigation.Controls.Add(this.btnAddShiftsPerDay);
             this.navigation.Controls.Add(this.btnProducts);
@@ -79,11 +81,43 @@
             this.navigation.Location = new System.Drawing.Point(0, 0);
             this.navigation.Margin = new System.Windows.Forms.Padding(0);
             this.navigation.Name = "navigation";
-            this.navigation.Size = new System.Drawing.Size(270, 669);
+            this.navigation.Size = new System.Drawing.Size(270, 724);
             this.navigation.TabIndex = 0;
             this.navigation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Navigation_MouseDown);
             this.navigation.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Navigation_MouseMove);
             this.navigation.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Navigation_MouseUp);
+            // 
+            // btnAddWorkShiftsPerMonth
+            // 
+            this.btnAddWorkShiftsPerMonth.BackColor = System.Drawing.Color.White;
+            this.btnAddWorkShiftsPerMonth.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddWorkShiftsPerMonth.FlatAppearance.BorderSize = 0;
+            this.btnAddWorkShiftsPerMonth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddWorkShiftsPerMonth.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.btnAddWorkShiftsPerMonth.Location = new System.Drawing.Point(0, 259);
+            this.btnAddWorkShiftsPerMonth.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAddWorkShiftsPerMonth.Name = "btnAddWorkShiftsPerMonth";
+            this.btnAddWorkShiftsPerMonth.Size = new System.Drawing.Size(270, 52);
+            this.btnAddWorkShiftsPerMonth.TabIndex = 20;
+            this.btnAddWorkShiftsPerMonth.Text = "Add Shifts per month";
+            this.btnAddWorkShiftsPerMonth.UseVisualStyleBackColor = false;
+            this.btnAddWorkShiftsPerMonth.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // btnAddShiftsPerDay
+            // 
+            this.btnAddShiftsPerDay.BackColor = System.Drawing.Color.White;
+            this.btnAddShiftsPerDay.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddShiftsPerDay.FlatAppearance.BorderSize = 0;
+            this.btnAddShiftsPerDay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddShiftsPerDay.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.btnAddShiftsPerDay.Location = new System.Drawing.Point(0, 191);
+            this.btnAddShiftsPerDay.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAddShiftsPerDay.Name = "btnAddShiftsPerDay";
+            this.btnAddShiftsPerDay.Size = new System.Drawing.Size(270, 52);
+            this.btnAddShiftsPerDay.TabIndex = 19;
+            this.btnAddShiftsPerDay.Text = "Add Shifts per day";
+            this.btnAddShiftsPerDay.UseVisualStyleBackColor = false;
+            this.btnAddShiftsPerDay.Click += new System.EventHandler(this.btnAddShiftsPerDay_Click);
             // 
             // btnProducts
             // 
@@ -108,7 +142,7 @@
             this.btnViewStockRequests.FlatAppearance.BorderSize = 0;
             this.btnViewStockRequests.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewStockRequests.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnViewStockRequests.Location = new System.Drawing.Point(0, 520);
+            this.btnViewStockRequests.Location = new System.Drawing.Point(0, 587);
             this.btnViewStockRequests.Margin = new System.Windows.Forms.Padding(0);
             this.btnViewStockRequests.Name = "btnViewStockRequests";
             this.btnViewStockRequests.Size = new System.Drawing.Size(270, 52);
@@ -124,7 +158,7 @@
             this.btnViewStatistics.FlatAppearance.BorderSize = 0;
             this.btnViewStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewStatistics.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnViewStatistics.Location = new System.Drawing.Point(0, 587);
+            this.btnViewStatistics.Location = new System.Drawing.Point(0, 654);
             this.btnViewStatistics.Margin = new System.Windows.Forms.Padding(0);
             this.btnViewStatistics.Name = "btnViewStatistics";
             this.btnViewStatistics.Size = new System.Drawing.Size(270, 56);
@@ -156,7 +190,7 @@
             this.btnAddDepartment.FlatAppearance.BorderSize = 0;
             this.btnAddDepartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddDepartment.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnAddDepartment.Location = new System.Drawing.Point(0, 459);
+            this.btnAddDepartment.Location = new System.Drawing.Point(0, 526);
             this.btnAddDepartment.Margin = new System.Windows.Forms.Padding(0);
             this.btnAddDepartment.Name = "btnAddDepartment";
             this.btnAddDepartment.Size = new System.Drawing.Size(270, 48);
@@ -172,7 +206,7 @@
             this.btnAddEmployee.FlatAppearance.BorderSize = 0;
             this.btnAddEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddEmployee.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnAddEmployee.Location = new System.Drawing.Point(0, 396);
+            this.btnAddEmployee.Location = new System.Drawing.Point(0, 463);
             this.btnAddEmployee.Margin = new System.Windows.Forms.Padding(0);
             this.btnAddEmployee.Name = "btnAddEmployee";
             this.btnAddEmployee.Size = new System.Drawing.Size(270, 48);
@@ -199,7 +233,7 @@
             this.flpEmployees.Location = new System.Drawing.Point(309, 128);
             this.flpEmployees.Margin = new System.Windows.Forms.Padding(0);
             this.flpEmployees.Name = "flpEmployees";
-            this.flpEmployees.Size = new System.Drawing.Size(655, 515);
+            this.flpEmployees.Size = new System.Drawing.Size(655, 569);
             this.flpEmployees.TabIndex = 16;
             this.flpEmployees.WrapContents = false;
             // 
@@ -237,44 +271,28 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "Search Employees";
             // 
-            // btnAddShiftsPerDay
+            // button1
             // 
-            this.btnAddShiftsPerDay.BackColor = System.Drawing.Color.White;
-            this.btnAddShiftsPerDay.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddShiftsPerDay.FlatAppearance.BorderSize = 0;
-            this.btnAddShiftsPerDay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddShiftsPerDay.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnAddShiftsPerDay.Location = new System.Drawing.Point(0, 191);
-            this.btnAddShiftsPerDay.Margin = new System.Windows.Forms.Padding(0);
-            this.btnAddShiftsPerDay.Name = "btnAddShiftsPerDay";
-            this.btnAddShiftsPerDay.Size = new System.Drawing.Size(270, 52);
-            this.btnAddShiftsPerDay.TabIndex = 19;
-            this.btnAddShiftsPerDay.Text = "Add Shifts per day";
-            this.btnAddShiftsPerDay.UseVisualStyleBackColor = false;
-            this.btnAddShiftsPerDay.Click += new System.EventHandler(this.btnAddShiftsPerDay_Click);
-            // 
-            // btnAddWorkShiftsPerMonth
-            // 
-            this.btnAddWorkShiftsPerMonth.BackColor = System.Drawing.Color.White;
-            this.btnAddWorkShiftsPerMonth.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddWorkShiftsPerMonth.FlatAppearance.BorderSize = 0;
-            this.btnAddWorkShiftsPerMonth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddWorkShiftsPerMonth.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnAddWorkShiftsPerMonth.Location = new System.Drawing.Point(0, 259);
-            this.btnAddWorkShiftsPerMonth.Margin = new System.Windows.Forms.Padding(0);
-            this.btnAddWorkShiftsPerMonth.Name = "btnAddWorkShiftsPerMonth";
-            this.btnAddWorkShiftsPerMonth.Size = new System.Drawing.Size(270, 52);
-            this.btnAddWorkShiftsPerMonth.TabIndex = 20;
-            this.btnAddWorkShiftsPerMonth.Text = "Add Shifts per month";
-            this.btnAddWorkShiftsPerMonth.UseVisualStyleBackColor = false;
-            this.btnAddWorkShiftsPerMonth.Click += new System.EventHandler(this.button2_Click_1);
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.button1.Location = new System.Drawing.Point(0, 397);
+            this.button1.Margin = new System.Windows.Forms.Padding(0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(270, 52);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "Automatically Assign Shifts";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(999, 667);
+            this.ClientSize = new System.Drawing.Size(999, 722);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.lblEmployees);
@@ -315,5 +333,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAddWorkShiftsPerMonth;
         private System.Windows.Forms.Button btnAddShiftsPerDay;
+        private System.Windows.Forms.Button button1;
     }
 }

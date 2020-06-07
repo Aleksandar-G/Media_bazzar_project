@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -63,6 +64,12 @@ namespace MediaBazaar.Models
         public override void Delete()
         {
 
+        }
+
+        public static void AssignShifts()
+        {
+            HttpClient client = new HttpClient();
+            client.GetAsync($"{Environment.GetEnvironmentVariable("APP_URL")}/api/workshifts/automatic-assign").Wait();
         }
     }
 }
