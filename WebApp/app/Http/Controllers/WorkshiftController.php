@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Leave;
+use App\Notifications\WorkerAssignedToWorkshiftNotification;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 use App\Supervisor;
 use App\Worker;
 use App\WorkShift;
-use Facade\FlareClient\Http\Response;
+use Illuminate\Support\Facades\Notification;
 
 class WorkshiftController extends Controller
 {
@@ -148,7 +147,8 @@ class WorkshiftController extends Controller
 
     $availableWorkshifts = static::getAvailableWorkShiftsBetween($nextMonday, $nextSunday);
     $workers = static::getWorkersInfo($nextMonday, $nextSunday);
-;
+    $usersToNotify = array();
+    
     foreach ($availableWorkshifts as $workShift) {
       $workersNeedSort = false;
 
@@ -168,6 +168,7 @@ class WorkshiftController extends Controller
           $worker->workShifts()->attach($workShift);
           $workShift->workers_assigned += 1;
           $worker->workshifts_count += 1;
+          array_push($usersToNotify, $worker->user);
           $workersNeedSort = true;
         }
       }
@@ -176,6 +177,9 @@ class WorkshiftController extends Controller
         $workers = static::sortWorkers($workers);
       }
     }
+
+    $usersToNotify = collect($usersToNotify)->unique()->values()->all();
+    Notification::send($usersToNotify, new WorkerAssignedToWorkshiftNotification());
 
     return response()->json(['success' => 'success'], 200);
   }
