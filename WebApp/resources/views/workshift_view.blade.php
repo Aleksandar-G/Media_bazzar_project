@@ -69,7 +69,7 @@
                   from: startDate,
                   to: endDate,
                   description: result,
-                  worker_id: "{{$worker_id}}",
+                  worker_id: "{{$worker_id ?? ''}}",
                   _token: "{{ csrf_token() }}"
                 }).then(() => {
                   window.location.reload()
