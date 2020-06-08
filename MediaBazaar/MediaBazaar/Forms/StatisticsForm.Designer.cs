@@ -32,6 +32,7 @@
             this.btnStatWorkersByDepartment = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnProductsByDepartment = new System.Windows.Forms.Button();
+            this.btnSelledProductsByDepartment = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnClose
@@ -71,7 +72,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(233, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(458, 54);
+            this.label1.Size = new System.Drawing.Size(313, 37);
             this.label1.TabIndex = 17;
             this.label1.Text = "Media Bazaar Statistics";
             // 
@@ -89,11 +90,26 @@
             this.btnProductsByDepartment.UseVisualStyleBackColor = false;
             this.btnProductsByDepartment.Click += new System.EventHandler(this.BtnProductsByDepartment_Click);
             // 
+            // btnSelledProductsByDepartment
+            // 
+            this.btnSelledProductsByDepartment.BackColor = System.Drawing.Color.Maroon;
+            this.btnSelledProductsByDepartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelledProductsByDepartment.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelledProductsByDepartment.ForeColor = System.Drawing.Color.White;
+            this.btnSelledProductsByDepartment.Location = new System.Drawing.Point(12, 211);
+            this.btnSelledProductsByDepartment.Name = "btnSelledProductsByDepartment";
+            this.btnSelledProductsByDepartment.Size = new System.Drawing.Size(260, 47);
+            this.btnSelledProductsByDepartment.TabIndex = 20;
+            this.btnSelledProductsByDepartment.Text = "Sold products by department";
+            this.btnSelledProductsByDepartment.UseVisualStyleBackColor = false;
+            this.btnSelledProductsByDepartment.Click += new System.EventHandler(this.btnSelledProductsByDepartment_Click);
+            // 
             // StatisticsForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(800, 422);
+            this.Controls.Add(this.btnSelledProductsByDepartment);
             this.Controls.Add(this.btnProductsByDepartment);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnStatWorkersByDepartment);
@@ -115,5 +131,6 @@
         private System.Windows.Forms.Button btnStatWorkersByDepartment;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnProductsByDepartment;
+        private System.Windows.Forms.Button btnSelledProductsByDepartment;
     }
 }

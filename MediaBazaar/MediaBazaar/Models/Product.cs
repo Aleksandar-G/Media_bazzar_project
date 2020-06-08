@@ -119,6 +119,39 @@ namespace MediaBazaar.Models
             return result;
         }
 
+        public static Dictionary<string,int> GetSoldQuantity()
+        {
+            DBconnection dbConnection = new DBconnection();
+            dbConnection.OpenConnection();
+
+            Dictionary<string, int> productNameSoldQuantity = new Dictionary<string, int>();
+
+            string query =
+            @"
+                SELECT SUM(od.quantity) as quantity, p.name as name
+                FROM orders as o 
+                INNER JOIN order_details as od 
+                ON o.id = od.order_id
+                INNER JOIN products as p
+                ON od.product_id = p.id
+                GROUP BY od.product_id;
+            ";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
+            {
+                //cmd.Parameters.AddWithValue("@productId", productId);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    productNameSoldQuantity.Add(reader["name"].ToString(),Convert.ToInt32(reader["quantity"]));
+
+                }
+                dbConnection.CloseConnection();
+
+                return productNameSoldQuantity;
+            }
+
+        }
         public static List<Product> GetAll()
         {
             DBconnection dbConnection = new DBconnection();

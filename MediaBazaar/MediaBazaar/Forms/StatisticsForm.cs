@@ -91,6 +91,54 @@ namespace MediaBazaar.Forms
             return chart;
 
         }
+        public Chart CreateSoldProductsChart(SeriesChartType type)
+        {
+
+            var chart = new Chart();
+            chart.Series.Clear();
+
+            Title title = new Title();
+            title.Font = new Font("Segoe UI", 15, FontStyle.Bold);
+            title.ForeColor = Color.White;
+
+            var series = new Series();
+            series.Name = "Number of workers";
+            series.ChartType = type;
+            series.Color = ApplicationColors.PrimaryDark;
+            series.BorderColor = Color.Transparent;
+
+            title.Text = "Sold Products per Department";
+            int lenght = Department.GetNames().Count;
+            Dictionary<string, int> result = new Dictionary<string, int>();
+            result = Product.GetSoldQuantity();
+
+            foreach (var item in result)
+            {
+                series.Points.AddXY(item.Key, item.Value);
+            }
+
+            ChartArea chartArea = new ChartArea("Workers by Dep");
+            chartArea.BackColor = Color.White;
+
+            Legend legend = new Legend("Workers");
+            legend.BackColor = Color.White;
+            legend.Font = new Font("Segoe UI", 9);
+            legend.ForeColor = Color.Black;
+
+            chart.ChartAreas.Add(chartArea);
+            chart.Legends.Add(legend);
+            chart.BackColor = ApplicationColors.Orange;
+            chart.Titles.Add(title);
+            chart.Series.Add(series);
+            chart.Invalidate();
+            chart.Size = new Size(475, 275);
+            chart.Location = new Point(300, 105);
+
+            return chart;
+
+
+
+        }
         private void BtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -106,6 +154,7 @@ namespace MediaBazaar.Forms
                 this.Controls.RemoveAt(this.Controls.Count - 1);
             }
             this.Controls.AddRange(new Control[] { createdChart });
+            createdChart.Invalidate();
         }
 
         private void BtnStatWorkersByDepartment_Click(object sender, EventArgs e)
@@ -148,6 +197,24 @@ namespace MediaBazaar.Forms
                 this.Location = new Point((this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
                 this.Update();
             }
+        }
+
+        private void btnSelledProductsByDepartment_Click(object sender, EventArgs e)
+        {
+
+            Chart createdChart = CreateSoldProductsChart(SeriesChartType.Column);
+
+            if (this.Controls.Count == 5) //CHECK FORM CONTROL NUMBER
+            {
+                this.Controls.RemoveAt(this.Controls.Count - 1);
+            }
+            this.Controls.AddRange(new Control[] { createdChart });
+
+        }
+
+        private void CreateSoldProductByDepartmentChart()
+        {
+
         }
     }
 }
