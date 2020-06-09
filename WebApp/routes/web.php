@@ -31,3 +31,5 @@ Route::resource('StockRequest','StockRequestController')->only(['index','store']
 Route::resource('orders', 'OrdersController')->middleware('auth');
 
 Route::resource('preferences', 'WorkerPreferenceController')->middleware(['auth', 'isWorker']);
+
+Route::get('downloadPDF/{id}','OrdersController@downloadPDF');

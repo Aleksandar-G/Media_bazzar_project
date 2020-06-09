@@ -29,6 +29,7 @@
                   </tbody>
             </table>
             <h4 class="mt-5">Total Price: ${{$order->total_price}}</h4>
+            <a class='mt-4 pt-2 pb-2 btn btn-orange' href="{{action('OrdersController@downloadPDF', $order->id)}}">Generate PDF</a>
         </div>
     </div>
 @endsection
