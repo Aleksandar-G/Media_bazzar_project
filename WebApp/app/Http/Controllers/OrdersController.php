@@ -7,6 +7,7 @@ use App\Order;
 use App\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Response;
+use PDF;
 
 class OrdersController extends Controller
 {
@@ -99,4 +100,11 @@ class OrdersController extends Controller
     {
         //
     }
+
+    public function downloadPDF($id){
+        $order = Order::find($id);
+  
+        $pdf = PDF::loadView('orderPDF', compact('order'));
+        return $pdf->download("оrderNumber".$order->id."Details.pdf");
+      }
 }
