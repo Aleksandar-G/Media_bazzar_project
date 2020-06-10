@@ -29,28 +29,28 @@ namespace MediaBazaar.Forms
             this.btnStatWorkersByDepartment.BackColor = ApplicationColors.Orange;
 
             this.currentUser = currentUser;
+
         }
-        public Chart CreateChart(SeriesChartType type)
+        public void CreateChart(SeriesChartType type, string gv_title, Dictionary<string, int> result, string seriesName)
         {
-            var chart = new Chart();
-            chart.Series.Clear();
+
+            this.chart.Series.Clear();
+            this.chart.Legends.Clear();
+            this.chart.Titles.Clear();
 
             Title title = new Title();
             title.Font = new Font("Segoe UI", 15, FontStyle.Bold);
             title.ForeColor = Color.White;
 
             var series = new Series();
-            series.Name = "Number of workers";
+            series.Name = seriesName;
             series.ChartType = type;
             series.Color = ApplicationColors.PrimaryDark;
             series.BorderColor = Color.Transparent;
 
             if (type == SeriesChartType.Column)
             {
-                title.Text = "Workers ratio by department";
-                int lenght = Department.GetNames().Count;
-                Dictionary<string, int> result = new Dictionary<string, int>();
-                result = Worker.GetWorkersByDepartment();
+                title.Text = gv_title;
 
                 foreach (var item in result)
                 {
@@ -59,10 +59,7 @@ namespace MediaBazaar.Forms
             }
             else
             {
-                title.Text = "Products ratio by department";
-                int lenght = Department.GetNames().Count;
-                Dictionary<string, int> result = new Dictionary<string, int>();
-                result = Product.GetProductsByDepartment();
+                title.Text = gv_title;
                 series.IsValueShownAsLabel = true;
                 foreach (var item in result)
                 {
@@ -79,63 +76,14 @@ namespace MediaBazaar.Forms
             legend.Font = new Font("Segoe UI", 9);
             legend.ForeColor = Color.Black;
 
-            chart.ChartAreas.Add(chartArea);
-            chart.Legends.Add(legend);
-            chart.BackColor = ApplicationColors.Orange;
-            chart.Titles.Add(title);
-            chart.Series.Add(series);
-            chart.Invalidate();
-            chart.Size = new Size(475, 275);
-            chart.Location = new Point(300, 105);
-
-            return chart;
-
-        }
-        public Chart CreateSoldProductsChart(SeriesChartType type)
-        {
-
-            var chart = new Chart();
-            chart.Series.Clear();
-
-            Title title = new Title();
-            title.Font = new Font("Segoe UI", 15, FontStyle.Bold);
-            title.ForeColor = Color.White;
-
-            var series = new Series();
-            series.Name = "Number of workers";
-            series.ChartType = type;
-            series.Color = ApplicationColors.PrimaryDark;
-            series.BorderColor = Color.Transparent;
-
-            title.Text = "Sold Products per Department";
-            int lenght = Department.GetNames().Count;
-            Dictionary<string, int> result = new Dictionary<string, int>();
-            result = Product.GetSoldQuantity();
-
-            foreach (var item in result)
-            {
-                series.Points.AddXY(item.Key, item.Value);
-            }
-
-            ChartArea chartArea = new ChartArea("Workers by Dep");
-            chartArea.BackColor = Color.White;
-
-            Legend legend = new Legend("Workers");
-            legend.BackColor = Color.White;
-            legend.Font = new Font("Segoe UI", 9);
-            legend.ForeColor = Color.Black;
-
-            chart.ChartAreas.Add(chartArea);
-            chart.Legends.Add(legend);
-            chart.BackColor = ApplicationColors.Orange;
-            chart.Titles.Add(title);
-            chart.Series.Add(series);
-            chart.Invalidate();
-            chart.Size = new Size(475, 275);
-            chart.Location = new Point(300, 105);
-
-            return chart;
-
+            this.chart.Legends.Add(legend);
+            this.chart.BackColor = ApplicationColors.Orange;
+            this.chart.Titles.Add(title);
+            this.chart.Series.Add(series);
+            this.chart.Invalidate();
+            this.chart.Visible = true;
+            this.chart.Size = new Size(475, 275);
+            this.chart.Location = new Point(300, 105);
 
 
         }
@@ -147,14 +95,12 @@ namespace MediaBazaar.Forms
 
         private void CreateWorkersByDepartmentChart()
         {
-            Chart createdChart = this.CreateChart(SeriesChartType.Column);
+            this.CreateChart(SeriesChartType.Column, "Workers By department", Worker.GetWorkersByDepartment(), "number of workers");
+        }
 
-            if (this.Controls.Count == 5) //CHECK FORM CONTROL NUMBER
-            {
-                this.Controls.RemoveAt(this.Controls.Count - 1);
-            }
-            this.Controls.AddRange(new Control[] { createdChart });
-            createdChart.Invalidate();
+        private void CreateProductsByDepartmentChart()
+        {
+            this.CreateChart(SeriesChartType.Pie, "Products per department", Product.GetProductsByDepartment(), "");
         }
 
         private void BtnStatWorkersByDepartment_Click(object sender, EventArgs e)
@@ -164,13 +110,7 @@ namespace MediaBazaar.Forms
 
         private void BtnProductsByDepartment_Click(object sender, EventArgs e)
         {
-            Chart createdChart = this.CreateChart(SeriesChartType.Pie);
-
-            if (this.Controls.Count == 5) //CHECK FORM CONTROL NUMBER
-            {
-                this.Controls.RemoveAt(this.Controls.Count - 1);
-            }
-            this.Controls.AddRange(new Control[] { createdChart });
+            CreateProductsByDepartmentChart();
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -201,20 +141,21 @@ namespace MediaBazaar.Forms
 
         private void btnSelledProductsByDepartment_Click(object sender, EventArgs e)
         {
-
-            Chart createdChart = CreateSoldProductsChart(SeriesChartType.Column);
-
-            if (this.Controls.Count == 5) //CHECK FORM CONTROL NUMBER
-            {
-                this.Controls.RemoveAt(this.Controls.Count - 1);
-            }
-            this.Controls.AddRange(new Control[] { createdChart });
-
+            CreateSoldProductByDepartmentChart();
         }
 
         private void CreateSoldProductByDepartmentChart()
         {
+            this.CreateChart(SeriesChartType.Column, "Fastest selling Product", Product.GetSoldQuantity(), "Sold quantity");
+        }
+        private void CreateRevenuePerProductChart()
+        {
+            this.CreateChart(SeriesChartType.Pie, "Revenue Per Product", Product.GetProductRevenue(), "");
+        }
 
+        private void btnRevenuePerProduct_Click(object sender, EventArgs e)
+        {
+            CreateRevenuePerProductChart();
         }
     }
 }

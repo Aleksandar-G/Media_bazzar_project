@@ -152,6 +152,40 @@ namespace MediaBazaar.Models
             }
 
         }
+
+        public static Dictionary<string, int> GetProductRevenue()
+        {
+            DBconnection dbConnection = new DBconnection();
+            dbConnection.OpenConnection();
+
+            Dictionary<string, int> productNamerevenue = new Dictionary<string, int>();
+
+            string query =
+            @"
+                SELECT p.name, od.quantity*(p.selling_price-p.buying_price) as revenue 
+                FROM `order_details` as od 
+                INNER JOIN products as p 
+                ON od.product_id = p.id 
+                GROUP BY(p.id)
+            ";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, dbConnection.connection))
+            {
+                //cmd.Parameters.AddWithValue("@productId", productId);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    productNamerevenue.Add(reader["name"].ToString(), Convert.ToInt32(reader["revenue"]));
+
+                }
+                dbConnection.CloseConnection();
+
+                return productNamerevenue;
+            }
+
+        }
+
+
         public static List<Product> GetAll()
         {
             DBconnection dbConnection = new DBconnection();
