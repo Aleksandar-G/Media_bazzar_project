@@ -24,7 +24,7 @@ namespace MediaBazaar.Models
         private DateTime endDate;
 
         private HttpClient client = new HttpClient();
-        private const string REGISTER_URL = "http://localhost:8000/api/register";
+        private string REGISTER_URL = $"{Environment.GetEnvironmentVariable("APP_URL")}/api/register";
 
         public long Id { get { return this.id; } }
 

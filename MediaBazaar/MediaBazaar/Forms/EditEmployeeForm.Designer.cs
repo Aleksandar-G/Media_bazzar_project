@@ -116,33 +116,33 @@
             // 
             // btnEditShifts
             // 
-            this.btnEditShifts.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEditShifts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditShifts.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditShifts.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnEditShifts.Location = new System.Drawing.Point(173, 607);
-            this.btnEditShifts.Name = "btnEditShifts";
-            this.btnEditShifts.Size = new System.Drawing.Size(172, 63);
-            this.btnEditShifts.TabIndex = 26;
-            this.btnEditShifts.Text = "Assign Shift \r\n(day)";
-            this.btnEditShifts.UseVisualStyleBackColor = true;
-            this.btnEditShifts.Visible = false;
-            this.btnEditShifts.Click += new System.EventHandler(this.BtnEditShifts_Click);
-            // 
-            // btnAssignShfitsPerMonth
-            // 
-            this.btnAssignShfitsPerMonth.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAssignShfitsPerMonth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAssignShfitsPerMonth.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAssignShfitsPerMonth.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAssignShfitsPerMonth.Location = new System.Drawing.Point(406, 607);
-            this.btnAssignShfitsPerMonth.Name = "btnAssignShfitsPerMonth";
-            this.btnAssignShfitsPerMonth.Size = new System.Drawing.Size(172, 63);
-            this.btnAssignShfitsPerMonth.TabIndex = 27;
-            this.btnAssignShfitsPerMonth.Text = "Assign Shift (month)";
-            this.btnAssignShfitsPerMonth.UseVisualStyleBackColor = true;
-            this.btnAssignShfitsPerMonth.Visible = false;
-            this.btnAssignShfitsPerMonth.Click += new System.EventHandler(this.BtnAssignShfitsPerMonth_Click);
+            //this.btnEditShifts.Cursor = System.Windows.Forms.Cursors.Hand;
+            //this.btnEditShifts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            //this.btnEditShifts.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //this.btnEditShifts.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            //this.btnEditShifts.Location = new System.Drawing.Point(173, 607);
+            //this.btnEditShifts.Name = "btnEditShifts";
+            //this.btnEditShifts.Size = new System.Drawing.Size(172, 63);
+            //this.btnEditShifts.TabIndex = 26;
+            //this.btnEditShifts.Text = "Assign Shift \r\n(day)";
+            //this.btnEditShifts.UseVisualStyleBackColor = true;
+            //this.btnEditShifts.Visible = false;
+            ////this.btnEditShifts.Click += new System.EventHandler(this.BtnEditShifts_Click);
+            //// 
+            //// btnAssignShfitsPerMonth
+            //// 
+            //this.btnAssignShfitsPerMonth.Cursor = System.Windows.Forms.Cursors.Hand;
+            //this.btnAssignShfitsPerMonth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            //this.btnAssignShfitsPerMonth.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //this.btnAssignShfitsPerMonth.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            //this.btnAssignShfitsPerMonth.Location = new System.Drawing.Point(406, 607);
+            //this.btnAssignShfitsPerMonth.Name = "btnAssignShfitsPerMonth";
+            //this.btnAssignShfitsPerMonth.Size = new System.Drawing.Size(172, 63);
+            //this.btnAssignShfitsPerMonth.TabIndex = 27;
+            //this.btnAssignShfitsPerMonth.Text = "Assign Shift (month)";
+            //this.btnAssignShfitsPerMonth.UseVisualStyleBackColor = true;
+            //this.btnAssignShfitsPerMonth.Visible = false;
+            ////this.btnAssignShfitsPerMonth.Click += new System.EventHandler(this.BtnAssignShfitsPerMonth_Click);
             // 
             // lblSalary
             // 

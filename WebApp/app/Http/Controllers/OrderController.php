@@ -11,6 +11,6 @@ class OrderController extends Controller
     //
     public function index(){
         $products = Product::all();
-        return view('createOrder',['products'=>$products]);
+        return view('createOrder', ['products' => $products]);
     }
 }
