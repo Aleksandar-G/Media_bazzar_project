@@ -27,6 +27,8 @@ namespace MediaBazaar.Forms
             this.btnClose.BackColor = ApplicationColors.Red;
             this.btnProductsByDepartment.BackColor = ApplicationColors.Orange;
             this.btnStatWorkersByDepartment.BackColor = ApplicationColors.Orange;
+            this.btnRevenuePerProduct.BackColor = ApplicationColors.Orange;
+            this.btnSelledProductsByDepartment.BackColor = ApplicationColors.Orange;
 
             this.currentUser = currentUser;
 
