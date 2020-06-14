@@ -38,6 +38,7 @@
             this.btnSelledProductsByDepartment = new System.Windows.Forms.Button();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnRevenuePerProduct = new System.Windows.Forms.Button();
+            this.btnRevenuePerDepartmnet = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.SuspendLayout();
             // 
@@ -141,11 +142,26 @@
             this.btnRevenuePerProduct.UseVisualStyleBackColor = false;
             this.btnRevenuePerProduct.Click += new System.EventHandler(this.btnRevenuePerProduct_Click);
             // 
+            // btnRevenuePerDepartmnet
+            // 
+            this.btnRevenuePerDepartmnet.BackColor = System.Drawing.Color.Maroon;
+            this.btnRevenuePerDepartmnet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRevenuePerDepartmnet.Font = new System.Drawing.Font("Segoe UI", 13.8F);
+            this.btnRevenuePerDepartmnet.ForeColor = System.Drawing.Color.White;
+            this.btnRevenuePerDepartmnet.Location = new System.Drawing.Point(12, 317);
+            this.btnRevenuePerDepartmnet.Name = "btnRevenuePerDepartmnet";
+            this.btnRevenuePerDepartmnet.Size = new System.Drawing.Size(260, 47);
+            this.btnRevenuePerDepartmnet.TabIndex = 23;
+            this.btnRevenuePerDepartmnet.Text = "Revenue Per Departmnet";
+            this.btnRevenuePerDepartmnet.UseVisualStyleBackColor = false;
+            this.btnRevenuePerDepartmnet.Click += new System.EventHandler(this.btnRevenuePerDepartmnet_Click);
+            // 
             // StatisticsForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(800, 422);
+            this.Controls.Add(this.btnRevenuePerDepartmnet);
             this.Controls.Add(this.btnRevenuePerProduct);
             this.Controls.Add(this.chart);
             this.Controls.Add(this.btnSelledProductsByDepartment);
@@ -174,5 +190,6 @@
         private System.Windows.Forms.Button btnSelledProductsByDepartment;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart;
         private System.Windows.Forms.Button btnRevenuePerProduct;
+        private System.Windows.Forms.Button btnRevenuePerDepartmnet;
     }
 }

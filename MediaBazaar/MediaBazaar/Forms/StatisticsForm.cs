@@ -29,6 +29,7 @@ namespace MediaBazaar.Forms
             this.btnStatWorkersByDepartment.BackColor = ApplicationColors.Orange;
             this.btnRevenuePerProduct.BackColor = ApplicationColors.Orange;
             this.btnSelledProductsByDepartment.BackColor = ApplicationColors.Orange;
+            this.btnRevenuePerDepartmnet.BackColor = ApplicationColors.Orange;
 
             this.currentUser = currentUser;
 
@@ -154,10 +155,19 @@ namespace MediaBazaar.Forms
         {
             this.CreateChart(SeriesChartType.Pie, "Revenue Per Product", Product.GetProductRevenue(), "");
         }
+        private void CreateRevenuePerDepartmentChart()
+        {
+            this.CreateChart(SeriesChartType.Column, "Revenue Per Departmnet", Department.GetRevenuePerDepartment(), "Revenue");
+        }
 
         private void btnRevenuePerProduct_Click(object sender, EventArgs e)
         {
             CreateRevenuePerProductChart();
+        }
+
+        private void btnRevenuePerDepartmnet_Click(object sender, EventArgs e)
+        {
+            CreateRevenuePerDepartmentChart();
         }
     }
 }
