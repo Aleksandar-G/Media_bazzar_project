@@ -28,10 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnStatWorkersByDepartment = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnProductsByDepartment = new System.Windows.Forms.Button();
+            this.btnSelledProductsByDepartment = new System.Windows.Forms.Button();
+            this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnRevenuePerProduct = new System.Windows.Forms.Button();
+            this.btnRevenuePerDepartmnet = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
@@ -71,7 +79,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(233, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(458, 54);
+            this.label1.Size = new System.Drawing.Size(313, 37);
             this.label1.TabIndex = 17;
             this.label1.Text = "Media Bazaar Statistics";
             // 
@@ -89,11 +97,74 @@
             this.btnProductsByDepartment.UseVisualStyleBackColor = false;
             this.btnProductsByDepartment.Click += new System.EventHandler(this.BtnProductsByDepartment_Click);
             // 
+            // btnSelledProductsByDepartment
+            // 
+            this.btnSelledProductsByDepartment.BackColor = System.Drawing.Color.Maroon;
+            this.btnSelledProductsByDepartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelledProductsByDepartment.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelledProductsByDepartment.ForeColor = System.Drawing.Color.White;
+            this.btnSelledProductsByDepartment.Location = new System.Drawing.Point(12, 211);
+            this.btnSelledProductsByDepartment.Name = "btnSelledProductsByDepartment";
+            this.btnSelledProductsByDepartment.Size = new System.Drawing.Size(260, 47);
+            this.btnSelledProductsByDepartment.TabIndex = 20;
+            this.btnSelledProductsByDepartment.Text = "Sold products by department";
+            this.btnSelledProductsByDepartment.UseVisualStyleBackColor = false;
+            this.btnSelledProductsByDepartment.Click += new System.EventHandler(this.btnSelledProductsByDepartment_Click);
+            // 
+            // chart
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart.Legends.Add(legend1);
+            this.chart.Location = new System.Drawing.Point(305, 76);
+            this.chart.Name = "chart";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart.Series.Add(series1);
+            this.chart.Size = new System.Drawing.Size(465, 329);
+            this.chart.TabIndex = 21;
+            this.chart.Text = "chart1";
+            this.chart.Visible = false;
+            // 
+            // btnRevenuePerProduct
+            // 
+            this.btnRevenuePerProduct.BackColor = System.Drawing.Color.Maroon;
+            this.btnRevenuePerProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRevenuePerProduct.Font = new System.Drawing.Font("Segoe UI", 13.8F);
+            this.btnRevenuePerProduct.ForeColor = System.Drawing.Color.White;
+            this.btnRevenuePerProduct.Location = new System.Drawing.Point(12, 264);
+            this.btnRevenuePerProduct.Name = "btnRevenuePerProduct";
+            this.btnRevenuePerProduct.Size = new System.Drawing.Size(260, 47);
+            this.btnRevenuePerProduct.TabIndex = 22;
+            this.btnRevenuePerProduct.Text = "Revenue Per Product";
+            this.btnRevenuePerProduct.UseVisualStyleBackColor = false;
+            this.btnRevenuePerProduct.Click += new System.EventHandler(this.btnRevenuePerProduct_Click);
+            // 
+            // btnRevenuePerDepartmnet
+            // 
+            this.btnRevenuePerDepartmnet.BackColor = System.Drawing.Color.Maroon;
+            this.btnRevenuePerDepartmnet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRevenuePerDepartmnet.Font = new System.Drawing.Font("Segoe UI", 13.8F);
+            this.btnRevenuePerDepartmnet.ForeColor = System.Drawing.Color.White;
+            this.btnRevenuePerDepartmnet.Location = new System.Drawing.Point(12, 317);
+            this.btnRevenuePerDepartmnet.Name = "btnRevenuePerDepartmnet";
+            this.btnRevenuePerDepartmnet.Size = new System.Drawing.Size(260, 47);
+            this.btnRevenuePerDepartmnet.TabIndex = 23;
+            this.btnRevenuePerDepartmnet.Text = "Revenue Per Departmnet";
+            this.btnRevenuePerDepartmnet.UseVisualStyleBackColor = false;
+            this.btnRevenuePerDepartmnet.Click += new System.EventHandler(this.btnRevenuePerDepartmnet_Click);
+            // 
             // StatisticsForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(800, 422);
+            this.Controls.Add(this.btnRevenuePerDepartmnet);
+            this.Controls.Add(this.btnRevenuePerProduct);
+            this.Controls.Add(this.chart);
+            this.Controls.Add(this.btnSelledProductsByDepartment);
             this.Controls.Add(this.btnProductsByDepartment);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnStatWorkersByDepartment);
@@ -104,6 +175,7 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.StatisticsForm_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.StatisticsForm_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.StatisticsForm_MouseUp);
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -115,5 +187,9 @@
         private System.Windows.Forms.Button btnStatWorkersByDepartment;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnProductsByDepartment;
+        private System.Windows.Forms.Button btnSelledProductsByDepartment;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart;
+        private System.Windows.Forms.Button btnRevenuePerProduct;
+        private System.Windows.Forms.Button btnRevenuePerDepartmnet;
     }
 }
