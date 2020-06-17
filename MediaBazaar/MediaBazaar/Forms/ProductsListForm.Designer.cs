@@ -43,10 +43,10 @@
             this.btnInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInfo.ForeColor = System.Drawing.Color.White;
-            this.btnInfo.Location = new System.Drawing.Point(568, 96);
+            this.btnInfo.Location = new System.Drawing.Point(505, 77);
             this.btnInfo.Margin = new System.Windows.Forms.Padding(2);
             this.btnInfo.Name = "btnInfo";
-            this.btnInfo.Size = new System.Drawing.Size(260, 47);
+            this.btnInfo.Size = new System.Drawing.Size(231, 38);
             this.btnInfo.TabIndex = 2;
             this.btnInfo.Text = "Details";
             this.btnInfo.UseVisualStyleBackColor = false;
@@ -59,10 +59,10 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(799, -1);
+            this.btnClose.Location = new System.Drawing.Point(710, -1);
             this.btnClose.Margin = new System.Windows.Forms.Padding(0);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(60, 55);
+            this.btnClose.Size = new System.Drawing.Size(53, 44);
             this.btnClose.TabIndex = 16;
             this.btnClose.Text = "x";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -73,10 +73,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(216, 19);
+            this.label2.Location = new System.Drawing.Point(192, 15);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(169, 48);
+            this.label2.Size = new System.Drawing.Size(153, 45);
             this.label2.TabIndex = 17;
             this.label2.Text = "Products";
             // 
@@ -87,10 +87,10 @@
             this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemove.ForeColor = System.Drawing.Color.White;
-            this.btnRemove.Location = new System.Drawing.Point(568, 172);
+            this.btnRemove.Location = new System.Drawing.Point(505, 138);
             this.btnRemove.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(260, 47);
+            this.btnRemove.Size = new System.Drawing.Size(231, 38);
             this.btnRemove.TabIndex = 18;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = false;
@@ -98,15 +98,15 @@
             // 
             // btnCreateProduct
             // 
-            this.btnCreateProduct.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnCreateProduct.BackColor = System.Drawing.Color.Lime;
             this.btnCreateProduct.FlatAppearance.BorderSize = 0;
             this.btnCreateProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreateProduct.ForeColor = System.Drawing.Color.White;
-            this.btnCreateProduct.Location = new System.Drawing.Point(147, 626);
+            this.btnCreateProduct.Location = new System.Drawing.Point(131, 501);
             this.btnCreateProduct.Margin = new System.Windows.Forms.Padding(2);
             this.btnCreateProduct.Name = "btnCreateProduct";
-            this.btnCreateProduct.Size = new System.Drawing.Size(260, 53);
+            this.btnCreateProduct.Size = new System.Drawing.Size(231, 42);
             this.btnCreateProduct.TabIndex = 19;
             this.btnCreateProduct.Text = "Create new product";
             this.btnCreateProduct.UseVisualStyleBackColor = false;
@@ -116,19 +116,20 @@
             // 
             this.lbProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbProducts.FormattingEnabled = true;
-            this.lbProducts.ItemHeight = 29;
-            this.lbProducts.Location = new System.Drawing.Point(37, 96);
+            this.lbProducts.ItemHeight = 25;
+            this.lbProducts.Location = new System.Drawing.Point(33, 77);
+            this.lbProducts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lbProducts.Name = "lbProducts";
-            this.lbProducts.Size = new System.Drawing.Size(494, 497);
+            this.lbProducts.Size = new System.Drawing.Size(440, 379);
             this.lbProducts.TabIndex = 20;
             this.lbProducts.DoubleClick += new System.EventHandler(this.LbProducts_DoubleClick);
             // 
             // ProductsListForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightBlue;
-            this.ClientSize = new System.Drawing.Size(855, 705);
+            this.ClientSize = new System.Drawing.Size(760, 564);
             this.Controls.Add(this.lbProducts);
             this.Controls.Add(this.btnCreateProduct);
             this.Controls.Add(this.btnRemove);

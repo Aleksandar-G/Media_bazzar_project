@@ -35,6 +35,7 @@ namespace MediaBazaar
             {
                 users = User.GetAll();
                 this.btnViewStatistics.Show();;
+                this.btnLeaveRequests.Show();
             }
 
             else if (currentUser.Role == "Supervisor")
@@ -209,6 +210,12 @@ namespace MediaBazaar
             }
 
             MessageBox.Show("Available shifts for the upcoming week were successfully assigned to the available users");
+        }
+
+        private void BtnLeaveRequests_Click(object sender, EventArgs e)
+        {
+            ViewLeaveRequestsForm form = new ViewLeaveRequestsForm();
+            form.Show();
         }
     }
 }

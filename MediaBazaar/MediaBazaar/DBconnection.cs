@@ -10,10 +10,10 @@ namespace MediaBazaar
     public class DBconnection
     {
         public MySqlConnection connection;
-        private string server = Environment.GetEnvironmentVariable("DB_HOST");
-        private string database = Environment.GetEnvironmentVariable("DB_DATABASE");
-        private string uid = Environment.GetEnvironmentVariable("DB_USERNAME");
-        private string password = Environment.GetEnvironmentVariable("DB_PASSWORD");
+        private string server = Environment.GetEnvironmentVariable("DB_HOST");//"127.0.0.1";//
+        private string database = Environment.GetEnvironmentVariable("DB_DATABASE");//"laravel";//
+        private string uid =Environment.GetEnvironmentVariable("DB_USERNAME");//"root";//
+        private string password =Environment.GetEnvironmentVariable("DB_PASSWORD");// "root";//
 
         public DBconnection()
         {

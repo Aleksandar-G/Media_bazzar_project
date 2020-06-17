@@ -30,6 +30,7 @@
         {
             this.btnClose = new System.Windows.Forms.Button();
             this.navigation = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnAddWorkShiftsPerMonth = new System.Windows.Forms.Button();
             this.btnAddShiftsPerDay = new System.Windows.Forms.Button();
             this.btnProducts = new System.Windows.Forms.Button();
@@ -43,7 +44,7 @@
             this.lblEmployees = new System.Windows.Forms.Label();
             this.tbSearch = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnLeaveRequests = new System.Windows.Forms.Button();
             this.navigation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbSearch)).BeginInit();
@@ -56,10 +57,10 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(955, -1);
+            this.btnClose.Location = new System.Drawing.Point(1273, -1);
             this.btnClose.Margin = new System.Windows.Forms.Padding(0);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(45, 45);
+            this.btnClose.Size = new System.Drawing.Size(60, 55);
             this.btnClose.TabIndex = 10;
             this.btnClose.Text = "x";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -68,6 +69,7 @@
             // navigation
             // 
             this.navigation.BackColor = System.Drawing.SystemColors.WindowText;
+            this.navigation.Controls.Add(this.btnLeaveRequests);
             this.navigation.Controls.Add(this.button1);
             this.navigation.Controls.Add(this.btnAddWorkShiftsPerMonth);
             this.navigation.Controls.Add(this.btnAddShiftsPerDay);
@@ -81,11 +83,27 @@
             this.navigation.Location = new System.Drawing.Point(0, 0);
             this.navigation.Margin = new System.Windows.Forms.Padding(0);
             this.navigation.Name = "navigation";
-            this.navigation.Size = new System.Drawing.Size(270, 724);
+            this.navigation.Size = new System.Drawing.Size(360, 1003);
             this.navigation.TabIndex = 0;
             this.navigation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Navigation_MouseDown);
             this.navigation.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Navigation_MouseMove);
             this.navigation.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Navigation_MouseUp);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.button1.Location = new System.Drawing.Point(0, 891);
+            this.button1.Margin = new System.Windows.Forms.Padding(0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(360, 64);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "Automatically Assign Shifts";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // btnAddWorkShiftsPerMonth
             // 
@@ -94,10 +112,10 @@
             this.btnAddWorkShiftsPerMonth.FlatAppearance.BorderSize = 0;
             this.btnAddWorkShiftsPerMonth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddWorkShiftsPerMonth.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnAddWorkShiftsPerMonth.Location = new System.Drawing.Point(0, 259);
+            this.btnAddWorkShiftsPerMonth.Location = new System.Drawing.Point(0, 319);
             this.btnAddWorkShiftsPerMonth.Margin = new System.Windows.Forms.Padding(0);
             this.btnAddWorkShiftsPerMonth.Name = "btnAddWorkShiftsPerMonth";
-            this.btnAddWorkShiftsPerMonth.Size = new System.Drawing.Size(270, 52);
+            this.btnAddWorkShiftsPerMonth.Size = new System.Drawing.Size(360, 64);
             this.btnAddWorkShiftsPerMonth.TabIndex = 20;
             this.btnAddWorkShiftsPerMonth.Text = "Add Shifts per month";
             this.btnAddWorkShiftsPerMonth.UseVisualStyleBackColor = false;
@@ -110,10 +128,10 @@
             this.btnAddShiftsPerDay.FlatAppearance.BorderSize = 0;
             this.btnAddShiftsPerDay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddShiftsPerDay.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnAddShiftsPerDay.Location = new System.Drawing.Point(0, 191);
+            this.btnAddShiftsPerDay.Location = new System.Drawing.Point(0, 235);
             this.btnAddShiftsPerDay.Margin = new System.Windows.Forms.Padding(0);
             this.btnAddShiftsPerDay.Name = "btnAddShiftsPerDay";
-            this.btnAddShiftsPerDay.Size = new System.Drawing.Size(270, 52);
+            this.btnAddShiftsPerDay.Size = new System.Drawing.Size(360, 64);
             this.btnAddShiftsPerDay.TabIndex = 19;
             this.btnAddShiftsPerDay.Text = "Add Shifts per day";
             this.btnAddShiftsPerDay.UseVisualStyleBackColor = false;
@@ -126,10 +144,10 @@
             this.btnProducts.FlatAppearance.BorderSize = 0;
             this.btnProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProducts.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnProducts.Location = new System.Drawing.Point(0, 128);
+            this.btnProducts.Location = new System.Drawing.Point(0, 158);
             this.btnProducts.Margin = new System.Windows.Forms.Padding(0);
             this.btnProducts.Name = "btnProducts";
-            this.btnProducts.Size = new System.Drawing.Size(270, 49);
+            this.btnProducts.Size = new System.Drawing.Size(360, 60);
             this.btnProducts.TabIndex = 18;
             this.btnProducts.Text = "Products";
             this.btnProducts.UseVisualStyleBackColor = false;
@@ -142,10 +160,10 @@
             this.btnViewStockRequests.FlatAppearance.BorderSize = 0;
             this.btnViewStockRequests.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewStockRequests.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnViewStockRequests.Location = new System.Drawing.Point(0, 587);
+            this.btnViewStockRequests.Location = new System.Drawing.Point(0, 722);
             this.btnViewStockRequests.Margin = new System.Windows.Forms.Padding(0);
             this.btnViewStockRequests.Name = "btnViewStockRequests";
-            this.btnViewStockRequests.Size = new System.Drawing.Size(270, 52);
+            this.btnViewStockRequests.Size = new System.Drawing.Size(360, 64);
             this.btnViewStockRequests.TabIndex = 17;
             this.btnViewStockRequests.Text = "Stock Requests";
             this.btnViewStockRequests.UseVisualStyleBackColor = false;
@@ -158,10 +176,10 @@
             this.btnViewStatistics.FlatAppearance.BorderSize = 0;
             this.btnViewStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewStatistics.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnViewStatistics.Location = new System.Drawing.Point(0, 654);
+            this.btnViewStatistics.Location = new System.Drawing.Point(0, 805);
             this.btnViewStatistics.Margin = new System.Windows.Forms.Padding(0);
             this.btnViewStatistics.Name = "btnViewStatistics";
-            this.btnViewStatistics.Size = new System.Drawing.Size(270, 56);
+            this.btnViewStatistics.Size = new System.Drawing.Size(360, 69);
             this.btnViewStatistics.TabIndex = 16;
             this.btnViewStatistics.Text = "Statistics";
             this.btnViewStatistics.UseVisualStyleBackColor = false;
@@ -174,10 +192,10 @@
             this.btnViewWorkshifts.FlatAppearance.BorderSize = 0;
             this.btnViewWorkshifts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewWorkshifts.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnViewWorkshifts.Location = new System.Drawing.Point(0, 328);
+            this.btnViewWorkshifts.Location = new System.Drawing.Point(0, 404);
             this.btnViewWorkshifts.Margin = new System.Windows.Forms.Padding(0);
             this.btnViewWorkshifts.Name = "btnViewWorkshifts";
-            this.btnViewWorkshifts.Size = new System.Drawing.Size(270, 52);
+            this.btnViewWorkshifts.Size = new System.Drawing.Size(360, 64);
             this.btnViewWorkshifts.TabIndex = 18;
             this.btnViewWorkshifts.Text = "View Shifts";
             this.btnViewWorkshifts.UseVisualStyleBackColor = false;
@@ -190,10 +208,10 @@
             this.btnAddDepartment.FlatAppearance.BorderSize = 0;
             this.btnAddDepartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddDepartment.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnAddDepartment.Location = new System.Drawing.Point(0, 526);
+            this.btnAddDepartment.Location = new System.Drawing.Point(0, 647);
             this.btnAddDepartment.Margin = new System.Windows.Forms.Padding(0);
             this.btnAddDepartment.Name = "btnAddDepartment";
-            this.btnAddDepartment.Size = new System.Drawing.Size(270, 48);
+            this.btnAddDepartment.Size = new System.Drawing.Size(360, 59);
             this.btnAddDepartment.TabIndex = 15;
             this.btnAddDepartment.Text = "Add Department";
             this.btnAddDepartment.UseVisualStyleBackColor = false;
@@ -206,10 +224,10 @@
             this.btnAddEmployee.FlatAppearance.BorderSize = 0;
             this.btnAddEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddEmployee.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnAddEmployee.Location = new System.Drawing.Point(0, 463);
+            this.btnAddEmployee.Location = new System.Drawing.Point(0, 570);
             this.btnAddEmployee.Margin = new System.Windows.Forms.Padding(0);
             this.btnAddEmployee.Name = "btnAddEmployee";
-            this.btnAddEmployee.Size = new System.Drawing.Size(270, 48);
+            this.btnAddEmployee.Size = new System.Drawing.Size(360, 59);
             this.btnAddEmployee.TabIndex = 14;
             this.btnAddEmployee.Text = "Add Employee";
             this.btnAddEmployee.UseVisualStyleBackColor = false;
@@ -218,10 +236,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::MediaBazaar.Properties.Resources.logo2;
-            this.pictureBox1.Location = new System.Drawing.Point(88, 13);
+            this.pictureBox1.Location = new System.Drawing.Point(117, 16);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox1.Size = new System.Drawing.Size(133, 123);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
@@ -230,10 +248,10 @@
             // 
             this.flpEmployees.AutoScroll = true;
             this.flpEmployees.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flpEmployees.Location = new System.Drawing.Point(309, 128);
+            this.flpEmployees.Location = new System.Drawing.Point(412, 158);
             this.flpEmployees.Margin = new System.Windows.Forms.Padding(0);
             this.flpEmployees.Name = "flpEmployees";
-            this.flpEmployees.Size = new System.Drawing.Size(655, 569);
+            this.flpEmployees.Size = new System.Drawing.Size(873, 817);
             this.flpEmployees.TabIndex = 16;
             this.flpEmployees.WrapContents = false;
             // 
@@ -242,21 +260,21 @@
             this.lblEmployees.AutoSize = true;
             this.lblEmployees.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmployees.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblEmployees.Location = new System.Drawing.Point(558, 13);
+            this.lblEmployees.Location = new System.Drawing.Point(744, 16);
             this.lblEmployees.Margin = new System.Windows.Forms.Padding(0);
             this.lblEmployees.Name = "lblEmployees";
-            this.lblEmployees.Size = new System.Drawing.Size(137, 32);
+            this.lblEmployees.Size = new System.Drawing.Size(180, 45);
             this.lblEmployees.TabIndex = 0;
             this.lblEmployees.Text = "Employees";
             // 
             // tbSearch
             // 
-            this.tbSearch.BeforeTouchSize = new System.Drawing.Size(657, 29);
+            this.tbSearch.BeforeTouchSize = new System.Drawing.Size(875, 35);
             this.tbSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSearch.Location = new System.Drawing.Point(307, 84);
-            this.tbSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.tbSearch.Location = new System.Drawing.Point(409, 103);
+            this.tbSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(657, 29);
+            this.tbSearch.Size = new System.Drawing.Size(875, 35);
             this.tbSearch.TabIndex = 17;
             this.tbSearch.TextChanged += new System.EventHandler(this.TextBoxExt1_TextChanged);
             // 
@@ -265,34 +283,35 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(304, 55);
+            this.label1.Location = new System.Drawing.Point(405, 68);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(166, 25);
+            this.label1.Size = new System.Drawing.Size(220, 35);
             this.label1.TabIndex = 18;
             this.label1.Text = "Search Employees";
             // 
-            // button1
+            // btnLeaveRequests
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.button1.Location = new System.Drawing.Point(0, 397);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(270, 52);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "Automatically Assign Shifts";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.btnLeaveRequests.BackColor = System.Drawing.Color.White;
+            this.btnLeaveRequests.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLeaveRequests.FlatAppearance.BorderSize = 0;
+            this.btnLeaveRequests.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLeaveRequests.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.btnLeaveRequests.Location = new System.Drawing.Point(0, 483);
+            this.btnLeaveRequests.Margin = new System.Windows.Forms.Padding(0);
+            this.btnLeaveRequests.Name = "btnLeaveRequests";
+            this.btnLeaveRequests.Size = new System.Drawing.Size(360, 69);
+            this.btnLeaveRequests.TabIndex = 22;
+            this.btnLeaveRequests.Text = "Leave Requests";
+            this.btnLeaveRequests.UseVisualStyleBackColor = false;
+            this.btnLeaveRequests.Click += new System.EventHandler(this.BtnLeaveRequests_Click);
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(999, 722);
+            this.ClientSize = new System.Drawing.Size(1332, 977);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.lblEmployees);
@@ -300,7 +319,7 @@
             this.Controls.Add(this.navigation);
             this.Controls.Add(this.btnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
@@ -334,5 +353,6 @@
         private System.Windows.Forms.Button btnAddWorkShiftsPerMonth;
         private System.Windows.Forms.Button btnAddShiftsPerDay;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnLeaveRequests;
     }
 }
