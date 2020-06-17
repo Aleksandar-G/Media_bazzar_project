@@ -19,7 +19,7 @@ namespace MediaBazaar
         [STAThread]
         static void Main()
         {
-            DotNetEnv.Env.Load("../../../../WebApp/.env");
+           DotNetEnv.Env.Load("../../../../WebApp/.env");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             

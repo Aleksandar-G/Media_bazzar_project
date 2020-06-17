@@ -25,9 +25,37 @@ namespace MediaBazaar.Forms
             this.UpdateGUI();
 
         }
+        public void CreateComponent(LeaveRequest request)
+        {
+            var btn = new Button();
+            btn.FlatStyle = FlatStyle.Flat;
+            btn.BackColor = ApplicationColors.Orange;
+            btn.Width = this.flp.Width - 50;
+            btn.Height = 45;
+            btn.ForeColor = Color.White;
+
+            string info = $" FROM: {request.Worker.Name}";
+           
+            btn.Text = $"{info}";
+
+            btn.Font = new Font("Segoe UI", 13);
+
+            btn.TextAlign = ContentAlignment.MiddleLeft;
+            btn.Click += new EventHandler((s, ev) =>
+            {
+                this.current_request = request;
+                panelDetails.Visible = true;
+                lbDescription.Text = request.Description;
+                lblName.Text = request.Worker.Name;
+                lblFrom.Text = request.From.ToString("dd-MM-yyyy");
+                lblTo.Text = request.To.ToString("dd-MM-yyyy");
+            });
+            this.flp.Controls.Add(btn);
+        }
         public void UpdateGUI()
         {
-            this.lbLeaveRequests.Items.Clear();
+            flp.Controls.Clear();
+            panelDetails.Visible = false;
             if (LeaveRequest.GetAll().Count == 0)
             {
                 MessageBox.Show("No more requests!");
@@ -35,7 +63,7 @@ namespace MediaBazaar.Forms
             }
            foreach(var item in LeaveRequest.GetAll())
             {
-                lbLeaveRequests.Items.Add(item.GetInfo());
+                CreateComponent(item);
             }
 
         }
@@ -64,15 +92,15 @@ namespace MediaBazaar.Forms
             }
         }
 
-        private void LbLeaveRequests_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            panelDetails.Visible = true;
-            current_request = LeaveRequest.GetAll()[lbLeaveRequests.SelectedIndex];
-            lbDescription.Text = current_request.Description;
-            lblName.Text = current_request.Worker.Name;
-            lblFrom.Text = current_request.From.ToString("dd-MM-yyyy");
-            lblTo.Text = current_request.To.ToString("dd-MM-yyyy");
-        }
+        //private void LbLeaveRequests_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    panelDetails.Visible = true;
+        //    current_request = LeaveRequest.GetAll()[lbLeaveRequests.SelectedIndex];
+        //    lbDescription.Text = current_request.Description;
+        //    lblName.Text = current_request.Worker.Name;
+        //    lblFrom.Text = current_request.From.ToString("dd-MM-yyyy");
+        //    lblTo.Text = current_request.To.ToString("dd-MM-yyyy");
+        //}
 
         private void BtnAccept_Click(object sender, EventArgs e)
         {

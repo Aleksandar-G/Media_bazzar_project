@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.btnClose = new System.Windows.Forms.Button();
-            this.lbLeaveRequests = new System.Windows.Forms.ListBox();
             this.panelDetails = new System.Windows.Forms.Panel();
+            this.lbDescription = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.lblTo = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -40,7 +40,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lbDescription = new System.Windows.Forms.RichTextBox();
+            this.flp = new System.Windows.Forms.FlowLayoutPanel();
+            this.label3 = new System.Windows.Forms.Label();
             this.panelDetails.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,16 +61,6 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
-            // lbLeaveRequests
-            // 
-            this.lbLeaveRequests.FormattingEnabled = true;
-            this.lbLeaveRequests.ItemHeight = 21;
-            this.lbLeaveRequests.Location = new System.Drawing.Point(48, 86);
-            this.lbLeaveRequests.Name = "lbLeaveRequests";
-            this.lbLeaveRequests.Size = new System.Drawing.Size(314, 130);
-            this.lbLeaveRequests.TabIndex = 20;
-            this.lbLeaveRequests.SelectedIndexChanged += new System.EventHandler(this.LbLeaveRequests_SelectedIndexChanged);
-            // 
             // panelDetails
             // 
             this.panelDetails.Controls.Add(this.lbDescription);
@@ -82,10 +73,19 @@
             this.panelDetails.Controls.Add(this.label2);
             this.panelDetails.Controls.Add(this.lblName);
             this.panelDetails.Controls.Add(this.label1);
-            this.panelDetails.Location = new System.Drawing.Point(394, 86);
+            this.panelDetails.Location = new System.Drawing.Point(441, 86);
             this.panelDetails.Name = "panelDetails";
             this.panelDetails.Size = new System.Drawing.Size(331, 319);
             this.panelDetails.TabIndex = 21;
+            // 
+            // lbDescription
+            // 
+            this.lbDescription.Location = new System.Drawing.Point(129, 68);
+            this.lbDescription.Name = "lbDescription";
+            this.lbDescription.ReadOnly = true;
+            this.lbDescription.Size = new System.Drawing.Size(178, 95);
+            this.lbDescription.TabIndex = 31;
+            this.lbDescription.Text = "";
             // 
             // label6
             // 
@@ -185,22 +185,35 @@
             this.label1.TabIndex = 22;
             this.label1.Text = "Description:";
             // 
-            // lbDescription
+            // flp
             // 
-            this.lbDescription.Location = new System.Drawing.Point(129, 68);
-            this.lbDescription.Name = "lbDescription";
-            this.lbDescription.ReadOnly = true;
-            this.lbDescription.Size = new System.Drawing.Size(178, 95);
-            this.lbDescription.TabIndex = 31;
-            this.lbDescription.Text = "";
+            this.flp.AutoScroll = true;
+            this.flp.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flp.Location = new System.Drawing.Point(23, 86);
+            this.flp.Name = "flp";
+            this.flp.Size = new System.Drawing.Size(375, 319);
+            this.flp.TabIndex = 22;
+            this.flp.WrapContents = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 13.824F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(17, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(272, 32);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "Pending Leave Requests";
             // 
             // ViewLeaveRequestsForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.flp);
             this.Controls.Add(this.panelDetails);
-            this.Controls.Add(this.lbLeaveRequests);
             this.Controls.Add(this.btnClose);
             this.Font = new System.Drawing.Font("Segoe UI", 9.216F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -212,13 +225,13 @@
             this.panelDetails.ResumeLayout(false);
             this.panelDetails.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.ListBox lbLeaveRequests;
         private System.Windows.Forms.Panel panelDetails;
         private System.Windows.Forms.Button btnDecline;
         private System.Windows.Forms.Button btnAccept;
@@ -230,5 +243,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblFrom;
         private System.Windows.Forms.RichTextBox lbDescription;
+        private System.Windows.Forms.FlowLayoutPanel flp;
+        private System.Windows.Forms.Label label3;
     }
 }
