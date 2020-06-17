@@ -246,16 +246,15 @@ a:hover {
 }
 
 .input-field {
-    height: 100%;
+    //height: 100%;
     border: 2px solid $orange;
     border-radius: 7px;
-    width: 100%;
+    width: 33%;
 }
 
 .list-box {
     border: 1px solid $orange;
     border-radius: 5px;
-
 }
 
 hr.rowhr {
@@ -270,13 +269,18 @@ hr.summary-hr {
     text-align: left;
     margin-left: 0;
     width: 84%;
-
 }
-.summary-h{
+
+.summary-h {
     color: $orange;
-    font-size:24px;
+    font-size: 24px;
     letter-spacing: 0.04cm;
 }
+
+.btn {
+    float: right;
+}
+
 //List of orders style
 .container-orders {
     height: 100% !important;
@@ -320,7 +324,7 @@ td.active {
     text-align: center;
 }
 
-.datepicker > div.datepicker-days > table > tbody > tr:hover {
+.datepicker>div.datepicker-days>table>tbody>tr:hover {
     background-color: $light-orange;
 }
 

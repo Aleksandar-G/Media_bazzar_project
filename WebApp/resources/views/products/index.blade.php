@@ -6,64 +6,40 @@
   {{ Session::get('flash_message') }}
 </div>
 @endif
+
 <div class="container-products dark-bg">
+ 
+  
   <table class="table text-white">
     <thead class="light-p-bg table-header">
       <tr class="d-flex">
-        <th scope="col" class="col-1 no-border">ID</th>
+        <th scope="col" class="col-3 no-border">ID</th>
         <th scope="col" class="col-4 no-border">Product Name</th>
         <th scope="col" class="col-3 no-border">Department</th>
         <th scope="col" class="col-2 no-border">Quantity</th>
-        <th scope="col" class="col-2 no-border"></th>
+
       </tr>
     </thead>
     <tbody>
+      <input type="text" class="input-field"  id="searchfield" onkeyup="search()" placeholder="Type product name">
+      <button type="button" onclick="sortTableAlphabeticly()" class="btn btn-primary m-2"><i class="fa fa-sort">Sort by Product Name</i></button>
+      <button type="button" onclick="sortTableDepartment()" class="btn btn-primary m-2"><i class="fa fa-sort">Sort by Department</i></button>
       @foreach ($products as $product)
       <tr class="d-flex">
-        <th scope="row" id="{{ $product->id }}" class="col-1">{{ $product->id }}</th>
+        <th scope="row" id="{{ $product->id }}" class="col-3">{{ $product->id }}</th>
         <td class="col-4">{{ $product->name }}</td>
         <td class="col-3">{{ $product->department->name }}</td>
         <td class="col-2">{{ $product->quantity }}</td>
-        <td class="col-2">
-          <button class="btn btn-orange btn-block" data-toggle="modal" data-target="#buyProductModal-{{{$product->id}}}" {{ $product->quantity > 0 ? '' : 'disabled' }}>
-            Decrease Amount
-          </button>
-        </td>
       </tr>
-
-      <div class="modal fade" id="buyProductModal-{{{$product->id}}}" tabindex="-1" role="dialog" aria-labelledby="buyProductModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="title">Decrease {{ $product->name }} amount</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body text-center">
-              <form action="/products/{{$product->id}}" method="POST">
-                @csrf
-                @method('PUT')
-
-                <h4>Decrease {{ $product->name }} by: </h4>
-                <input type="hidden" name="product" value="{{ $product->id }}">
-                <div class="qty">
-                  <span class="minus bg-dark">-</span>
-                  <input type="number" class="count" id="product-{{$product->id}}-quantity" name="quantity" value="1" min="0" max="{{{ $product->quantity }}}">
-                  <span class="plus bg-dark">+</span>
-                </div>
-                <br>
-                <button type="submit" class="btn btn-orange">Decrease</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <script type="text/javascript">
-        let quantity = {{$product->quantity}};
+        let quantity = {
+          {
+            $product - > quantity
+          }
+        };
 
         $(document).ready(function() {
+
           $("#product-{{$product->id}}-quantity").prop('readonly', true);
           $(document).on('click', '.plus', function() {
             $("#product-{{$product->id}}-quantity").val(parseInt($("#product-{{$product->id}}-quantity").val()) + 1);
@@ -81,8 +57,98 @@
         });
       </script>
       @endforeach
+
+
     </tbody>
   </table>
+
+  <script>
+    function sortTableAlphabeticly() {
+      let table, rows, switching, i, x, y, shouldSwitch;
+      table = document.getElementsByClassName("table text-white")[0];
+      switching = true;
+
+      while (switching) {
+
+        switching = false;
+        rows = table.rows;
+
+        for (i = 1; i < (rows.length - 1); i++) {
+          shouldSwitch = false;
+
+          x = rows[i].getElementsByTagName("TD")[0];
+          y = rows[i + 1].getElementsByTagName("TD")[0];
+
+          if (x.innerHTML.toLowerCase() >= y.innerHTML.toLowerCase()) {
+            shouldSwitch = true;
+            break;
+          }
+        }
+        if (shouldSwitch) {
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+          switching = true;
+        }
+      }
+    }
+
+    function sortTableDepartment() {
+      let table, rows, switching, i, x, y, shouldSwitch;
+      table = document.getElementsByClassName("table text-white")[0];
+      switching = true;
+      /*Make a loop that will continue until
+      no switching has been done:*/
+
+      while (switching) {
+        //start by saying: no switching is done:
+        switching = false;
+        rows = table.rows;
+        /*Loop through all table rows (except the
+        first, which contains table headers):*/
+        for (i = 1; i < (rows.length - 1); i++) {
+          //start by saying there should be no switching:
+          shouldSwitch = false;
+          /*Get the two elements you want to compare,
+          one from current row and one from the next:*/
+          x = rows[i].getElementsByTagName("TD")[1];
+          y = rows[i + 1].getElementsByTagName("TD")[1];
+
+           // console.log(x.innerHTML);
+            //console.log(y.innerHTML);
+          //check if the two rows should switch place:
+          if (x.innerHTML > y.innerHTML) {
+            //if so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        }
+        if (shouldSwitch) {
+          /*If a switch has been marked, make the switch
+          and mark that a switch has been done:*/
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+          switching = true;
+        }
+      }
+    }
+    function search() {
+      let input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("searchfield");
+      filter = input.value.toUpperCase();
+      table = document.getElementsByClassName("table text-white")[0];
+
+      tr = table.getElementsByTagName("TR");
+      for (i = 1; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("TD")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].setAttribute('style', 'display:none !important');
+          }
+        }       
+      }
+    }
+  </script>
 
 </div>
 @endsection
