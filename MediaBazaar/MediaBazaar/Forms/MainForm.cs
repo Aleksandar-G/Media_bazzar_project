@@ -35,6 +35,7 @@ namespace MediaBazaar
             {
                 users = User.GetAll();
                 this.btnViewStatistics.Show();;
+                this.btnLeaveRequests.Show();
             }
 
             else if (currentUser.Role == "Supervisor")
@@ -165,7 +166,6 @@ namespace MediaBazaar
             form.Show();
         }
 
-
         private void TextBoxExt1_TextChanged(object sender, EventArgs e)
         {
             string search = tbSearch.Text;
@@ -176,7 +176,6 @@ namespace MediaBazaar
         {
             var productsForm = new ProductsListForm(currentUser);
             productsForm.Show();
-
         }
 
         private void BtnViewWorkshifts_Click(object sender, EventArgs e)
@@ -209,6 +208,18 @@ namespace MediaBazaar
             }
 
             MessageBox.Show("Available shifts for the upcoming week were successfully assigned to the available users");
+        }
+
+        private void BtnLeaveRequests_Click(object sender, EventArgs e)
+        {
+            if (LeaveRequest.GetAll().Count == 0)
+            {
+                MessageBox.Show("No more requests!");
+                return;
+            }
+
+            ViewLeaveRequestsForm form = new ViewLeaveRequestsForm();
+            form.Show();
         }
     }
 }
