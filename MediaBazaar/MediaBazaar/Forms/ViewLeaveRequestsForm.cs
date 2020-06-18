@@ -21,10 +21,10 @@ namespace MediaBazaar.Forms
             InitializeComponent();
             this.BackColor = ApplicationColors.PrimaryDark;
             this.panelDetails.Visible = false;
-            
-            this.UpdateGUI();
 
+            this.UpdateGUI();
         }
+
         public void CreateComponent(LeaveRequest request)
         {
             var btn = new Button();
