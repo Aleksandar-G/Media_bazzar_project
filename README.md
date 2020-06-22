@@ -18,3 +18,6 @@
 
 ## Presation Week 12
 [Google Docs](https://docs.google.com/presentation/d/1fVDAgc8sKhWhwrKZ7k2AST4e6EifAJh-V-Ape_IVIO8)
+
+## Presation Week 18
+[Google Docs](https://docs.google.com/presentation/d/1thJP6333ywP45xcMXqn4bm0qtuFTHwVOnjHIlQS3AL4/edit#slide=id.g8a94b854f9_0_54)
