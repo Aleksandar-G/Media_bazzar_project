@@ -7,5 +7,6 @@ This app is consist of Website for the employees and Desktop application for the
 Main features:
  * CRUD operations for the products and the employees.
  * Shift manager for the employees.
- * Casher app in the website
- * Bussines analysis with graphs
+ * Casher app in the website.
+ * Bussines analysis with graphs.
+ * authorization and authentication on the website and in the app.
